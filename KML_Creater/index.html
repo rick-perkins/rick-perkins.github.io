@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<!_created by Rick Perkins, rickperkinsbloke.com__>
+<!_kml_creator__>
+<head><title>Create KML File</title>
+<link rel="apple-touch-icon" sizes="57x57" href="../fav/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../fav/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../fav/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../fav/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../fav/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../fav/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="../fav/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../fav/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../fav/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="../fav/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../fav/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="../fav/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../fav/favicon-16x16.png">
+<link rel="manifest" href="fav/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="../fav/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<meta charset="utf-8">
+<link rel="stylesheet" href="../css/rickperkinsbloke.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="KML_master.js"></script>
+<style>
+
+ul{display: none;
+	position:absolute;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width:auto;
+	z-index:20;
+	background-color: #ebf2fa;
+	border:1px solid #000;}
+</style>
+
+
+ </head>
+<body>
+
+	<div id="header">
+		<img id="logo" src="../img/RickPerkinsBloke108.png" ><span>ickPerkinsBloke.com </span>
+	</div>
+	<div id="welcome">
+		Create KML File...
+	</div>
+	<div><p><a id="home" href="../index.html">Home</a></p></div>
+	<form id="myForm">
+		<input type="file" id="csvFile" accept=".csv"  hidden/><br>
+		<label id="input_csvFile" for="csvFile" >Choose File</label><span id="csvFile_name" style="margin:4px 2px;display: inline-block;">No Files Selected</span>
+		<br><div id="message" style="color:#FF0000;">The KML file will be filtered to minutes as default. </div>
+		<!--<label for="ln_start">CSV Line start number:</label><input type="number" id="ln_start" class="ln_input" value="1" min="1" max="6000"/><label for="ln_end">CSV Line end number:</label><input type="number" id="ln_end" class="ln_input" value="6000" min="1" max="6000"/></div>-->
+	<input class="sec_checkbox" id="seconds_checkbox" type="checkbox" style="display: none;"><label class="sec_checkbox" style="display: none;" for="seconds">Check to enable seconds. Enabling this will create a large KML file, each data point will be per second.</label><br>
+	<input id="date_range" type="checkbox" onchange="second_show()"><label for="date_range">Check to enable date range (option for data points by secoind will be enabled), unchecked will create a KML file for the full datalog.</label>	
+	</div>
+		<div>Setting input type date in dd-mm-yyyy format<br>
+			<label style="width:160px;display:inline-block" for="Start_Date">Start Date and Time:</label>
+			<input id="Start_Date" type="datetime-local"  placeholder="yyyy-mm-dd" value="2024-01-01T00:00" min="2022-01-01T00:00" 	max="">
+			<span id="S_Date"></span><br>
+			<label style="width:160px;display:inline-block" for="End_date">End Date and Time:</label>
+			<input id="End_Date" type="datetime-local" placeholder="yyyy-mm-dd" value="2024-01-01T00:00" min="2022-01-01T00:00"	max="">
+			<span id="E_Date"></span>
+		</div>
+
+		<input type="submit" value="Submit File" id="submit"/>
+	</form>
+	
+		
+	
+	
+  
+  <div><button id="btn-draw" style="display: none;">Download KML file</button></div>
+  <div><a href="test files/UAE_test_datalog _file.csv" class="link" onclick="disableClick()">Click here for a test file</a></div>
+ </html>
+  <script>
+	
+	var output =[];
+	var title =[];
+	var Filter =[];
+	var Colour =["#000","#996633","#FF0000","#FFA500","#FFFF00","#008c00","#0000FF","#800080","#808080"];//blk,br,r,org,y,grn,b,v,gry
+	var SC = 10;
+	var outputLength = (output.length-1);
+	var index_title = [];
+		function get_data(){
+			fileContent = $("#main_text").text();
+
+		}
+		function kmlDataChecker(kmlData){
+            var parser = new DOMParser();
+            var xmlDoc;
+            try {
+                xmlDoc = parser.parseFromString(kmlData, "text/xml");
+            } catch (error) {
+                alert("Invalid KML data: " + error);
+                return false;
+            }
+
+            if (xmlDoc.getElementsByTagName("kml").length === 0 || xmlDoc.getElementsByTagName("Placemark").length === 0) {
+                alert("Invalid KML data");
+                return false;
+            }
+
+            return true;
+        }
+		function finnDownload(){
+			let divs = ["main_text", "lookat_text", "style_text", "placemark_text", "GPS_data"];
+			let data = "";
+			for (let i = 0; i < divs.length; i++){
+				data += document.getElementById(divs[i]).innerText;
+			}
+			console.log(data);
+			download(data);
+		}
+
+        function download(kmlData) {
+            if (!kmlDataChecker(kmlData)){
+                return;
+            }
+            // Create new blob with KML inputted data
+            var data = new Blob([kmlData], {type: 'application/vnd.google-earth.kml+xml'});
+            var url = window.URL.createObjectURL(data);
+
+            // Create download link and click it
+            var link = document.createElement('a');
+			var filename = $('#csvFile_name').text().slice(0, -4);
+            link.href = url;
+            link.download = filename+'.kml';
+            link.click();
+
+            // Clean up by revoking the object URL
+            window.URL.revokeObjectURL(url);
+        }
+	function Get_Icon_color(num){
+		if ((output[num][title.indexOf("Block Zone")]) == 1){return "ee0000ff";}
+		else if ((output[num][title.indexOf("Warning Zone")]) == 1){return "ee00a5ff";}
+		else {return "ee00ff00";}
+
+	}
+	function Get_Line_color(num){
+		if ((output[num][title.indexOf("Block Zone")]) == 1){return "_block";}
+		else if ((output[num][title.indexOf("Warning Zone")]) == 1){return "_warning";}
+		else {return "";}
+
+	}
+
+	function GPS_text(){
+		$('#message').text("Creating KML file, plase wait.....");
+		//0 to 15
+		const lookup_title = ["Time","State Index","Position-Az (Deg)","Position-El (Deg)","Position-Cl (Deg)","Display AGC","Threshold","Heading (Deg)","Sensor-Z-Enc Rel (Deg)","Receiver Freq","Block Zone","Warning Zone","Control Flags","Control Flags2","Antenna Latitude (Deg)","Antenna Longitude (Deg)"]
+		
+		for (i=0;i < lookup_title.length;i++){
+			index_title.push(title.indexOf(lookup_title[i]));
+		}
+		console.log(index_title);
+		let KML_data;
+		KML_data = main + style_text;
+		KML_data += '<LookAt><gx:TimeSpan><begin>'+(output[1][0])+'</begin><end>'+
+				(output[outputLength-1][0])+'</end></gx:TimeSpan><longitude>'+
+					(output[1][index_title[15]])+
+					'</longitude><latitude>'+(output[1][index_title[14]])+
+						'</latitude><range>400000</range></LookAt>';
+		
+		
+		KML_data += '<Folder><name>Points</name>';	
+		for(i=0;i<outputLength;i++){
+			
+				KML_data+='<Placemark>'+
+				'<name>'+(output[i][0])+'</name>'+'<TimeStamp>'+(output[3][0])+'</TimeStamp>'+
+				'<ExtendedData>'+
+					'<Data name="UTC (YYYY-MM-DD hh:mm:ss)"><value>'+(output[i][0]).slice(0,23)+'</value></Data>'+
+					'<Data name="POS.Lat (Degree)"><value>'+(output[i][index_title[14]])+'</value></Data>'+
+					'<Data name="POS.Lon (Degree)"><value>'+(output[i][index_title[15]])+'</value></Data>'+
+					'<Data name="Heading (Degree)"><value>'+(output[i][title.indexOf("Heading (Deg)")])+'</value></Data>'+
+					'<Data name="AZ (Degree)"><value>'+(output[i][title.indexOf("Position-Az (Deg)")])+'</value></Data>'+
+					'<Data name="REL (Degree from BOW)"><value>'+(output[i][title.indexOf("Sensor-Z-Enc Rel (Deg)")])+'</value></Data>'+
+					'<Data name="EL (Degree)"><value>'+(output[i][title.indexOf("Position-El (Deg)")])+'</value></Data>'+
+					'<Data name="Blockage (0 = No)"><value>'+(output[i][title.indexOf("Block Zone")])+'</value></Data>'+
+					'<Data name="Blockage Warning (0 = No)"><value>'+(output[i][title.indexOf("Warning Zone")])+'</value></Data>'+
+					'<Data name="AGC"><value>'+(output[i][title.indexOf("Display AGC")])+'</value></Data>'+
+					'<Data name="Threshold)"><value>'+(output[i][title.indexOf("Threshold")])+'</value></Data>'+
+				'</ExtendedData>'+
+				'<styleUrl>#track-'+(Math.floor((output[i][title.indexOf("Heading (Deg)")])/22))+'</styleUrl><Style><IconStyle><color>'+Get_Icon_color(i)+'</color></IconStyle></Style>'+
+				'<Point><coordinates>'+(output[i][index_title[15]])+","+(output[i][index_title[14]])+',0</coordinates></Point></Placemark>'}
+				;	
+		KML_data += '</Folder><Folder><name>Tracks</name>';		
+		for(i=0;i<outputLength;i++){
+				KML_data+='<Placemark><styleUrl>#trackLine-Single'+Get_Line_color(i)+'</styleUrl><LineString><coordinates>'+(output[i][index_title[15]])+','+(output[i][index_title[14]])+' ' +(output[i+1][index_title[15]])+','+(output[i+1][index_title[14]]+'</coordinates></LineString></Placemark>');
+
+		}
+		KML_data += '</Folder></Document></kml>';
+		$('#message').text("KML done....");	
+			download(KML_data);
+		}
+		//folder tags......
+	function header_info(){return "hello"
+
+	}
+    function csvToArray(str, delimiter = ","){
+    	const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
+		title = headers;
+		//const line_start = +$('#ln_start').val()-1;
+		//const line_end = +$('#ln_end').val()+1;
+		//const line_start_pos = line_filter(str,"\r\n",line_start);
+		//const rows = str.slice(str.indexOf("\n", line_start_pos) + 1).split("\r\n",(line_end-line_start));
+		const line_start_pos = line_filter(str,"\r\n");
+		const rows = str.slice(str.indexOf("\n", line_start_pos) + 1).split("\r\n");
+
+		var newRows = [];
+		if ($('#date_range').is(":checked")&&$('#seconds_checkbox').is(":checked")){FindStartDate("sec");}
+		else if ($('#date_range').is(":checked")){FindStartDate("min");}
+		else {NoDateRange();}
+
+		function FindStartDate(timeperiod) {
+			for (let i = 0; i < rows.length-1; i++){
+			if (rows[i].slice(0,16) == $('#S_Date').text()){
+					if(timeperiod == "sec"){FindEndDate(i);}
+					else{FindEndDate_Min(i);}
+				break;}
+			else if (i == (rows.length -2)){alert("Start date is incorrect");}
+			}
+		}
+		function FindEndDate(line_no){
+			for (let i = line_no+1; i < rows.length -1; i++){
+			if (rows[(i - 1)].slice(0,16) == $('#E_Date').text()){break;}
+			newRows.push(rows[i]);
+			}
+		}
+		function FindEndDate_Min(line_no) {newRows.push(rows[line_no]);
+			for (let i = line_no+2; i < rows.length - 1; i++){
+				if (rows[(i - 1)].slice(0,16) == $('#E_Date').text()){break;}
+				else {if (rows[i].slice(0, 16) != newRows[newRows.length - 1].slice(0, 16)){
+					newRows.push(rows[i]);
+					}
+				}
+			}
+		}
+		function NoDateRange() {newRows.push(rows[0]);
+			for (let i = 1; i < rows.length - 1; i++){
+				if (rows[i].slice(0, 16) != newRows[newRows.length - 1].slice(0, 16)){
+					newRows.push(rows[i]);
+				}
+			}
+		}
+		const arr = newRows.map(function (row) {
+			return row.split(delimiter);
+		});
+		return arr;
+		
+    	}
+	function line_filter(str,car,n){
+		var L = str.length, i= -1;
+		while(n-- && i++<L){
+		i = str.indexOf(car,i);
+		if (i < 0) break;}
+		return i;
+
+	}
+	function second_show(){if ($('#date_range').is(":checked")){$('.sec_checkbox').show();}else{$('.sec_checkbox').hide();}};
+	$(document).ready(function(){
+		
+		$('#csvFile').change(function(){const a = this.files[0].name;$('#csvFile_name').text(a);});
+		$('#submit').click(function(e){e.preventDefault();
+			$('#message').text("Processing Data, Please Wait.");
+			const input = $("#csvFile").prop('files')[0];
+			const reader = new FileReader();
+			reader.onload = function (e) {
+				output.splice(0, output.length);
+				title.splice(0, title.length);
+				Filter.splice(0, Filter.length);
+				$('#csvFile_name').text(input.name);
+				const text = e.target.result;
+				// const data = csvToArray(text);
+				output = csvToArray(text);
+				outputLength = (output.length-1);
+				// document.write(JSON.stringify(data));
+				$("#table-filter ul").html("");
+					
+			}; 
+			reader.readAsText(input);
+			$('#message').text("Data loaded, CLick on download");
+			$("#btn-draw").show();
+		
+		});
+		
+		$('#Start_Date').change(function(){$('#S_Date').text((this.value).slice(0, 10)+" "+(this.value).slice(11, 16));});
+		$('#End_Date').change(function(){$('#E_Date').text((this.value).slice(0, 10)+" "+(this.value).slice(11, 16));});
+		$('.ln_input').change(function(){$('#message').text("Click Submit again");$("#btn-draw").hide();});
+		$('#btn-filter').click(function(){
+			for (i = 0; i < title.length; i++) {
+				if ($('#'+i).is(':checked')){Filter[i] = 1}else {Filter[i] = 0}
+			}/*pop_list();*/
+			});
+			
+	
+		$('#btn-draw').click(function(){GPS_text();});	
+		
+	
+	});
+  </script>
+</body>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<!_created by Rick Perkins, rickperkinsbloke.com__>
+<!_rev 2__>
+<head><title>V3 Datalog Rev B</title>
+<link rel="apple-touch-icon" sizes="57x57" href="../fav/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../fav/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../fav/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../fav/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../fav/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../fav/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="../fav/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../fav/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../fav/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="../fav/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../fav/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="../fav/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../fav/favicon-16x16.png">
+<link rel="manifest" href="fav/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="../fav/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<meta charset="utf-8">
+<link rel="stylesheet" href="../css/rickperkinsbloke.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="js/graphs.js?v=1"></script>
+<style>
+
+
+table {
+    border-collapse: collapse;;
+    border-spacing: 2px;
+	width: 100%;
+  color: #fff;
+  table-layout: fixed;
+  font-size: 10pt;
+}
+table thead th{position:sticky;top:0px;}
+th{text-transform: capitalize;
+	background-color: #eb2727;
+    
+    text-align: left;
+	width: 80px;
+	padding:0 3px;
+	}
+th:nth-child(1){width: 190px;}
+th:nth-child(2){width: 130px;}
+
+tbody tr:nth-child(odd), .grid-item:nth-child(4n+4), .grid-item:nth-child(4n+3) {background-color: #615b5b;}
+#table-filter span{border:1px solid #ff0000;}
+ul{display: none;
+	position:absolute;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width:auto;
+	z-index:20;
+	background-color: #ebf2fa;
+	border:1px solid #000;}
+button{display:inline-block; width: 133px;}
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  margin-top: 20px;
+}
+.grid-item {
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  text-align: center;
+  padding:2px;
+ 
+}
+.grid-container .header{
+	background-color: #eb2727;
+	color: #fff;
+}
+</style>
+
+
+ </head>
+<body>
+
+	<div id="header">
+		<img id="logo" src="../img/RickPerkinsBloke108.png" ><span>ickPerkinsBloke.com </span>
+	</div>
+	<div id="welcome">
+		IMA Version 3 Datalog file reader Rev B.
+	</div>
+	<div><p><a id="home" href="../index.html">Home</a></p></div>
+	<form style="float:left" id="myForm">
+		<input type="file" id="csvFile" accept=".csv"  hidden/><br>
+		<label id="input_csvFile" for="csvFile" >Choose File</label><span id="csvFile_name" style="margin:4px 2px;display: inline-block;">No Files Selected</span>
+		<br>
+		<input class="sec_checkbox" id="seconds_checkbox" type="checkbox"><label class="sec_checkbox" for="seconds">Check to enable seconds. Enabling this will plot each data point per second.</label><br>
+		<input id="date_range" type="checkbox"><label for="date_range">Check to enable date range, unchecked will plot the full datalog.</label>	
+	
+		<div>Setting input type date in dd-mm-yyyy format<br>
+			<label style="width:160px;display:inline-block" for="Start_Date">Start Date and Time:</label>
+			<input id="Start_Date" type="datetime-local"  placeholder="yyyy-mm-dd" value="2024-01-01T00:00" min="2022-01-01T00:00" 	max="">
+			<span id="S_Date"></span><br>
+			<label style="width:160px;display:inline-block" for="End_date">End Date and Time:</label>
+			<input id="End_Date" type="datetime-local" placeholder="yyyy-mm-dd" value="2024-01-01T00:00" min="2022-01-01T00:00"	max="">
+			<span id="E_Date"></span>
+		</div>
+		<div id="message" style="color:#FF0000;">Select file, choose settings above and click submit.</div>
+		<input type="submit" value="Submit" id="submit"/><label for="Submit">If any of the above settings are changed, please click submit again.</label>
+		
+	</form>
+	<style>
+
+	</style>
+	<div style="float:left;margin-left:10px ;" class="grid-container">
+		<div class="grid-item header">Code</div><div class="grid-item header">Discription</div>
+		<div class="grid-item">TCS</div><div class="grid-item">Target Clear Sky</div>
+		<div class="grid-item">TS</div><div class="grid-item">Target Satellite</div>
+		<div class="grid-item">CBAGC</div><div class="grid-item">Calc Backgnd AGC</div>
+		<div class="grid-item">SD</div><div class="grid-item">Search Delay</div>
+		<div class="grid-item">RS</div><div class="grid-item">Resume Search</div>
+		
+
+	  </div>
+	  <div style="float:left;margin-left:10px ;" class="grid-container">
+		<div class="grid-item header">Code</div><div class="grid-item header">Discription</div>
+		<div class="grid-item">SS</div><div class="grid-item">Spiral Search</div>
+		<div class="grid-item">FHP</div><div class="grid-item">Find Home Position</div>
+		<div class="grid-item">FAHF</div><div class="grid-item">Find Az Home Flag</div>
+		<div class="grid-item">FS</div><div class="grid-item">Find Stops</div>
+		<div class="grid-item">HP</div><div class="grid-item"> Home Position</div>
+
+	  </div>
+	<div id="Div-table" class="submit_hide" style="clear:left;display:none;">
+		
+		
+		<div id="table-filter" style="text-transform: capitalize;"><button id="Filter-list">Click for Filter List</button><ul ></ul><button id="btn-filter">Click to apply Filter</button></div>
+		<div><button id="btn-table-hide">Table Show</button><button id="btn-table-inc">Table Height +</button><button id="btn-table-deinc">Table Height -</button></div>
+		<div id="table_div" style="position:relative;overflow-y:auto;height:300px;width:100%;margin-top:10px;display: none;">
+			<table id="table">
+				<thead><tr></tr></thead>
+				<tbody></tbody>
+			</table>
+		</div>
+	</div>
+  
+  <div class="submit_hide" style="display:none;"><button id="btn-draw">Click For Graphs</button><br><button id="btn-draw-admc">ADMC Hide</button><button id="btn-draw-TC">TC Hide</button><button id="btn-draw-IVC">IVC Hide</button>
+	<div><span id="Graph_message"></span></div>
+	<div><button id="ADMC_AZ" onclick="$('#AZpos').toggle()">ADMC AZ Trace</button><button id="ADMC_EL" onclick="$('#ELpos').toggle()">ADMC EL Trace</button><button id="ADMC_REL" onclick="$('#RELpos').toggle()">ADMC REL Trace</button><button id="ADMC_CL" onclick="$('#CLpos').toggle()">ADMC CL Trace</button><button id="ADMC_AGC" onclick="$('#AGCpos').toggle()">ADMC AGC Trace</button><button id="ADMC_HDG" onclick="$('#HDGpos').toggle()">ADMC HDG Trace</button></div>
+</div>
+ 
+<div style="position:relative;width:100%;margin-left:10px;">
+	
+	
+	<div class="Canvas_div" style="position:absolute;top:0px;left:0px;overflow:scroll;width:100%;display:none;">
+		
+		<svg id="admc" class="Canvas_admc" height="640" width="1000" viewBox="-100 -220 1000 630" style="background-color:#fff;">
+			<path style="stroke:#dddce5;" id="GridLines" d=""/>
+			<line class="Xaxis" style="stroke:#000;"x1="0" y1="40" x2="900" y2="40"/>
+			<line class="Xaxis" style="stroke:#000;" stroke-dasharray="1,9" stroke-width="10" x1="0" y1="45" x2="900" y2="45"/>
+			<g id="PosLines" style="fill:none;">
+				<polyline id="ELpos"  points=""/>
+				<polyline id="AZpos"  points=""/>
+				<polyline id="RELpos"  points=""/>
+				<polyline id="CLpos"  points=""/>
+				<polyline id="AGCpos"  points=""/>
+				<polyline id="HDGpos"  points=""/>
+			</g>
+			<g id="Blockage"></g>
+			<g id="ApprBlockage"></g>
+			<text id="Target" transform="rotate(-90 0,0)" text-anchor="end" font-size="10px"></text>
+			<text id="Search" transform="rotate(-90 0,0)" text-anchor="end" font-size="10px"></text>
+			<text id="Initialization" transform="rotate(-90 0,0)" text-anchor="end" font-size="10px"></text>
+			<text id="Xaxis" x="0" y="0" transform="rotate(-90 0,0)" text-anchor="end" font-size="10px"></text>
+		</svg>
+		<br>
+		<svg id="tc" class="Canvas_TC" height="600" width="1000" viewBox="-100 -220 1000 600" style="background-color:#fff">
+			<path style="stroke:#dddce5;" id="GridLines" d=""/>
+			<line class="Xaxis Xref" style="stroke:#000;"x1="0" y1="10" x2="900" y2="10"/>
+			<g class="Xname" transform="translate(0,200)">
+				<line class="Xaxis " style="stroke:#000;"x1="0" y1="10" x2="900" y2="10" />
+				<line class="Xaxis " style="stroke:#000;" stroke-dasharray="1,9" stroke-width="10" x1="0" y1="15" x2="900" y2="15"/>
+			</g>
+			<g id="PosLines" style="fill:none;" transform="translate(0,10)">
+				<polyline id="ELpos"  points=""/>
+				<polyline id="AZpos"  points=""/>
+				<polyline id="CLpos"  points=""/>
+			</g>
+			
+			<text id="Xaxis" x="0" y="0" transform="rotate(-90 0,0)" text-anchor="end" font-size="10px"></text>
+		</svg>
+		<br>
+		<svg id="ivc"  class="Canvas_IVC" height="600" width="1000" viewBox="-100 -220 1000 600" style="background-color:#fff">
+			<path style="stroke:#dddce5;" id="GridLines" d=""/>
+			<line class="Xaxis Xref" style="stroke:#000;"x1="0" y1="10" x2="900" y2="10"/>
+			<g class="Xname" transform="translate(0,200)">
+				<line class="Xaxis " style="stroke:#000;"x1="0" y1="10" x2="900" y2="10" />
+				<line class="Xaxis " style="stroke:#000;" stroke-dasharray="1,9" stroke-width="10" x1="0" y1="15" x2="900" y2="15"/>
+			</g>
+			<g id="PosLines" style="fill:none;" transform="translate(0,10)">
+				<polyline id="ELpos"  points=""/>
+				<polyline id="AZpos"  points=""/>
+				<polyline id="CLpos"  points=""/>
+			</g>
+			<text id="Xaxis" x="0" y="0" transform="rotate(-90 0,0)" text-anchor="end" font-size="10px"></text>
+		</svg><br>
+		<svg id="track_delta" height="600" width="1000" viewBox="-100 -420 1000 600" style="background-color:#fff;display:none;">
+			<path style="stroke:#dddce5;" id="GridLines" d=""/>
+			<line class="Xaxis" style="stroke:#000;"x1="0" y1="10" x2="900" y2="10"/>
+			<line class="Xaxis" style="stroke:#000;"x1="0" y1="10" x2="900" y2="10" transform="translate(0,-200)"/>
+			<line class="Xaxis" style="stroke:#000;" stroke-dasharray="1,9" stroke-width="10" x1="0" y1="15" x2="900" y2="15"/>
+			<g id="PosLines" style="fill:none;" transform="translate(0,-180)">
+				<polyline id="ELpos"  points=""/>
+				<polyline id="AZpos"  points=""/>
+				<polyline id="CLpos"  points=""/>
+			</g>
+			<g id="Blockage"></g>
+			<g id="ApprBlockage"></g>
+			<g id="Target"></g>
+			<text id="Xaxis" x="0" y="0" transform="rotate(-90 0,0)" text-anchor="end" font-size="10px"></text>
+		</svg>
+		
+	</div>
+	<div class="Canvas_div"style="position:absolute;top:0px;left:0px;display:none;">
+		<svg id="admc_side" class="Canvas_admc" height="640" width="101"  viewBox="-100 -440 101 630" style="background-color:rgb(255,255,255,0.5);">
+			<line style="stroke:#000;"x1="0" y1="40" x2="0" y2="-430"/>
+			<line style="stroke:#000;" stroke-dasharray="1,9" stroke-width="10" x1="-5" y1="40" x2="-5" y2="-440"/>
+			<text id="Yaxis"  text-anchor="end" font-size="10px"></text>
+			<text id="Key" font-size="10px"></text>
+		</svg><br>
+		<svg id="tc_side" class="Canvas_TC" height="600" width="101"  viewBox="-100 -220 101 600" style="background-color:rgb(255,255,255,0.5);">
+			<line class="yaxis" style="stroke:#000;"x1="0" y1="210" x2="0" y2="-190"/>
+			<line class="yaxis" style="stroke:#000;" stroke-dasharray="1,9" stroke-width="10" x1="-5" y1="210" x2="-5" y2="-200"/>
+			<text id="Yaxis"  text-anchor="end" font-size="10px" transform="translate(0,-190)"></text>
+			<text id="Key" font-size="10px"></text>
+		</svg><br>
+		<svg id="ivc_side" class="Canvas_IVC" height="600" width="101"  viewBox="-100 -220 101 600" style="background-color:rgb(255,255,255,0.5);">
+			<line class="yaxis" style="stroke:#000;"x1="0" y1="210" x2="0" y2="-190"/>
+			<line class="yaxis" style="stroke:#000;" stroke-dasharray="1,9" stroke-width="10" x1="-5" y1="210" x2="-5" y2="-200"/>
+			<text id="Yaxis"  text-anchor="end" font-size="10px" transform="translate(0,-190)"></text>
+			<text id="Key" font-size="10px"></text>
+		</svg>
+		<br>
+		<svg id="track_delta_side"  height="600" width="101"  viewBox="-100 -420 101 600" style="background-color:rgb(255,255,255,0.5);display:none;">
+			<line style="stroke:#000;"x1="0" y1="10" x2="0" y2="-390"/>
+			<line style="stroke:#000;" stroke-dasharray="1,9" stroke-width="10" x1="-5" y1="10" x2="-5" y2="-400"/>
+			<text id="Yaxis"  text-anchor="end" font-size="10px" transform="translate(0,-190)"></text>
+			<text id="Key_title" font-size="10px" fill="#000"><tspan x="-90" y="-320" >Tracking</tspan><tspan  x="-90" y="-310">Delta</tspan></text><text id="Key" font-size="10px"></text>
+		</svg>
+	</div>
+  </div>
+
+ </html>
+  <script>
+	var output =[];
+	var title =[];
+	var Filter =[];
+	var Colour =["#000","#996633","#FF0000","#FFA500","#FFFF00","#008c00","#0000FF","#800080","#808080"];//blk,br,r,org,y,grn,b,v,gry
+	var SC = 10;
+	var outputLength = (output.length-1);
+	function csvToArray(str, delimiter = ","){
+    	const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
+		title = headers;
+		//const line_start = +$('#ln_start').val()-1;
+		//const line_end = +$('#ln_end').val()+1;
+		//const line_start_pos = line_filter(str,"\r\n",line_start);
+		//const rows = str.slice(str.indexOf("\n", line_start_pos) + 1).split("\r\n",(line_end-line_start));
+		const line_start_pos = line_filter(str,"\r\n");
+		const rows = str.slice(str.indexOf("\n", line_start_pos) + 1).split("\r\n");
+
+		var newRows = [];
+		if ($('#date_range').is(":checked")&&$('#seconds_checkbox').is(":checked")){FindStartDate("sec");}
+		else if ($('#date_range').is(":checked")){FindStartDate("min");}
+		else if ($('#seconds_checkbox').is(":checked")){FindEndDate(0,"no");}
+		else {NoDateRange();}
+
+		function FindStartDate(timeperiod) {
+			for (let i = 0; i < rows.length-1; i++){
+			if (rows[i].slice(0,16) == $('#S_Date').text()){
+					if(timeperiod == "sec"){FindEndDate(i,"yes");}
+					else{FindEndDate_Min(i);}
+				break;}
+			else if (i == (rows.length -2)){alert("Start date is incorrect");}
+			}
+		}
+		function FindEndDate(line_no,date){
+			for (let i = line_no+1; i < rows.length -1; i++){
+			if (rows[(i - 1)].slice(0,16) == $('#E_Date').text() && date == "yes"){break;}
+			newRows.push(rows[i]);
+			}
+		}
+		function FindEndDate_Min(line_no) {newRows.push(rows[line_no]);
+			for (let i = line_no+2; i < rows.length - 1; i++){
+				if (rows[(i - 1)].slice(0,16) == $('#E_Date').text()){break;}
+				else {if (rows[i].slice(0, 16) != newRows[newRows.length - 1].slice(0, 16)){
+					newRows.push(rows[i]);
+					}
+				}
+			}
+		}
+		function NoDateRange() {newRows.push(rows[0]);
+			for (let i = 1; i < rows.length - 1; i++){
+				if (rows[i].slice(0, 16) != newRows[newRows.length - 1].slice(0, 16)){
+					newRows.push(rows[i]);
+				}
+			}
+		}
+		const arr = newRows.map(function (row) {
+			return row.split(delimiter);
+		});
+		return arr;
+		
+    	}
+	function line_filter(str,car,n){
+		var L = str.length, i= -1;
+		while(n-- && i++<L){
+		i = str.indexOf(car,i);
+		if (i < 0) break;}
+		return i;
+	}
+
+	
+	
+	$(document).ready(function(){
+		
+		$('#csvFile').change(function(){const a = this.files[0].name;$('#csvFile_name').text(a);});
+		$('#submit').click(function(e){e.preventDefault();
+			$('#message').text("Processing Data, Please Wait.");
+				  $("#table tbody").html('<tr></tr>');
+				  const input = $("#csvFile").prop('files')[0];
+				  const reader = new FileReader();
+					
+				  reader.onload = function (e) {
+				  output.splice(0, output.length);
+				  title.splice(0, title.length);
+				  Filter.splice(0, Filter.length);
+				$('#csvFile_name').text(input.name);
+					const text = e.target.result;
+				   // const data = csvToArray(text);
+					output = csvToArray(text);
+					outputLength = (output.length-1);
+				   // document.write(JSON.stringify(data));
+				   $("#table-filter ul").html("");
+				   pop_checkbox()
+				  };
+				  
+				  reader.readAsText(input);
+		
+		
+		});
+		
+		 $('#btn-filter').click(function(){
+			if($('#table-filter ul').is(":visible")){$('#Filter-list').click();}
+			setTimeout(trigger_filter,1000);
+			function trigger_filter(){console.log("trigger");
+				for (i = 0; i < title.length; i++) {
+					if ($('#'+i).is(':checked')){Filter[i] = 1}else {Filter[i] = 0}
+				}pop_list();
+			}
+			});
+		$('#Start_Date').change(function(){$('#S_Date').text((this.value).slice(0, 10)+" "+(this.value).slice(11, 16));$('#End_Date').val(this.value);});
+		$('#End_Date').change(function(){$('#E_Date').text((this.value).slice(0, 10)+" "+(this.value).slice(11, 16));});	
+		$('#Filter-list').click(function(){$('#table-filter ul').toggle("slow");});
+		$('#btn-table-hide').click(function(){$('#table_div').toggle("slow");if($(this).text() == 'Table Hide'){$(this).text('Table Show')} else {$(this).text('Table Hide')};});
+		$('#btn-draw-admc').click(function(){$('.Canvas_admc').toggle("slow");if($(this).text() == 'ADMC Hide'){$(this).text('ADMC Show')} else {$(this).text('ADMC Hide')};});
+		$('#btn-draw-TC').click(function(){$('.Canvas_TC').toggle("slow");if($(this).text() == 'TC Hide'){$(this).text('TC Show')} else {$(this).text('TC Hide')};});
+		$('#btn-draw-IVC').click(function(){$('.Canvas_IVC').toggle("slow");if($(this).text() == 'IVC Hide'){$(this).text('IVC Show')} else {$(this).text('IVC Hide')};});
+		$('#btn-draw').click(function(){$('.Canvas_div').hide();setTimeout(fnc_draw,1000);});	
+		function fnc_draw(){draw_admc();draw_admc_side();draw_tc();draw_ivc();$('.Canvas_div').show();}
+		$('#btn-table-inc').click(function(){$('#table_div').outerHeight(function(n,c){return c+100;});});
+		$('#btn-table-deinc').click(function(){$('#table_div').outerHeight(function(n,c){return c-100;});});
+	
+	});
+  </script>
+</body>

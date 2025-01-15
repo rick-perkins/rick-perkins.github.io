@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<head><title>V3 Datalog</title>
+<link rel="apple-touch-icon" sizes="57x57" href="../fav/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../fav/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../fav/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../fav/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../fav/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../fav/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="../fav/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../fav/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../fav/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="../fav/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../fav/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="../fav/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../fav/favicon-16x16.png">
+<link rel="manifest" href="fav/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="../fav/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<meta charset="utf-8">
+<link rel="stylesheet" href="../css/rickperkinsbloke.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+
+
+table {
+    border-collapse: collapse;;
+    border-spacing: 2px;
+	width: 100%;
+  color: #fff;
+  table-layout: fixed;
+  font-size: 10pt;
+}
+table thead th{position:sticky;top:0px;}
+th{text-transform: capitalize;
+	background-color: #eb2727;
+    
+    text-align: left;
+	width: 80px;
+	padding:0 3px;
+	}
+th:nth-child(1){width: 180px;}
+
+tbody tr:nth-child(odd) {background-color: #615b5b;}
+#table-filter span{border:1px solid #ff0000;}
+ul{display: none;
+	position:absolute;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width:auto;
+	z-index:20;
+	background-color: #ebf2fa;
+	border:1px solid #000;}
+</style>
+
+
+ </head>
+<body>
+
+	<div id="header">
+		<img id="logo" src="../img/RickPerkinsBloke108.png" ><span>ickPerkinsBloke.com </span>
+	</div>
+	<div id="welcome" style="">
+		IMA Version 3 Datalog file reader.
+	</div>
+	<div id="Div-table">
+		<p><a id="home" href="../index.html">Home</a></p>
+		<div id="message" style="color:#FF0000;">Please note only the first 6000 lines will be processed</div>
+		<div id="table-filter" style="text-transform: capitalize;"><button id="Filter-list">Click for Filter List</button><ul ></ul></div>
+		<div><button id="btn-filter">Click to Filter</button><button id="btn-table-hide">Table Hide</button><button id="btn-table-inc">Table Height +</button><button id="btn-table-deinc">Table Height -</button><label for="ln_start">Line start number:</label><input type="number" id="ln_start" class="ln_input" value="1" min="1" max="6000"/><label for="ln_end">Line end number:</label><input type="number" id="ln_end" class="ln_input" value="6000" min="1" max="6000"/></div>
+		<div id="table_div" style="position:relative;overflow-y:auto;height:300px;width:100%;margin-top:10px;">
+			<table id="table">
+				<thead><tr></tr></thead>
+				<tbody></tbody>
+			</table>
+		</div>
+		</div>
+  <form id="myForm">
+    <input type="file" id="csvFile" accept=".csv"  hidden/><br>
+	<label id="input_csvFile" for="csvFile" >Choose File</label><span id="csvFile_name" style="margin:4px 2px;display: inline-block;">No Files Selected</span>
+    <br>
+    <input type="submit" value="Submit" id="submit"/>
+  </form>
+  
+  <div><button id="btn-draw">Click to draw</button><button id="btn-draw-admc">ADMC Hide</button><button id="btn-draw-TC">TC Hide</button></div>
+  <div style="position:relative;width:100%;margin-left:10px;">
+	
+	<div class="Canvas_div" style="position:absolute;top:0px;left:0px;overflow:scroll;width:100%;display:none;">
+		<canvas id="Canvas0" class="canvas Canvas_admc" width="1000" height="600"></canvas><br>
+		<canvas id="Canvas1" class="canvas Canvas_TC"width="1000" height="600"></canvas><br>
+		<canvas id="Canvas2" style="display:none;" class="Canvas_Ref"width="1000" height="600"></canvas><br>
+		<canvas id="Canvas3" style="display:none;" class="Canvas_W"width="1000" height="600"></canvas>
+	</div>
+	<div class="Canvas_div"style="position:absolute;top:0px;left:0px;display:none;">
+		<canvas id="Canvas_side"  class="Canvas_admc" width="200" height="600" ></canvas><br>
+		<canvas id="Canvas_side1"  class="Canvas_TC"width="200" height="600" ></canvas><br>
+		<canvas id="Canvas_side2"  style="display:none;" class="Canvas_Ref"width="200" height="600" ></canvas><br>
+		<canvas id="Canvas_side3"  style="display:none;" class="Canvas_W"width="200" height="600" ></canvas>
+	</div>
+  </div>
+
+ </html>
+  <script>
+	var output =[];
+	var title = [];
+	var Filter =[];
+	var Colour =["#000","#996633","#FF0000","#FFA500","#FFFF00","#00FF00","#0000FF","#800080","#808080"];//blk,br,r,org,y,grn,b,v,gry
+    function csvToArray(str, delimiter = ","){
+      const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
+		title = headers;
+		const line_start = +$('#ln_start').val()-1;
+		const line_end = +$('#ln_end').val()+1;
+		const line_start_pos = line_filter(str,"\r\n",line_start);
+		
+      const rows = str.slice(str.indexOf("\n", line_start_pos) + 1).split("\r\n",(line_end-line_start));
+      const arr = rows.map(function (row) {
+        return row.split(delimiter);
+      });
+      return arr;
+    }
+	function line_filter(str,car,n){
+		var L = str.length, i= -1;
+		while(n-- && i++<L){
+		i = str.indexOf(car,i);
+		if (i < 0) break;}
+		return i;
+
+	}
+
+	function pop_checkbox(){
+	
+		
+		for (i =0;i < title.length;i++){
+			$("#table-filter ul").append('<li> <input type="checkbox" id="'+i+'"checked>:'+ title[i] +' </li>');
+			Filter[i] = 1;
+	   }
+		pop_list();
+		
+	
+	
+	}
+	function pop_list(){
+		$("#table thead tr").html("");$("#table tbody").html("");
+		for (ia = 0; ia < Filter.length; ia++) {
+			if(Filter[ia] == 1){
+			$("#table thead tr").append('<th> '+ title[ia] +' </th>');}
+		}
+		var line ="";
+		for (i = 0; i < (output.length-1); i++) {
+			line ="";
+			for(ii = 0; ii < Filter.length; ii++){
+				if(Filter[ii] == 1){
+					if(output[i][ii] == "ON"){line += "<td style='background-color: #00FF00;background-clip: content-box;'> "+ output[i][ii] +" </td>";}
+					else if(output[i][ii] == "OFF"){line += "<td style='background-color: #FF0000;background-clip: content-box;'> "+ output[i][ii] +" </td>";}
+					else {line += "<td> "+ output[i][ii] +" </td>";}
+				}
+			}
+			$("#table tbody").append('<tr>' + line +'</tr>');
+			$('#message').text("Processing Data Finshed");
+			
+		}
+	
+	
+	}
+	function draw_canvas_side (){
+		var canvas = document.getElementById("Canvas_side");
+		var ctx = canvas.getContext("2d");
+		ctx.clearRect(0,0,200,600);
+		var SC = 10; // graph scale
+		ctx.save();
+		ctx.fillStyle = "rgb(255,255,255,0.5)";
+		ctx.fillRect(0,0,100,450);
+		ctx.beginPath();
+		ctx.fillStyle = Colour[0];
+		ctx.fillText("EL deg",10,110);
+		ctx.fillStyle = Colour[1];
+		ctx.fillText("AZ deg",10,120);
+		ctx.fillStyle = Colour[2];
+		ctx.fillText("REL deg",10,130);
+		ctx.fillStyle = Colour[3];
+		ctx.fillText("CL deg",10,140);
+		ctx.fillStyle = Colour[5];
+		ctx.fillText("AGC/10",10,150);
+		ctx.stroke();
+		ctx.fillStyle = "#000";
+		
+		ctx.translate(100,420);
+		ctx.beginPath();
+		ctx.strokeStyle = "#000";
+		ctx.moveTo(0,10);
+		ctx.lineTo(0,-410);
+		for (i=-1;i<=36;i++){
+			ctx.moveTo(0,0-(i*10));
+			ctx.lineTo(-10,0-(i*10));
+			ctx.textAlign = "right";
+			ctx.fillText((i*10),-12,0-(i*10));
+		}
+		for(i=0;i<=3;i++){
+			var ii=32+i;
+			ctx.fillText(title[ii],-12,-(370+(i*10)));
+		
+		}
+		ctx.stroke();
+		ctx.restore();
+	}
+	function draw_canvas_side1 (){
+		var canvas = document.getElementById("Canvas_side1");
+		var ctx = canvas.getContext("2d");
+		ctx.clearRect(0,0,200,600);
+		var SC = 10; // graph scale
+		ctx.save();
+		ctx.fillStyle = "rgb(255,255,255,0.5)";
+		ctx.fillRect(0,0,100,450);
+		ctx.beginPath();
+		ctx.fillStyle = Colour[0];
+		ctx.fillText("AZ Amp",10,110);
+		ctx.fillStyle = Colour[1];
+		ctx.fillText("EL Amp",10,120);
+		ctx.fillStyle = Colour[2];
+		ctx.fillText("CL Amp",10,130);
+		
+		ctx.stroke();
+		ctx.fillStyle = "#000";
+		
+		ctx.translate(100,210);
+		ctx.beginPath();
+		ctx.strokeStyle = "#000";
+		ctx.moveTo(0,180);
+		ctx.lineTo(0,-180);
+		for (i=-18;i<=18;i++){
+			ctx.moveTo(0,0-(i*10));
+			ctx.lineTo(-10,0-(i*10));
+			ctx.textAlign = "right";
+			ctx.fillText((i/10),-12,0-(i*10));
+		}
+		ctx.stroke();
+		ctx.restore();
+	}
+	function draw_canvas (){
+		var canvas = document.getElementById("Canvas0");
+		var ctx = canvas.getContext("2d");
+		ctx.clearRect(0,0,canvas.width,canvas.height);
+		var SC = 10; // graph scale
+		if (output.length*SC > 1000){
+			ctx.canvas.width = ((output.length*SC)+100);}
+		else {ctx.canvas.width = 1000;}
+		var w = canvas.width,wb=w-110,wa = wb/10;
+		var h = canvas.height;
+		ctx.save();
+		ctx.fillStyle = "#000";
+		
+		ctx.translate(100,420);
+		
+		ctx.beginPath();//horz lines
+		ctx.strokeStyle = "#dddce5";
+		for (i=-1;i<=40;i++){
+			ctx.moveTo(0,0-(i*10));
+			ctx.lineTo(wb,0-(i*10));	
+		}//vert lines
+		for(i=0;i<=(wa);i++){
+			ctx.moveTo(i*10,10);
+			ctx.lineTo(i*10,-400);	
+		}
+		ctx.stroke();
+		ctx.beginPath();
+		ctx.strokeStyle = "#000";
+		ctx.moveTo(0,10);
+		ctx.lineTo(wb,10);
+		for(i=0;i<=(wa);i++){
+			ctx.moveTo(i*10,10);
+			ctx.lineTo(i*10,20);	
+		}
+		ctx.stroke();
+		
+		ctx.save();
+		ctx.beginPath();
+		ctx.textAlign = "right";
+		ctx.moveTo(0,0);
+		ctx.rotate(-90*Math.PI/180);
+		for(i=0;i<output.length;i++){
+			ctx.fillText(output[i][0],-22,(i*10)+2);
+		}
+		ctx.stroke();
+		ctx.restore();
+		ctx.beginPath();//el
+		ctx.strokeStyle = Colour[0];
+		ctx.moveTo(0,0);
+		for(i = 0; i < output.length; i++) {
+			ctx.lineTo((i*SC),-output[i][title.indexOf("Position-El (Deg)")]);
+		}
+		ctx.stroke();
+		ctx.beginPath();//az
+		ctx.strokeStyle = Colour[1];
+		ctx.moveTo(0,0);
+		for(i = 0; i < output.length; i++) {
+			ctx.lineTo((i*SC),-output[i][title.indexOf("Position-Az (Deg)")]);
+		}
+		ctx.stroke();
+		ctx.beginPath();//rel
+		ctx.strokeStyle = Colour[2];
+		ctx.moveTo(0,0);
+		for(i = 0; i < output.length; i++) {
+			ctx.lineTo((i*SC),-(output[i][title.indexOf("Sensor-Z-Enc Rel (Deg)")]));
+		}
+		ctx.stroke();
+		ctx.beginPath();//cl
+		ctx.strokeStyle = Colour[3];
+		ctx.moveTo(0,0);
+		for(i = 0; i < output.length; i++) {
+			ctx.lineTo((i*SC),-output[i][title.indexOf("Position-Cl (Deg)")]);
+		}
+		ctx.stroke();
+		ctx.beginPath();//agc
+		ctx.strokeStyle = Colour[5];
+		ctx.moveTo(0,0);
+		for(i = 0; i < output.length; i++) {
+			ctx.lineTo((i*SC),-((output[i][title.indexOf("Display AGC")])/10));
+		}
+		ctx.stroke();
+
+		ctx.beginPath();
+		ctx.fillStyle ="#c431cf";
+		for(i = 0; i < output.length; i++) {
+			if(output[i][title.indexOf("Targeting")] == "ON"){
+			ctx.fillRect(i*SC,-370, 10, -10);
+			}
+		}
+		ctx.beginPath();
+		ctx.fillStyle ="#ff8000";
+		for(i = 0; i < output.length; i++) {
+			if(output[i][title.indexOf("Searching")] == "ON"){
+			ctx.fillRect(i*SC,-380, 10, -10);
+			}
+		}
+		ctx.beginPath();
+		ctx.fillStyle ="#FF0000";
+		for(i = 0; i < output.length; i++) {
+			if(output[i][title.indexOf("Block Zone")] == "ON"){
+			ctx.fillRect(i*SC,-390, 10, -10);
+			}
+		}
+		ctx.beginPath();
+		ctx.fillStyle ="#0000FF";
+		for(i = 0; i < output.length; i++) {
+			if(output[i][title.indexOf("Appr.Block Zone")] == "ON"){
+			ctx.fillRect(i*SC,-400, 10, -10);
+			}
+		}
+		
+		ctx.restore();
+	}
+	function draw_canvas1 (){
+		var canvas = document.getElementById("Canvas1");
+		var ctx = canvas.getContext("2d");
+		ctx.clearRect(0,0,canvas.width,canvas.height);
+		var SC = 10; // graph scale
+		if (output.length*SC > 1000){
+			ctx.canvas.width = ((output.length*SC)+100);}
+		else {ctx.canvas.width = 1000;}
+		var w = canvas.width,wb=w-110,wa = wb/10;
+		var h = canvas.height;
+		ctx.save();
+		ctx.fillStyle = "#000";
+		
+		ctx.translate(100,380);
+		
+		ctx.beginPath();//horz lines
+		ctx.strokeStyle = "#dddce5";
+		for (i=0;i<36;i++){
+			ctx.moveTo(0,0-(i*10));
+			ctx.lineTo(wb,0-(i*10));	
+		}//vert lines
+		for(i=0;i<=(wa);i++){
+			ctx.moveTo(i*10,10);
+			ctx.lineTo(i*10,-350);	
+		}
+		ctx.stroke();
+		ctx.beginPath();
+		ctx.strokeStyle = "#000";
+		ctx.moveTo(0,10);
+		ctx.lineTo(wb,10);
+		for(i=0;i<=(wa);i++){
+			ctx.moveTo(i*10,10);
+			ctx.lineTo(i*10,20);	
+		}
+		ctx.stroke();
+		
+		ctx.save();
+		ctx.beginPath();
+		ctx.textAlign = "right";
+		ctx.moveTo(0,0);
+		ctx.rotate(-90*Math.PI/180);
+		for(i=0;i<output.length;i++){
+			ctx.fillText(output[i][0],-22,(i*10)+2);
+		}
+		ctx.stroke();
+		ctx.restore();
+		ctx.restore();
+		ctx.save();
+		ctx.translate(100,210);
+		ctx.beginPath();
+		ctx.strokeStyle = Colour[8];
+		ctx.moveTo(0,0)
+		ctx.lineTo(wb,0);
+		ctx.stroke();
+		ctx.beginPath();//az
+		ctx.strokeStyle = Colour[0];
+		ctx.moveTo(0,0);
+		for(i = 0; i < output.length; i++) {
+			ctx.lineTo((i*SC),-output[i][title.indexOf("Motor-Az (Amps)")]*100);
+		}
+		ctx.stroke();
+		ctx.beginPath();//el
+		ctx.strokeStyle = Colour[1];
+		ctx.moveTo(0,0);
+		for(i = 0; i < output.length; i++) {
+			ctx.lineTo((i*SC),-output[i][title.indexOf("Motor-El (Amps)")]*100);
+		}
+		ctx.stroke();
+		ctx.beginPath();//cl
+		ctx.strokeStyle = Colour[2];
+		ctx.moveTo(0,0);
+		for(i = 0; i < output.length; i++) {
+			ctx.lineTo((i*SC),-output[i][title.indexOf("Motor-Cl (Amps)")]*100);
+		}
+
+		ctx.stroke();
+		ctx.restore();
+	}
+	$(document).ready(function(){
+		
+		$('#csvFile').change(function(){const a = this.files[0].name;$('#csvFile_name').text(a);});
+		$('#submit').click(function(e){e.preventDefault();
+			$('#message').text("Processing Data, Please Wait.");
+				  $("#table tbody").html('<tr></tr>');
+				  const input = $("#csvFile").prop('files')[0];
+				  const reader = new FileReader();
+					
+				  reader.onload = function (e) {
+				  output.splice(0, output.length);
+				  title.splice(0, title.length);
+				  Filter.splice(0, Filter.length);
+				$('#csvFile_name').text(input.name);
+					const text = e.target.result;
+				   // const data = csvToArray(text);
+					output = csvToArray(text);
+				   // document.write(JSON.stringify(data));
+				   $("#table-filter ul").html("");
+				   pop_checkbox()
+				  };
+				  
+				  reader.readAsText(input);
+		
+		
+		});
+		$('.ln_input').change(function(){$('#submit').click();});
+		 $('#btn-filter').click(function(){
+			for (i = 0; i < title.length; i++) {
+				if ($('#'+i).is(':checked')){Filter[i] = 1}else {Filter[i] = 0}
+			}pop_list();
+			});
+			
+		$('#Filter-list').click(function(){$('#table-filter ul').toggle();});
+		$('#btn-table-hide').click(function(){$('#table tbody').toggle();if($(this).text() == 'Table Hide'){$(this).text('Table Show')} else {$(this).text('Table Hide')};});
+		$('#btn-draw-admc').click(function(){$('.Canvas_admc').toggle();if($(this).text() == 'ADMC Hide'){$(this).text('ADMC Show')} else {$(this).text('ADMC Hide')};});
+		$('#btn-draw-TC').click(function(){$('.Canvas_TC').toggle();if($(this).text() == 'TC Hide'){$(this).text('TC Show')} else {$(this).text('TC Hide')};});
+		$('#btn-draw').click(function(){$('.Canvas_div').show();draw_canvas();draw_canvas_side();draw_canvas_side1(); draw_canvas1();});	
+		$('#btn-table-inc').click(function(){$('#table_div').outerHeight(function(n,c){return c+100;});});
+		$('#btn-table-deinc').click(function(){$('#table_div').outerHeight(function(n,c){return c-100;});});
+	
+	});
+  </script>
+</body>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Sat Calculator</title>
+<link rel="apple-touch-icon" sizes="57x57" href="../fav/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../fav/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../fav/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../fav/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../fav/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../fav/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="../fav/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../fav/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../fav/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="../fav/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../fav/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="../fav/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../fav/favicon-16x16.png">
+<link rel="manifest" href="fav/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="../fav/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<meta charset="utf-8">
+<link rel="stylesheet" href="../css/rickperkinsbloke.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="svg.js"></script>
+<style type="text/css" media="screen">
+.hide{visibility: hidden;}	
+.compass {position:absolute;
+	color:blue;
+	font-size:40px;
+	text-align: center;
+	font-family: arial;
+}
+.error{width:100px;}
+td{text-align:right;}
+</style>
+
+
+	
+</head>
+<body>
+	<div id="header">
+		<img id="logo" src="../img/RickPerkinsBloke108.png" ><span>ickPerkinsBloke.com </span>
+	</div>
+	<div id="welcome" style="">
+		Satellite Calculator
+	</div>
+
+	<div id="main">
+		<p><a id="home" href="../index.html">Home</a></p>
+		<div style="float:left;width:850px;">
+			<table>
+			<tr><td>Antenna Lat:</td><td><input type="text" id="antlat" name="prof_name" size="5" maxlength="5"value="18"></td><td><select id="antlata" name="modem"><option value="0">N</option><option value="0">S</option></select></td><td><span id="antlatb" class="hide"></span></td></tr>
+			<tr><td>Antenna Lon:</td><td><input type="text" id="antlon" name="prof_name" size="5" maxlength="5"value="63"></td><td><select id="antlona" name="modem"><option value="0">W</option><option value="0">E</option></select></td><td><span id="antlonb"class="hide"></span></td></tr>
+			<tr><td>Satellite Pos:</td><td><input type="text" id="satpos" name="prof_name" size="5" maxlength="5"value="22"></td><td><select id="satposa" name="modem"><option value="0">W</option><option value="0">E</option></select></td><td><span id="satposb"class="hide"></span></td></tr>
+			<tr><td>lon-sat:</td><td><span id="lonsat"></span>&#176;</td><td><span id="lonsata" class="hide"></span></td></tr>
+			<tr><td>Azimuth:</td><td><span id="antaz"></span>&#176;</td></tr>
+			<tr><td>Elevation;</td><td><span id="antel"></span>&#176;</td></tr>
+			<tr><td>Polang:</td><td><span id="antpol"></span>&#176;</td><td>TX POL:<td><input type="text" id="txpol" name="prof_name" size="1" maxlength="1" value="2"></td><td>Pol Offset:</td><td><input type="text" id="poloffset" name="prof_name" size="3" maxlength="3" value="0"><td>Pol Scale:</td><td><input type="text" id="polscale" name="prof_name" size="3" maxlength="3" value="90"></td><td>Pol center reading:</td><td><span id="polcr"></span></td></tr>
+			<tr><td>Raw POL Target:</td><td><span id="rawpt"></span>Counts</td>
+			<tr><td>DAC POL Target:</td><td><span id="dacpt"></span>Counts</td>
+			<tr><td>Hour Angle:</td><td><span id="hourangle"></span>&#176;</td><td colspan="3">(0 is Vertical, CW is Positive)</td>
+			<tr><td>Declination:</td><td><span id="declin"></span>&#176;</td>
+			<tr><td>Heading:</td><td><input type="text" id="rothdg" name="prof_name" size="5" maxlength="5"value="18.3">&#176;</td>
+			<tr><td>REL AZ:</td><td><span id="relaz"></span>&#176;</td><td><span id="rot"></span></td><td><span id="rota"></span></td>
+			
+			</table>
+		
+			<div>
+				<div class="txt_clr_r">Notes:</div>
+				<div style="padding-left:10px;">
+				Center pol reading (when SAT = LON) = Pol Offset + Pol Scale. Normally 30 +90 = 120 or 0 + 90 = 90<br>														
+				<br>
+				Tx Pol 2 polang target = Center Pol Value (120 or 90) +/- polang skew.<br>
+				If this value is less than 30, then add 180.<br>														
+				Tx Pol 4 polang target = Center Pol Value (120 or 90) +/- polang skew + 90<br>														
+				<br>
+				For example, 22w from terminal at 18N, 63W, polang skew is -64 degrees.<br>														
+				Tx Pol 2 polang target = 0 + 90 - 64 = 26.  Since this is < 30, add 180 to get 206.<br>														
+				Tx Pol 4 polang target = 0 + 90 - 64 + 90 = 116<br>														
+				<br>
+				To calculate the POL value, take the voltage (V x 4095/5 -1136) x 135 x 4 / 4096<br>														
+				Values < 0  = 0, values >255 = 255.<br>	
+				</div>				
+			</div>
+		</div>
+			<div id="comp" style="float:left;position:relative;background-image: url('wood.jpg');">
+			
+			<svg width="500" height="500" version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+				<g transform="translate(250.5,250.5)" >
+					<circle  cx="0" cy="0" r="200"  fill="#000"/><g id="boat" transform="rotate(0)"></g>
+					<g  id="antenna" transform="rotate(0)"></g>
+					<path stroke="#fff" d="M 0 -20 0 20 M -20 0 20 0"/>
+					<g id="main_marks" stroke="red" stroke-width="5"></g>
+					<g id="45_marks" transform="rotate(45)" stroke="grey" stroke-width="5"></g>
+					<g id="small_marks" stroke="#fff" stroke-width="2" ></g>
+					<style>
+						text{font-size:30pt;}
+					</style>
+					<text x="8" y="-208" style="fill:#fff;" text-anchor="middle" stroke-width="0">N
+						<tspan x="226" y="15" >E</tspan>
+						<tspan x="8" y="233" >S</tspan>
+						<tspan x="-212" y="15" >W</tspan>
+						<tspan x="-170" y="15" >0&#176;</tspan>
+						<tspan x="8" y="-170" >90&#176;</tspan>
+					</text>
+					<g id="EL_arrow" transform="rotate(0)"><path  d="M -170 0 L -140 -10 V 10 L -170 0" fill="green"/></g>
+					<g id="AZ_arrow" transform="rotate(0)"><path  d="M 0 -170 L 10 -140 H -10 L 0 -170" fill="red"/></g>
+				</g>
+			</svg>
+			</div>
+		<div style="position:relative;clear:both;">
+		
+			<div>Error decode</div>
+			<div>Please enter in the error code:<input type="text" id="error_code" value="A"/><button onclick="convert();">Convert!</button></div>
+			<div><input type="text" id="error_result"/>
+				<div id="0" class="error" >unknown</div>
+				<div id="1" class="error">Stablimit</div>
+				<div id="2" class="error">AZ Ref</div>
+				<div id="3" class="error">AZ Limit</div>
+				<div id="4" class="error">EL Limit</div>
+				<div id="5" class="error">CL Limit</div>
+			</div>
+		</div>
+		
+	</div>
+	<div id="footer"><a href="mailto:rickperkinsbloke@virginmedia.com">Email: rickperkinsbloke@virginmedia.com</a></div>	
+</body>
+<script>
+window.onload = function() {
+$('#antenna').append(add_antenna())
+$('#boat').append(add_vessel1())
+for(i=0;i<=35;i++){
+	if(i%9){$('#small_marks').append('<path transform="rotate('+i*10+') " d="M 0 -200 V -210" />');}
+	else{$('#main_marks').append('<path transform="rotate('+i*10+') "d="M 0 -190 V -210 M 0 -234 V -250" />');
+		$('#45_marks').append('<path transform="rotate('+i*10+') "d="M 0 -190 V -210" />');}
+}
+$('#comp').html($('#comp').html());
+$('#main').click();
+}
+var vrot = 0;
+var vrothdg = 0;
+var vrothdga = 0;
+var vrelaz = 0;
+var vrota = 0;
+var vantaz = 0;
+var vantaza = 0;
+var vantel = 0;
+var vrotel = 0;
+var Err_decode = []
+function convert() {
+  var  output=document.getElementById("error_result");  
+  var input=document.getElementById("error_code").value;
+  
+    output.value = "";
+    for (i=0; i < input.length; i++) {
+		Err_decode[i]= ('0000' +input[i].charCodeAt(0).toString(2)).slice(-6);
+     	output.value += ('0000' +input[i].charCodeAt(0).toString(2)).slice(-6) + " ";
+    }
+	for (i=0;i <= Err_decode[0].length;i++){
+		if (Err_decode[0][i] == 1){$("#"+i).css("background-color", "red");}
+		else{$("#"+i).css("background-color", "white");}
+	}
+	
+}
+
+//('0000' + number).slice(-4);
+$(document).ready(function(){
+	var tmragc;
+	$("#main").click(function(){
+	var vantlat = 0;
+	var vantlon = 0;
+	var vsatpos = 0;
+	var vlonsat = 0;
+	var vpi = ((Math.PI)/180);//.toFixed(9);
+	var vpi1 = (1/((Math.PI)/180));//.toFixed(8);
+	var vy = 0;
+	var vantazv = 0;
+	var vi13 = 0;
+	var vj13 = 0;
+	var vk13 = 0;
+	var vtxpol = 2;
+	var vpoloffset = 0;
+	var vpolscale = 90;
+	var vpolcr = 90;
+	var ve14 = 0;
+	var vrawpol = 0;
+	var vdacpt = 0;
+	var vhourangle = 0;
+	var vdeclin = 0;
+	
+	
+		//input fields
+		if (($('#antlata option:selected').text()) == "N") {
+				vantlat = (parseFloat($("#antlat").val())+ 0.0001);
+				$("#antlatb").text(vantlat);
+				}
+		else {vantlat = (-(parseFloat($("#antlat").val()))+ 0.0001);
+				$("#antlatb").text(vantlat);}
+				
+		if (($('#antlona option:selected').text()) == "W") {
+				vantlon = (parseFloat($("#antlon").val())+ 0.0001);
+				$("#antlonb").text(vantlon);
+				}
+		else {vantlon = (-(parseFloat($("#antlon").val()))+ 0.0001);
+				$("#antlonb").text(vantlon);}	
+				
+		if (($('#satposa option:selected').text()) == "W") {
+				vsatpos = parseFloat($("#satpos").val());
+				$("#satposb").text(vsatpos);
+				}
+		else {vsatpos = -(parseFloat($("#satpos").val()));
+				$("#satposb").text(vsatpos);}
+				
+		vpoloffset = parseFloat($("#poloffset").val());
+		vpolscale = parseFloat($("#polscale").val());
+		//...
+		
+		//Lon Sat
+		if ((vantlon - vsatpos)> 180){vlonsat = ((vantlon - vsatpos)-360);}		
+		else if ((vantlon - vsatpos)< -180){vlonsat = ((vantlon - vsatpos)+360);}	
+		else{vlonsat = (vantlon - vsatpos);}
+		$("#lonsat").html((vlonsat).toFixed(1));
+		$("#lonsata").html((-vlonsat).toFixed(1));
+		
+		vy = Math.acos((Math.cos(vpi*vantlat))*(Math.cos(vpi*vlonsat)));//Y
+		//AZ
+		vantazv = vpi1*Math.acos((-Math.tan(vpi*vantlat))/Math.tan(vy));
+		if (vlonsat < 0){vantaz = 360 - vantazv;}
+		else {vantaz = vantazv;}
+		$("#antaz").text((vantaz).toFixed(1));
+		//el
+		vantel = vpi1*Math.atan((Math.cos(vy)-0.15116)/Math.sin(vy));
+		$("#antel").text((vantel).toFixed(6));
+		//pol
+		vi13 = Math.atan(Math.tan(vantlat*vpi)/Math.sin(-vlonsat*vpi))*vpi1;
+		vj13 = 90 - vi13;
+		if (Math.abs(vj13)>90){vk13 = vj13-180;}
+		else {vk13 = vj13;}
+		$("#antpol").text((vk13).toFixed(1));
+		// Center reading..
+		$("#polcr").text(vpoloffset + vpolscale);
+		//tx pol
+		if ($('#txpol').val() == "4") {
+				ve14 = 90;}
+		else {ve14 = 0;}
+		//raw pol target
+		vrawpol = ((vk13*vpolscale)/90)+(vpoloffset + vpolscale)+ve14;
+		$("#rawpt").text((vrawpol).toFixed(1));
+		//dac pol target
+		if (vrawpol < 30){vdacpt = vrawpol+180;}
+		else{vdacpt = vrawpol}
+		$("#dacpt").text((vdacpt).toFixed(1));
+		//hour angle
+		vhourangle = vpi1*Math.atan(Math.sin((-vlonsat)*vpi)/(Math.cos((-vlonsat)*vpi)-0.15126*Math.cos(vantlat*vpi)));
+		$("#hourangle").text((vhourangle).toFixed(1));
+		//declination
+		vdeclin = (-vpi1)*Math.atan(0.15126*Math.sin(vantlat*vpi)*Math.sin(vhourangle*vpi)/Math.sin(vlonsat*vpi));
+		$("#declin").text((vdeclin).toFixed(1));
+		vrothdg = parseFloat($("#rothdg").val());
+		vantaza = parseFloat((vantaz).toFixed(1));
+		
+		vcompass();
+	});
+	
+	function vcompass(){
+		compass();
+			if (vrot > vantaza){ vrot = ((vrot*10 - 0.1*10)/10).toFixed(1);}
+			else if (vrot < vantaza){ vrot = ((vrot*10 + 0.1*10)/10).toFixed(1); }
+			else {}
+			if (vrothdga > vrothdg){ vrothdga = ((vrothdga*10 - 0.1*10)/10).toFixed(1);}
+			else if (vrothdga < vrothdg){ vrothdga = ((vrothdga*10 + 0.1*10)/10).toFixed(1);}
+			else {}
+			
+			if ((vrot - vrothdga)< 0){vrelaz = (vrot - vrothdga)+360;}
+			else {vrelaz = (vrot - vrothdga)}
+			$("#relaz").html((vrelaz).toFixed(1));
+			
+			if (vrotel > (vantel).toFixed(1)){ vrotel = (((vrotel*10) - (0.1*10))/10);}
+			else if (vrotel < (vantel).toFixed(1)){ vrotel = (((vrotel*10) + (0.1*10))/10); }
+			else {}
+			if ((vrot == vantaza)&&(vrothdga == vrothdg)&&(vrotel == (vantel).toFixed(1))){clearInterval(tmragc);}
+			else {clearInterval(tmragc)
+		tmragc = setInterval(function(){vcompass()}, 5);}
+	};
+	function compass() {
+			$("#antenna").attr("transform", "rotate("+vrot+")");
+			$("#AZ_arrow").attr("transform", "rotate("+vrot+")");
+			$("#EL_arrow").attr("transform", "rotate("+vrotel+")");
+			$("#boat").attr("transform", "rotate("+vrothdga+")");
+			
+			}
+});
+</script>
+</html>
