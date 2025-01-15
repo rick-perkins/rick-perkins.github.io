@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+<head><title>super computer</title>
+<meta charset="utf-8">
+<!--<script src="../js/jquery-3.3.1.js"></script><link rel="stylesheet" type="text/css" href="../css/styles.css" />!-->
+<script>
+
+</script>
+
+
+
+<STYLE type="text/css" media="screen">
+
+</style>
+	
+
+	
+</head>
+<body>
+	<canvas id="canvas" width="800" height="800">Your browser does not support the HTML5 canvas tag.</canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
+		var pix = 20,pix1 = pix*2;
+		var colour, colour1;
+		ctx.fillStyle = "#000";
+		ctx.fillRect(0,0,1000,1000);
+		var tmr = setTimeout(draw, 300);
+		
+		
+		function draw(){
+			for (i=0;i<=20;i++){
+				for (iy=0;iy<=20;iy++){
+				var random = Math.floor((Math.random() * 10) + 1);
+				console.log(random);
+				colour1="#FFF";
+				if (random  <= 2){colour = "#FF0000";}
+				else if (random  <= 4){colour = "#0000FF";}
+				else if(random <= 6){colour = "#00FF00";}
+				else{colour = "#000";colour1="#000";}
+				var grd = ctx.createRadialGradient((i*pix1)+pix, (iy*pix1)+pix, 2, (i*pix1)+pix, (iy*pix1)+pix, pix);
+				grd.addColorStop(0, colour1);
+				grd.addColorStop(1, colour);
+				ctx.fillStyle = grd;
+				//ctx.fillRect(i*100,iy*100,100,100);
+				ctx.beginPath();
+				ctx.arc((i*pix1)+pix,(iy*pix1)+pix, pix, 0, 2 * Math.PI);
+				ctx.fill();
+				ctx.stroke();
+				}
+			}
+			tmr = setTimeout(draw, 300);
+		}
+		
+	</script>
+
+</div>
+</body>
+</html>
+ 
+ 
+
