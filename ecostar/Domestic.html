@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title>ecostar</title>
+<link rel="stylesheet" type="text/css" href="styles.css" />
+<STYLE type="text/css">
+#img img{width:200px;}
+
+</style>
+
+
+<script src="jquery-1.11.1.min.js" type="text/javascript"></script>
+<script>
+window.onload = function() {$("#bird").hide();
+}
+</script>
+<script src="jquery.spritely.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+		(function($) {
+			$(document).ready(function() {
+							
+				$('#bird')
+					.sprite({fps: 1, no_of_frames: 6})
+					
+				
+				window.actions = {
+					fly_slowly_forwards: function() {
+						$('#bird')
+							.fps(10)
+							.spState(1);
+						$('#hill1, #hill2, #clouds')
+							.spRelSpeed(10)
+							.spChangeDir('left');
+					}
+				};
+				
+				
+				
+			});
+		})(jQuery);
+				
+	
+	</script>
+
+	
+
+</head>	
+
+<body>
+
+<div id="container" style="position:relative;border:0px solid;border-style:dashed;border-radius:10px;right:0px;bottom:0px;width:100%;">
+	
+	<div id="body" style="width:1024px;margin: 0 auto;">
+
+			<div style="text-align:center;">Eco Star Electrical Domestic</div>
+			
+			<div class="link" style="position: absolute;top: 60px;z-index: 2002;">
+			<a href="Home.html">Home</a><br>
+			<a href="Commercial.html">Commercial</a><br>
+			<a href="Domestic.html">Domestic</a><br>
+			<a href="Contact.html">Contact</a><br>
+			<a href="About.html">About EcoStar</a></div>
+			<div class="content" > EcoStar is able to fulfil any domestic requirement whether you are a landlord or property owner. From a full house rewire to replacing incandescent light bulbs with LEDs EcoStar can meet your needs.</p>
+				<ul><li>Low Energy light fittings</li>
+					<li>Extensions and rewiring</li>
+					<li>Electrical testing</li>
+					<li>Alarm systems</li>
+					<li>Advise on money saving</li>
+					<li>Heat source pumps, air pumps and heating</li>
+					<li>Underfloor heating</li>
+					<li>Car charge points</li>
+				</ul>
+			<div id="img"><img src=photos/2.jpg><img src=photos/3.jpg><img src=photos/4.jpg>
+			</br>Photos from an installation of an air source heat pump system at a residential property 
+			</div></div>
+			
+	<div id="footer"> 
+		<div align=left style="position:relative;border:0px solid;border-style:dashed;border-radius:10px;right:0px;bottom:0px;width:1024px;height:266px;">
+			<div id="house"></div><div id="bird"></div>
+			
+			<div id="background"><img src=image/background.png></div>
+		</div>
+	</div>	
+	</div>
+	
+</div>
+
+</body>
+</html>
+ 
+ 
+

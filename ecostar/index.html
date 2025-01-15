@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>EcoStar</title>
+<meta name="keywords" content="ecostar, eco-star, eco-star electrical,eco-stargreenservices, electrical, electrician, solar panels, ">
+<meta name="google-site-verification" content="UB1rbyA0Cj4KFo0H7NntLfPNQIVqfuWCJ3pE76n4hp0" />
+<script src="jquery-1.11.1.min.js" type="text/javascript"></script>
+<script>
+window.onload = function() {$("#logo").hide();$("#logo").delay(1000).fadeIn(100);
+}
+</script>
+<script src="jquery.spritely.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+		(function($) {
+			$(document).ready(function() {
+							
+				$('#bird')
+					.sprite({fps: 1, no_of_frames: 6})
+				window.actions = {
+					fly_slowly_forwards: function() {
+						$('#bird')
+							.fps(10)
+							.spState(1);
+											}
+				};
+				$('#butterfly')
+					.sprite({fps: 15, no_of_frames: 3})
+					
+				
+				window.actions = {
+					fly_slowly_forwards: function() {
+						$('#butterfly')
+							.fps(10)
+							.spState(1);
+						
+					}
+				};
+				
+				
+			});
+		})(jQuery);
+</script>
+
+<link rel="stylesheet" type="text/css" href="styles.css" />
+<STYLE type="text/css">
+#bird {
+			background: transparent url(image/flats.png) 0 0 no-repeat;
+			position: absolute;
+			bottom: 124px;
+			left: 0px;
+			width: 100px;
+			height: 350px;
+			margin: 0px 0px 0px 0px;
+			z-index: 2000;
+			
+		}
+#butterfly {
+			background: transparent url(image/butterfly.png) 0 0 no-repeat;
+			position: absolute;
+			bottom: 130px;
+			left: 300px;
+			width: 60px;
+			height: 60px;
+			margin: 0px 0px 0px 0px;
+			z-index: 2000;
+			
+		}
+#house {
+			background: transparent url(image/house.png) 0 0 no-repeat;
+			position: absolute;
+			bottom: 116px;
+			left: 36px;
+			width: 100px;
+			height: 100px;
+			margin: 0px 0px 0px 0px;
+			z-index: 2001;
+			
+		}
+#background {
+			
+			position: absolute;
+			bottom: 0px;
+			left: 0px;
+			margin: 0px 0px 0px 0px;
+			z-index: 1000;
+			
+		}
+
+</style>
+
+	
+
+</head>	
+
+<body>
+
+<div id="container" style="position:relative;border:0px solid;border-style:dashed;border-radius:10px;right:0px;bottom:0px;width:100%;">
+	
+	<div id="body" style="width:1024px;margin: 0 auto;">
+
+			<div id="logo" style="text-align:center;"><img src=image/Eco_Star_Logo.png width="600px"><p>Welcome to Eco Star Electrial</p></div>
+
+			<div class="link" style="position: absolute;top: 60px;z-index: 2002;">
+			<a href="Home.html">Home</a><br>
+			<a href="Commercial.html">Commercial</a><br>
+			<a href="Domestic.html">Domestic</a><br>
+			<a href="Contact.html">Contact</a><br>
+			<a href="About.html">About EcoStar</a></div>
+
+
+	<div id="footer"> 
+		<div align=left style="position:relative;border:0px solid;border-style:dashed;border-radius:10px;right:0px;bottom:0px;width:1024px;height:266px;">
+			<div id="house"></div><div id="bird"></div><div id="butterfly"></div>
+			
+		<div class="link" style="position: absolute;bottom: 20px;left:560px;z-index: 2002;">
+<a href="http://www.trustmark.org.uk/" target="main"><img src="image/Trust_Mark_Logo.png" width="118px" alt="Trust Mark Logo"></a>
+
+<a href=http://www.niceic.com/ target="main"><img src=image/NICeic_logo.png width="120px" alt="NICeic logo"></a></div>
+			<div id="background"><img src=image/background.png alt="background"></div>
+			<div class="email"><a href="mailto:rickperkinsbloke@virginmedia.com" target="_blank">Web page design by Rick Perkins</a></div>
+		</div>
+	</div>	
+	</div>
+</div>
+
+</body>
+</html>
+ 
+ 
+

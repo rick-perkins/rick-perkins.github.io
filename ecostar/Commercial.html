@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title>ecostar</title>
+<link rel="stylesheet" type="text/css" href="styles.css" />
+<STYLE type="text/css">
+#img img{width:200px;}
+</style>
+
+
+<script src="jquery-1.11.1.min.js" type="text/javascript"></script>
+<script>
+window.onload = function() {$("#house").hide();
+}
+</script>
+<script src="jquery.spritely.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+		(function($) {
+			$(document).ready(function() {
+							
+				$('#bird')
+					.sprite({fps: 1, no_of_frames: 6})
+					
+				
+				window.actions = {
+					fly_slowly_forwards: function() {
+						$('#bird')
+							.fps(10)
+							.spState(1);
+						$('#hill1, #hill2, #clouds')
+							.spRelSpeed(10)
+							.spChangeDir('left');
+					}
+				};
+				
+				
+				
+			});
+		})(jQuery);
+				
+	
+	</script>
+
+	
+
+</head>	
+
+<body>
+
+<div id="container" style="position:relative;border:0px solid;border-style:dashed;border-radius:10px;right:0px;bottom:0px;width:100%;">
+	
+	<div id="body" style="width:1024px;margin: 0 auto;">
+
+			<div style="text-align:center;">Eco Star Electrial Commercial</div>
+			
+			<div class="link" style="position: absolute;top: 60px;z-index: 2002;">
+				<a href="Home.html">Home</a><br>
+				<a href="Commercial.html">Commercial</a><br>
+				<a href="Domestic.html">Domestic</a><br>
+				<a href="Contact.html">Contact</a><br>
+				<a href="About.html">About EcoStar</a>
+			</div>
+			<div class="content" >Whether it's commercial from a small shop or office, a large department store or an industrial installation, EcoStar is able to fulfil your needs.
+				<ul><li>Emergency lighting</li>
+					<li>Automated systems / intelligent systems</li>
+					<li>Alarm systems</li>
+					<li>Fire Alarm systems</li>
+					<li>Offices or shops</li>
+					<li>CCTV</li>
+					<li>Advise on lighting and heating</li>
+					<li>Garage forecourts</li>
+					<li>Installation of machinery</li>
+					<li>Maintenance of machinery</li>
+					<li>Electrical testing</li>
+					<li>Car charge points</li>
+				</ul>
+			<div id="img"><img src=photos/1.jpg>Plastic extrusion machine<br>
+			<img src=photos/5.jpg><img src=photos/6.jpg><img src=photos/7.jpg>Full electrical installation<br>
+			<img src=photos/9.jpg>Installation of a conditioning reporting system<br>
+			<img src=photos/10.jpg>Low energy lighting for a church
+			</div></div>
+	<div id="footer"> 
+		<div align=left style="position:relative;border:0px solid;border-style:dashed;border-radius:10px;right:0px;bottom:0px;width:1024px;height:266px;">
+			<div id="house"></div><div id="bird"></div>
+			
+			<div id="background"><image src=image/background.png></div>
+		</div>
+	</div>	
+	</div>
+	
+</div>
+
+</body>
+</html>
+ 
+ 
+

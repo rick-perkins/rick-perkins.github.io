@@ -1,0 +1,118 @@
+html,
+Body{
+	font-family:arial;
+	margin:0px 0px;
+	height:100%;
+
+	}
+#bird {
+			background: transparent url(image/flats.png) 0 0 no-repeat;
+			position: absolute;
+			bottom: 124px;
+			left: 0px;
+			width: 100px;
+			height: 350px;
+			margin: 0px 0px 0px 0px;
+			z-index: 2000;
+			
+		}
+#butterfly {
+			background: transparent url(image/butterfly.png) 0 0 no-repeat;
+			position: absolute;
+			bottom: 130px;
+			left: 300px;
+			width: 60px;
+			height: 60px;
+			margin: 0px 0px 0px 0px;
+			z-index: 2000;
+			
+		}
+
+#house {
+			background: transparent url(image/house.png) 0 0 no-repeat;
+			position: absolute;
+			bottom: 116px;
+			left: 36px;
+			width: 100px;
+			height: 100px;
+			margin: 0px 0px 0px 0px;
+			z-index: 3000;
+			
+		}
+#background {
+			
+			position: absolute;
+			bottom: 0px;
+			left: 0px;
+			margin: 0px 0px 0px 0px;
+			z-index: 1000;
+			
+		}
+ul
+{
+margin-left: 0;
+padding-left: 0;
+list-style: none;
+}
+li{
+padding-left: 20px;
+background-image: url(image/star.png);
+background-repeat: no-repeat;
+background-position: 0px -2px;
+height:30px;
+}
+#container {
+	min-height:100%;
+		
+		position:relative;margin:0px 0px;
+	
+		;}
+
+#body {
+		padding:0px;
+		/* padding all except bottom*/
+		padding-bottom:266px;
+		margin:0px 0px;
+		}
+	
+
+
+#footer {
+	
+position:absolute;		
+		bottom:0px;
+				
+		height:0px;			/* Height of the footer */
+
+		padding:0px;		
+		margin: 0px 0px 266px 0px;
+}
+
+.footerbutton{
+		background-color:#CFE3F4;
+		border:1px solid #bbbbbb;
+		border-radius:5px;}
+.link a, a.link
+{ 	
+   	color:#8DB556;	
+  	font-size:18px;
+   	text-decoration: none;
+	
+}
+.link a:hover, a.link:hover {color:#D2E288;}
+.content{padding-top: 40px;
+	width:800px;
+	padding-left:130px;
+	}
+.email{position: absolute;
+	bottom: 5px;
+	left:0px;
+	z-index: 2002;}
+.email a
+{ 	
+   	color:black;	
+  	font-size:10px;
+   	text-decoration: none;
+	
+}
+.email a:hover {color:grey;}

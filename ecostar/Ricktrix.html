@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html>
+<head><title>Ricktrix</title>
+<meta charset="utf-8">
+<!--</script><link rel="stylesheet" type="text/css" href="../css/styles.css" /><script src="../js/jquery-3.3.1.js">!-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+</script>
+
+
+
+<STYLE type="text/css" media="screen">
+div div{
+  float: left;
+  width: 30px; 
+display: inline-block;
+ text-align: center;
+  color:red;
+ text-shadow: 0px 0px 2px red, 2px 2px 5px red,2px 2px 10px red;
+}
+
+body{background-color:#000;}
+</style>
+	
+
+	
+</head>
+<body>
+	<button id="start">Start</button>
+	<button id="stop">Stop</button>	
+	<div id="a"></div>
+	
+	
+	
+</body>
+<script>
+$(document).ready(function(){
+//var tmr = setTimeout(draw, 300);
+var i = 33,b = [82,105,99,107,80,101,114,107,105,110,115,66,108,111,107,101,46,99,111,109,82,105,99,107,80,101,114,107,105,110,115,66,108,111,107,101,46,99,111,109]
+	for(a=0;a<=39;a++){
+	$('body #a').append('<div>&#'+b[a]+';<br></div>');
+	}
+	function random(){
+	var x = Math.floor(Math.random() * (39 - 0 + 1) + 0);
+	return x;
+	}
+	function draw(){
+	var x = random();
+	if (i > 969){i=33}
+	else if ((i >= 945) && (i <= 696)){i++}
+	else if ((i >= 913) && (i <= 937)){i++}
+	else if ((i >= 33) && (i <= 255)){i++}
+	else if ((i > 937) && (i < 945)){i=945}
+	else if ((i > 255) && (i < 913)){i=913}
+	else{i = i;}
+	
+	
+	$('#a div').eq(x).prepend('&#'+i+';<br>');
+	i++;
+	
+	if($('#a div').eq(x).text().length > 40){$('#a div').eq(x).html('&#'+i+';<br>');}
+	x = random();
+	
+	i++;
+	$('#a div').eq(x).prepend('&#'+i+';<br>');
+	if($('#a div').eq(x).text().length > 40){$('#a div').eq(x).html('&#'+i+';<br>');}
+	
+	tmr = requestAnimationFrame(draw);
+	}
+	$("#start").on("click", function() {
+		tmr = requestAnimationFrame(draw);
+		});
+
+	$("#stop").on("click", function() {
+		cancelAnimationFrame(tmr);
+		});
+});
+</script>		
+</html>
+ 
+ 
+
