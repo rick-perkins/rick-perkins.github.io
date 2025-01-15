@@ -1,0 +1,41 @@
+@font-face {
+  font-family: Times New Roman;
+  src: url(../fonts/times.ttf) format("truetype");
+}
+@font-face {
+  font-family: Edwardian Script ITC;
+  src: url(../fonts/ITCEDSCR.ttf) format("truetype");
+}
+body{background-color:#000;
+	font-family:Times New Roman;
+	color:#bdb699;
+	text-align:center;
+	text-transform: uppercase;
+	
+	margin:8px;}
+
+#banner{background-image: url(../img/TopDivider.png);
+	background-position: center top,center top;
+	padding:100px 0 20px 0;
+	background-size: 1600px auto,auto;
+	background-repeat: no-repeat,repeat;}
+#banner .name{font-size:72px;}
+#banner .name1{font-size:32px;}
+#menu{margin:0 auto;
+	max-width:1280px;
+	margin-bottom:30px;}
+#menu ul{padding:20px 0;
+	display:inline;
+	list-style:none;
+	font-size:16px;
+	align-items: center;
+	}
+#menu li{margin:0 15px;display: list-item;float:left;}
+#menu a {
+	text-decoration: none;
+	curser:pointer;color:#bdb699;}
+#menu a:hover{color:#98ab44;}
+.title{font-size:20px;margin:10px 0;}
+#pre-photos img{max-width:900px;box-sizing: border-box;border: solid 8px #fff;box-shadow: 0 1px 4px rgba(0,0,0,0.25);}
+#pre-photos img:nth-child(odd){height:400px;box-sizing: border-box;border: solid 8px #fff;box-shadow: 0 1px 4px rgba(0,0,0,0.25);}
+#pre-photos img:nth-child(4n+0){margin:-50px;height:600px;box-sizing: border-box;border: solid 8px #fff;box-shadow: 0 1px 4px rgba(0,0,0,0.25);}
