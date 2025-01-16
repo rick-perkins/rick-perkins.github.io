@@ -1,0 +1,65 @@
+html, body{
+	height:100%;
+}
+@font-face {
+  font-family: TechnicBold;
+  src: url(../fonts/techb___.ttf) format("truetype");
+}
+body{background-color:#a7a2a2;
+	margin:0px;
+	font-family:TechnicBold;
+	font-size:16px;
+	color:#000;
+}
+#header {margin-top:20px;
+		font-size:40px;
+		font-weight: bold;
+		text-align:center;
+	}
+#logo{height:54px;
+	vertical-align:bottom;
+	padding-bottom: 8px;
+	}
+#welcome {
+	position:relative;
+	width:100%;
+	font-size:20px;
+	text-align:center;
+	}
+.txt_clr_r{color:#eb2727;}
+#main{position:relative;height:100%}
+a {text-decoration: none;
+	color:#000;}
+#menu a, #home,{color:#000;
+	transition: 0.4s;}
+
+#menu a:hover, #home:hover {font-size:26px;color:#eb2727;}
+
+p {font-size:20px;}
+button, #input_csvFile, input[type=submit]{
+	margin:4px 2px;
+	font-size:14px;
+	color:#eb2727;
+	cursor:pointer;
+	background-color:#000;
+	border: 1px solid #000;
+	border-radius:3px;
+	}
+button:hover, #input_csvFile:hover, input[type=submit]:hover{
+	background-color:#eb2727;
+	border: 1px solid #eb2727;
+	color:#000;
+	box-shadow: 5px 5px 5px #000;
+	}
+label{padding:1px 6px;}
+.canvas{background-color:#fff;}
+#footer{position:sticky;
+	clear:both;
+	bottom:0px;
+	height:20px;
+	text-align:center;
+	background-color:#eb2727;
+	width:100%;
+	font-size:16px;
+	color:#000;
+	}
