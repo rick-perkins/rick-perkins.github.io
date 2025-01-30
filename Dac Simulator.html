@@ -1,0 +1,636 @@
+﻿
+<!DOCTYPE html>
+<html>
+<!--/***************************************************************************
+//! 
+//!
+//! author: Rick Perkins
+//!
+//! 
+***************************************************************************/!-->
+<head>
+<meta charset="utf-8">
+<title> Sea Tel DAC2202 Simulator</title>
+<link rel="stylesheet" type="text/css" href="css/styles.css" />
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<STYLE type="text/css" media="screen">
+</style>
+	
+
+	
+</head>
+<body>
+
+<div id="container">
+	<div id="body">
+
+			<div id="simulator-screen" class="hide">
+				<div id="space" >
+					<span id="earth" ></span>
+					<span class="grid" style="top:0px;color:#FFF;">90EL</span>
+					<span class="grid" style="bottom:20px;color:#000;">0EL</span>
+					<span class="grid1" id="marker0"style="left:4px;">90AZ</span>
+					<span class="grid1" id="marker1"style="right:4px;">270AZ</span>
+					
+					<!--90 x5 = 450px!-->
+					<div id="target_marker" >&plus;</div>
+				
+				</div>
+				<div id="test" class="hide" style="position:absolute;top:5px;left:5px;">
+					<div >TEST AREA INFO</div>
+					
+					<div id="onsat"></div>
+					<div>Blocked : <span id="block_ref"></span></div>
+					
+					<div id="b1"></div>
+					<div id="b2"></div>
+					<div id="b3"></div>
+					<div id="b4"></div>
+					<div><span id="b5"></span></div>
+					<div><span id="b6"></span></div>
+					<div><span id="b7"></span></div>
+					<div><span id="b8"></span></div>
+					<div>left and right <span id="LandR"></span></div>
+
+					
+					
+				
+				
+				</div>
+				
+				<div style="position:absolute;top:0px;left:940px;width:300px;border:0px solid green;">
+				<img alt="" style="position:absolute;top:4px;right:0px;width:200px;"src="images/seatel_cobham_logo_lg.png">
+				<span class="title-class" style="color:#00A4F2;"><span class="title"></span>&nbsp;<span class="rev" ></span></span>
+				</div>
+				
+				<div id="vessel_input" class="hide" style="font-size:12px;position:absolute;top:150px;left:940px;width:300px;height:300px;border:0px solid green;z-index:1;background-color:rgba(137,150,160,0.7);border-radius:10px;padding:5px;">
+					<div>GPS Input</div>
+					<div class="vessel_gps_input"><span style="display:inline-block;width:30px;">Lat:</span><input type="text" size="2" maxlength="5" id="input-lat" value="51.0">&#176;<select   id="input-lat-pos" style="width:38px;"><option value="N" selected="selected">N</option><option value="S" >S</option></select></div>
+					<div class="vessel_gps_input"><span style="display:inline-block;width:30px;">Lon:</span><input type="text" size="2" maxlength="5" id="input-lon" value="1.0">&#176;<select   id="input-lon-pos" style="width:38px;"><option value="E" >E</option><option value="W" selected="selected">W</option></select></div>
+					<div>Vessel Heading</div>
+					<div class="vessel_heading_input"><span style="display:inline-block;width:30px;">Hdg:</span><input type="text" size="2" maxlength="5" id="input-hdg" value="000.0">&#176;</div>
+					<div id="vessel_info_x" style="position:absolute;color:#FF0000;top:0px;right:0px;background-color:#FFF;width:15px;height:15px;text-align:center;">X</div>
+					
+				</div>
+				
+				<div style="position:absolute;top:150px;left:940px;width:300px;height:300px;border:0px solid green;">
+					<canvas id="cir_nonrefresh" width="300" height="300" style="position:absolute;top:0px;left:0px;">Your browser does not support the HTML5 canvas tag.</canvas>
+					<canvas id="cir_vessel" width="300" height="300" style="position:absolute;top:0px;left:0px;">Your browser does not support the HTML5 canvas tag.</canvas>
+					<canvas id="cir" width="300" height="300" style="position:absolute;top:0px;left:0px;">Your browser does not support the HTML5 canvas tag.</canvas>
+					<span class="compass" style="top:20px;left:126px;">N<br>90&#176;</span>
+					<span class="compass" style="top:132px;right:26px;">E</span>
+					<span class="compass" style="bottom:24px;left:141px;">S</span>
+					<span class="compass" style="top:132px;left:26px;">W 0&#176;</span>
+				</div>
+				<div class="switch_buttons" style="position:absolute;top:282px;left:1044px;"><button  type="button" id="vessel_info"  style="width:80px;margin:0px 5px;">Vessel Information</button></div>
+			</div>
+			<div id="revision_page" class="hide" style="z-index:5;">
+				<iframe src="default/rev.html" style="z-index:5;width:1230px;height:446px;border:0;"></iframe>
+			</div>
+			<div id="satellite_settings"class="hide" style="z-index:5;">
+			<div></div>
+				<div>This is for setting up the satellites on the simulator screen, if the tracking settings in the DAC match these settings the simulator will track the targetted satellite.
+				<br>Changing the Sat Position will remove the old satellite and posistion a new satellite in to the correct orbital position.</div>
+				<div id="sat1_preset" style="padding:10px 0px;">Sat 1 Position
+					<input type="text" size="2" maxlength="6" class="satpos" value="28"/><select><option value="E" selected="selected">E</option><option value="W" >W</option></select>
+					<span class="freq_text">Freq</span><input style="width:40px"type="text" maxlength="4" class="freq" value="1234"/>
+					<span class="baud_text">Baud<input style="width:40px"type="text" maxlength="5" class="baud" value="12345"/></span>
+					<span class="khz_text hide" >&nbsp;&nbsp;KHz<input style="width:40px"type="text" maxlength="4" class="khz" value="0000"/></span>
+					Tone<select class="tone"><option value="ON" >ON</option><option value="OFF" selected="selected">OFF</option></select>
+					Volt<select class="volt"><option value="HORZ" selected="selected">HORZ</option><option value="VERT" >VERT</option><option value="LHCP" >LHCP</option><option value="RHCP" >RHCP</option></select>
+					FEC<select class="fec"></select>
+					NID(HEX)<input class="nid"style="width:40px"type="text" maxlength="4" class="freq" value="0000"/>
+						
+					
+				</div>
+				<div id="sat2_preset" style="padding:10px 0px;">Sat 2 Position
+					<input type="text" size="2" maxlength="6" class="satpos" value="22"/><select><option value="E" >E</option><option value="W" selected="selected">W</option></select>
+					<span class="freq_text">Freq</span><input style="width:40px"type="text" maxlength="4" class="freq" value="1235"/>
+					<span class="baud_text">Baud<input style="width:40px"type="text" maxlength="5" class="baud" value="12345"/></span>
+					<span class="khz_text hide" >&nbsp;&nbsp;KHz<input style="width:40px"type="text" maxlength="4" class="khz" value="0000"/></span>
+					Tone<select class="tone"><option value="ON" >ON</option><option value="OFF" selected="selected">OFF</option></select>
+					Volt<select class="volt"><option value="HORZ" selected="selected">HORZ</option><option value="VERT" >VERT</option><option value="LHCP" >LHCP</option><option value="RHCP" >RHCP</option></select>
+					FEC<select class="fec"></select>
+					NID(HEX)<input class="nid"style="width:40px"type="text" maxlength="4" class="freq" value="0000"/>
+					
+				</div>
+				<div id="sat3_preset" style="padding:10px 0px;">Sat 3 Position
+					<input type="text" size="2" maxlength="6" class="satpos" value="1"/><select><option value="E" >E</option><option value="W" selected="selected">W</option></select>
+					<span class="freq_text">Freq</span><input style="width:40px"type="text" maxlength="4" class="freq" value="1236"/>
+					<span class="baud_text">Baud<input style="width:40px"type="text" maxlength="5" class="baud" value="12345"/></span>
+					<span class="khz_text hide" >&nbsp;&nbsp;KHz<input style="width:40px"type="text" maxlength="4" class="khz" value="0000"/></span>
+					Tone<select class="tone"><option value="ON" >ON</option><option value="OFF" selected="selected">OFF</option></select>
+					Volt<select class="volt"><option value="HORZ" selected="selected">HORZ</option><option value="VERT" >VERT</option><option value="LHCP" >LHCP</option><option value="RHCP" >RHCP</option></select>
+					FEC<select class="fec"></select>
+					NID(HEX)<input class="nid"style="width:40px"type="text" maxlength="4" class="freq" value="0000"/>
+					
+				</div>
+				<div id="sat4_preset" style="padding:10px 0px;">Sat 4 Position
+					<input type="text" size="2" maxlength="6" class="satpos" value="58"/><select><option value="E" >E</option><option value="W" selected="selected">W</option></select>
+					<span class="freq_text">Freq</span><input style="width:40px"type="text" maxlength="4" class="freq" value="1237"/>
+					<span class="baud_text">Baud<input style="width:40px"type="text" maxlength="5" class="baud" value="12345"/></span>
+					<span class="khz_text hide" >&nbsp;&nbsp;KHz<input style="width:40px"type="text" maxlength="4" class="khz" value="0000"/></span>
+					Tone<select class="tone"><option value="ON" >ON</option><option value="OFF" selected="selected">OFF</option></select>
+					Volt<select class="volt"><option value="HORZ" selected="selected">HORZ</option><option value="VERT" >VERT</option><option value="LHCP" >LHCP</option><option value="RHCP" >RHCP</option></select>
+					FEC<select class="fec"></select>
+					NID(HEX)<input class="nid"style="width:40px"type="text" maxlength="4" class="freq" value="0000"/>
+					
+				</div>
+			</div>
+			<div id="information-screen" class="" >
+				<img alt="" style="position:absolute;top:4px;right:2px;width:200px;"src="images/seatel_cobham_logo_lg_white.png">
+				<span class="title-class" style="color:#fff;"><span class="title"></span>&nbsp;<span class="rev"></span></span>
+				<div id="lights" class="button_link" style="position:absolute;width:70px;left:10px;">LIGHTS<span style="position:absolute;margin-left:6px;width:0;height:0;border-top:8px solid transparent;border-bottom: 8px solid transparent;border-left: 8px solid #00A4F2;"></span></div>
+				<div id="flowchart" class="hide button_link" style="position:absolute;width:170px;left:10px;z-index:4;">Flowchart Map<span style="position:absolute;margin-left:6px;width:0;height:0;border-top:8px solid transparent;border-bottom: 8px solid transparent;border-left: 8px solid #00A4F2;"></span></div>	
+				<div id="lights-info" class="hide" style="">
+					<span>Tracking - (<span style="color:green;">Green LED</span>)</span>
+					<ul style="list-style-type:none">
+						<li>ON indicates that the ACU has identified and is activly tracking the desired satelite to optimize the signal level (AGC).</li>			
+						<li>BLINKING indicates that the ACU is in search delay or is analyzing a satellite signal.</li>
+						<li>OFF indicates that Tracking is OFF or the antenna is in search or target mode.</li>
+					</ul>
+					<span>Searching - (<span style="color:yellow;">Yellow LED</span>)</span>
+					<ul style="list-style-type:none">
+						<li>ON indicates that the ACU is activley searching for your satellite signal.</li>
+						<li>OFF indicates that SEARCH is OFF.</li>
+					</ul>
+					<p><span>Target - (<span style="color:yellow;">Yellow LED</span>)</span>
+					<ul style="list-style-type:none">
+						<li>ON indicates that the antenna is TARGETING (driving) to the specified Azimuth and/ or Elevation position(s).</li>
+						<li>ON also indicates UNWRAP in limited azimuth antennas (04 series).</li>
+					</ul>
+					<span>Power - (<span style="color:green;">Green LED</span>)</span>
+					<ul style="list-style-type:none">
+						<li>ON indicates that the Antenna Control Unit is energized.</li>
+					</ul>
+					<span>Initializing - (<span style="color:green;">Green LED</span>)</span>
+					<ul style="list-style-type:none">
+						<li>ON indicates that the Antenna is initializing. Initialization of the antenna will take approximately two minutes.</li>
+					</ul>
+					<span>Error - (<span style="color:red;">Red LED</span>)</span>
+					<ul style="list-style-type:none">
+						<li>ON inidicates that one, or more, discrete system errors have occurred. Refer to Status - Error Code information menu to determine which error(s) have occurred.</li>
+						<li>OFF indicates that no errors have occurred.</li>
+					</ul>
+				</div>	
+				<div id="button-discriptions" class="" style="position:absolute;top:20px;">
+				
+					<div style="position:absolute;left:0px;width:290px;">
+						<span>NEXT BUTTON</span>
+						<p>Press NEXT to cycle though the four main menus:Ship, Satellite, Antenna and Status (refer to the Operation Flowcharts).</p>
+						<span>TRACK BUTTON</span>
+						<p>Press TRACK key to toggle the state of Tracking ON/OFF. AGC must be above threshold to enable tracking. If AGC is not above threshold, the system wil enter into a search delay.</p>
+						<span id="screen-discriptions-show" class="button_link" style="font-size:16px">Information Screen<span style="position:absolute;margin-left:6px;width:0;height:0;border-top:8px solid transparent;border-bottom: 8px solid transparent;border-left: 8px solid #00A4F2;"></span></span><br>
+						<span id="revision_page_show" class="button_link" style="font-size:16px">Revision Screen<span style="position:absolute;margin-left:6px;width:0;height:0;border-top:8px solid transparent;border-bottom: 8px solid transparent;border-left: 8px solid #00A4F2;"></span></span>
+						
+					</div>
+					<div style="position:absolute;left:300px;width:290px;">
+						<span>LEFT &amp; RIGHT ARROWS</span>
+						<p>In any sub-menu, pressing the LEFT or RIGHT arrow enters editing mode and brings up a cursor in the display. When the cursor is under a character, it is selected and can be changed (see UP/DOWN arrow below).<br>
+						When the Antenna main menu is displayed, pressing the LEFT arrow moves the antenna left (CCW or down in azimuth).Pressing the RIGHT arrow to move the antenna right (CW or up in azimuth).</p>
+						<span>SETUP BUTTONS</span>
+						<p>Press and release BOTH the LEFT and RIGHT arrow buttons to access the save parameters window. Press and Hold for 6 seconds to access the setup parameters.<br>
+						<span style="color:red;">Note: For the purposes of the Simulator, simply click the circle located in the center of the arrow keys.</span></p>
+					</div>
+					<div style="position:absolute;left:600px;width:290px;">
+					<span>UP &amp; DOWN ARROWS</span>
+					<p>Pressing the UP or DOWN arrows cycles Up and Down though the sub-menus. When a sub-menu item is being edited, use the UP or DOWN to increment or decrement the selected character. This steps the selected entry one increment per sequential entry when pressed and held.
+					<br>When the Antenna main menu is displayed, press UP arrow to move the antenna up in elevation or the DOWN arrow to move the antenna down in elevation.</p>
+					<span>RESET BUTTON</span>
+					<p>Press RESET to reset all the processors in the Antenna Control Unit. It does NOT reset the antenna.</p>
+					<span>POWER BUTTON</span>
+					<p>Switch to ON position to apply AC power to the ACU.(USAT and Series 04 antennas also applies power to the above decks equipment).</p></div>
+					<div style="position:absolute;left:900px;width:290px;padding-top:140px;">
+					<span>ENTER BUTTON</span>
+					<p>At any main menu level, press ENTER to access the sub-menu items.<br>
+					When viewing one of the sub-menus pressing the ENTER key will step down though the sub-menu items, like the DOWN arrow does.<br>
+					When editing, the cursor is visible under a character in a sub-menu (whether it has been changed or not), press ENTER to execute the present value, and return to display mode for that sub-menu. This does NOT save the new value to the NVRAM.</p>
+					</div>
+				</div>
+				<div id="screen-discriptions" class="hide" style="position:absolute;top:20px;">
+					
+					<span id="screen-buttons-show" class="button_link" style="position:absolute;top:30px;left:20px;width:200px;">Back To Buttons<span style="position:absolute;margin-left:6px;width:0;height:0;border-top:8px solid transparent;border-bottom: 8px solid transparent;border-left: 8px solid #00A4F2;"></span></span>
+					<div id="screen-info-text" style="">This screen reports the DAC-2202 Main Processors software version. Flash Upgradeable via Sea Tels proprietary PC based diagnostic software ProgTerm.</div>
+						<div style="position:absolute;top: 137px;left: 274px;width: 40px;border-top: 4px solid white;">
+					</div>
+					<div id="screen-info-center" style=""><img alt="" src="images/OP1.png"></div>
+					<div id="screen-info-right" style="">
+						<div id="screen-info-right-line" style="position:absolute;top:20px;left:-40px;width:30px;border-top:4px solid white;"></div><div id="OM0" style="border:4px solid white;border-radius:10px;"><h>OPERATION MODE</h><p><span id="OM1" style="color:white;">Power Up</span> <br><span id="OM2" style="color:black;">Status</span> - <span id="OM3" style="color:black;">Ship</span> - <span id="OM4" style="color:black;">Satellite</span> - <span id="OM5" style="color:black;">Antenna</span></p></div>
+						<div id="SM0" style="border:4px solid #00A4F2;border-radius:10px;"><h>SETUP MODE</h><p><span>Press and Hold Left + Right arrow keys for 6 seconds untill Auto Trim or EL Trim is displayed.<br>
+						Simulator only, simply click and hold on the small circle located in the center of the Arrow keys.</span></p></div>
+					</div>
+				</div>
+				<div id="screen-flowchart" class="hide" style="position:absolute;top:-2px;left:-2px;width:1230px;padding:5px;height:630px;border-radius:10px;border:2px solid #8996A0;z-index:3;background-color:rgba(137,150,160,0.7); ">
+					<div id="flowchart-operation" class="hide">
+						<canvas id="screen-flowcharta" width="1230" height="630"style="position:absolute;z-index:-1;">Your browser does not support the HTML5 canvas tag.</canvas>				
+							<script>
+								var canvas_flow = document.getElementById('screen-flowcharta');
+								var ctx_flow = canvas_flow.getContext('2d');
+									ctx_flow.strokeStyle = 'white';
+									ctx_flow.lineWidth = 3;
+									ctx_flow.lineCap="round";
+									ctx_flow.lineJoin="round";
+									ctx_flow.beginPath();
+									ctx_flow.moveTo(155,40);
+									ctx_flow.lineTo(155,225);
+									ctx_flow.lineTo(234,225);
+									ctx_flow.lineTo(250,209);
+									ctx_flow.lineTo(250,40);
+									ctx_flow.lineTo(345,40);
+									ctx_flow.lineTo(345,320);
+									
+									ctx_flow.moveTo(424,72);
+									ctx_flow.lineTo(1210,72);
+									ctx_flow.lineTo(1210,624);
+									ctx_flow.lineTo(250,624);
+									ctx_flow.lineTo(250,209);
+									
+									ctx_flow.moveTo(535,70);
+									ctx_flow.lineTo(535,246);
+									ctx_flow.lineTo(440,246);
+									ctx_flow.lineTo(440,130);
+									ctx_flow.lineTo(460,130);
+									
+									ctx_flow.moveTo(725,70);
+									ctx_flow.lineTo(725,246);
+									ctx_flow.lineTo(725,594);
+									ctx_flow.lineTo(630,594);
+									ctx_flow.lineTo(630,130);
+									ctx_flow.lineTo(650,130);
+									
+									ctx_flow.moveTo(1105,70);
+									ctx_flow.lineTo(1105,362);
+									ctx_flow.lineTo(1010,362);
+									ctx_flow.lineTo(1010,130);
+									ctx_flow.lineTo(1030,130);
+									ctx_flow.stroke();
+									ctx_flow.beginPath();
+									ctx_flow.setLineDash([10,5])
+									ctx_flow.moveTo(804,188);
+									ctx_flow.lineTo(915,188);
+									ctx_flow.lineTo(915,362);
+									ctx_flow.lineTo(804,362);
+									ctx_flow.stroke();
+									
+
+								  
+							</script>
+						
+						<div style="margin-left:60px;height:30px;width:1230px;font-weight:bold;"><span>Power&nbsp;on</span><span>Status</span><span>Ship</span><span>Satellite</span><span >SCPC Mode</span><span>Antenna</span></div>
+						<div class="A" ><div id="OP1a">SEA TEL INC - MASTER<br>DAC-2202 VER 6.XX</div><div id="OP1b">SEA TEL INC - RCVR<br>DVB VER X.XX</div><div id="OP1c">SEA TEL INC - IO MOD<br>COMMIF VER 1.XX</div></div>
+						
+						<div class="B"><div id="OP2a">SEA TEL INC - REMOTE<br>4009 VER 2.XX</div><div id="OP2b">CONTROL<br>TRACKING ON KuLo</div><div id="OP2c">CONTROL<br>SEARCH ON</div><div id="OP2d">STATUS<br>ERROR LLLL RRRR</div><div id="OP2e">STATUS<br>REMOTE AUX 1234</div></div>
+						<div class="B"><div id="OP3a">LAT XX N&nbsp;&nbsp;&nbsp;LON YYY E<br>HDG 000.0&nbsp;&nbsp;000.0</div><div id="OP3b">LAT XX.X N</div><div id="OP3c"style="text-align:right;">LON YYY.Y E</div><div id="OP3d"><br>HDG 000.0&nbsp;&nbsp;000.0</div></div>
+						<div class="B"><div id="OP4a">SAT XXX W&nbsp;&nbsp;THRS 1234<br>FREQ&nbsp;1111&nbsp;&nbsp;NID&nbsp;&nbsp;1234</div><div id="OP4b">SAT XXX.X W</div><div id="OP4c" style="text-align:right;">THRS 1234</div><div id="OP4d"><br>FREQ 1111&nbsp;&nbsp;&nbsp;AGC 1234</div>
+							<div id="OP4e"><br>BAUD 20000&nbsp;&nbsp;AGC 1234</div><div id="OP4f"><br>TONE ON&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AGC 1234</div><div id="OP4g"><br>VOLT HORZ&nbsp;&nbsp;&nbsp;AGC 1234</div>
+							<div id="OP4h"><br>FEC AUTO&nbsp;&nbsp;&nbsp;&nbsp;AGC 1234</div><div id="OP4i"><br>SKEW 0000&nbsp;&nbsp;&nbsp;AGC 1234</div><div id="OP4j"><br>NID 0000&nbsp;&nbsp;&nbsp;&nbsp;AGC 1234</div>
+						</div>
+						<div class="B"><div id="OP4da"style="margin-top:190px"><br>MHz&nbsp;1111&nbsp;&nbsp;&nbsp;&nbsp;AGC 1234</div><div id="OP4ea"><br>KHz&nbsp;0111&nbsp;&nbsp;&nbsp;&nbsp;AGC 1234</div></div>
+						<div class="B"><div id="OP5a">AZ 123.4&nbsp;&nbsp;&nbsp;&nbsp;EL 045.0<br>REL&nbsp;234.5&nbsp;&nbsp;&nbsp;AGC&nbsp;1234</div><div id="OP5b">AZ 123.4&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AGC&nbsp;1234</div><div id="OP5c"style="text-align:right;">EL 045.0<br>AGC&nbsp;1234</div>
+							<div id="OP5d"><br>REL 234.5&nbsp;&nbsp;&nbsp;AGC 1234</div><div id="OP5e"><br>POL 0000&nbsp;&nbsp;&nbsp;&nbsp;AGC 1234</div><div id="OP5f"><br>REFLECTOR A&nbsp;AGC 1234</div>
+						</div>
+					</div>
+					<div id="flowchart-setup" class="hide">
+						<canvas id="screen-flowchartb" width="1230" height="630"style="position:absolute;z-index:-1;">Your browser does not support the HTML5 canvas tag.</canvas>				
+							<script>
+								var canvas_flowa = document.getElementById('screen-flowchartb');
+								var ctx_flowa = canvas_flowa.getContext('2d');
+									ctx_flowa.strokeStyle = 'white';
+									ctx_flowa.lineWidth = 3;
+									ctx_flowa.lineCap="round";
+									ctx_flowa.lineJoin="round";
+									ctx_flowa.beginPath();
+									ctx_flowa.moveTo(295,40);
+									ctx_flowa.lineTo(295,624);
+									ctx_flowa.lineTo(390,624);
+									ctx_flowa.lineTo(390,30);
+									ctx_flowa.lineTo(485,30);
+									ctx_flowa.lineTo(485,624);
+									ctx_flowa.lineTo(585,624);
+									ctx_flowa.lineTo(580,30);
+									ctx_flowa.lineTo(675,30);
+									ctx_flowa.lineTo(675,624);
+									ctx_flowa.lineTo(770,624);
+									ctx_flowa.lineTo(770,30);
+									ctx_flowa.lineTo(865,30);
+									ctx_flowa.lineTo(865,605);
+									ctx_flowa.stroke();
+									
+									
+
+								  
+							</script>
+						
+						<div style="margin-left:60px;height:30px;width:1230px;"></div>
+						<div class="A" style="margin-left:200px;"><div id="STa" >SETUP<br>AUTO TRIM</div><div id="STb">SETUP<br>EL TRIM&nbsp;&nbsp;&nbsp;&nbsp;0000</div><div id="STc" >SETUP<br>AZ TRIM&nbsp;&nbsp;&nbsp;&nbsp;0000</div><div id="STd">SETUP<br>AUTO THRS&nbsp;&nbsp;&nbsp;&nbsp;0000</div><div id="STe">SETUP<br>EL STEP SIZE&nbsp;&nbsp;&nbsp;0000</div><div id="STf">SETUP<br>AZ STEP SIZE&nbsp;&nbsp;&nbsp;0000</div><div id="STg">SETUP<br>STEP INTEGRAL&nbsp;&nbsp;&nbsp;0000</div><div id="STh">SETUP<br>SEARCH INC&nbsp;&nbsp;&nbsp;0015</div><div id="STi">SETUP<br>SEARCH LIMIT&nbsp;&nbsp;&nbsp;0100</div><div id="STj">SETUP<br>SEARCH DELAY&nbsp;&nbsp;&nbsp;0030</div></div>
+						
+						<div class="B"><div id="STk">SETUP<br>SWEEP INC&nbsp;&nbsp;&nbsp;0047</div><div id="STl">SETUP<br>SYSTEM TYPE&nbsp;&nbsp;&nbsp;0007</div><div id="STm">SETUP<br>GYRO TYPE&nbsp;&nbsp;&nbsp;0002</div><div id="STn">SETUP<br>POLANG TYPE&nbsp;&nbsp;&nbsp;0072</div><div id="STo">SETUP<br>POL OFFSET&nbsp;&nbsp;&nbsp;0040</div ><div id="STp">SETUP<br>POL SCALE&nbsp;&nbsp;&nbsp;0090</div><div id="STq">SETUP<br>AZ LIMIT 1&nbsp;&nbsp;&nbsp;0000</div><div id="STr">SETUP<br>AZ LIMIT 2&nbsp;&nbsp;&nbsp;0000</div><div id="STs">SETUP<br>EL LIMIT 12&nbsp;&nbsp;&nbsp;0900</div><div id="STt">SETUP<br>AZ LIMIT 3&nbsp;&nbsp;&nbsp;0000</div></div>
+						<div class="B"><div id="STu">SETUP<br>AZ LIMIT 4&nbsp;&nbsp;&nbsp;0000</div><div id="STv">SETUP<br>EL LIMIT 34&nbsp;&nbsp;&nbsp;0900</div><div id="STw">SETUP<br>AZ LIMIT 5&nbsp;&nbsp;&nbsp;0000</div><div id="STx">SETUP<br>AZ LIMIT 6&nbsp;&nbsp;&nbsp;0000</div><div id="STy">SETUP<br>EL LIMIT 56&nbsp;&nbsp;&nbsp;0000</div><div>SETUP</div><div id="STz">SETUP<br>5V OFFSET&nbsp;&nbsp;&nbsp;0000</div><div id="STaa">SETUP<br>5V SCALE&nbsp;&nbsp;&nbsp;0000</div><div id="STab">SETUP<br>TX POLARITY&nbsp;&nbsp;&nbsp;0002</div><div id="STac">SETUP<br>TRACK DISP&nbsp;&nbsp;&nbsp;0000</div></div>
+						<div class="B"><div>SETUP</div><div id="STad">SETUP<br>SAVE NEW PARAMETERS</div><div>SETUP</div><div id="STae">REMOTE COMMAND @0000</div><div id="STaf">REMOTE MONITOR</div><div id="STag">REMOTE<br>DISHSCAN ON</div><div id="STah">REMOTE<br>SAT REF ON</div><div id="STai">REMOTE TILT</div><div id="STaj">REMOTE BALANCE</div><div id="STak">REMOTE PARAMETERS</div></div>
+						
+					</div>
+				</div>
+			</div>
+			<!--switching buttons...-->
+			<div style="position:absolute;left:0px;top:460px;">
+			<div class="switch_buttons" style="margin:5px;"><button  type="button" id="tunercard" style="width:200px;margin:0px 5px;">Switch to SCPC Tunercard</button><button  type="button" id="information" style="width:340px;margin:0px 5px;">Switch between Information Screens & Simulator</button><button  type="button" id="scn_settings" style="width:240px;margin:0px 5px;">Satellite Settings Show and Hide</button></div>
+			<script></script>
+			<div id="dac" >
+			<!--LEDs-->
+			<div id="LEDS" class="text" style="position:relative;float:left;border:0px solid blue;border-style:dashed;border-radius:10px;left:3px;top:10px;width:220px;height:130px;">
+				<div style="position:relative;float:left;width:20px;">
+				<div id="track_led" class="led left"></div>
+				<div id="search_led" class="led left"></div>
+				<div id="target_led" class="led left"></div>
+				</div>
+				<div style="position:relative;float:left;width:80px;">
+				<div class="left name">Tracking</div>
+				<div class="left name">Search</div>
+				<div class="left name">Target</div>
+				</div>
+				<div style="position:relative;float:left;width:20px;">
+				<div id="power_led" class="led left" style="background-color:rgb(0, 255, 0);"></div>
+				<div id="iniz_led" class="led left"></div>
+				<div id="error_led" class="led left"></div>
+				</div>
+				<div style="position:relative;float:left;width:80px;">
+				<div class="left name">Power</div>
+				<div class="left name">Initializing</div>
+				<div class="left name">Error</div>
+				</div>
+			</div>
+			
+			<span id="udrline" >_</span><!--25px!-->
+			<div id="status" class="screen" >
+				<div style="float:left;" id="st">SEA&nbsp;TEL&nbsp;INC&nbsp;-&nbsp;</div>
+				<div style="float:right;" class="dacso">MASTER</div><div style="float:left;"class="dacso">&nbsp;DAC 2202&nbsp;&nbsp;VER 6.15</div>
+				<div class="hide right dvbso">RCVR&nbsp;</div><div class="hide left dvbso" id="dvbso">&nbsp;&nbsp;&nbsp;&nbsp;DVB VER 5.06</div>
+				<div class="hide right coifso">IO MOD</div><div class="hide left coifso">&nbsp;COMMIF Ver 1.20c</div>
+				<div class="hide right antso">REMOTE</div><div class="hide left antso">&nbsp;&nbsp;&nbsp;4009 VER 2.56</div>
+			</div>
+			<div id="ship" class="screen hide">
+				<div style="float:left;" id="lat"><div class="left">LAT&nbsp;</div><div id="lata" class="left">51</div><div id="latb" class="hide left d2">51.0</div><div id="antlata"class="nsew left">&nbsp;N</div></div>
+				<div style="float:right;"id="lon"><div class="left">LON&nbsp;</div><div id="lona" class="left">001</div><div id="lonb" class="left hide d3">001.0</div><div id="antlona" style="float:left;"class="nsew">&nbsp;W</div></div>
+				<div style="float:left;width:100%" class="hide" id="hdgs">&nbsp;</div>
+				<div style="float:left;" id="hdg"><div class="left">HDG&nbsp;</div><div id="hdg1" class="left d3">000.1</div><div class="left">&nbsp;&nbsp;</div><div id="hdg2" class="left d3">000.0</div> </div>
+				
+			</div>
+				
+			<div id="satellite" class="screen hide" >
+				<div style="float:left;" id="sat"><div class="left">SAT&nbsp;</div><div id="sata" class="left">028</div><div id="satb" class="left hide d3">028.0</div><div id="satposa" style="float:left;"class="nsew">&nbsp;E</div></div>
+				<div style="float:right;"id="thrs"><div class="left">THRS&nbsp;</div><div id="thrsa"class="left d4">1500</div></div>
+				<div style="float:left;width:100%" class="hide" id="satS">&nbsp;</div>
+				<div style="float:left;" id="freq"><div id="freqa"class="left">FREQ&nbsp;</div><div id="freqval" class="left d4">1234</div></div><div class="right" id="nid"><div class="left">NID &nbsp;</div><div id="nid_display" class="left">0000</div></div>
+				<div class="hide left" id="baud"><div id="bauda" class="left">Baud&nbsp;</div><div id="baudval" class="left d5">12345</div><div id="khzval" class="hide left d4">0000</div></div><div class="right hide" id="agc"><div class="left">AGC &nbsp;</div><div id="agca" class="agc left">0000</div></div>
+				<div class="hide left" id="tone"><div class="left">Tone&nbsp;&nbsp;&nbsp;</div><div id="toneval" class="left">OFF</div></div>
+				<div class="hide left" id="volt"><div class="left">Volt&nbsp;&nbsp;</div><div id="volta" class="left">HORZ</div></div>
+				<div class="hide left" id="fec"><div id="feca"class="left">FEC&nbsp;&nbsp;&nbsp;</div><div id="fecb" class="left">AUTO</div></div>
+				<div class="hide left" id="skew"><div class="left">Skew&nbsp;</div><div id="skval" class="left d4">&nbsp;0000</div></div>
+				<div class="hide left" id="nida"><div class="left">NID&nbsp;&nbsp;&nbsp;</div><div id="nidaval"class="left">0002</div></div>
+			</div>
+			<div id="antenna" class="screen hide" >
+				<div style="float:left;" id="az"><div class="left">AZ&nbsp;&nbsp;</div><div id="aza" class="left d3">000.0</div><div id="azb" class="hide left d3">000.0</div></div>
+				<div style="float:right;"id="el"><div class="left">EL&nbsp;&nbsp;</div><div id="ela" class="left d3">000.0</div><div id="elb" class="hide left d3">000.0</div></div>
+				<div class="hide left;" id="azelS"><div class="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
+				<div style="float:left;width:100%" class="hide" id="relS">&nbsp;</div>
+				<div style="float:left;" id="rel"><div class="left">REL&nbsp;</div><div id="rela" class="left d3">000.1</div></div>
+				<div class="hide left" id="trac"><div class="left">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
+				<div class="right" id="agcant"><div class="left">AGC &nbsp;</div><div id="agca" class="agc left">0000</div></div>
+				<div class="hide left" id="pol"><div class="left">POL&nbsp;</div><div id="pola" class="left">0120</div></div>
+				<div class="hide left;" id="refl"><div class="left">REFLECT&nbsp;</div><div id="refla" class="left nsew">&nbsp;A</div></div>
+			</div>
+			<div id="status1" class="screen hide">
+				<div class="left" id="ctl"><div class="left">CONTROL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
+				
+				<div class="left" id="track"><div class="left">TRACKING&nbsp;</div><div class="left"id="tracka">&nbsp;&nbsp;&nbsp;ON&nbsp;</div><div class="left hide"id="block">&nbsp;BLOCK</div><div class="right"id="trackb">&nbsp;C</div></div>
+				<div class="hide left" id="srh"><div class="left">SEARCH&nbsp;</div></div><div class="hide right" id="srha" ><div class="left">ON&nbsp;&nbsp;&nbsp;</div></div>
+				<div class="hide left" id="sts"><div class="left">STATUS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
+				<div class="hide left" id="err"><div class="left">ERROR&nbsp;&nbsp;</div><div id="erra" class="left d4">0000</div><div class="left">&nbsp;&nbsp;</div><div id="errb" class="left d4">0000</div> </div>
+				<div class="hide left" id="rmt"><div class="left">REMOTE AUX&nbsp;</div><div id="rmta" class="left d4">0000</div></div>
+			</div>
+			<div id="setup" class="screen hide">
+				<div class="left" id="stp"><div class="left">SETUP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
+				<div class="left" id="atrm">&nbsp;AUTO&nbsp;TRIM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				<div class="hide left" id="eltrm"><div class="left">EL&nbsp;TRIM&nbsp;&nbsp;</div><div id="eltrma" class="left trim">&nbsp;0000</div></div>
+				<div class="hide left" id="aztrm"><div class="left">AZ&nbsp;TRIM&nbsp;&nbsp;</div><div id="aztrma" class="left trim">&nbsp;0000</div></div>
+				<div class="hide left" id="attrs"><div class="left">AUTO&nbsp;THRES&nbsp;&nbsp;&nbsp;</div><div id="attrsa" class="left d4">0100</div></div>
+				<div class="hide left" id="elstp"><div class="left">EL&nbsp;STEP&nbsp;SIZE&nbsp;</div><div id="elstpa" class="left d4">0000</div></div>
+				<div class="hide left" id="azstp"><div class="left">AZ&nbsp;STEP&nbsp;SIZE&nbsp;</div><div id="azstpa" class="left d4">0000</div></div>
+				<div class="hide left" id="stitg"><div class="left">STEP&nbsp;INTEGRAL&nbsp;</div><div id="stitga" class="left d4">0000</div></div>
+				<div class="hide left" id="srhinc"><div class="left">SEARCH&nbsp;INC&nbsp;&nbsp;&nbsp;</div><div id="srhinca" class="left d4">0010</div></div>
+				<div class="hide left" id="srhlm"><div class="left">SEARCH&nbsp;LIMIT&nbsp;</div><div id="srh_limit" class="left d4">0100</div></div>
+				<div class="hide left" id="srhdl"><div class="left">SEARCH&nbsp;DELAY&nbsp;</div><div id="srhdla" class="left d4">0030</div></div>
+				<div class="hide left" id="spic"><div class="left">SWEEP&nbsp;INC&nbsp;&nbsp;&nbsp;&nbsp;</div><div id="spica" class="left d4">0192</div></div>
+				<div class="hide left" id="smtp"><div class="left">SYSTEM&nbsp;TYPE&nbsp;&nbsp;</div><div id="smtpa" class="left d4">0005</div></div>
+				<div class="hide left" id="gotp"><div class="left">&nbsp;GYRO&nbsp;TYPE&nbsp;&nbsp;&nbsp;</div><div id="gotpa" class="left d4">0002</div></div>
+				<div class="hide left" id="pgtp"><div class="left">POLANG&nbsp;TYPE&nbsp;&nbsp;</div><div id="pgtpa" class="left d4">0072</div></div>
+				<div class="hide left" id="plot"><div class="left">&nbsp;POL&nbsp;OFFSET&nbsp;&nbsp;</div><div id="plota" class="left d4">0030</div></div>
+				<div class="hide left" id="plse"><div class="left">&nbsp;POL&nbsp;SCALE&nbsp;&nbsp;&nbsp;</div><div id="plsea" class="left d4">0090</div></div>
+				<div class="hide left" id="az1"><div class="left">&nbsp;AZ&nbsp;LIMIT&nbsp;1&nbsp;&nbsp;</div><div id="az1a" class="left d4">0000</div></div>
+				<div class="hide left" id="az2"><div class="left">&nbsp;AZ&nbsp;LIMIT&nbsp;2&nbsp;&nbsp;</div><div id="az2a" class="left d4">0000</div></div>
+				<div class="hide left" id="el12"><div class="left">&nbsp;EL&nbsp;LIMIT&nbsp;12&nbsp;</div><div id="el12a" class="left d4">0900</div></div>
+				<div class="hide left" id="az3"><div class="left">&nbsp;AZ&nbsp;LIMIT&nbsp;3&nbsp;&nbsp;</div><div id="az3a" class="left d4">0000</div></div>
+				<div class="hide left" id="az4"><div class="left">&nbsp;AZ&nbsp;LIMIT&nbsp;4&nbsp;&nbsp;</div><div id="az4a" class="left d4">0000</div></div>
+				<div class="hide left" id="el34"><div class="left">&nbsp;EL&nbsp;LIMIT&nbsp;34&nbsp;</div><div id="el34a" class="left d4">0900</div></div>
+				<div class="hide left" id="az5"><div class="left">&nbsp;AZ&nbsp;LIMIT&nbsp;5&nbsp;&nbsp;</div><div id="az5a" class="left d4">0000</div></div>
+				<div class="hide left" id="az6"><div class="left">&nbsp;AZ&nbsp;LIMIT&nbsp;6&nbsp;&nbsp;</div><div id="az6a" class="left d4">0000</div></div>
+				<div class="hide left" id="el56"><div class="left">&nbsp;EL&nbsp;LIMIT&nbsp;56&nbsp;</div><div id="el56a" class="left d4">0900</div></div>
+				<div class="hide left" id="5vot"><div class="left">&nbsp;&nbsp;5v&nbsp;OFFSET&nbsp;&nbsp;</div><div id="5vota" class="left d4">0000</div></div>
+				<div class="hide left" id="5plse"><div class="left">&nbsp;&nbsp;5v&nbsp;SCALE&nbsp;&nbsp;&nbsp;</div><div id="5plsea" class="left d4">0000</div></div>
+				<div class="hide left" id="txpl"><div class="left">TX&nbsp;POLARITY&nbsp;&nbsp;</div><div id="txpla" class="left d4">0002</div></div>
+				<div class="hide left" id="tkdp"><div class="left">&nbsp;TRACK&nbsp;DISP&nbsp;&nbsp;</div><div id="tkdpa" class="left d4">0000</div></div>
+				<div class="hide left" id="savep"><div class="left">SAVE&nbsp;NEW&nbsp;PARAMETERS</div></div>
+				<div class="hide left" id="saveps"><div class="left">PARAMETERS&nbsp;SAVED&nbsp;</div></div>
+			</div>
+			<div id="remote-screen" class="screen hide">
+				<div style="float:left;" class="rmt-cmd"><div class="left">REMOTE&nbsp;COMMAND</div></div><div style="float:right;"class="rmt-cmd"><div class="left rmt-cmda">@0000</div></div>
+				<div style="float:left;" class="rmt-mon hide"><div class="left">REMOTE&nbsp;MONITOR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div><div style="float:left;" class="rmt-mon hide"><div class="left">relpy to edit</div></div>
+				<div style="float:left;" class="rmt-dish hide"><div class="left">REMOTE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div><div style="float:left;" class="rmt-dish hide"><div class="left">&nbsp;DISHSCAN&nbsp;</div><div id="rmt-dish" style="float:left;">ON</div></div>
+				<div style="float:left;" class="rmt-sat-ref hide"><div class="left">REMOTE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div><div style="float:left;" class="rmt-sat-ref hide"><div class="left">&nbsp;SAT REF&nbsp;</div><div id="rmt-sat-ref" style="float:left;">ON</div></div>
+				<div style="float:left" class="hide" id="rmt-tilt"><div class="left">REMOTE&nbsp;TILT</div></div>
+				<div style="float:left;" class="hide" id="rmt-bal"><div class="left">REMOTE&nbsp;BALANCE</div></div>
+				<div style="float:left;" class="hide" id="rmt-savep"><div class="left">REMOTE&nbsp;PARAMETERS</div></div>
+				<div style="float:left;" class="hide" id="rmt-saveps"><div class="left">SAVED&nbsp;</div></div>
+			
+			</div>
+			
+			<!--buttons only-->
+			<div id="buttons" style="position:relative;border:0px solid blue;border-style:dashed;left:604px;top:0px;width:400px;height:120px;">
+			<canvas id="next-line" width="210" height="126"style="position:absolute;left:60px;">Your browser does not support the HTML5 canvas tag.</canvas>				
+			<script>
+							  var canvas_line = document.getElementById('next-line');
+							  var ctx_line = canvas_line.getContext('2d');
+									ctx_line.strokeStyle = 'white';
+									ctx_line.lineCap="round";
+									ctx_line.lineWidth = 6;
+									ctx_line.beginPath();
+									ctx_line.moveTo(10,24);
+									ctx_line.lineTo(40,24);
+									ctx_line.quadraticCurveTo(36,8,76,8);
+									
+									ctx_line.stroke();
+								
+
+							  
+							</script>
+				<div id="next_txt" class="text">
+					Ship<br>Satellite<br>Antenna<br>Status
+				</div >
+				<div id="next_track" style="position:absolute;border:0px solid red;left:100px;top:10px;width:100px;height:110px;">
+				<button id="Next"class="oval_button">NEXT</button><br><button id="Track"class="oval_button" style="bottom:26px;">TRACK</button>
+				<div id="Next"class="arrow-up"></div>
+				</div >
+				
+				<div id="arrow_buttons" style="position:absolute;border:0px solid green;left:170px;top:-10px;width:210px;height:126px;">
+					<canvas id="arrow-buttons" width="210" height="126">Your browser does not support the HTML5 canvas tag.</canvas>
+					
+					<span class="setup"style="left:6px;">Setup</span>
+					<span class="setup"style="left:160px;">Setup</span>
+					<div id="Up"></div>
+					<div id="Down"></div>
+					<div id="Left" onmouseenter="leftHover() "onmouseleave="bothOut()"></div>
+					<div id="Right" onmouseenter="rightHover()"onmouseleave="bothOut()"></div>
+					<div id="Both" onmouseenter="leftHover(), rightHover()"onmouseleave="bothOut()"></div>
+					<script>
+					function leftHover(){$("#Left").css("border-right","14px solid#5E5E5E ");}
+					function rightHover(){$("#Right").css("border-left","14px solid#5E5E5E ");}
+					function bothOut(){$("#Left").css("border-right","14px solid black ");$("#Right").css("border-left","14px solid black ");}
+					</script>
+				</div>
+				<div id="enter_reset" style="position:absolute;border:0px solid red;left:380px;top:10px;width:100px;height:110px;">
+				<button id="Enter"class="oval_button">ENTER</button><br><button id="Reset"class="oval_button_b"style="bottom:26px;" >RESET</button>
+				
+					
+				</div >
+							<script>
+							  var canvas = document.getElementById('arrow-buttons');
+							  var ctx = canvas.getContext('2d');
+							  
+								ctx.translate(104,60);
+								 
+								ctx.rotate(-Math.PI / 2);
+								for (var i = 0; i < 2; i++) {
+									ctx.beginPath();
+									
+									ctx.rotate(Math.PI);
+									ctx.moveTo(-34,-34);
+									
+									ctx.lineTo(-15,-15);
+									ctx.arcTo(0,-5,15,-15,10);
+									ctx.lineTo(15,-15);
+									ctx.lineTo(34,-34);
+									ctx.arcTo(40,-38,38,-45,10);
+									
+									ctx.bezierCurveTo(30,-120,-30,-120,-38,-45);
+									ctx.arcTo(-40,-38,-34,-34,10);
+									ctx.strokeStyle = 'white';
+									ctx.closePath();
+									ctx.fillStyle = 'white';
+									ctx.fill();
+									ctx.stroke();
+								}
+								for (var i = 0; i < 4; i++) {
+									ctx.beginPath();
+									
+									ctx.rotate(Math.PI / 2);
+									ctx.moveTo(-35,-40);
+									ctx.lineTo(-10,-15);
+									ctx.arcTo(0,-5,10,-15,10);
+									ctx.lineTo(10,-15);
+									ctx.lineTo(35,-40);
+									ctx.bezierCurveTo(41,-60,-41,-60,-35,-40);
+									ctx.strokeStyle = '#A4A9AA';
+									ctx.closePath();
+									ctx.fillStyle = '#A4A9AA';
+									ctx.fill();
+									ctx.stroke();
+								}
+								for (var i = 0; i < 4; i++) {
+									ctx.beginPath();
+									ctx.lineJoin="round";
+									ctx.lineWidth = 5;
+									ctx.rotate(Math.PI / 2);
+									ctx.moveTo(0,-45);
+									ctx.lineTo(-15,-30);
+									ctx.lineTo(15,-30);
+									ctx.strokeStyle = 'black';
+									ctx.closePath();
+									ctx.stroke();
+								}
+							  
+							  
+							</script>
+			</div>
+			
+		</div>
+		
+		</div>
+	</div>
+	
+</div>
+</body>
+</html>
+ <script src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="js/doc-name.js"></script>
+<script type="text/javascript" src="js/top_functions.js?v=0"></script>
+<script type="text/javascript" src="js/functions.js?v=0"></script>
+<script type="text/javascript" src="js/compass_func.js?v=0"></script>
+
+<script>
+window.onload = function() {$('#ship,#satellite,#antenna,#information_screen').hide();$("#udrline").hide();
+comp();
+parent.complete();
+}
+compass_nonrefresh();
+	function compass_nonrefresh(){
+		var ctx = document.getElementById('cir_nonrefresh').getContext('2d');
+		ctx.setTransform(1, 0, 0, 1, 0, 0);
+		ctx.clearRect(0, 0, 420, 420);
+		//ctx.fillStyle = 'white';
+		ctx.translate(150, 150);
+		
+		ctx.beginPath();
+		ctx.strokeStyle = 'black';
+		ctx.arc(0,0,140,0,2*Math.PI);
+		ctx.stroke();
+		ctx.lineWidth = 2;
+		ctx.lineCap = 'round';
+		for (var i = 0; i < 36; i++) {
+			ctx.beginPath();
+			ctx.strokeStyle = 'black';
+			ctx.rotate(Math.PI / 18);
+			ctx.moveTo(138, 0);
+			ctx.lineTo(142, 0);
+			ctx.stroke();
+		  }
+		 
+		 // 90 marks
+		
+		  for (var i = 0; i < 4; i++) {
+			ctx.beginPath();
+			ctx.strokeStyle = 'red';
+			ctx.rotate(Math.PI / 2);
+			ctx.moveTo(124, 0);
+			ctx.lineTo(146, 0);
+			ctx.stroke();
+		  }
+		 
+		// 45 marks
+		 
+		  ;ctx.rotate(Math.PI / 4);
+		  for (var i = 0; i < 4; i++) {
+			ctx.beginPath()
+			ctx.strokeStyle = 'blue';
+			ctx.rotate(Math.PI / 2);
+			ctx.moveTo(130, 0);
+			ctx.lineTo(146, 0);
+			ctx.stroke();
+		  }
+		
+	}
+
+
+</script>
+ 
+
