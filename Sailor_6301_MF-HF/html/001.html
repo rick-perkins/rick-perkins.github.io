@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html>
+<head><title>Cobham Satcom VSAT, TVRO and Saliite baisics</title>
+<meta charset="utf-8">
+<script src="../js/jquery-3.3.1.js"></script>
+
+
+
+<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+<STYLE type="text/css" media="screen">
+.pointer {cursor: pointer;}	
+#menu_buttons div{
+	border:transparent solid 2px;
+	border-radius:12px;
+	margin:0px 0px 26px 0px;
+	height:26px;
+	width:59px;}
+#menu_buttons div:hover{
+	border:#00A4F2 solid 2px;
+	}
+#num_buttons span{
+	display:inline-block;
+	border:transparent solid 2px;
+	border-radius:30px;
+	height:56px;
+	width:56px;
+	margin:0px 11px 10px 0px;}
+#num_buttons span:hover{
+	border:#00A4F2 solid 2px;
+	}
+#mode:hover{
+	border:#00A4F2 solid 2px;
+	border-radius:30px;
+	}	
+#spk:hover{
+	border:#00A4F2 solid 2px;
+	border-radius:30px;
+	}
+#distress{visibility:hidden;}
+#distressa:hover #distress{visibility: visible;}
+#rf_knob_a, #dim_knob_a, #pwr_knob_a{transform:rotate(0deg);}
+.hide{display:none;}
+</style>
+
+
+	
+</head>
+<body>
+
+
+
+
+<div id="container">
+	<div id="body" style="">
+
+		<div style="position:relative;width:949px;height:421px;background-image:url('../img/6301.png');background-repeat: no-repeat;">
+			<div id="screen" style="position:absolute;top:52px;left:416px;width:260px;height:195px;background-color:#7FCFFF;color:#000;">
+				<img id="mute" class="hide" src="../img/mute.png" style="position:absolute;right:0px;top:0px;height:24px;"><img id="mute_red" class="hide" src="../img/mute_red.png" style="position:absolute;right:0px;top:0px;height:24px;">
+				<span id="text">screen text</span>
+				<div id="brightness" class="hide" style="position:absolute;top:80px;left:30px;width:200px;height:40px;border:1px solid #000;">
+					<div>Brightness</div>
+					<div id="brightness_br" style="height:10px;width:100px;background-color:#000;margin:5px 0px;"></div>
+				</div>
+				<div id="volume" class="hide" style="position:absolute;top:80px;left:30px;width:200px;height:40px;border:1px solid #000;">
+					<div>Volume</div>
+					<div id="volume_br" style="height:10px;width:100px;background-color:#000;margin:5px 0px;"></div>
+					</div>
+			</div>
+			<div id="distressa" style="position:absolute;top:327px;left:148px;width:95px;height:84px;">
+			<img id="distress" class="pointer" style="position:absolute;top:0px;left:0px;" src="../img/distress_cover.png" alt=""></div>
+			<img id="rf_knob_a"  style="position:absolute;top:335px;left:248px;" src="../img/rf_knob.png" alt="">
+			<span id="rf_knob" class="pointer" style="position:absolute;top:335px;left:248px;width:59px;height:59px;"></span>
+			<img id="pwr_knob_a"  style="position:absolute;top:300px;left:400px;" src="../img/pwr_knob.png" alt="">
+			<span id="pwr_knob" class="pointer" style="position:absolute;top:300px;left:400px;width:117px;height:117px;"></span>
+			<img id="dim_knob_a"  style="position:absolute;top:300px;left:574px;" src="../img/dim_knob.png" alt="">
+			<span id="dim_knob" class="pointer" style="position:absolute;top:300px;left:574px;width:117px;height:117px;"></span>
+			<div id="menu_buttons" style="position:absolute;top:50px;left:321px;width:80px;height:200px;">
+				<div id="menu_1" class="pointer"></div><div id="menu_2" class="pointer"></div><div id="menu_3" class="pointer"></div><div id="menu_4" class="pointer"></div>
+			</div>
+			<div id ="num_buttons" style="position:absolute;top:26px;left:720px;height:283px;width:216px;">
+				<span id="num_1" class="pointer"></span><span id="num_2" class="pointer"></span><span id="num_3" class="pointer"></span>
+				<span id="num_4" class="pointer"></span><span id="num_5" class="pointer"></span><span id="num_6" class="pointer"></span>
+				<span id="num_7" class="pointer"></span><span id="num_8" class="pointer"></span><span id="num_9" class="pointer"></span>
+				<span id="num_ch" class="pointer"></span><span id="num_0" class="pointer"></span><span id="rx_tx" class="pointer"></span>
+			</div>
+			<div id="mode" class="pointer" style="position:absolute;top:334px;left:720px;height:56px;width:56px;"></div>
+			<div id="spk" class="pointer" style="position:absolute;top:334px;left:791px;height:56px;width:128px;"></div>
+			
+			
+			
+		</div>
+		
+		<div><span id="mouse"></span></div>
+		<div id="angle2"></div>
+	</div>
+	<div id="footer">Terminology
+		<!--<div class="footerbutton back"><a href="001b.html" class="footerlink">&lt; Back</a></div>-->
+		<div class="footerbutton"><a href="001a.html" class="footerlink">Next &gt;</a></div>
+	</div>
+</div>
+</body>
+
+<script type="text/javascript" src="../js/functions.js?v=0"></script>
+
+
+</html>
+ 
+ 
+
