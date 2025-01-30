@@ -1,0 +1,183 @@
+html,
+Body{
+	font-family:Tahoma;
+	margin:0px 0px;
+	height:100%;
+	font-size:10pt;
+	
+	}
+
+#container {
+	min-height:100%;
+	max-width:1220px;
+	position:relative;margin:0px 0px;
+	}
+#body {	position:absolute;
+		padding:0px;
+		width:1212px;
+		height:574px;
+		/* padding all except bottom*/
+		padding-bottom:26px;
+		margin:0px 0px;padding-left:4px;
+		
+		}
+html,body {
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+}
+h1 {
+    display:block;
+    font-size: 2em;
+	margin:0px;
+	padding-left:4px;
+	color:rgb(118,134,146);
+	width:1212px;
+	height:40px;
+    font-weight: bold;
+	background-color:rgb(238,242,243);
+	border-radius:0 10px 0 0;
+}
+h1 img{float:right;height:38px;padding-right:10px;}
+input, option, select{font-family:Tahoma;
+			font-size:12px;
+}
+#heading{color:rgb(255,255,255);
+		font-weight:bold;
+		font-size:24pt}	
+#subheading, .contents{color:rgb(255,255,255);
+			font-weight:bold;
+			font-size:18pt}
+.contents{color:#FFF;}
+#direct{	margin:0px;
+		position:relative;
+		/*background-color:rgba(255,130,0,0.4);
+		border:1px solid rgba(255,130,0,0.6);*/
+		border-radius:10px 10px 0px 0px;
+		left:0px;
+		top:0px;
+		width:138px;
+		height:612px;
+		}
+#menufooter{position:relative;
+		height:28px;
+		width:138px;
+		background-color:rgba(118,134,146,1);
+		border-width:0px 1px;
+		border-style: solid;
+		border-color:rgba(118,134,146,1);
+		border-radius:0px 0px 0px 10px;
+		
+		}
+#menu{		margin:0px;
+		position:absolute;
+		/*background-color:rgba(255,130,0,1);
+		border:1px solid rgba(255,130,0,1);
+		border-radius:5px 5px 5px 5px;*/
+		left:5px;
+		top:5px;
+		width:126px;
+		color:#FFF;}
+.menulink{color:#FFF;	
+  	font-size:12px;
+   	text-decoration: none;
+	transition: all .3s ease-in;}
+.menulink:hover{color:rgba(118,134,146,1);padding-left:5px;}
+/* footer start*/
+#footer {position:absolute;		
+		bottom:0px;
+		width:100%;		
+		height:28px;			/* Height of the footer */
+		padding:0px;		
+		background-color:rgba(118,134,146,1);
+		border-radius:0px 0px 10px 0px;
+		margin: 0px -4px;
+		font-size:16px;
+		text-align:center;
+	line-height: 28px;
+	color:#FFF;
+	font-weight:bold;
+}
+#footer a{position:absolute;
+		background-color:rgba(118,134,146,1);
+		border:1px solid rgba(118,134,146,1);
+		border-radius:5px;
+		width:80px;
+		height:22px;
+		text-align:center;
+		line-height: 22px;
+		right:4px;
+		top:2px;
+		color:rgba(255,255,255,1);
+		font-size:16px;
+   	text-decoration: none;
+	transition: all .3s ease-in;}
+#footer .back{right:90px;}
+#footer .back-complete{right:110px;}
+#footer .complete{width:100px;}
+#footer a:hover{background-color:rgba(255,255,255,1);border:1px solid rgba(255,255,255,1);color:rgba(39,106,161,1);}
+
+a.textlink:hover {color:violet;}
+.footerlink { 	
+   	color:yellow;	
+  	font-size:16px;
+   	text-decoration: none;
+
+}
+a.footerlink:hover {color:pink;}
+#close{position:absolute;
+		background-color:rgba(118,134,146,1);
+		border:1px solid rgba(118,134,146,1);
+		border-radius:5px;
+		width:80px;
+		height:22px;
+		text-align:center;
+		line-height: 22px;
+		left:4px;
+		bottom:2px;
+		color:rgba(255,255,255,1);
+		font-size:16px;
+   	text-decoration: none;
+	transition: all .3s ease-in;}
+#close:hover{background-color:rgba(255,255,255,1);border:1px solid rgba(255,255,255,1);color:rgba(39,106,161,1);}
+
+
+
+/* footer finish*/
+/*contents page*/
+.contents{color:#FFF;
+			font-weight:bold;
+			font-size:18pt}
+.contents ul ul{font-size:14pt}
+#coffee-div{position:absolute;
+	bottom:30px;
+	width:100%;
+	z-index:4;}
+#coffee-text{text-align:center;
+	}
+#coffee{height:238px;
+	width:250px;
+	margin:0px auto;
+	
+	background-image:url("../default/img/coffee.png");
+	 animation: play .8s steps(2) infinite;}
+@keyframes play {
+	100% { background-position: -500px; }
+}
+
+.linkblue
+{
+   color:#16a6d0;	
+   font-size:16px;
+   text-decoration: none;
+}
+#imarev{color:black;}
+
+
+
+.sailor{text-transform: uppercase;font-weight:bold;color:#000;}
+.seatel{color:#00A4F2;font-weight:bold}
+.click-text{cursor: pointer;}
+.importent-notes{color:#FF0000;}
+.click-text:hover{color: #00A4F2;}

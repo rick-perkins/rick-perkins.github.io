@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<head><title>Sea Tel DAC2202 Simulator</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/index_styles.css" />
+<STYLE type="text/css" media="all">
+	#body {
+		width:100%;
+		height:641px;
+		/* padding all except bottom*/
+		padding-bottom:26px;
+		margin:0px 0px;
+		}
+
+
+</style>
+</head>
+
+<body >
+	<div id="main_window"style="position:absolute;margin:auto;top:0;right:0;bottom:0;left:0;width:1360px;height:640px;">
+		<div id="a">
+			 <div id="body" style="padding:0px;">
+				<canvas  id="canvas_background" width="1360" height="640" >Your browser does not support the HTML5 canvas tag.</canvas>
+				<script>
+				var canvas = document.getElementById('canvas_background')
+				var ctx = canvas.getContext('2d');
+				var w = canvas.width,
+				h = canvas.height;
+				ctx.beginPath();
+				ctx.fillStyle = "rgba(35,97,146,1)";
+				ctx.moveTo(0,0);ctx.lineTo(w,0);ctx.lineTo(w,h);ctx.lineTo(0,h);ctx.closePath();
+				ctx.fill();
+				ctx.stroke();
+				ctx.strokeStyle = "rgba(39,106,161,1)";
+				ctx.lineWidth = 18;
+				ctx.beginPath();
+				ctx.arc(10, 150, 120, 0, 2 * Math.PI);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.arc(320, 150, 120, 0, 2 * Math.PI);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(520,30);ctx.lineTo(520,270);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.arc(w-10, h-178, 120, 0, 2 * Math.PI);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(w-210,(h-298));ctx.lineTo(w-210,h-58);
+				ctx.stroke();
+				</script>
+				
+				<img style="position:absolute;right:56px;width:230px;top:26px;"src="default/img/cobham.png" >
+				<div style="position:absolute;right:56px;width:230px;top:66px;color:#FFF;font-size:16px;">WHEN CONNECTION MATTERS</div>
+					
+					
+
+				<div style="position:absolute;top:360px;left:56px;">
+					<div id="heading" class="title" style="text-align:right;"><p></p></div>
+					<div id="subheading" class="rev" style="text-align:left;"><p></p></div>
+					<div id="subheading" style="text-align:left;"><p></p></div>
+				</div>
+			</div>
+			<div style="margin:0px;position:absolute;bottom:0px;width:100%;height:28px;padding:0px;">
+				
+				<div id="footer" style="background:none;"><a id="starta" href="#" >Start</a></div>
+			</div>
+		</div>
+		<!--<div  style="float:left;">
+		<iframe id="left"src="" style="width:140px;height:640px;border:0px;display:hide;"></iframe>
+		</div>-->
+		<div style="float:left;">
+		<iframe id="main" name="main" src="" scrolling="no" style="width:1360px;height:640px;border:0px;display:hide;  overflow:hidden;"></iframe>
+		<a id="close" onclick="end(); return false;" href="#" >Postpone</a>
+		<div style="position:absolute;bottom:4px;right:658px;color:#FF0000;">EAR Controlled - ECCN EAR99</div>
+		</div>
+	</div>
+</body>
+<script src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="js/doc-name.js"></script>
+<script>
+window.onload = function() {
+	init();
+}
+
+</script>
+<script src="js/SCORM_API_wrapper.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+var scorm = pipwerks.SCORM;
+//creating shortcut for less verbose code
+var bookmark, initialized, status;
+var url = "000";
+var start = 0;
+
+function init(){
+	//Specify SCORM 1.2:
+	scorm.version = "1.2";
+	show("Initializing course.");
+	var callSucceeded = scorm.init();
+	//alert("Call succeeded? " +callSucceeded);
+	
+
+    //Get the lesson status from the LMS
+    status = scorm.get("cmi.core.lesson_status");
+	//alert("scorm status"+status);
+    if(status === "completed"){
+	//alert("completed");
+		url = "000";
+		start = 1;
+    } else if (status === "null"){
+		//alert("no scorm");
+		url = "000";
+		start = 1;
+		}
+	else if(status === "ab-initio"){
+		//alert("not completed");
+		url = "000";
+		start = 0;
+    } 
+	else {
+		
+        //Check for a bookmark
+        bookmark = scorm.get("cmi.core.lesson_location");
+		//alert("scorm bookmark "+bookmark);
+        //If a bookmark is found, use its value as the target URL
+        if(bookmark){ 
+            url = bookmark;
+			
+			//alert("bookmark "+url);
+        }
+
+    }        
+    loadPage();
+
+}
+function loadPage(){
+	//alert("loading page "+url+".html")
+	if (url === "000"){$("#left,#main").hide();}	//displays start screen...
+	else {$("#a").hide();$("#left,#main").hide();$("#main").attr("src","html/"+url+".html");$("#main").show();$("#main_window").css("width","1220px");}// if there is a book mark then open to that page if not completed...
+
+}
+
+
+function send(){
+	var field = document.getElementById("userText"),
+		value = "Placeholder text";
+	if(field.value !== null && field.value !== ""){
+		value = field.value;
+	}
+	set('cmi.suspend_data', value);
+}
+
+function set(param, value){
+	
+	show("Sending: '" +value +"'");
+	var callSucceeded = scorm.set(param, value);
+	//alert("set"+callSucceeded)
+	show("Call succeeded? " +callSucceeded);
+}
+function get(param){
+	var value = scorm.get(param);
+	show("Received: '" +value +"'");
+}
+function complete(){
+	//alert("I am completed");
+	show("Setting course status to 'completed'.");
+	var callSucceeded = scorm.set("cmi.core.lesson_status", "completed");
+	show("Call succeeded? " +callSucceeded);
+}
+function end(){
+	//alert("I am ending");
+	show("Terminating connection.");
+	var callSucceeded = scorm.quit();
+	show("Call succeeded? " +callSucceeded);
+}
+function show(msg){
+	var debugText = document.getElementById("debugText");
+	if(debugText){
+		debugText.innerHTML += msg +"<br/>";
+	}
+	//Can also show data using pipwerks.UTILS.trace
+	pipwerks.UTILS.trace(msg);
+}
+
+
+// to set the data
+
+function next(){
+	
+	var bookmark = scorm.get("cmi.core.lesson_location");
+	//alert("book mark is "+ bookmark);
+}
+// to retrieve it later …
+window.onunload = function(){
+	end();
+}
+$(document).ready(function(){
+doc_name();
+	$("#starta").click(function(){
+		if (start == 1){$("#a").hide();$("#main").attr("src","Dac simulator.html");$("#main").show();$("#main").css("width","1360px");}
+		else {$("#a").hide();$("#main_window").css("width","1360px");$("#main").attr("src","Dac simulator.html");$("#main").show();}
+		})
+
+;})
+</script>
+
+</html>
