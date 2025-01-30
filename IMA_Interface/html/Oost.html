@@ -1,0 +1,32 @@
+<html>
+<title>OOST and IST</title>
+
+
+<head>
+
+</head>
+<body onLoad='isTestInProg();'>
+<form>
+<table class='tb'>
+  <tr><td colspan='4'>&nbsp;</td></tr>
+  <tr><td align='center' colspan='4'><h1>OOST and IST</h1></td></tr>
+  <tr><td align='left' colspan='4'><h3>Start Test</h3></td></tr>
+  <tr>
+     <td align='left'><button type='button' id='oostbtn' name='oostbtn' class='btnsm' onClick='beginTest(0);'>OOST</button>&nbsp;&nbsp; 
+     <button type='button' id='istbtn' name='istbtn' class='btnsm' onClick='beginTest(1);'>IST</button></td>
+  </tr> 
+</table>
+<br>
+<hr class='grnhr'>
+<br>
+<div id="wait"></div>
+<table>
+<tr><td><font face="arial">
+OOST is Out Of Service Test.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The antenna will perform tests which will take the antenna off satellite E.G. check the EL range.<br>
+IST is In Service Test.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The antenna will perform tests which will not result in the antenna coming off satellite E.G check internal voltages</font></td></tr></table>
+
+</form>
+</body>
+</html>

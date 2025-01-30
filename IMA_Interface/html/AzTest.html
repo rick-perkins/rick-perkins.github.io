@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+
+<head>
+ <link rel="stylesheet" type="text/css" href="styles.css" /> 
+ 
+ </head>
+<body class='bodyfont' onload='performChkSel();doOnLoad();nextGraphics(10);'> 
+<form name='graph'>
+     <h1 align='center'><font size="5" face="Tahoma">AZ Test</font></h1>
+	 <table>
+    	 <tr>
+		    <td align='left'>Zoom&nbsp;<a href='javascript:nextGraphics(10)' class='link'>Level &nbsp; 1</a>&nbsp;&nbsp;&nbsp; <a href='javascript:nextGraphics(15)' class='link'>2</a>&nbsp;&nbsp;&nbsp;<a href='javascript:nextGraphics(20)' class='link'>3</a>&nbsp;&nbsp;&nbsp;<a href='javascript:nextGraphics(25)' class='link'>4</a></td>
+	        <td colspan='3'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td>
+			<td align='right'><button type='button' id='startbtn' name='startbtn' class='btnmd1' onClick='handleSubmit(1);'>Start Test</button></td>
+			<td align='right'><button type='button' id='stopbtn' name='stopbtn' class='btnmd1' onClick='handleSubmit(0);'>&nbsp;&nbsp;&nbsp;&nbsp;Stop Test</button></td>		
+ 		    <td><input type='hidden' id='slowscanClk' name='slowscanClk' value='OFF'></td>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    	    <td align='right'>Slow Scan Vlimit</td>
+            <td align='left'><input id='ssvlmit' name='ssvlmit' value='2.0' size='6' maxlength='6'>&nbsp;deg/sec</td>
+			<td align='right'><button type='button' id='submitbtn' name='submitbtn' class='btnsm' onClick='handleSubmit();'>Submit</button></td>
+			<td align='right'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type='button' class='btnsm' onClick='centerGraph();'>Center</button></td>
+    	 </tr>
+	 </table>
+	 <table>
+<tr><td><font face="arial">
+This test is used to check the AZ bearings and friction.<br>
+When the test is started, the antenna will drive slowly in AZ for a full 360&#176, then stop and drive back in the oppersite direction.<br>
+To stop the test use the Stop Test button, if this is not done the system will stay in Slow scan mode.</font></td></tr></table>
+</form>
+</body>
+</html>

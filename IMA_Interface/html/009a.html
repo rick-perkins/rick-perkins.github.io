@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.or../img/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.or../img/1999/xhtml" xml:lang="en">
+
+<head><title>Sea Tel IMA Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+
+window.onload = function() {
+var url = "009a";
+parent.set("cmi.core.lesson_location", url);
+}
+$(document).ready(function(){
+			
+
+	
+});
+
+</script>
+
+<STYLE type="text/css" media="all">
+
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="body">
+		<h1>System Configuration</h1>
+		<div style="float:left;width:460px;">
+		All the settings on this page are related to the pedestal not the reflector.
+		<p>Autosat load on power up and search failure use to be part of the DAC system type. Which was system type 1 and 4.</p>
+		<p>Advanced settings are greyed out and are not editable fields. These settings are set via the system profile or via CLI commands.</p>
+		Please hover over the different names for more info.
+
+		
+		</div>
+		 <div style="position:absolute;border:0px solid blue;right:0px;top:0px;width:770px;height:300px;">
+		<table cellspacing='0' cellpadding='0' >  
+		  <tr><td align='left'>
+		<table align='left'class='tb' cellspacing='0' cellpadding='0'>
+		   <tr><td align='center' colspan='9'><font size=6px><strong>System Configuration</strong></font></td></tr> 
+		   <tr><td align='left' colspan='9'><h3>Blockage Zones</h3></td></tr>
+		   <tr>
+
+			 <td align='right'><a href="#" target="_blank" name="blockage" class="tooltipdd">Zone1&nbsp;  <span style="margin-left:100px;width:400px;margin-top:90px;">
+				<img class="callout" src="../img/callout_black.gif" style="left:50%;" />
+				The blockage zones are set up in the same way as they were with the DAC, you may notice AZ limit has been changed to REL because blockage zones are always set on REL and not AZ.</p>
+			</span>
+		</a></td>
+			 <td align='left'><input id='bz1desc' name='bz1desc' value='[ENTER DESCRIPTION]' size='26' maxlength='30'></td>
+			 <td align='right'>REL start&nbsp;</td>  
+			 <td align='left'><input id='bz1rels' name='bz1rels' value='0.0' size='5' maxlength='5'>&nbsp;deg</td>
+			 <td align='right'>REL end&nbsp;</td>
+			 <td align='left'><input id='bz1rele' name='bz1rele' value='0.0' size='5' maxlength='5'>&nbsp;deg</td>
+			 <td align='right'>EL&nbsp;</td>
+			 <td align='left'><input id='bz1el' name='bz1el' value='90.0' size='4' maxlength='4'>&nbsp;deg</td>
+			 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+		 </tr>
+		   <tr>
+			 <td align='right'>Zone2&nbsp;</td>
+			 <td align='left'><input id='bz2desc' name='bz2desc' value='[ENTER DESCRIPTION]' size='26' maxlength='30'></td>
+			  <td align='right'>REL start&nbsp;</td>  
+			 <td align='left'><input id='bz2rels' name='bz2rels' value='0.0' size='5' maxlength='5'>&nbsp;deg</td>
+			 <td align='right'>REL end&nbsp;</td>
+			 <td align='left'><input id='bz2rele' name='bz2rele' value='0.0' size='5' maxlength='5'>&nbsp;deg</td>
+			 <td align='right'>EL&nbsp;</td>
+			 <td align='left'><input id='bz2el' name='bz2el' value='90.0' size='4' maxlength='4'>&nbsp;deg</td>
+			 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+		   </tr>
+		   <tr>
+			 <td align='right'>Zone3&nbsp;</td>
+			 <td align='left'><input id='bz3desc' name='bz3desc' value='[ENTER DESCRIPTION]' size='26' maxlength='30'></td>
+			 <td align='right'>REL start&nbsp;</td>  
+			 <td align='left'><input id='bz3rels' name='bz3rels' value='0.0' size='5' maxlength='5'>&nbsp;deg</td>
+			 <td align='right'>REL end&nbsp;</td>
+			 <td align='left'><input id='bz3rele' name='bz3rele' value='0.0' size='5' maxlength='5'>&nbsp;deg</td>
+			 <td align='right'>EL&nbsp;</td>
+			 <td align='left'><input id='bz3el' name='bz3el' value='90.0' size='4' maxlength='4'>&nbsp;deg</td>
+			 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+		   </tr>
+		   <tr>
+			 <td align='right'>Zone4&nbsp;</td>
+			 <td align='left'><input id='bz4desc' name='bz4desc' value='[ENTER DESCRIPTION]' size='26' maxlength='30'></td>
+			 <td align='right'>REL start&nbsp;</td>  
+			 <td align='left'><input id='bz4rels' name='bz4rels' value='0.0' size='5' maxlength='5'>&nbsp;deg</td>
+			 <td align='right'>REL end&nbsp;</td>
+			 <td align='left'><input id='bz4rele' name='bz4rele' value='0.0' size='5' maxlength='5'>&nbsp;deg</td>
+			 <td align='right'>EL&nbsp;</td>
+			 <td align='left'><input id='bz4el' name='bz4el' value='90.0' size='4' maxlength='4'>&nbsp;deg</td>
+			 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+		   </tr>
+		</table>
+
+		<table align='left'class='tb' cellspacing='0' cellpadding='0' >  
+		  <tr><td align='left' colspan='6'><h3>Miscellaneous</h3></td></tr> 
+		  <tr>
+			<td width='200px'>  
+				<table cellspacing='0' cellpadding='0'>
+					<tr><td align='right'><a href="#" name="satref" class="tooltipdd">Sat Ref Mode&nbsp;
+		<span style="margin-left:-30px;width:400px;margin-top:30px;">
+				<img class="callout" src="../img/callout_black.gif" style="left:20%;" />
+				Sat Ref default is off, this function should be used when there is no gyro connected or there is an issue with the gyro for example:<br>
+		slow updating nmea gyro, lagging gyro ( delay between vessel turning and the gyro signal changing), gyro read errors.</p>
+			</span>
+		</a></td>
+						<td align='left'><input type='radio' id='satrefmode' name='satrefmode' value='ON'>On &nbsp; <input type='radio' id='strimauto' name='satrefmode' value='OFF' checked>Off</td>
+						<input type='hidden' id='satrefmodeClk' name='satrefmodeClk' value='OFF'>
+						<input type='hidden' id='gyroSel' name='gyroSel' value='NO_GYRO'>
+					 </tr>
+					 <tr><td colspan='11'>&nbsp;</td></tr>
+					 <tr><td align='right' colspan='2' id='subtitle'><a href="#" name="autosatload" class="tooltipdd">Auto Sat Load 
+		<span style="margin-left:-100px;width:400px;margin-top:80px;">
+				<img class="callout" src="../img/callout_black.gif" style="left:20%;" />
+				Both of these should on<br> 
+		Power Up means when the antenna is switched on it will retarget the last used satellite.</p><p>
+		Search Failure means when the antenna has finished a search pattern the antenna will retarget the satellite and start trying to find the satellite again.
+		</p>
+			</span>
+		</a> </td></tr>
+					 <tr><td align='right'>Power Up&nbsp;</td>
+							<td align='left'><input type='radio' id='aslreset' name='aslreset' value='ON'checked>On &nbsp; <input type='radio' id='aslreset' name='aslreset' value='OFF'>Off</td>
+							<input type='hidden' id='aslresetClk' name='aslresetClk' value='ON'>
+					 </tr>
+					 <tr><td align='right'>Search Failure&nbsp;</td>
+							<td align='left'><input type='radio' id='aslsearchfail' name='aslsearchfail' value='ON'checked>On &nbsp; <input type='radio' id='aslsearchfail' name='aslsearchfail' value='OFF'>Off</td>
+							<input type='hidden' id='aslsearchfailClk' name='aslsearchfailClk' value='ON'>
+					 </tr>	
+				</table>
+			 </td>
+			 <td width='400px'>
+				<table cellspacing='0' cellpadding='0'>
+					 <tr><td align='right'><a href="#" name="Profile" class="tooltipdd">Profile Number:&nbsp;
+		<span style="margin-left:-180px;width:400px;margin-top:50px;">
+				<img class="callout" src="../img/callout_black.gif" style="left:50%;" />
+				Profile Number is what the N0 PCU parameter used to be. 1 = 4012-91. This is linked to the profile page.</p><p>
+		Version is the version of the profile list, 14 means the list has been changed 14 times, this may be due to changes to the antenna or just adding new antennas to the profile list</p>
+			</span>
+		</a></td>
+						<td align='left'>1</td>
+					</tr>
+				   <tr><td align='right'>Profile Version:&nbsp;</td>
+						<td align='left'>14</td>
+					</tr>
+					<tr><td align='right'><a href="#" name="sn" class="tooltipdd">System SN:&nbsp;
+		<span style="margin-left:-150px;width:400px;margin-top:30px;">
+				<img class="callout" src="../img/callout_black.gif" style="left:50%;" />
+			 This is the system serial number, all spare parts will be set to all zero's and when connected to the system it will update as the system reconises zero's as a spare part. </p>
+			</span>
+		</a></td>
+						<td align='left'>4012GX13300292</td>
+					</tr> 
+					<tr><td align='right'><a href="#" name="name" class="tooltipdd">Ship Name&nbsp;
+		<span style="margin-left:-150px;width:400px;margin-top:40px;">
+				<img class="callout" src="../img/callout_black.gif" style="left:50%;" />
+			 Enter the vessel's name and Antenna name, this could be Port FWD or Port mast. </p>
+			</span>
+		</a></td>
+						<td align='left'><input id='shipname' name='shipname' value='[ENTER SHIP NAME]' size='25' maxlength='32'></td>
+					</tr>
+					<tr>
+					   <td align='right'>Antenna Name&nbsp;</td>  
+					   <td align='left'><input id='antname' name='antname' value='[ENTER DESCRIPTION]' size='25' maxlength='50'></td>
+					</tr>
+				</table>
+			</td>
+		  </tr>	 
+		</table>  
+
+		<table align='left'class='tb' cellspacing='0' cellpadding='0'> 
+		  <tr><td align='left' colspan='5'><h3>Advanced Settings</h3></td></tr> 
+		</table>  
+		<table align='left'class='tb' cellspacing='0' cellpadding='0'>
+		  <tr>
+			 <td>
+				 <table cellspacing='0' cellpadding='0'>  
+				   <tr><td align='right'>Slow Scan Vlimit&nbsp;</td>
+					   <td align='left'><input id='ssvlmit' name='ssvlmit' value='2.0' size='6' maxlength='3' disabled>&nbsp;deg/sec</td>
+				   </tr> 
+				   <tr><td align='right' nowrap>Step Resolution&nbsp;</td>
+						<td align='left'>
+							  <select id='stepreso' name='stepreso' disabled>
+								<option value='0.2'>0.2</option>
+								<option value='0.1'>0.1</option>
+								<option value='0.05'>0.05</option>
+							  </select>&nbsp;deg
+							  <input type='hidden' id='stepresoSel' name='stepresoSel' value='0.1' disabled>
+						</td>
+				   </tr>
+				   <tr><td align='right'>Antenna Model&nbsp;</td>
+						<td align='left'><input id='antmodel' name='antmodel' value='4012-91' size='15' maxlength='30' disabled></td>
+				   </tr> 
+				   <tr><td align='right'>Number of Reflectors&nbsp;</td>
+						<td align='left'><input id='numrefl' name='numrefl' value='1' size='6' maxlength='1' disabled></td> 
+				   </tr>
+				 </table>
+			  </td>
+			  <td>
+				   <table cellspacing='0' cellpadding='0'>
+					 <tr><td align='left' id='subtitle' colspan=2>Drive Orientation</td></tr>
+					 <tr> 
+						 <td align='right'>EL&nbsp;</td>
+						 <td align='left'><input type='radio' id='driveel' name='driveel' value='FWD' disabled>Forward &nbsp; <input type='radio' id='driveel' name='driveel' value='REV' disabled checked>Reverse</td>
+						 <input type='hidden' id='driveelClk' name='driveelClk' value='REV' disabled>
+					 </tr>
+					 <tr>    
+						 <td align='right'>CL&nbsp;</td>
+						  <td align='left'><input type='radio' id='drivecl' name='drivecl' value='FWD' disabled>Forward &nbsp; <input type='radio' id='drivecl' name='drivecl' value='REV' disabled checked>Reverse</td>
+							<input type='hidden' id='driveclClk' name='driveclClk' value='REV' disabled>
+					 </tr>
+					 <tr>  
+						 <td align='right'>AZ&nbsp;</td>
+						 <td align='left'><input type='radio' id='driveaz' name='driveaz' value='FWD' disabled>Forward &nbsp; <input type='radio' id='driveaz' name='driveaz' value='REV' disabled checked>Reverse</td>
+							<input type='hidden' id='driveazClk' name='driveazClk' value='REV' disabled>
+					 </tr> 
+				 </table>
+			 </td>
+			 <td>
+				   <table cellspacing='0' cellpadding='0'>
+					 <tr><td align='left' id='subtitle' colspan=2>&nbsp;Motor Gain</td></tr>
+					 <tr> 
+						<td align='right'>EL&nbsp;</td>
+						<td align='left'><input id='motorel' name='motorel' value='0.7200' size='7' maxlength='7' disabled></td>
+					 </tr>
+					 <tr>   
+						<td align='right'>CL&nbsp;</td>
+						<td align='left'><input id='motorcl' name='motorcl' value='1.5000' size='7' maxlength='7' disabled></td>
+					  </tr>
+					  <tr>    
+						<td align='right'>AZ&nbsp;</td>
+						<td align='left'><input id='motoraz' name='motoraz' value='0.4800' size='7' maxlength='7' disabled></td>
+					 </tr>
+				 </table>
+			 </td>
+			 <td>  
+				<table cellspacing='0' cellpadding='0'>
+				   <tr><td align='left' colspan=2 id='subtitle'>Reference limit</td></tr>
+				   <tr><td align='right'>EL&nbsp;</td>
+						<td align='left'><input type='radio' id='dsrefel' name='dsrefel' value='ON' disabled>On &nbsp; <input type='radio' id='dsrefel' name='dsrefel' value='OFF' disabled checked>Off</td>
+						<input type='hidden' id='dsrefelClk' name='dsrefelClk' value='OFF' disabled>
+				   </tr>
+				   <tr><td align='right'>CL&nbsp;</td>
+						<td align='left'><input type='radio' id='dsrefcl' name='dsrefcl' value='ON' disabled>On &nbsp; <input type='radio' id='dsrefcl' name='dsrefcl' value='OFF' disabled checked>Off</td>
+						<input type='hidden' id='dsrefclClk' name='dsrefclClk' value='OFF' disabled>
+				   </tr>
+				   <tr><td align='right'>AZ&nbsp;</td>
+						<td align='left'><input type='radio' id='dsrefaz' name='dsrefaz' value='ON' disabled>On &nbsp; <input type='radio' id='dsrefaz' name='dsrefaz' value='OFF' disabled checked>Off</td>
+						<input type='hidden' id='dsrefazClk' name='dsrefazClk' value='OFF' disabled>
+				   </tr>
+				</table>
+			  </td>
+			 
+		</tr>
+		</table></td></tr>
+		</table>
+		</div>
+
+	</div>
+	<div id="footer">
+		<div class="footerbutton back"><a href="009.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="010.html" class="footerlink";>Next ></a></div>
+	</div>  
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,435 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title>Sea Tel IMA Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+
+window.onload = function() {$("#showall,#versionall,#incorrect").hide();$("#blankall").show();
+var url = "014a";
+parent.set("cmi.core.lesson_location", url);
+}
+$(document).ready(function(){
+	$("#clicmdbtn").click(function(){
+		if ($("#cmdparam").val() == "show all"){  	
+			$("#showall").show();
+			$("#versionall,#blankall,#incorrect").hide();
+			$("").hide();}
+		else if ($("#cmdparam").val() == "version all"){  	
+			$("#showall,#blankall,#incorrect").hide();
+			$("#versionall").show();}
+		else if ($("#cmdparam").val() == ""){  	
+			$("#showall,#incorrect").hide();$("#blankall").show();
+			alert("Please type in a CLI command");}
+		else {$("#showall,#versionall,#blankall").hide();
+			$("#incorrect").show();}
+	});
+	
+			
+
+});
+
+
+
+
+</script>
+<STYLE type="text/css" media="all">
+
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="body">
+	<h1>CLI Command</h1>
+		<div style="float:left;width:400px;">
+			<p>This page is where you can enter in CLI commands and view the response.<br>
+			If you click on the ?, you can view the CLI command document (for the most up-to-date CLI Doc visit <a href="https://sync.cobham.com" target="_blank"> Cobham SYNC</a> )</p>
+			<p>Please try the following commands below:<br>
+			version all<br>
+			or<br>
+			show all
+		</div>
+		<div style="position:absolute;right:0;top:0px;height:200px;width:800px;"> 
+
+		<table class='tb'>
+		  <tr><td>&nbsp;</td></tr>
+		  <tr><td align='center' colspan=4><h1>CLI Command</h1></td></tr>
+		  <tr><td>&nbsp;</td></tr>
+		  <tr>
+			  <td align='right'>Command</td>
+			  <td align='left' valign='bottom' colspan='3'>&nbsp;<input id='cmdparam' name='cmdparam' value='' size='81' maxlength='84' '><button type='button' id='clicmdbtn' name='clicmdbtn' class='btnsm' >&nbsp;Submit</button></td>
+		  </tr>	
+		  <tr>
+			  <td align='right'>&nbsp;</td> 
+			  <td align='left' colspan='3'>&nbsp;(example 1: SET ANTENNA AZ_TARGET 98.5 &nbsp;&nbsp;example 2: SHOW ALL)<a href="../Documents/135163_F_CLI_Protocol.pdf" target=_blank><img  valign='middle' src="../img/questionicon.gif" /></a></td>
+		  </tr>
+		  <tr><td align='left' colspan='4'>&nbsp;</td></tr>
+		  <tr><td align='left' colspan='4'><hr class='grnhr'></td></tr> 
+		  <tr><td align='left' colspan='4'>&nbsp;</td></tr>
+		  <tr> 
+			 <td align='right'>Response&nbsp;</td>
+			 <td align='left'>
+			<div id="blankall"><textarea id='resp' name='resp' rows=20; cols=86; value=''; readonly;>
+			</textarea></div>
+			<div id="incorrect"><textarea id='resp' name='resp' rows=20; cols=86; value=''; readonly;>
+Command not found
+			</textarea></div>
+			<div id="versionall"><textarea id='resp' name='resp'rows=20; cols=86; value=''; readonly;>
+MXP : 186 (Build:225248) - May 21 2018 12:52:40
+ICU : 186 (Build:225248) - May 21 2018 12:52:40
+MDB (Running): 2.07
+			</textarea></div>
+			<div id="showall"><textarea id='resp' name='resp' rows=20; cols=86; value=''; readonly;>
+ANTENNA
+   AZ_TARGET = 0.0
+   CIRCULAR_POL_TARGET = 0.0
+   CL_TARGET = 0.0
+   DIFF_AZ_TARGET = 0.0
+   DIFF_CL_TARGET = 0.0
+   DIFF_EL_TARGET = 0.0
+   DUAL_MODE = OFF
+   EL_TARGET = 45.0
+   LINEAR_POL_TARGET = 0.0
+   MODEL = [Enter Model]
+   NAME = [Enter Description]
+   SEARCHING = OFF
+   TRACKING = OFF
+
+INTERFACE
+   ALARM
+      ALARM1
+         CONTENTS = [ENTER ERROR CODES]
+         ENABLE = OFF
+      ALARM2
+         CONTENTS = [ENTER ERROR CODES]
+         ENABLE = OFF
+   BAUDRATE
+      ICU
+         CONSOLE = 115200
+      MXP
+         AUX232 = 9600
+         CONSOLE = 4800
+         NMEA_0183 = 4800
+         OBM_MODEM = 4800
+      PASSTHROUGH = 9600
+      RF_M&C = 9600
+   BUC
+      GAIN = 70
+      HIGH_FREQ = 1500
+      LOW_FREQ = 1280
+   CONSOLE
+      FLOW_CTRL = OFF
+      MODE = CLI
+   FRONT_PANEL_LOCK = OFF
+   GPS
+      GPS_ID = RMC
+      PORT = INTERNAL
+   GYRO
+      HEADING = 0.0
+      HEADING_ID = HDT
+      PORT = NMEA_0183
+      TYPE = FIXED
+   MODEM
+      IP_V4 = 192.168.1.5
+      PASSWORD = iDirect
+      USERNAME = admin
+   NETWORK
+      BUCIP
+         V4 = 192.168.0.12
+      DNS
+         V4 = 10.1.1.205
+      GATEWAY
+         V4 = 192.168.1.1
+      IP
+         V4 = 10.1.1.4
+      MAC = 00:04:A3:2E:08:AC
+      NETMASK
+         V4 = 255.255.255.0
+      SECURE_WEB
+         ENABLE = ON
+         PORT = 443
+      TCP:0
+         ENABLE = ON
+         MODE = LEGACY
+         PORT = 2000
+         SECURE = OFF
+      TCP:1
+         ENABLE = ON
+         MODE = LEGACY
+         PORT = 2001
+         SECURE = OFF
+      TCP:2
+         ENABLE = ON
+         MODE = OPENAMIP
+         PORT = 2002
+         SECURE = OFF
+      TCP:3
+         ENABLE = ON
+         MODE = CLI
+         PORT = 2003
+         SECURE = ON
+      UDP
+         ENABLE = ON
+         MODE = ROAM
+         PORT = 49184
+      WEB
+         ENABLE = ON
+         PORT = 80
+   NMEA_0183
+      INTERVAL
+         1 = 5
+         2 = 5
+         3 = 1
+         4 = 1
+      MESSAGE
+         1 = GLL
+         2 = GGA
+         3 = OFF
+         4 = OFF
+   PRIMARY_REFLECTOR
+      BLOCKAGE_OUT = HI_BLOCK
+      MODEM_IO = TMS_1
+      MODEM_TYPE = CUSTOM
+      TMS1_BLOCKAGE_PUP = ON
+      TMS1_IN_LEVEL = 12V
+      TMS1_XMOD_LOCK_PUP = ON
+      TMS2_BLOCKAGE_PUP = ON
+      TMS2_IN_LEVEL = 12V
+      TMS2_XMOD_LOCK_PUP = OFF
+      XMOD_LOCK = ON
+      XMOD_LOCK_IN_POL = LOW_LOCK
+   SECONDARY_REFLECTOR
+      BLOCKAGE_OUT = HI_BLOCK
+      MODEM_IO = MODEM_RJ45
+      MODEM_TYPE = CUSTOM
+      TMS1_BLOCKAGE_PUP = ON
+      TMS1_IN_LEVEL = 12V
+      TMS1_XMOD_LOCK_PUP = OFF
+      TMS2_BLOCKAGE_PUP = ON
+      TMS2_IN_LEVEL = 12V
+      TMS2_XMOD_LOCK_PUP = OFF
+      XMOD_LOCK = ON
+      XMOD_LOCK_IN_POL = LOW_LOCK
+   SERIAL
+      OBM = ON
+      RF_M&C = RS232
+   USB_PORT
+      MODE = CLI
+
+SATELLITE
+   BAND = 2
+   DESCRIPTION = [Enter Description]
+   FREQ = 1234.567
+   LNB = XPOL
+   LON = 101.0 W
+   REFLECTOR = PRIMARY_REFLECTOR
+   SEARCH_PATTERN = SPIRAL
+   SKEW = 0.0
+   SKEW_DATABASE
+   SKEW_DB_FLAG = OFF
+   THRESHOLD
+      AUTO_MODE = ON
+      AUTO_OFFSET = 100
+      VALUE = 50
+   TX_POL = H
+
+SHIP
+   COG = 0.0
+   HEADING = 0.0
+   LAT = 0.000000 N
+   LON = 0.000000 W
+   NAME = Test1
+   SOG = 0.00
+
+STATUS
+   ANTENNA
+      AGC = 79
+      AZ = 0.0
+      CIRCULAR_POL = -108.2
+      CL = -89.2
+      EL = -1.0
+      INITIALIZING = OFF
+      JOINT_CL = 0.0
+      JOINT_EL = 45.0
+      LINEAR_POL = 364.3
+      RELATIVE = 0.0
+      SEARCHING = OFF
+      TARGETING = OFF
+      TRACKING = OFF
+   SATELLITE
+      BAND = 2
+      FREQ = 1234.567
+      LNB = XPOL
+      LON = 101.0 W
+      REFLECTOR = PRIMARY_REFLECTOR
+      SEARCH_PATTERN = SPIRAL
+      SKEW = 0.0
+      THRESHOLD = 50
+      TX_POL = H
+   SHIP
+      HEADING = 0.0
+      LAT = 0.000000 N
+      LON = 0.000000 W
+   SYSTEM
+      MODEM_LOCK = OFF
+      SEARCH_DELAY_COUNT = 0
+      TX_MUTE = OFF
+
+SYSTEM
+   AUTO_SAT_LOAD_RESET = ON
+   AUTO_SAT_LOAD_SEARCH_FAIL = ON
+   AUTO_TRACK = ON
+   BALANCE_MODE = OFF
+   BLOCKAGE_ZONE:1
+      DESCRIPTION = [Enter Description]
+      EL = 90.0
+      REL_END = 0.0
+      REL_START = 0.0
+   BLOCKAGE_ZONE:2
+      DESCRIPTION = [Enter Description]
+      EL = 90.0
+      REL_END = 0.0
+      REL_START = 0.0
+   BLOCKAGE_ZONE:3
+      DESCRIPTION = [Enter Description]
+      EL = 90.0
+      REL_END = 0.0
+      REL_START = 0.0
+   BLOCKAGE_ZONE:4
+      DESCRIPTION = [Enter Description]
+      EL = 90.0
+      REL_END = 0.0
+      REL_START = 0.0
+   CALIBRATE_MOTION = OFF
+   DATE = 07/16/2018
+   DEALER_ACCT_CODE = 1111
+   DISABLE_PWD = OFF
+   DRIVE_ORIENTATION
+      AZ = FWD
+      CL = FWD
+      EL = FWD
+   FRONT_PANEL_FW
+      TRANSFER
+   ICU_SERIAL_NO = 
+   LOCK = OFF
+   LOCK_RESUME_TIME = 0
+   MANUFACTURED_DATE = 17/42/2000
+   MOTOR_GAIN
+      AZ = 0.0000
+      CL = 0.0000
+      EL = 0.0000
+   NUM_REFLECTOR = 1
+   PART_NO = 36E05E9DR
+   PRIMARY_REFLECTOR
+      DISHSCAN
+         AZ_DRIVE = 0
+         CL_DRIVE = 0
+         EL_DRIVE = 0
+         MODE = ON
+         PHASE = 0.0
+         STEP_RES = 0.1
+      LNB
+         LO
+            BAND:1 = 10.000
+            BAND:2 = 10.700
+            BAND:3 = 11.300
+            BAND:4 = 9.750
+            ENABLED:1 = ON
+            ENABLED:2 = ON
+            ENABLED:3 = ON
+            ENABLED:4 = ON
+      POLANG
+         CIRCULAR_OFFSET = 0.0
+         DRIVE = AUTO
+         LHCP_DIRECTION = REV
+         LINEAR_OFFSET = 0.0
+      SEARCH
+         AUTO = ON
+         DELAY = 30
+         INCLINE_LIMIT = 16.0
+         INCREMENT = 1.0
+         LIMIT = 6.0
+      TRACKING_SENSITIVITY
+         AZ = 50
+         EL = 50
+      TRIM
+         AZ = 0.0
+         CL = 0.0
+         EL = 0.0
+   PROFILE = 33
+   RECEIVER = SCPC
+   RECOVER_POS
+      MODE = OFF
+   REF_LIMIT
+      AZ = OFF
+      CL = OFF
+      EL = OFF
+   SATREF = OFF
+   SECONDARY_REFLECTOR
+      DISHSCAN
+         AZ_DRIVE = 0
+         CL_DRIVE = 0
+         EL_DRIVE = 0
+         MODE = ON
+         PHASE = 0.0
+         STEP_RES = 0.1
+      LNB
+         LO
+            BAND:1 = 10.000
+            BAND:2 = 10.700
+            BAND:3 = 11.300
+            BAND:4 = 9.750
+            ENABLED:1 = ON
+            ENABLED:2 = ON
+            ENABLED:3 = ON
+            ENABLED:4 = ON
+         MFG_ID = NRC
+         PART_NO = NJR2825
+         SERIAL_NO = A00215A35
+      POLANG
+         CIRCULAR_OFFSET = 0.0
+         DRIVE = AUTO
+         LHCP_DIRECTION = REV
+         LINEAR_OFFSET = 0.0
+      SEARCH
+         AUTO = ON
+         DELAY = 30
+         INCLINE_LIMIT = 16.0
+         INCREMENT = 1.0
+         LIMIT = 6.0
+      TRACKING_SENSITIVITY
+         AZ = 50
+         EL = 50
+      TRIM
+         AZ = 0.0
+         CL = 0.0
+         EL = 0.0
+   SERIAL_NO = 4012GX12100025
+   SLEW_LIMIT_MODE = OFF
+   SLOW_SCAN_MODE = OFF
+   SLOW_SCAN_VLIM = 2.0
+   TECH_CONTACT = Sea Tel Inc., a Cobham company<br>4030 Nelson Ave.<br>Concord, CA 94520<br>USA<br><br>E: seatelservice@cobham.com<br>T: +1 (925) 798-2399
+   TILT_MODE = OFF
+   TIME = 13:17:25
+   UPTIME = MXP uptime: 2 hours, 1 minutes, 49 seconds,
+		</textarea></div></td>
+			  <td align='left' colspan=2>&nbsp;</td>
+		  </tr>
+		</table>
+
+	</div>
+	<div id="footer">
+		<div class="footerbutton back"><a href="014.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="015.html" class="footerlink";>Next ></a></div>
+	</div> 
+</div>
+
+</body>
+</html>
+
+
+

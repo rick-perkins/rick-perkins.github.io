@@ -1,0 +1,254 @@
+<HTML>
+<head>
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+</head>
+<body class='bodyfont'>
+<div class='scrollp'>
+
+<H1>Overview</H1>
+
+Media Xchange Point, MXP in short, web is the primary interface for configuration, operation, monitoring, management and maintenance of your antenna.
+You can do the following with MXP web interface:
+<ul>
+<li>Configure system parameters
+<li>Backup configurations
+<li>Operate Sea Tel's antenna
+<li>Add and remove satellites
+<li>Edit satellite's parameters
+<li>Target, Search and Track a satellite
+<li>Diagnose communication problems
+<li>View system status reports
+<li>Firmware upgrade
+<li>Lock or unlock the system
+</ul>
+
+<p>
+It is recommended that new users go through the Help and FAQ pages first. The Help and FAQ pages provide valuable information, including how to use the utility tools, tips for operation and configuration, an explanation of technical terms, etc. 
+<br><p>
+
+
+<H1>Access Permission</H1>
+   You may not be able to see some pages depending on your user type. A user may be able to view and access all or part of the menu on left-hand side after logging in successfully, dependings on what has been granted to the user. <p>
+   A user who has been granted a role of Dealer has full access to all menu items, including configuration, operations, system Information query and firmware upgrade. <p>
+   For a user who has been granted a role of User, the user only has partial access to menu items.<p>
+   Contact your dealers if you need to access a particular page or menu which you do not have access to. 
+
+<H1>Browsers</H1>
+
+	  MXP is tested under IE (ver 8.0.6 or above), Firefox (ver 5.0 or above), Chrome (ver 13.0 or above) and Safari (ver 5.1 and above). It may or may not work with other browsers.
+	  <p>
+	  The monitor's lowest resolution supported is 1024x768. For optimal view, a resolution of 1280x1024 is recommended. <br>
+	  If your monitor only has maximum vertical solution 768, it is recommended to uncheck  Menu and Favorite bars from
+	  your IE browser to make maximum working area available from IE browser. Take similar actions for other browsers. 
+	  For instance, uncheck Menu bar and Tabs on top in Firefox, and  hide Menu, Bookmark and Tab bars in Safari.
+	  For a shortcut, hit F11 key to get maximum working space. Once done with your work, hit F11 again to retore brwoser's status.
+	  <p>
+	  Turn on browser's popup and enable JavaScript. Also make sure that Use SSL 3.0 is checked and Use TLS 1.2 is unchecked(see FAQ 10.How to enable SSL 3.0?).
+	  <p>
+	  Sometimes, you may see 15px and 25px in the position of Signal bar in the upper-right header; this is because browser working slowly and files needed to support a page have been partially downloaded. 
+	  In this case, hit F5 to refresh the page. Now, the page should appear normal.
+	  <p>
+	  If F5 does not resolve the problem, simply logout, close the browser, and re-start it. Once you have logged in, you should see the normal appearance of web pages. 
+	  <p>
+	  MXP web uses your computer resource heavily to perform its tasks. It is strongly recommended  that you close other applications which are running on your computer and keep one browser and one instance open only.
+	  <p>
+	  It is strongly recommended to logout and exit your browser once your job is done.
+	  <p>
+	  It is recommended to reboot your computer periodically. It is good practice to reboot your computer once or twice per week.
+	  <p>
+	  To access MXP web via https, make sure that SSL3 is enabled.
+	  <p>
+	  
+	  Known issues<p>
+	  <ul>
+      <li>Animated image may not spin with browsers except Firefox when a SAVE button is hit. It does not mean MXP Web stop working. MXP web still wroks properly. So relax until the Saving message goes away. <p>
+	  <li>Compatibility view of IE does not fully support the MXP Web, may cause problems with images, background color or graphs. Therefore, users are not encouraged to use browser's compatibility view <p>
+	  <li>Chrome as much better performance than other browsers when working with https<p>	  
+	  </ul>
+	  
+<H1>Configuration Tips</H1>
+<ul>
+
+ <li> Add a satellite <p> 
+    If you do not see the dropdown list of satellite in the pages of Auto Search or Satellite configuration, it is likely that no satellite was previously added. To add one or more satellites, click Satellite on left-hand side menu, and click the Add Satellite button to start adding a satellite. 
+	<p>
+	
+ <li> Hardware profile <p> 
+    From the profile page, you can select a proper hardware profile to configure your antenna with a specific model. Once a profile is active, you are able to see the parameters of the profile under the advanced setting section in the system and reflector configuration pages.
+	<p>	
+	
+<li> Number of reflector <p>   
+     Parameter of the number of reflector has a direct impact on the ratio button of SECONDARY on the reflector, satellite and position antenna pages. If the number of reflector is 1, the ratio button of SECONDARY is disabled. 
+    <p>
+	
+<li> Satellite longitude <p> 
+ 
+    Once a satellite is selected from the dropdown list, the satellite longitude will show up in the upper-right header. You can customize a satellite's name on the Satellite configuration page. 
+    <p>
+	
+<li> Ship name <p>   
+    Ship name on the upper-left header is configurable. You can customize ship name on the System configuration page. Once saved, either hit the F5 key or log out, and then relogin to see the new ship name in the header section. 
+    <p>
+	
+<li> Ship heading <p>   
+    
+	In the event that you have to key in the ship heading manully, go to the interface page, and go to the Gyro dropdown list. Once No Gyro is selected, a text field shows up for manual input.
+	<p>
+	
+<li> SSL certificate <p>
+
+    To upload SSL certificate, make sure that the pbulic key and certificate
+	  <br>(a) have been named as seatel_key.pem and seatel_cert.pem, respectively;
+	  <br>(b) are in the right format; 
+	  <br>(c) and both are uploaded.
+    <p>
+		
+<li> URL for firmware download  <p> 
+    To set the location of softwares to be upgraded, go to CLI command page, and key in "SET SW_DOWNLOAD URL" CLI Command, followed by the software upgrading URL such as "http://192.168.0.57/SeaTel/Latest/".
+    Note: URL ends with a "/", and the URL refers to another webserver which holds the firmware.
+    <p>	
+	
+</ul>	
+
+
+<H1>Operation Tips</H1>
+<ul>
+
+<li> Errors <p>	
+      On the system status page, if error is not NONE, users may click Error to view detailed errors, and to clear up errors.
+      <p>	  
+	  
+<li> Links <p>
+      Clicking on the Sea Tel logo in the upper-left corner will link to Sea Tel's web site. Likewise, clicking on the Sea Tel icon in lower-right corner will link to Sea Tel's support web site.<br>
+      <p>
+	  
+<li> Logs <p>		  
+      There are three logs available to view and export. They are system log, graphic data log and OOST log.
+      You can either view each of the logs online or export one or more of the logs to your computer for analysis. 
+      <p>
+	  To view system log online, click Activity on left hand side menu.  <br> If no log records but "no data" show up, try reboot system.
+	  Once system is rebooted, activity log information would show up once Activity is clicked.
+	  <p>
+	  
+<li> Favorite satellites <p>  
+	  
+	  If you do not see a dropdown list or a desired satellite is not in the dropdown list, click Add Satellite to add a satellite.
+	  <p>
+	  Once a satellite is added, go to the Reflector page, and click on the Calculate button to perform auto threshold calculation. This will also apply the calculated threshold to favorite satellites, including the newly-added one.
+	  <p>
+	  
+      A newly_added or edited satellite is a favorite satellite.  To make a favorite satellite 
+      be a current one, users have to select the satellite in Auto Search.  
+      Only current satellite's parameters will show up on the System Status and PositionAntenna pages.
+      <p>
+	  	  
+<li> Firmware upgrade <p>	
+	  
+	  Only dealer can upgrade firmware. You need to upgrade the firmware only when the new version number is higher than your current one. <p>
+	
+	  To find out if a new version of firmware is available, click the "Check" button to check on the latest upgrade on the Firmware Upgrade page.
+	  Once clicked, a list of software will show up.<p>  
+	  For the desired firmware, compare the version number appended to the software name with the current
+	  one. The current version number is located at lower-left corner on the Home page which you will see once you are logged in.<br>
+      <p> 
+	  
+<li> Upload hardware profile and INI files <p>	
+	  
+	  Only dealer can upload hardware profile and INI files. <p>
+	  
+	  You need to upload hardware profile file when you want to use an new hardware profile or want to replace a damaged hardware profile by your backed-up one.<p>
+	  
+	  You need to upload an INI file when you get an new one or when you want to put back your backed up one for some reasons. It is strongly recommended to back up current INI file first. 
+	  You can get current INI file by clicking Admin on left hand menu, clicking Config tab on top, clicking Download button.
+	  Once INI file upload complete, some parameters take effect immediately, but not all parameters will take effect until after the system is rebooted. 
+	  Following a review of all parameters, it is strongly recommended that both save and reboot actions are performed to ensure the antenna behaves as specified in the new INI file.
+	  <p>
+	  
+	  To upload a hardware profile or INI file, click Admin on left hand menu, click Config tab on top, locate the Upload section, then click the image of file type to select INI or PDB for uploading
+	  an INI or hardware profile file, then choose the file to upload.
+	  <p>  	   
+	  
+<li> Graphs <p>	
+
+      Graphs are color-coded.  The label (Base Number) on X-axis has the same color of the plotted data points (curves).
+	  <p>
+	  For all graphs, users are able to center graphs by clicking the Center button.
+	  <p>
+	  For all graphs except DishscanXY, users are able to read out a value of each point plotted on a graph.
+	  <p>
+      To read out a value of each point plotted on a graph, count the number of divisions on the Y-axis first, then multiply the number by the unit on that axis. Finally, add the number labeled as Base on that axis. 
+      <p>
+	  Users can not read out a value of each point plotted on DishscanXy graph directly. 
+	  This is because data for each point plotted has been processed and transformed before being used to plot this graph.
+	  Units marked on axis of this graph are for relative LV and AZ only. <br><br>  
+	  <p>
+	  Zoom levels enable detailed drawings to be seen. The default zoom level is 1. Zoom level also represents time window for graphic drawing for all graphs except DishscanXY.  
+	  Zoom level 1, 2, 3 and 4 are equivalent to 7'30", 4'30", 3'20"and 2'45", respectively. For DishscanXY graph, zoom level does not represent time window for graphic drawing, it simply allows users to see the graph in detail.  
+	  <p>
+	  During the drawing process, if the position of an antenna changes greatly, users may see the plotted-dots line up along the top or bottom edges of the canvas or go beyond the canvas.
+      In this case, simply click Center button or re-select the same zoom level again, and the graph will be drawn within the canvas.
+	  <p>
+     	  
+<li> Position Antenna <p>	  
+	  
+	  Each parameter is individually submitted when users change a parameter by either clicking a button, or 
+	  clicking a ratio, or choosing a selection from dropdown list or making a change in the text input field.
+	  That parameter will be submitted to system right away.
+	  <p>
+      When the SAVE button is hit, all parameters of satellite and operation on this page will be saved.
+	  <p>	 
+	  There are four arrows under the advanced operations. They are for stepping AZ and EL. The arrow clicked becomes dark gray and remain dark gray until another arrow is clicked.
+	  Each click will step AZ or EL directly.
+	  <p>  
+	  When retarget button is clicked, retargeting will be performed if the status is tracking or searching.<br>
+	  It is recommended to wait for 10 - 15 seconds before clicking it again if applicable.  In this way, the system has time to make proper response.
+	  <p> 
+	   
+<li> Quadrant test <p>	  
+	  
+      Make sure that DishScan works before performing Quadrant test.
+      After clicking an arrow button to move elevation or rotate azimuth, wait until you see the AZ or EL on the header changes before next click. 
+      <p>
+	  There are four arrows for stepping AZ and EL. The arrow clicked becomes dark gray and remains dark gray until another arrow is clicked.
+      <p>
+	  For auto test mode, system will set AZ to 0.3 degree clockwise and EL to 0.3 degree up automatically.
+	  <p>
+      
+<li>  Recycle power <p>	
+      It is strongly recommended that you logout and exit the web browser before recycling power. Not logging out and then recycling power
+	  could result in the browser freezing for quite a while. 
+      <p>
+	  
+<li>  System lock <p>	
+      Options are provided for Dealers to lock or unlock the system.  The system is not locked (system lock is disabled) by default.<p>
+	  Once the system is locked, no system configuration parameters can be changed.<p>
+	  
+	  If a Dealer wants to lock the system, the Dealer should contact the service staffs of SeaTel to get the lock and disable code first.<p>
+	  
+	  To lock the system, click Admin under Others from left hand menu, click System lock tab on top. Now, three buttons (Lock, Unlock and Disable) show up.
+	  Click the Lock button, the Dealer has to confirm if he or she wants to proceed to lock the system. Once confirmed, the Dealer will be asked for 
+	  the lock code, and the Dealer can specify the resume time, then he or she can click submit button to lock the system.<p>
+
+      Click the UnLock button to unlock the system for maintenance. The Dealer will be asked for 
+	  the lock code before he or she can click submit button to unlock the system.  
+	  The system will automatically be locked after unlocked for certain amount of time specified by the Resume time<p>
+	  
+	  Dealer can give temp code to other users to unlock the system for 48 hours.  The temp code is one time code, can be used once only.<p>
+	  
+	  If the Dealer does not want the system lock option any more, he or she can disable it (that is unlock the system for infinite time) 
+	  by clicking the Disable button. The Dealer will be asked for 
+	  the disable code before he or she can click submit button to disable the system lock.  
+      <p>	  
+	  
+</ul>
+	 
+<H1>Tech contact</H1>
+      
+	  
+	  
+</div>		 
+</body>
+
+<!-- Mirrored from 10.1.1.100/Help.html by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 18 Nov 2013 11:18:14 GMT -->
+</html>
+

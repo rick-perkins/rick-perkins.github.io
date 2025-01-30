@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title>Sea Tel IMA Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+
+window.onload = function() {
+var url = "011a";
+parent.set("cmi.core.lesson_location", url);
+}
+$(document).ready(function(){
+	$("#profilenum").change(function(){
+		if ($(this).val() == "1-linear"){$("#profile").attr("src","011aa.html");}
+		else if ($(this).val() == "31-linear-circular"){$("#profile").attr("src","011ab.html");}
+		else {$("#profile").attr("src","");}
+	});
+
+			
+
+	
+});
+
+
+
+</script>
+<STYLE type="text/css" media="all">
+
+
+
+select{	font-size:11px;
+	position:absolute;
+	padding:0px;
+}
+iframe {border:none;}
+
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="body">
+	<h1>Profile</h1>
+		<div style="float:left;width:400px;">
+		
+		<p>This section is the same as the PCU N0 and some of the DAC settings from the legacy systems.</p>
+		<p>When the profile is used, all the settings shown here will overide any of the settings which may have been changed on the System and Reflector pages.<br>
+		Once you have selected YES  on the pop up window the system will load the profile and reboot.</p>
+		<p>To see the difference between one reflector and two reflectors please use Profile 1 and Profile 31.</p>
+		</div>
+		<div style="position:absolute;right:0;top:0px;height:200px;width:800px;"> 
+			<table class='tb' style="width:800px;" cellspacing='0' cellpadding='0'>
+				<tr><td>&nbsp;</td></tr>
+				<tr><td align='center' colspan='6'></td></tr>
+				<tr><td align='center' colspan='8'><h3>Hardware Profile</h3></td></tr>
+					<tr><td align='left' colspan='8'>Profile Selection&nbsp;
+						<select id="profilenum" name="profilenum" size="1" >
+						<option>Select...</option>
+						<option value="1-linear">1) 4012-91</option>
+						<option value="2-linear">2) 5012-91</option>
+						<option value="3-linear">3) 3612-91</option>
+						<option value="4-">4) Reserved</option>
+						<option value="5-linear">5) 6012-33</option>
+						<option value="6-circular-fixed">6) GX60 (CM BDE)</option>
+						<option value="7-circular-fixed">7) GX60 (CM ADE)</option>
+						<option value="8-circular-fixed">8) 4012GX KA</option>
+						<option value="9-circular-selectable">9) 4412</option>
+						<option value="10-circular-selectable">10) 17011 L/S</option>
+						<option value="11-CIRCULAR-SELECTABLE">11) 9711-X/Ku</option>
+						<option value="12-linear">12) 4009MK3-33</option>
+						<option value="13-linear">13) 4009MK3-91</option>
+						<option value="14-linear">14) 5012-44</option>
+						<option value="15-linear">15) 6012-44(16W)</option>
+						<option value="16-linear">16) 5012-33</option>
+						<option value="17-linear">17) 6012-71(25W)</option>
+						<option value="18-linear">18) 6012-48</option>
+						<option value="19-linear">19) 6012-44(50/60W)</option>
+						<option value="20-linear">20) 6012-71(40W)</option>
+						<option value="21-linear-circular">21) 9711-88 C</option>
+						<option value="22-linear">22) 4212</option>
+						<option value="23-linear">23) 9711-88 KU</option>
+						<option value="24-linear-xpol">24) 4009MK3-23</option>
+						<option value="25-circular-fixed">25) 9797B-Upgrade (Circular)</option>
+						<option value="26-circular-fixed">26) 2412</option>
+						<option value="27-linear">27) 5012-58 NG(10W)</option>
+						<option value="28-linear-xpol">28) 9797B-Upgrade (Linear)</option>
+						<option value="29-">29) Reserved</option>
+						<option value="30-">30) Reserved</option>
+						<option value="31-linear-circular">31) 9711-88 PS2 SW</option>
+						<option value="32-linear-fixed">32) 9711-TROPO</option>
+						<option value="33-linear-circular">33) 9711-88 PS1 SW</option>
+						<option value="34-linear-circular">34) 9711-64 SW</option>
+						<option value="35-linear">35) 9711-44 POT</option>
+						<option value="36-circular-fixed">36) Reserved</option>
+						<option value="37-linear">37) 4009MK3-45</option>
+						<option value="38-">38) Reserved</option>
+						<option value="39-linear">39) 6012-42</option>
+						<option value="40-linear-xpol">40) 4009MK3-9</option>
+						<option value="41-linear">41) 4009MK3-12</option>
+						<option value="42-">42) Reserved</option>
+						<option value="43-Circular-Fixed">43) 17011 C </option>
+						<option value="44-linear-circular">44) 9711-86 SW</option>
+						<option value="45-">45) Reserved</option>
+						<option value="46-linear-circular">46) 9711-95</option>
+						<option value="47-">47) Reserved</option>
+						<option value="48-linear-xpol">48) 4009MK3-36</option>
+						<option value="49-">49) Reserved</option>
+						<option value="50-linear">50) 6012-19</option>
+						<option value="51-linear-circular">51) 9711-70</option>
+						<option value="52-linear">52) 6012-36</option>
+						<option value="53-linear">53) 6012-12</option>
+						<option value="54-">54) Reserved</option>
+						<option value="55-">55) Reserved</option>
+						<option value="56-">56) Reserved</option>
+						<option value="57-linear">57) 6012-91</option>
+						<option value="58-">58) Reserved</option>
+						<option value="59-linear">59) 6012-44(125W)</option>
+						<option value="60-linear-circular">60) 9711-69 SW</option>
+						<option value="61-linear-circular">61) 9711-86 (400W)</option>
+						<option value="62-">62) Reserved</option>
+						<option value="63-">63) Reserved</option>
+						<option value="64-linear">64) 6012-45 (40W)</option>
+						<option value="65-circular-selectable">65) 4412C (5W)</option>
+						<option value="66-linear">66) 9711-66 (25W)</option>
+						<option value="67-circular-selectable">67) 9711-X (200W)</option>
+						<option value="68-">68) 9711-45 (100W)</option>
+						<option value="69-linear">69) 6012-45(100W)</option>
+						<option value="70-">70) Reserved</option>
+						</select>	 
+					</td></tr>
+					<tr><td>&nbsp;</td><tr> 
+				</table>
+				<hr class='grnhr'>
+			
+			<iframe id="profile" src="" style="width:760px;height:480px;">
+			</iframe>
+
+			
+		</div>
+	</div>
+	<div id="footer">
+		<div class="footerbutton back"><a href="011.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="012.html" class="footerlink";>Next ></a></div>
+	</div>
+	
+</div>
+
+</body>
+</html>
+

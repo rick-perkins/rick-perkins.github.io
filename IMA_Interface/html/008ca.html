@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.or../img/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.or../img/1999/xhtml" xml:lang="en">
+
+<head><title>Sea Tel IMA Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+window.onload = function() {$('[id="rfmcb"],[id="passb"]').hide();$("#aux232b,#mconb,#obmb,#nmeab,#iconb,#musbb,#gyrob").hide();
+var url = "008ca";
+parent.set("cmi.core.lesson_location", url);
+}
+$(document).ready(function(){
+	
+	$('[id="rfmc"]').click(function(){$('[id="rfmcb"]').toggle();});
+	$('[id="pass"]').click(function(){$('[id="passb"]').toggle();});
+	$('[id="aux232"]').click(function(){$('[id="aux232b"]').toggle();});
+	$('[id="mcon"]').click(function(){$('[id="mconb"]').toggle();});
+	$('[id="nmea"]').click(function(){$('[id="nmeab"]').toggle();});
+	$('[id="obm"]').click(function(){$('[id="obmb"]').toggle();});
+	$('[id="icon"]').click(function(){$('[id="iconb"]').toggle();});
+	$('[id="musb"]').click(function(){$('[id="musbb"]').toggle();});
+	$('[id="gyro"]').click(function(){$('[id="gyrob"]').toggle();});
+
+			
+
+  });
+</script>
+<STYLE type="text/css" media="all">
+	
+.crop {
+    width: 1000px;
+    height: 280px;
+    overflow: hidden;
+background-position: center center;
+
+}
+
+.crop img {
+    width: 1000px;
+    
+   margin: -0px 0 -0 -0px;
+}
+.cropmxp{
+    width: 1000px;
+    height: 120px;
+    overflow: hidden;
+background-position: center center;
+
+}
+
+.cropmxp img {
+    width: 1000px;
+    
+   margin: -0px 0 -0 -0px;
+}
+
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="body">
+	<h1>Interface Configuration</h1>
+	<p>Please click on the port name to highlight the port.</p>
+		<div style="float:left;width:150px;">
+			
+			
+			<strong>Serial Port</strong><br>
+			<ul><li><a href="#"class="tooltipdd" id="rfmc" >RF M&C</a></li>
+			<li><a href="#"class="tooltipdd" id="pass" >Passthrough</a></li></ul>
+			<strong>MXP</strong><br>
+			<ul><li><a href="#"class="tooltipdd" id="aux232" >Aux 232</a></li>
+			<li><a href="#"class="tooltipdd" id="mcon" >Console</a></li>
+			<li><a href="#"class="tooltipdd" id="nmea" >NMEA</a></li>
+			<li><a href="#"class="tooltipdd" id="obm" >OBM/Modem</a></li></ul>
+			<strong>ICU</strong><br>
+			<ul><li><a href="#"class="tooltipdd" id="icon" >Console</a></li></ul>
+			<strong>USB Port</strong><br></font>
+			<ul><li><a href="#"class="tooltipdd" id="musb" >Mode</a></li></ul>
+			<strong>Gyro Port (non NMEA)</strong><br>
+			<ul><li><a href="#"class="tooltipdd" id="gyro" >Gyro</a></li></ul>
+		</div>
+		<div style="position:absolute;right:0;top:60px;"> 
+			<div class="cropmxp" style="margin-top:20px;">
+				<img src="../img/mxprear.png" alt="..." />
+				<div style="position:relative;border:0px solid;border-style:dashed;border-radius:10px;right:0px;top:-100px;width:1000px;height:100px;">
+					<div id="rfmcb" style="position:absolute;border:4px solid red;border-radius:10px;left:545px;top:10px;width:40px;height:30px;"></div>
+					<div id="passb" style="position:absolute;border:4px solid orange;border-radius:10px;left:545px;top:40px;width:40px;height:30px;"></div>
+					<div id="aux232b" style="position:absolute;border:4px solid yellow;border-radius:10px;left:810px;top:00px;width:86px;height:50px;"></div>
+					<div id="mconb" style="position:absolute;border:4px solid green;border-radius:10px;left:452px;top:40px;width:86px;height:50px;"></div>
+					<div id="nmeab" style="position:absolute;border:4px solid blue;border-radius:10px;left:706px;top:0px;width:86px;height:50px;"></div>
+					<div id="obmb" style="position:absolute;border:4px solid purple;border-radius:10px;left:596px;top:10px;width:40px;height:60px;"></div>
+					<div id="musbb" style="position:absolute;border:4px solid violet;border-radius:10px;left:390px;top:56px;width:36px;height:20px;"></div>
+				<div id="gyrob" style="position:absolute;border:4px solid white;border-radius:10px;left:655px;top:50px;width:100px;height:20px;"></div>
+				</div>
+
+			</div>
+
+			<div class="crop" style="margin-top:0px;">
+				<img src="../img/icu.png" alt="..." />
+					<div style="position:relative;border:0px solid;border-style:dashed;border-radius:10px;right:0px;top:-250px;width:1000px;height:250px;">
+					<div id="rfmcb" style="position:absolute;border:4px solid red;border-radius:10px;left:506px;top:64px;width:86px;height:64px;"></div>
+					<div id="passb" style="position:absolute;border:4px solid orange;border-radius:10px;left:506px;top:10px;width:86px;height:54px;"></div>
+					<div id="iconb" style="position:absolute;border:4px solid green;border-radius:10px;left:398px;top:64px;width:86px;height:64px;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<div class="footerbutton back"><a href="008c.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="008cb.html" class="footerlink";>Next ></a></div>
+	</div>
+</div> 
+
+</body>
+</html>
+

@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title>Sea Tel IMA Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+
+
+
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+
+window.onload = function() {$("#popup").hide();
+var url = "013a";
+parent.set("cmi.core.lesson_location", url);
+}
+$(document).ready(function(){
+
+  	$("#error").click(function(){
+	$("#popup").show();});
+	$("#close").click(function(){
+	$("#popup").hide();});
+	$("#clearall").click(function(){
+	$("#error1,#error2").hide();});
+	$("#line1clear").click(function(){
+	$("#error1").hide();});
+	$("#line2clear").click(function(){
+	$("#error2").hide();});
+
+
+			
+});
+</script>
+<STYLE type="text/css" media="screen">
+
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="body">
+	<h1>System Status</h1>
+		<div style="float:left;width:400px;">
+			This page is a overview of the tracking satellite settings, system status and where errors can be viewed.
+			<p>If an error is active, the word ERRORS will be <font color=red>red</font>. If you click on it, a pop up window will appear displaying all the active errors.<br>
+			All the errors are decoded unlike the older systems where you had to decode them.</p>
+			<p>Modem RX Lock will have a green indicator and display LOCKED when the Vsat modem has RX lock, if this is reversed change the settings on the interface page.</p>
+			<p>TX Mute will have a green indicator and display OFF when the MXP is not muting the Vsat modem TX, a red indicator will display TX mute as ON.</p>
+			<p>Front Panel LED is a mirror image of the LED indicators on the front panel of the MXP.</p>
+			<p>The GPS will update as the vessel changes location, the GPS source will depend on what has been selected on the interface page.</p>
+			<p>Cross level displays the cross level angle, this should always be 0.0 degs becasue this means the cross level is level with the horizion.</p>
+			<p>Polang is displayed in + and - unlike the old systems which always had a positive reading.</P>
+		</div>
+		<div style="position:absolute;right:0;top:0px;height:200px;width:800px;"> 
+			<table class="tb">  
+		<tbody>
+		<tr><td align="center" colspan="3">&nbsp;</td></tr>  
+		<tr><td align="center" colspan="3"><h1>System Status</h1></td></tr>  
+		<tr><td align="center" colspan="3">&nbsp;</td></tr> 
+		<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>      
+			<td align="left" id="subtitle">System</td>	 
+			<td align="left" id="subtitle">Front Panel Led</td> 
+		</tr>   
+		<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>    
+			<td align="left">       
+				<table> 
+					<tbody>
+					<tr><td><img src="../img/red.gif">  </td>
+						<td>     Modem Rx Lock:  </td>
+						<td>   UNLOCKED  </td>
+					</tr>  
+					<tr><td><img src="../img/grn.gif">  </td>
+						<td>      Tx Enabled&nbsp; </td>
+					</tr>
+					<tr><td><img id="errLed" src="../img/red.gif">  </td>
+						<td>   <span style="color: #190707; font-size:16px"> Error: </span>&nbsp;</td>
+						<td><a href="#" class="linkLarge" id="error"><span style="color: #190707; font-size:16px"><font color="red">ERRORS</font></span></a></td>
+					</tr>
+					
+					<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;  </td>
+						<td>   Search Delay:</td>
+						<td>30&nbsp;seconds</td>
+					</tr>
+					<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;  </td>
+						<td>     Sat Reference:</td>
+						<td>OFF</td>
+					</tr> 
+					<tr style="height:22px;"><td><img src="../img/unlock.png">  </td>
+						<td>     System lock: &nbsp;  </td>
+						<td>   DISABLED  </td>
+					</tr>   
+					<tr><td colspan="2">&nbsp;</td></tr>
+					</tbody>
+				</table> 
+			</td> 
+			<td>       
+				<table> 
+					<tbody>
+					<tr><td><img id="imgerror" src="../img/red.gif">        Error  </td>
+						<td>&nbsp;</td> <td><img id="imgtarget" src="../img/gry.gif">        Target  </td>
+						<td>&nbsp;</td>
+					</tr> 
+					<tr><td><img id="imginit" src="../img/grn.gif">        Initializing  </td>
+						<td>&nbsp;</td> 
+						<td><img id="imgsearch" src="../img/gry.gif">        Search  </td>
+						<td>&nbsp;</td></tr> <tr><td><img id="imgpower" src="../img/grn.gif">        Power  </td>
+						<td>&nbsp;</td> 
+						<td><img id="imgtrack" src="../img/gry.gif">        Tracking  </td>
+						<td>&nbsp;</td>
+					</tr>  
+					<tr><td colspan="2">&nbsp;</td></tr>  
+					<tr><td colspan="2">&nbsp;</td></tr>  
+					<tr><td colspan="2">&nbsp;</td></tr>  
+					<tr><td colspan="2">&nbsp;</td></tr>       
+					</tbody>
+				</table> 
+			</td>  
+		</tr>
+		<tr>	 
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>     
+			<td align="left" id="subtitle">Satellite</td>     
+			<td align="left" id="subtitle">Ship</td>  
+		</tr>  
+		<tr>    
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>    
+			<td align="left">
+				<table> 
+					<tbody>
+					<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;Name:  </td><td>   [Enter Description]  </td></tr>  
+					<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;Position:  </td><td>   101.0 W degree  </td></tr>  
+					<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;Frequency:  </td><td>   1234.567  </td></tr>  
+					<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;Skew:  </td><td>   0.0  </td></tr>  
+					<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;Band:  </td><td>   2  </td></tr>  
+					<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;Tx Polarity:  </td><td>   H  </td></tr>  
+					<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;Search Pattern:&nbsp;  </td><td>   SPIRAL  </td></tr>  
+					<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;Reflector:  </td><td>   PRIMARY  </td></tr>  
+					<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;Rx:  </td><td>   XPOL  </td></tr>  
+					<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;Auto Threshold<br>&nbsp;&nbsp;&nbsp;&nbsp;Offset:  </td><td>   2 </td></tr>  
+					<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;Threshold:  </td><td>   50 </td></tr>
+					<tr><td colspan="2">          &nbsp;  </td></tr>
+					</tbody>
+				</table>   	
+			</td>    
+			<td align="left">
+				<table> 
+					<tbody>
+					<tr><td align="left">
+						<table> 
+							<tbody>
+							<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;Latitude:  </td><td>   50.892990 N degree  </td></tr>  
+							<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;Longitude:  </td><td>1.366837 W degree  </td></tr>  
+							<tr><td colspan="2">&nbsp;</td></tr> 
+							<tr><td align="left" colspan="2" id="subtitle">Antenna</td></tr>  
+							<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;Cross Level:  </td><td>   00.0 degree  </td></tr>  
+							<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;Linear Polang:  </td><td>   90.0 degree  </td></tr>  
+							<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;Circular Polang:  </td><td>   00.0 degree  </td></tr>  
+							<tr><td colspan="2">&nbsp;</td></tr>  <tr><td colspan="2">&nbsp;</td></tr>  
+							<tr><td colspan="2">&nbsp;</td></tr>  <tr><td colspan="2">&nbsp;</td></tr>  
+							<tr><td colspan="2">&nbsp;</td></tr>  <tr><td colspan="2">&nbsp;</td></tr>
+							</tbody>
+						</table>	
+					</td>  
+				</tr>
+				</tbody>
+			</table>
+			</td>
+			</tr>
+			</tbody>
+		</table>
+		</div>
+		<div id="popup" style="z-index:10;position:absolute; right:200px; top:200px; width:auto; border:2px solid #16a6d0;background-color:#E0F8F7;">
+						<table width='300px'>
+						<tr><td align='left'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='javascript:cvoid(0);' id="clearall" class='linkblue'>Clear All</a></td>
+							<td align='right'><a href='javascript:cvoid(0)' id="close" class='linkblue'>Close</a></td></tr>
+						  <tr><td align='center' colspan=2>This is where the errors will be listed, you can clear each error one by one or use the clear all to clear all errors</td></tr>
+						  <tr id="error1"><td >This is error 1</td><td><a href='javascript:cvoid(0)' id="line1clear" class='linkblue'>Clear</a></td><tr>
+						<tr id="error2"><td >This is error 2</td><td><a href='javascript:cvoid(0)' id="line2clear" class='linkblue'>Clear</a></td><tr>
+						</table>
+		</div>
+
+	</div>
+	<div id="footer">
+		<div class="footerbutton back"><a href="013.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="014.html" class="footerlink";>Next ></a></div>
+	</div>
+</div> 
+
+</body>
+</html>
+
+
+

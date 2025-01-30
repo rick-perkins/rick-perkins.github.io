@@ -1,0 +1,39 @@
+<html>
+<title>Balance Mode</title>
+
+
+<head>
+
+</head>
+<body onLoad='showBalMode();'>
+<form name='balmode'>
+<table class='tb'>
+  <tr><td colspan='11'>&nbsp;</td></tr>
+  <tr><td align='center' colspan='11'><h1>Balance Mode</h1></td></tr>
+  <tr><td colspan='11'>&nbsp;</td></tr>
+  <tr>
+	  <td align='left'>Current status:&nbsp;</td>
+	  <td align='left'> <div id='curbalstatus'></div></td>
+	  <td><input type='hidden' id='curBalmode' name='curBalmode' value='OFF'</td>  
+	  
+  </tr>  
+  <tr><td colspan='11'>&nbsp;</td></tr> 
+</table>
+<hr class='grnhr'>
+<table class='tb'>
+  <tr><td colspan='4'>&nbsp;</td></tr>
+  <tr>
+	  <td align='left'><button type='button' id='onbtn' name='onbtn' class='btnsmlst' onClick='submitBalmodeOps(27);'>On</button>&nbsp;Click to enable</td> 
+  </tr>  
+  <tr>
+	  <td align='left'><button type='button' id='offbtn' name='offbtn' class='btnsmlst' onClick='submitBalmodeOps(28);'>Off</button>&nbsp;Click to disable</td>
+  </tr>  
+</table>
+<table>
+<tr><td><font face="arial">This is used when the balance of the antenna is going to be checked. When enabled all drive is removed from the motors resulting in easy free movment of the antenna.<br>
+If the antenna is turned off, the breaks will be active and restrict the antennas movement making balancing impossible.</font></td></tr></table>
+
+</form>
+</body>
+
+</html>

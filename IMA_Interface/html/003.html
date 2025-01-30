@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.or../img/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.or../img/1999/xhtml" xml:lang="en">
+
+<head><title>Sea Tel IMA Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+
+window.onload = function() {
+var url = "003";
+parent.set("cmi.core.lesson_location", url);
+}
+$(document).ready(function(){
+			
+
+	
+});
+
+</script>
+
+
+
+
+<STYLE type="text/css" media="all">
+
+.croptop {
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+text-align: center
+}
+
+.croptop img  {
+    width: 640px;
+    height: 600px;
+   margin: 0px 0 -0 0px;
+   }
+.cropbottom {
+	float:left;
+	width: 150px;
+	height: 130px;
+	overflow: hidden;	
+	background-position: center center;
+	border-style:dashed;
+	border-color:red;
+	border-width:3px;
+	border-radius:10px
+}
+
+.cropbottom img  {
+    width: 960px;
+   margin: 0px 0 0 -300px;
+
+}
+.cropbottom1 {
+	float:left;
+	width: 150px;
+	height: 130px;
+	overflow: hidden;	
+	background-position: center center;
+	border-style:dashed;
+	border-color:orange;
+	border-width:3px;
+	border-radius:10px
+}
+
+.cropbottom1 img  {
+    width: 960px;
+   margin: 0px 0 0 -444px;
+
+}
+.cropbottom2 {
+	float:left;
+	width: 210px;
+	height: 90px;
+	overflow: hidden;	
+	background-position: center center;
+	border-style:dashed;
+	border-color:yellow;
+	border-width:3px;
+	border-radius:10px
+}
+
+.cropbottom2 img  {
+    width: 960px;
+   margin: 0px 0 0 -730px;
+
+}
+</style> 
+</head>
+<body>
+<div id="container">
+	<div id="body">
+	<h1>Display Overview</h1>
+		
+		<div class="croptop">
+			<img  src="../img/full_system_status_page.png" alt="..." />
+			<div style="border:3px solid red;border-style:dashed;border-radius:10px;position:absolute;left:486px;top:33px;width:100px;height:90px;"></div>
+			<div style="border:3px solid orange;border-style:dashed;border-radius:10px;position:absolute;left:592px;top:33px;width:90px;height:90px;"></div>
+			<div style="border:3px solid yellow;border-style:dashed;border-radius:10px;position:absolute;left:772px;top:33px;width:140px;height:50px;"></div>
+		</div>
+		<div style="position:relative;height:160px;"><div class="cropbottom"><img  src="../img/full_system_status_page.png" alt="..." /></div>
+		<div style="float:left;padding-left:5px;"><p>The dial shows the orientation of the vessel, in relation to True North.
+		<p>In this example the vessel is heading toward True North.</p>
+		The red or white (when its not on the same value as the heading)line is the antennas azimuth value from True North.</p>
+		</div>
+		</div>
+		<div style="position:relative;height:160px;"><div class="cropbottom1"><img  src="../img/full_system_status_page.png" alt="..." /></div>
+		<div style="float:left;"><ul>
+		<li>Satellite Longitudinal position</li>
+		<li>Heading of the vessel</li>
+		<li>Azimuth of the antenna</li>
+		<li>Elevation angle of the antenna</li>
+		<li>Relative position of the antenna</li>
+		<li>Linear polang value of the polarization</li></ul>
+		</div>
+		</div>
+		<div style="position:relative;height:160px;">
+		<div class="cropbottom2"><img  src="../img/full_system_status_page.png" alt="..." /></div>
+		<div style="float:left;padding-left:5px;">
+		The <b>Status</b> line will show one of six conditions:<ul>
+		<li>Tracking Green LED</li>
+		<li>Tracking Orange LED for AGC below Threshold</li>
+		<li>Tracking Off LED off</li>
+		<li>Targeting Green LED</li>
+		<li>Searching Green LED</li>
+		<li>Disconnected Red LED</li>
+		<li>Initializing Green LED</li></ul>
+		</div>
+		<div style="float:left;padding-left:5px;">
+		The second line will show one of six conditions:<ul>
+
+		<li>Normal Green LED</li>
+		<li>Appr. Blockage Flashing Orange LED</li>
+		<li>Blockage Flashing Red LED</li>
+		<li>TX mute Red LED</li>
+		<li>Stability Limit Red LED</li>
+		<li>Slow Scan</li></ul>
+		</div>
+		<div style="float:left;padding-left:5px;">
+		The <b>Modem</b> line will show one of two conditions:<ul>
+
+		<li>Locked Green LED</li>
+		<li>Unlocked Red LED</li></ul>
+		</div>
+		</div>
+		
+	</div> 
+	<div id="footer">
+		<div class="footerbutton back"><a href="002.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="003a.html" class="footerlink";>Next ></a></div>
+	</div>
+</div>
+
+</body>
+</html>
+

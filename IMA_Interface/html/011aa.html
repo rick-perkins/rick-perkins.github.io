@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.or../img/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.or../img/1999/xhtml" xml:lang="en">
+
+<head><title>Sea Tel IMA Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+window.onload = function(){$("#popup").hide();$("#progress").hide();
+var url = "011aa";
+parent.set("cmi.core.lesson_location", url);
+}
+$(document).ready(function(){
+	$("#btn").click(function(){$("#popup").show();})
+	$("#yesno").click(function(){$("#popup").hide();$("#progress").show(0);
+	$("#progress").delay(8000).hide(0);})
+	
+			
+
+	
+});
+
+
+
+
+</script>
+<STYLE type="text/css" media="all">
+
+select{	font-size:11px;
+	position:absolute;
+	padding:0px;
+}
+
+
+</style>
+</head>
+<body>
+
+	<div id="body">
+			<div style="position:absolute;left:0;top:0px;height:200px;width:700px;"> 
+			<table cellspacing="0" cellpadding="0" >
+			  <tbody><tr>
+				<td align="left"><button type="button" id="btn" name="btn" class="btnmd1" onclick="goShowHideMsg();">Use Profile</button></td>
+				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td align="right">Profile Version:&nbsp;</td><td align="left" >16&nbsp;&nbsp;</td>
+			  </tr>
+			  <tr><td>&nbsp;</td></tr>
+			  </tbody>
+			</table>
+			 <div style="margin: 0;">
+			<table class="tb" cellspacing="0" cellpadding="0" width="700px"> 
+			  <tbody><tr> 
+				 <td>
+					  <table width="33%" cellspacing="0" cellpadding="0">
+						 <tbody><tr><td align="left" colspan="2" id="subtitlesm" nowrap="">Drive Orientation</td></tr>
+						 <tr id="smfont"><td align="right">EL:&nbsp;</td><td align="left">rev&nbsp;&nbsp;</td></tr>
+						 <tr id="smfont"><td align="right">CL:&nbsp;</td><td align="left">rev&nbsp;&nbsp;</td></tr>
+						 <tr id="smfont"><td align="right">AZ:&nbsp;</td><td align="left">rev&nbsp;&nbsp;</td></tr>
+					  </tbody></table>
+				 </td>
+				 <td>
+					  <table width="33%" cellspacing="0" cellpadding="0">
+						 <tbody><tr><td align="left" colspan="2" id="subtitlesm" nowrap="">Motor Gain&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+						 <tr id="smfont"><td align="right">EL:&nbsp;</td><td align="left">0.72&nbsp;</td></tr>
+						 <tr id="smfont"><td align="right">CL:&nbsp;</td><td align="left">1.5&nbsp;</td></tr>
+						 <tr id="smfont"><td align="right">AZ:&nbsp;</td><td align="left">0.48&nbsp;</td></tr>
+					 </tbody></table>
+				 </td>
+				 <td>  
+					<table width="34%" cellspacing="0" cellpadding="0">
+					   <tbody><tr><td align="left" colspan="2" id="subtitlesm" nowrap="">Reference limit&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+					   <tr id="smfont"><td align="right">EL:&nbsp;</td><td align="left">off&nbsp;</td></tr>
+					   <tr id="smfont"><td align="right">CL:&nbsp;</td><td align="left">off&nbsp;</td></tr>
+					   <tr id="smfont"><td align="right">AZ:&nbsp;</td><td align="left">off&nbsp;</td></tr>
+					</tbody></table>
+				  </td>
+			  </tr>
+			  <tr><td colspan="3">&nbsp;</td></tr>
+			  </tbody>
+			</table>
+			  </div>
+			<div style="margin: 0;hidden;">
+				<table class="tb" cellspacing="0" cellpadding="0"width="700px"> 
+				  <tbody><tr>
+					 <td>
+						<table cellspacing="0" cellpadding="0">
+						   <tbody><tr><td align="left" colspan="2" id="subtitlesm">Miscellaneous&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+						   <tr id="smfont"><td align="left">Antenna Model:&nbsp;</td><td align="left">4012-91</td></tr> 
+						   <tr id="smfont"><td align="left">Number of Reflector(s):&nbsp;</td><td align="left">1</td></tr> 
+						   <tr id="smfont"><td align="left" colspan="2"><input type="hidden" id="pfnumrefl" name="pfnumrefl" value="1"></td></tr>
+						 </tbody></table>
+					 </td>
+					 <td>
+						 <table cellspacing="0" cellpadding="0">
+						   <tbody><tr><td align="left" colspan="2">&nbsp;</td></tr>
+						   <tr id="smfont"><td align="left">Slow Scan Vlimit:&nbsp;</td><td align="left">1.0&nbsp;deg/sec</td></tr> 
+						   <tr></tr>
+						 </tbody></table>
+					 </td>
+					 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				  </tr>
+				   <tr><td colspan="3">&nbsp;</td></tr>
+				  </tbody>
+				</table>
+			</div>
+			<div style="margin: 0; padding: 0;">
+				<table class="tb" cellspacing="0" cellpadding="0"width="700px"> 
+					  <tbody><tr><td colspan="3" id="subtitle">Primary Reflector&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+					  <tr>
+						  <td>
+							<div style="margin: 0; padding: 0; overflow-y: auto;overflow-x: hidden;">
+							<table width="25%" cellspacing="0" cellpadding="0">
+								<tbody><tr><td align="left" colspan="2" id="subtitlesm">LNB LO</td></tr>
+								<tr id="smfont"><td align="right" nowrap="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Band 1:&nbsp;</td><td align="left">10.0&nbsp;GHz</td></tr>
+								<tr id="smfont"><td align="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2:&nbsp;</td><td align="left">10.75&nbsp;GHz</td></tr>
+								<tr id="smfont"><td align="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3:&nbsp;</td><td align="left">11.30&nbsp;GHz</td></tr>
+								<tr id="smfont"><td align="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4:&nbsp;</td><td align="left">9.75&nbsp;GHz</td></tr>
+								<tr id="smfont"><td colspan="2">&nbsp;</td>
+								</tr><tr id="smfont"><td colspan="2">&nbsp;</td>
+							</tr></tbody>
+							</table>
+							</div>
+						 </td>
+						 <td>
+							<div style="margin: 0; padding: 0; overflow-y: auto;overflow-x: hidden;">
+							<table width="25%" cellspacing="0">
+								<tbody><tr><td align="left" colspan="2" id="subtitlesm" nowrap="">Dishscan Drive level</td></tr>
+								<tr id="smfont"><td align="right">AZ:&nbsp;</td><td align="left">13&nbsp;%</td></tr>
+								<tr id="smfont"><td align="right">EL:&nbsp;</td><td align="left">12&nbsp;%</td></tr>
+								<tr id="smfont"><td align="right">&nbsp;CL:&nbsp;</td><td align="left">22&nbsp;%</td></tr>
+								<tr id="smfont"><td align="right">&nbsp;Phase:&nbsp;</td><td align="left">45.0&nbsp;deg</td></tr>
+								<tr id="smfont"><td align="right" nowrap="">Step Resolution:&nbsp;</td><td align="left">0.10</td></tr>
+								<tr id="smfont"><td colspan="2">&nbsp;</td>
+								</tr><tr id="smfont"><td colspan="2">&nbsp;</td>
+							</tr></tbody></table>
+							</div>
+						 </td>
+						 <td>
+							<div style="margin: 0; padding: 0; overflow-y: auto;overflow-x: hidden;">
+							<table width="50%" cellspacing="0" cellpadding="0" style="overflow: auto;">
+								<tbody><tr><td align="left" colspan="2" id="subtitlesm">Polarization</td></tr>
+								<tr id="smfont"><td align="right">Drive:&nbsp;</td><td align="left">auto</td></tr>
+								<tr id="smfont"><td align="right">Type:&nbsp;</td><td align="left">linear</td></tr>
+								<tr id="smfont"><td align="right">Linear Scale:&nbsp;</td><td align="left">0.1098&nbsp;deg/count</td></tr>
+								<tr id="smfont"><td align="right">Circular Scale:&nbsp;</td><td align="left">NA&nbsp;deg/count</td></tr>
+								<tr id="smfont"><td align="right" nowrap="">Linear Mechnical Offset:&nbsp;</td><td align="left">170.0&nbsp;deg</td></tr>
+								<tr id="smfont"><td align="right" nowrap="">Circular Mechnical Offset:&nbsp;</td><td align="left">NA&nbsp;deg</td></tr>
+							</tbody></table>
+							</div>
+						 </td>
+					  </tr>
+					  <tr><td colspan="3">&nbsp;</td></tr>
+					  </tbody>
+				  </table>
+			 </div>
+			<div  class="msgnotify" id="popup"style="text-decoration:none; position:absolute; left:155px; top:175px; width:450px; background-color:#E0F8F7;">
+				<table width='450px'>
+				  <tr><td>&nbsp;</td><tr><tr><td>&nbsp;</td><tr>
+				  <tr><td align='center'><h3>Changing profile would result in service be interrupted. Do you want to proceed?</h3></td></tr>
+				  <tr><td align='center'><a href='#'id="yesno" class='linkblue'>Yes&nbsp;&nbsp;&nbsp;&nbsp;No</a></td></tr>
+				  <tr><td>&nbsp;</td><tr><tr><td>&nbsp;</td><tr>
+				</table>
+			</div>
+			<div  class="msgnotify" id="progress"style="text-decoration:none; position:absolute; left:350px; top:175px;">
+				<img src="../img/progress.gif">
+			</div>
+		</div>
+			
+		
+	</div>
+	
+	
+
+
+</body>
+
+
+</html>

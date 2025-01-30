@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title>Sea Tel IMA Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+window.onload = function() {$("#graphtitle, #graphds, #graphadmc, #graphhdg, #graphivc, #graphw, #graphv, #graphtc").hide();
+var url = "012a";
+parent.set("cmi.core.lesson_location", url);
+}
+
+$(document).ready(function(){
+	$("#gmode").change(function(){
+		if ($(this).val() == "admc"){$("#graphtitle, #graphadmc").show();$("#graphhdg, #graphivc, #graphw, #graphv, #graphtc,#graphds").hide();}
+		else if ($(this).val() == "admchdg"){$("#graphtitle, #graphhdg").show();$("#graphadmc, #graphivc, #graphw, #graphv, #graphtc,#graphds").hide();}
+		else if ($(this).val() == "dispivc"){$("#graphtitle, #graphivc").show();$("#graphadmc, #graphhdg, #graphw, #graphv, #graphtc,#graphds").hide();}
+		else if ($(this).val() == "dispv"){$("#graphtitle, #graphv").show();$("#graphadmc, #graphhdg, #graphw, #graphivc, #graphtc,#graphds").hide();}
+		else if ($(this).val() == "dispw"){$("#graphtitle, #graphw").show();$("#graphadmc, #graphhdg, #graphv, #graphivc, #graphtc,#graphds").hide();}
+		else if ($(this).val() == "disptc"){$("#graphtitle, #graphtc").show();$("#graphadmc, #graphhdg, #graphivc, #graphv, #graphw,#graphds").hide();}
+		else if ($(this).val() == "dishscanxy"){$("#graphds").show();$("#graphtitle, #graphadmc, #graphhdg, #graphivc, #graphv, #graphw").hide();}
+		else{$("#graphtitle, #graphds, #graphadmc, #graphhdg, #graphivc, #graphw, #graphv, #graphtc").hide();}
+	});
+
+			
+
+});
+
+</script>
+<STYLE type="text/css" media="all">
+	
+.crop {
+    width: 640px;
+    height: 380px;
+    overflow: hidden;
+background-position: center center;
+}
+
+.crop img {
+    width: 620px;
+    /*height: 460px;*/
+   margin: 0px 0px 0px -0px;
+}
+select{	font-size:11px;
+	position:absolute;
+	padding:0px;
+}
+button{	font-size:11px;
+	
+	padding:0px;
+}
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="body">
+		<h1>Graphs</h1>
+		<div style="float:left;width:400px;">
+		<p>This section is like DacRemP.<br>
+			Use the Graphic mode list to select which graph you wish to monitor and the zoom section to zoom in and out of the graphs.<br>
+			<div id="graphtitle">You can use the CLI commands window to move the antenna in each axis.</div></p>
+		</div>
+		<div style="position:absolute;right:0;top:0px;height:200px;width:800px;"> 
+			
+			<table align='center'width=100%>
+				   <tr><td align='center'colspan=8><font face=arial size=6><strong>Monitoring Graph</strong></font></td></tr>
+				   <tr>
+					<td align='left' colspan=2>&nbsp;</td>
+					<td align='left' colspan=1><font face=arial size='+1'>&nbsp;Data Type</font>:&nbsp;
+					   <input type='radio' name='dataType' value='On' checked onClick='getUserSelDataType();'>Live Data&nbsp;
+					   <input type='radio' name='dataType' value='Off' onClick='getUserSelDataType();'>Historic Data</td>
+
+					 <td align='right' colspan=1><font face=arial size='+1'>Graphic Mode</font>:
+					<SELECT class="select" id='gmode' name='gmode' size='1' onchange="liveDrawing()">
+						<OPTION>Select mode</OPTION>
+						<OPTION value='admc'>ADMC(position)</OPTION>
+						<OPTION value='admchdg'>Heading(position)</OPTION>
+						<OPTION value='dispivc'>DispIVC(loop error)</OPTION>
+						<OPTION value='dispv'>DispV(ref)</OPTION> 
+						<OPTION value='dispw'>DispW(rate)</OPTION> 
+						<OPTION value='disptc'>DispTC(drive)</OPTION>
+						<OPTION value='dishscanxy'>DishScanXY</OPTION> 
+					</SELECT>
+						 &nbsp;
+						</td><td align='left' colspan=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				   </tr> 
+			</table>
+			<hr class='grnhr'>
+
+			<div id=graphtitle>
+			<table  align='center'width=100%>
+				<tr>
+				<td align='left'style="font-size:10px;">Zoom&nbsp;
+				<a href='javascript:nextGraphics(10)' class='link'>Level 1</a>
+				<a href='javascript:nextGraphics(15)' class='link'>2</a>
+				<a href='javascript:nextGraphics(20)' class='link'>3</a>
+				<a href='javascript:nextGraphics(25)' class='link'>4</a></td>
+
+				<td align='right'style="font-size:10px;">CLI Command</td>
+				<td align='left' valign='bottom' colspan='1'><input id='cmdparam' name='cmdparam' value='' size='55' maxlength='85' OnKeyPress='return cliCmdGraphEnterKey(event);'><button type='button' id='clicmdbtn' name='clicmdbtn' class='btnsm' onClick='exeGraphKeyInCmd();'>Submit</button></td>
+			<td width=40px align='left' valign='top'><button type='button' class='btnsm' onClick='exportDataLog();'>Export</button></td>
+			<td width=40px align='left' valign='top'>
+					  <button type='button' id='centerbtn' name='centerbtn' class='btnsm' onClick='centerGraph();'>Center</button></td>
+				</tr></table></div>
+
+			<div id=graphds>
+			<table  align='center'width=100% >
+				<tr>
+				<td align='left'style="font-size:10px;width:150px;">Zoom&nbsp;
+				<a href='javascript:nextGraphics(10)' class='link'>Level 1</a>
+				<a href='javascript:nextGraphics(15)' class='link'>2</a>
+				<a href='javascript:nextGraphics(20)' class='link'>3</a>
+				<a href='javascript:nextGraphics(25)' class='link'>4</a></td>
+
+				<td align='right'style="font-size:10px;width:100px;">Parameter Type</td>
+				<td align='left' colspan=1 style="width:60px;">
+					<SELECT class="select" size='1' onchange="liveDrawing()">
+						<OPTION id='CL'>CL</OPTION>
+						<OPTION id='EL'>EL</OPTION>
+						<OPTION id='AZ'>AZ</OPTION> 
+					</SELECT>
+						 &nbsp;
+						</td>
+				<td align='left' valign='bottom' colspan='1'><input id='cmdparam' name='cmdparam' value='' size='5' maxlength='5' OnKeyPress='return cliCmdGraphEnterKey(event);'><button type='button' id='clicmdbtn' name='clicmdbtn' class='btnsm' onClick='exeGraphKeyInCmd();'>Submit</button></td>
+			<td width=40px align='left' valign='top'><button type='button' class='btnsm' onClick='exportDataLog();'>Export</button></td>
+			<td width=40px align='left' valign='top'>
+					  <button type='button' id='centerbtn' name='centerbtn' class='btnsm' onClick='centerGraph();'>Center</button></td>
+				</tr></table>
+			<table  align='center'>    
+				   <tr>
+					  <td> 
+						<div class="crop"><img src="../img/graph_ds.png" alt="will be graphs" border=0 usemap="#imap"/>
+			</div>   
+					 </td>
+				  </tr> 
+			</table></div>
+			<div id=graphadmc>
+			<table  align='center'>    
+				   <tr>
+					  <td> 
+						<div class="crop"><img src="../img/graph_admc.png" alt="will be graphs" border=0 usemap="#imap"/>
+			</div>   
+					 </td>
+				  </tr> 
+			</table></div>
+			<div id=graphhdg>
+			<table  align='center'>    
+				   <tr>
+					  <td> 
+						<div class="crop"><img src="../img/graph_hdg.png" alt="will be graphs" border=0 usemap="#imap"/>
+			</div>   
+					 </td>
+				  </tr> 
+			</table></div> 
+			<div id=graphivc>
+			<table  align='center'>    
+				   <tr>
+					  <td> 
+						<div class="crop"><img src="../img/graph_ivc.png" alt="will be graphs" border=0 usemap="#imap"/>
+			</div>   
+					 </td>
+				  </tr> 
+			</table></div> 
+			<div id=graphv>
+			<table  align='center'>    
+				   <tr>
+					  <td> 
+						<div class="crop"><img src="../img/graph_v.png" alt="will be graphs" border=0 usemap="#imap"/>
+			</div>   
+					 </td>
+				  </tr> 
+			</table></div>
+			<div id=graphw>
+			<table  align='center'>    
+				   <tr>
+					  <td> 
+						<div class="crop"><img src="../img/graph_w.png" alt="will be graphs" border=0 usemap="#imap"/>
+			</div>   
+					 </td>
+				  </tr> 
+			</table></div> 
+			<div id=graphtc>
+			<table  align='center'>    
+				   <tr>
+					  <td> 
+						<div class="crop"><img src="../img/graph_tc.png" alt="will be graphs" border=0 usemap="#imap"/>
+			</div>   
+					 </td>
+				  </tr> 
+			</table></div>  
+			 
+		</div>
+		<div id="footer">
+			<div class="footerbutton back"><a href="012.html" class="footerlink";>< Back</a></div>
+			<div class="footerbutton"><a href="013.html" class="footerlink";>Next ></a></div>
+		</div> 
+	</div>
+
+</div>
+</body>
+</html>
+

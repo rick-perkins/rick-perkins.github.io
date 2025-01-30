@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title>Sea Tel IMA Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+
+window.onload = function() {
+var url = "008cb";
+parent.set("cmi.core.lesson_location", url);
+}
+$(document).ready(function(){
+			
+
+	
+});
+
+</script>
+<STYLE type="text/css" media="screen">
+	
+.crop {
+    width: 1000px;
+    height: 280px;
+    overflow: hidden;
+background-position: center center;
+
+}
+
+.crop img {
+    width: 600px;
+    
+   margin: -0px 0 -0 -0px;
+}
+.cropmxp{
+    width: 600px;
+    height: 160px;
+    overflow: hidden;
+background-position: center center;
+
+}
+
+.cropmxp img {
+    width: 600px;
+    
+   margin: -0px 0 -0 -0px;
+}
+
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="body">
+	<h1>Interface Configuration</h1>
+	<p>MXP and ICU connection pin out.</p>
+		<table cellpadding=2 width=100%>
+
+		<tr><td align=center><font face=arial size=4>
+		<table border=1 align=center><tr><strong><td>Pin No<td>J11 (Gyro)<td>J12 (Aux)<td>J13 (Nmea)<td>J14 (Aux 232)<td>J10C Modem<td>J10D OBM<td>J9 A/B Serial</td></strong></tr>
+				<tr><td>1<td>R1		<td>GND			<td>RX+<td>N/C<td>RTS	<td>RTS	<td>N/C
+		</td></tr>
+				<tr><td>2<td>R2		<td>AUX 1 (TS1 RX LOCK)	<td>RX-<td>RX<td>RX LOCK<td>N/C	<td>N/C
+		</td></tr>
+				<tr><td>3<td>S1 or A	<td>AUX 2 (TS2 RX LOCK)	<td>TX-<td>TX<td>RXD<td>RXD	<td>TX
+		</td></tr>
+				<tr><td>4<td>S2 or B	<td>GND			<td>N/C<td>N/C<td>GND<td>GND	<td>GND
+		</td></tr>
+				<tr><td>5<td>S3 or C	<td>SW 1 (TS1 TX MUTE)	<td>GND<td>GND<td>GND<td>GND	<td>GND
+		</td></tr>
+				<tr><td>6<td>COM	<td>SW 2 (TS2 TX MUTE)	<td>N/C<td>N/C<td>TXD (GPS)<td>TXD (GPS)<td>RX
+		</td></tr>
+				<tr><td>7<td>		<td>SW 3 A		<td>GND<td>GND<td>TX MUTE<td>N/C	<td>N/C
+		</td></tr>
+				<tr><td>8<td>		<td>SW 3 B		<td>TX+<td>N/C<td>CTS	<td>CTS	<td>N/C
+		</td></tr>
+				<tr><td>9<td>		<td>SW 4 A		<td>12VDC<td>12VDC<td>	<td>	<td>
+
+		</td></tr>
+				<tr><td>10<td>		<td>SW 4 B		<td>	<td>	<td>	<td>	<td>
+
+		</table>
+		</td></tr><tr><td align=center>
+		<div class="cropmxp" style="margin-top:0px;">
+			<img src="../img/pinout.png" alt="..." border=0/></div>
+		</td></tr>
+		</table>
+	</div>
+	<div id="footer">
+		<div class="footerbutton back"><a href="008ca.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="008d.html" class="footerlink";>Next ></a></div>
+	</div> 
+</div> 
+
+</body>
+</html>
+

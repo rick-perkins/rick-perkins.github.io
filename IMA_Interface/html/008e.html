@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title>Sea Tel IMA Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+
+window.onload = function() {
+var url = "008e";
+parent.set("cmi.core.lesson_location", url);
+}
+$(document).ready(function(){
+			
+
+	
+});
+
+</script>
+<STYLE type="text/css" media="screen">
+	
+.crop {
+    width: 660px;
+    height: 100px;
+    overflow: hidden;
+background-position: center center;
+
+}
+
+.crop img {
+    width: 680px;
+    height:570px;
+   margin: -416px 0 -0 -0px;
+}
+select{	font-size:11px;
+	position:absolute;
+	padding:0px;
+}
+
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="body">
+	<h1>Interface Configuration</h1>
+	<strong>Dry Alarm</strong>
+	<p>This section allows you to add alarm codes, when the alarm is active this will trigger the volt free normally open contacts to close.</p>
+	<p>Alarm 1 is linked to J12 pin 9 SW4-A and pin 10 SW4-B<br>
+	Alarm 2 is linked to J12 pin 7 SW3-A and pin 8 SW3-B</p>
+	<p>The tick box allows this function to be disabled when its unticked.</p>
+	
+					<table cellspacing='0' cellpadding='0'>
+						<tr><td align='left' colspan='2'><strong>Dry Alarm</strong></td></tr>
+						 <tr>
+						   <td colspan='2' align='right'>Alarm 1&nbsp;</td>
+						   <td align='right'><input type='checkbox' id='udpe' name='udpe' checked></td>
+						   <td align='left'><input id='ip' name='ip' value='[ENTER ERROR CODES]' size='50' onchange='verifyIpMaskGw(1);'></td><td><font color="blue">Error numbers seperated by comma or space</font></td>
+						 </tr>
+						<tr>
+						   <td colspan='2' align='right'>Alarm 2&nbsp;</td>
+						   <td align='right'><input type='checkbox' id='udpe' name='udpe' checked></td>
+						   <td align='left'><input id='ip' name='ip' value='[ENTER ERROR CODES]' size='50' onchange='verifyIpMaskGw(1);'></td>
+						</tr>
+						
+					</table>
+
+	</div>
+	<div id="footer">
+		<div class="footerbutton back"><a href="008d.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="009.html" class="footerlink";>Next ></a></div>
+	</div>   </div>
+
+</body>
+</html>
+

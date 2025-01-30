@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.or../img/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.or../img/1999/xhtml" xml:lang="en">
+
+<head><title>Sea Tel IMA Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+
+window.onload = function() {
+var url = "007a";
+parent.set("cmi.core.lesson_location", url);
+}
+$(document).ready(function(){
+			
+
+	
+});
+
+</script>
+
+<STYLE type="text/css" media="screen">
+	
+
+
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="body">
+		<h1>Satellite Configuration</h1>
+		<div style="float:left;width:500px;">
+		<ul><li>To edit a satellite use the drop down list select satellite.
+		<br>Then the satellite information will be displayed for editing.</li>
+		<li>To add a new satellite click on the Add Satellite button then enter in the correct information.</li>
+		<li>To save the satellite click on the Save button.</li>
+		<li>To delete a satellite, select it via the drop down list then click on Remove.</li>
+		</ul>
+		
+		Hover over the input fields for more information.
+		<p>
+		</div>
+		<div style="position:absolute;right:0;top:60px;"> 
+		<table class='tb' width=700px cellspacing='0' cellpadding='0'>
+		<tr><td>&nbsp;</td></tr>
+		<tr><td align='center' colspan='6'></td></tr>
+		<tr><td align='left' colspan='8'>
+				   <h3>Satellite Selection</h3>
+			 </td></tr>
+			<tr><td align='left' colspan='8'>
+				   <a href="#" class="tooltipdd">&nbsp;<span style="margin-left:-77px;width:200px;">
+				<img class="callout" src="../img/callout_black.gif" />
+				Select a satellite from the list to edit or delete.<br> Once selected all the satellite settings will be displayed below ready for editing or deleting
+			</span>
+		</a>
+			<select class="select" name="Select-Satellite" style="width:200px;">
+			<option value="">Select Satellite</option>
+			<option value="This would be sat 1">This would be sat 1</option>
+			<option value="This would be sat 2">This would be sat 2</option>
+			<option value="This would be sat 3">This would be sat 3</option>
+			 <option value="This would be sat 4">This would be sat 4</option>
+		 </select>&nbsp;
+			 
+		</td></tr>
+		   
+			   <td align='left' colspan=8>If you do not see a dropdown list or your desired satellite is not in the dropdown list, click&nbsp; 
+				  <button type='button' class='btn' >Add Satellite</button>&nbsp;<br>to add a satellite
+			   </td>
+		  </tr>
+		</table>
+		<hr class='grnhr'>
+
+		<table class='tb'>
+		<tr>
+			<td>
+				<table cellspacing='0' cellpadding='0'>
+				   <tr><td align='left' colspan='2'><h3>Add Satellite</h3></td></tr>
+				   <tr>
+						<td align='right' colspan='1'><a href="javascript:void(0);" class="tooltipdd";>Satellite Name&nbsp;<span style="margin-left:-35px;width:200px;">
+				<img class="callout" src="../img/callout_black.gif" />
+				Enter the name you wish the satellite to be saved as.
+			</span>
+		</a></td>
+						<td align='left' colspan='1'><input id='satname' name='satname' value='' size='25' maxlength='30'></td>
+						<input type='hidden' id='numRefl' name='numRefl' value='1'>
+				   </tr>
+				   <tr>	    
+						<td align='right' colspan='1'><a href="javascript:void(0);" class="tooltipdd";>Longitude&nbsp;<span style="margin-left:-77px;width:200px;">
+				<img class="callout" src="../img/callout_black.gif" />
+				Enter Satellite longitude with decimal place if needed followed<br> by E = East or W =West
+			</span>
+		</a></td>
+						<td align='left' colspan='1'><input id='satlongt' name='satlongt' value='28.2' size='5' maxlength='5'>
+						   <select class="select" id='select' name='satsphere'>
+								<option value='E'>E</option>
+								<option value='W'>W</option>
+						   </select>&nbsp;
+						   <input type='hidden' id='satsphereSel' name='satsphereSel' value=''>
+					   </td>
+					</tr>
+					<tr>   
+						<td align='right'><a href="javascript:void(0);" class="tooltipdd";>Freqency&nbsp;<span style="margin-left:-77px;width:200px;">
+				<img class="callout" src="../img/callout_black.gif" />
+				Enter Satellite tracking freq in MHz &#183 KHz
+			</span>
+		</a></td>
+						<td align='left'><input id='freq' name='freq' value='1234.567' size='10' maxlength='10'>&nbsp;MHz</td>
+					</tr>
+					<tr>
+					   <td align='right'><a href="javascript:void(0);" class="tooltipdd";>Skew&nbsp;<span style="margin-left:-77px;width:200px;">
+				<img class="callout" src="../img/callout_black.gif" />
+				Enter Satellite skew value if known.<br>This is for satellites in an inclind orbit
+			</span>
+		</a></td>
+					   <td align='left'><input id='skew' name='skew' value='0' size='10' maxlength='5'>&nbsp;deg</td>
+					</tr>
+				</table>
+			</td> 
+			<td>
+				<table cellspacing='0' cellpadding='0'>
+				   <tr><td align='left' colspan='2'>&nbsp;</td></tr>
+				   <tr><td align='left' colspan='2'>&nbsp;</td></tr>
+				   <tr><td align='left' colspan='2'>&nbsp;</td></tr>
+				   <tr>
+						<td align='right' ><a href="javascript:void(0);" class="tooltipdd";>Search Pattern&nbsp;<span style="margin-left:-177px;width:400px;">
+				<img class="callout" src="../img/callout_black.gif" />
+				Select the correct search pattern for the targeted satellite.<br>
+			<ul><li>Inclined is for a satellite in an inclined orbit</li>
+			<li>Sky search is for no gyro mode</li>
+			<li>Sprial is for normal operation</li>
+			</ul>
+			</span>
+		</a></td>
+						<td align='left'>
+							<select class="select"id='spattern' name='spattern'>
+								<option value='INCLINED'>Inclined</option>
+								<option value='SKY_SEARCH'>Sky Search</option>
+								<option value='SPIRAL' selected>Spiral</option>
+							</select>&nbsp;
+							<input type='hidden' id='spatternSel' name='spatternSel' value=''>
+						</td>
+					 </tr>
+					 <tr>
+						<td align='right'><a href="javascript:void(0);" class="tooltipdd";>Tx Polarity&nbsp;<span style="margin-left:-77px;width:200px;">
+				<img class="callout" src="../img/callout_black.gif" />
+				Select the correct Transmite polarity<br>If in Xpol the the recieve will be the opersite pol
+			</span>
+		</a></td>
+						<td align='left'>
+							<select class="select"id='txpol' name='txpol'>
+								<option value='H'>HORZ</option>
+								<option value='V'>VERT</option>
+								<option value='L'>LHCP</option>
+								<option value='R'>RHCP</option>
+							</select>&nbsp;
+						</td>
+					 </tr>
+					 <tr>
+						<td align='right'><a href="javascript:void(0);" class="tooltipdd">
+		Band&nbsp;<span style="margin-left:-57px;width:200px;">
+				<img class="callout" src="../img/callout_black.gif" />
+				Select the correct band on the LNB for tracking and modem receive
+			</span>
+		</a></td>
+						<td align='left'>
+					<select class="select"name="Band" style="width:120px;">
+					<option value="1 (Lo:10.000 GHz)">1 (Lo:10.000 GHz)</option>
+					<option value="2 (Lo:10.750 GHz)">2 (Lo:10.750 GHz)</option>
+					<option value="3 (Lo:11.300 GHz)">3 (Lo:11.300 GHz)</option>
+					<option value="4 (Lo:9.750 GHz)">4 (Lo:9.750 GHz)</option>
+					</select>&nbsp;
+						</td>
+						
+					</tr>
+					<tr>
+						<td align='right'>Reflector&nbsp;</td>
+							<td colspan=1 align='left'>
+					<a href="javascript:void(0);"class="tooltipdd"><input type='radio' id='selant' name='selant' value='PRIMARY_REFLECTOR' checked> Primary &nbsp; <input type='radio' id='selant' name='selant' value='SECONDARY_REFLECTOR'>Secondary<span style="margin-left:-210px;width:200px;">
+				<img class="callout" src="../img/callout_black.gif" />
+				This is for the Dual Band systems with C and Ku feeds or QOR antennas which have two reflectors. If the antenna is only C or Ku band only then secondary can not be selected.
+			</span>
+		</a></td>
+						<input type='hidden' id='selantClk' name='selantClk' value=''>
+					</tr>
+					<tr>
+					  <td align='right'>Rx&nbsp;</td>
+					  <td colspan=1 align='left'><a href="javascript:void(0);"class="tooltipdd">
+		<input type='radio' id='lnb' name='lnb' value='XPOL' checked> XPol &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type='radio' id='lnb' name='lnb' value='COPOL'>CoPol
+		<span style="margin-left:-340px;width:400px;">
+				<img class="callout" src="../img/callout_black.gif" />
+				This will switch between the two LNB's, Xpol will allow you to receive on the opersite pol to the TX and CoPol will allow you to receive on the same pol as the TX
+			</span>
+		</a></td>
+					  <input type='hidden' id='lnbClk' name='lnbClk' value=''>
+					</tr>
+				  
+				</table>
+			</td> 
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		</tr>	
+
+
+		<tr><td colspan=3>&nbsp;</td></tr>     
+		<tr>	 
+			 <td align='left'><button type='button' class='btnsm' >Save</button></td>
+			 <td colspan=2>&nbsp;</td>
+		</tr> 
+		<tr>	 
+			 <td align='left'><button type='button' id='delbtn' name='delbtn' class='btnsm' >Remove</button></td>
+			 <td colspan=2>&nbsp;</td>
+		</tr>
+		</table>
+		</div>
+	</div> 
+	<div id="footer">
+		<div class="footerbutton back"><a href="007.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="008.html" class="footerlink";>Next ></a></div>
+	</div></div>
+
+</body>
+</html>
+

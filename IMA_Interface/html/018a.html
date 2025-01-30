@@ -1,0 +1,316 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title>Sea Tel IMA Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+
+window.onload = function() {$("#graphdata").hide();
+var url = "018a";
+parent.set("cmi.core.lesson_location", url);
+}
+$(document).ready(function(){
+  	$("#systemlog").click(function(){
+	$("#syslog").show();$("#graphdata").hide();});
+	$("#graphicdata").click(function(){
+	$("#syslog").hide();$("#graphdata").show();});
+
+			
+
+});
+
+
+
+
+</script>
+<STYLE type="text/css" media="all">
+	
+#A ul {
+   	float:left
+   	width:100%;
+   	padding:0;
+   	margin:0;
+   	list-style-type:none;
+}
+   
+#A li {
+	display: inline; 
+       line-width: 105px;
+	line-height: 25px;
+}
+#A li a {
+    font-family: Tahoma;
+    font-size: 14px;
+    float:center;
+    text-align:center;
+    width:8em;   
+    text-decoration:none;
+    color:white;
+    background-color:#16a6d0;
+    padding:0.2em 0.4em;
+    border-right:1px solid white;
+  }
+
+#A li a:hover {background-color:#CCCCCC;}
+
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="body">
+		<h1>Data Export</h1>
+		<div style="float:left;width:400px;">
+			
+			<p>This page is where you can export the systems activity or graphic log.
+
+				<p>System log:<p>
+				<ul style="list-style-type:none;">
+				<li>The time stamp is as follows<br>Year Month Date Time<br>
+				2014 &nbsp;&nbsp;02&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;22&nbsp;&nbsp;&nbsp;1103</li>
+				<li>Each file is 1 hour of data</li>
+				<li>The only file that can not be downloaded is the one that is currectly being written.</li>
+				</ul>
+				<P>Graphic Data:</p>
+				<ul style="list-style-type:none;">
+				Graphic data contains some of the following:
+				<ul><li>EL, CL and AZ posistions</li>
+					<li>Rates sensor data</li>
+					<li>Heading</li>
+					<li>GPS</li>
+					<li>EL, CL and AZ torque</li>
+				</ul>
+				</ul>
+		</div>
+		<div id="A" style="position:absolute;right:0;top:0px;height:200px;width:800px;"> 
+
+			<table width=100%class='tb' cellspacing='0' cellpadding='0'>
+			<tr><td ><ul>
+			<li><a href="#" id="systemlog">System Log</a></li>
+			<li><a href="#" id="graphicdata">Graphic Data</a></li>
+			</ul></td></tr>
+			<tr><td>
+			<div id=syslog><h1 align='center'>System log</h1>
+			<h4 align='left'>To download a system log file, right click a link below, and click "Save Target As...", then name the file (*.csv or *.txt)
+			<br>or define From and To dates, then right click Export icon and click "Save Target As...", then name the file (*.csv or *.txt) 
+			</h4>
+			<form name='syslogdata'>
+			<table>
+				   <tr>
+					  <td align='left'>From&nbsp;<input id='dtfrom' name='dtfrom' type='text' size='18'><a href="javascript:NewCssCal('dtfrom','MMddyyyy','arrow',true,'24',true)"><img src="../img/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a></td>
+					  <td colspan='1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td>
+					  <td align='left'>To&nbsp;<input id='dtto' name='dtto' type='text' size='18'><a href="javascript:NewCssCal('dtto','MMddyyyy','arrow',true,'24',true)"><img src="../img/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a></td>
+					  <td colspan='2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td>
+				   </tr>
+			</table>
+			<div id='dataExpLink'></div>
+			<div id="submitprog" class="submitprog" style="display:none; position:absolute; left:400px; top:215px; width:350px; background-color:#E0F8F7;">
+				<table width=350px'>
+				  <tr><td>&nbsp;</td></tr>
+				  <tr><td align='center'><img id='inprogress_img' src='../img/progress.gif'>&nbsp;</td></tr>
+				  <tr><td>&nbsp;</td></tr>
+				  <tr><td align='center'><h3>Large volume data is about to download, it may take minutes to over one hour. <br>Do not hit Cancel button while data export is in  progress......Please wait</h3></td></tr>
+				  <tr><td>&nbsp;</td></tr>
+				</table>
+			</div>
+			<table>
+				   <tr>
+					  <td align='left' colspan='8'> 
+						  <IFRAME 
+							  SRC='export.html'
+					  ID='viewspace'
+							  NAME='viewspace'
+							  WIDTH=700 HEIGHT=200
+							  FRAMEBORDER=0  
+							  MARGINWIDTH=1
+							  MARGINHEIGHT=1
+							  SCROLLING=no
+							  allowtransparency=true
+						   >
+						   </IFRAME>   
+					 </td>
+				  </tr> 
+			</table></div>
+
+
+			<div id="graphdata">
+			<h1 align='center'>Criteria for graphic data export</h1>
+			<h4 align='left'>To export graphic data, define From and To dates first, then right click Export icon and click "Save Target As...", <br>
+			then name the file (*.csv or *.txt) </h4>
+			<form name='graphdata'>
+				<table>
+				   <tr>
+					  <td align='left'>From&nbsp;<input id='dtfrom' name='dtfrom' type='text' size='18'><a href="javascript:NewCssCal('dtfrom','MMddyyyy','arrow',true,'24',true)"><img src="../img/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a></td>
+					  <td colspan='1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td>
+					  <td align='left'>To&nbsp;<input id='dtto' name='dtto' type='text' size='18'><a href="javascript:NewCssCal('dtto','MMddyyyy','arrow',true,'24',true)"><img src="../img/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a></td>
+					  <td colspan='2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td>
+					  <td nowrap><a HREF='../Documents/csv/graphicdata.csv' onClick='disableClick();'><img src='../img/export.png' border='0' title='Right click to export'></a></td>
+				   </tr>
+				</table>
+				<table>   
+				   <tr>
+					   <td align='left'>Select All&nbsp;<input type='checkbox' id='all' name='all' value='' onclick='toggleChecks(this);'></td>
+					   <td align='left' colspan='3'>GPS data&nbsp;<input type='checkbox' id='gps' name='gps' value='' onclick='toggleCheck();'></td>
+				   </tr>
+				   <tr>
+					  <td>  
+						<table cellspacing='2' cellpadding='0'>
+							 <tr><td colspan='4'>DispIVC(loop error)</td></tr>
+							 <tr>
+								 <td colspan='2' align='right'>AZ</td>
+								 <td align='left'><input type='checkbox' id='ivcaz' name='ivcaz' value='' onclick='toggleCheck();'></td>
+							 </tr>
+							 <tr>
+								<td colspan='2' align='right'>LV</td>
+								<td align='left'><input type='checkbox' id='ivclv' name='ivclv' value='' onclick='toggleCheck();'></td>
+							 </tr>
+							 <tr>
+								<td colspan='2' align='right'>CL</td>
+								<td align='left'><input type='checkbox' id='ivccl' name='ivccl' value='' onclick='toggleCheck();'></td>    
+							 </tr>
+							<tr><td colspan='4'>&nbsp;</td></tr>
+							<tr><td colspan='4'>&nbsp;</td></tr>
+						 </table>
+					  </td>
+					  <td>  
+							<table cellspacing='2' cellpadding='0'>
+							 <tr><td colspan='4'>DispV (ref)</td></tr>
+							 <tr>
+								 <td colspan='2' align='right'>AZ</td>
+								 <td align='left'><input type='checkbox' id='vaz' name='vaz' value='' onclick='toggleCheck();'></td>
+							 </tr>
+							 <tr>
+								<td colspan='2' align='right'>LV_YTilt</td>
+								<td align='left'><input type='checkbox' id='vlvyt' name='vlvyt' value='' onclick='toggleCheck();'></td>
+							 </tr>
+							 <tr>
+								<td colspan='2' align='right'>CL_XTilt </td>
+								<td align='left'><input type='checkbox' id='vclxt' name='vclxt' value='' onclick='toggleCheck();'></td>    
+							 </tr>
+							<tr>
+								<td colspan='2' align='right'>LV_RawY</td>
+								<td align='left'><input type='checkbox' id='vlvry' name='vlvry' value='' onclick='toggleCheck();'></td>
+							 </tr>
+							 <tr>
+								<td colspan='2' align='right'>CL_RawX </td>
+								<td align='left'><input type='checkbox' id='vclrx' name='vclrx' value='' onclick='toggleCheck();'></td>    
+							 </tr>
+						
+						 </table>
+					  </td>
+					  
+					  <td>  
+						   <table cellspacing='2' cellpadding='0'>
+							 <tr><td colspan='4'>DispW(rate)</td></tr>
+							 <tr>
+								 <td colspan='2' align='right'>AZ</td>
+								 <td align='left'><input type='checkbox' id='waz' name='waz' value='' onclick='toggleCheck();'></td>
+							 </tr>
+							 <tr>
+								<td colspan='2' align='right'>LV</td>
+								<td align='left'><input type='checkbox' id='wlv' name='wlv' value='' onclick='toggleCheck();'></td>
+							 </tr>
+							 <tr>
+								<td colspan='2' align='right'>CL</td>
+								<td align='left'><input type='checkbox' id='wcl' name='wcl' value='' onclick='toggleCheck();'></td>    
+							 </tr>
+							<tr><td colspan='4'>&nbsp;</td></tr>
+							<tr><td colspan='4'>&nbsp;</td></tr>
+						 </table>
+					  </td>
+					  
+					  <td>  
+						   <table cellspacing='2' cellpadding='0'>
+							 <tr><td colspan='4'>DispTC(drive)</td></tr>
+							 <tr>
+								 <td colspan='2' align='right'>AZ</td>
+								 <td align='left'><input type='checkbox' id='tcaz' name='tcaz' value='' onclick='toggleCheck();'></td>
+							 </tr>
+							 <tr>
+								<td colspan='2' align='right'>LV</td>
+								<td align='left'><input type='checkbox' id='tclv' name='tclv' value='' onclick='toggleCheck();'></td>
+							 </tr>
+							 <tr>
+								<td colspan='2' align='right'>CL</td>
+								<td align='left'><input type='checkbox' id='tccl' name='tccl' value='' onclick='toggleCheck();'></td>    
+							 </tr>
+							<tr><td colspan='4'>&nbsp;</td></tr>
+							<tr><td colspan='4'>&nbsp;</td></tr>
+						 </table>
+					  </td>
+				 
+					  <td>  
+						<table cellspacing='2' cellpadding='0'>
+							 <tr><td colspan='4'>ADMC(position)</td></tr>
+							 <tr>
+								 <td colspan='2' align='right'>AZ</td>
+								 <td align='left'><input type='checkbox' id='admcaz' name='admcaz' value='' onclick='toggleCheck();'></td>
+							 </tr>
+							 <tr>
+								<td colspan='2' align='right'>LV</td>
+								<td align='left'><input type='checkbox' id='admclv' name='ad,clv' value='' onclick='toggleCheck();'></td>
+							 </tr>
+							 <tr>
+								<td colspan='2' align='right'>REL</td>
+								<td align='left'><input type='checkbox' id='admccl' name='admccl' value='' onclick='toggleCheck();'></td>    
+							 </tr>
+							 <tr>
+								<td colspan='2' align='right'>AGC</td>
+								<td align='left'><input type='checkbox' id='adncsgl' name='admcsgl' value='' onclick='toggleCheck();'></td>    
+							 </tr>
+							 <tr><td colspan='4'>&nbsp;</td></tr>
+						 </table>
+					  </td>
+					  <td>  
+							<table cellspacing='2' cellpadding='0'>
+							 <tr><td colspan='4'>DishscanXY</td></tr>
+							 <tr>
+								 <td colspan='2' align='right'>AZ_VCP</td>
+								 <td align='left'><input type='checkbox' id='xyaz' name='xyaz' value='' onclick='toggleCheck();'></td>
+							 </tr>
+							 <tr>
+								<td colspan='2' align='right'>LV_VCP</td>
+								<td align='left'><input type='checkbox' id='xylv' name='xylv' value='' onclick='toggleCheck();'></td>
+							 </tr>
+							 <tr>
+								<td colspan='2' align='right'>CL_VCP</td>
+								<td align='left'><input type='checkbox' id='xycl' name='xycl' value='' onclick='toggleCheck();'></td>    
+							 </tr>
+							 <tr>
+								<td colspan='2' align='right'>Phase_VCP</td>
+								<td align='left'><input type='checkbox' id='xyphase' name='xyphase' value='' onclick='toggleCheck();'></td>    
+							 </tr>
+							<tr><td colspan='4'>&nbsp;</td></tr>
+						 </table>
+					  </td>
+					  <td colspan='4'>&nbsp;</td>
+					  <td colspan='4'>&nbsp;</td>
+				   </tr>
+				   <tr><td align='left' colspan='2'>&nbsp;</td></tr> 
+			 </table>
+			 <div id='dataExpLink'></div >
+			 <div id="submitprog" class="submitprog" style="display:none; position:absolute; left:400px; top:215px; width:350px; background-color:#E0F8F7;">
+				<table width='350px'>
+				  <tr><td>&nbsp;</td></tr>
+				  <tr><td align='center'><img id='inprogress_img' src='image/progress.gif'>&nbsp;</td></tr>
+				  <tr><td>&nbsp;</td></tr>
+				  <tr><td align='center'><h3>Large volume data is about to download, it may take minutes to over one hour. <br>Do not hit Cancel button while data export is in  progress......Please wait</h3></td></tr>
+				  <tr><td>&nbsp;</td></tr>
+				</table>
+			</div></div>
+			</td></tr></table>
+		</div>
+	</div>
+	<div id="footer">
+		<div class="footerbutton back"><a href="016.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="019.html" class="footerlink";>Next ></a></div>
+	</div>
+</div>
+</body>
+</html>
+
+
+

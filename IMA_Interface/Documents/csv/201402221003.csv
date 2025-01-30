@@ -1,0 +1,13 @@
+02-22-2014 09:03:02:040,INFORMATION,NULL,SFS Task,MXP,System Start
+02-22-2014 09:03:01:445,WARNING,NULL,smx_IdleTask,MXP,FFS bad block counter (4) does not match NAND bad block counter (2)
+02-22-2014 09:03:02:040,INFORMATION,NULL,SFS Task,MXP,Build 106d (Build:221638)
+02-22-2014 09:03:02:040,INFORMATION,NULL,SFS Task,MXP,Boot Loader Revision 1.0.9.1
+02-22-2014 09:03:01:445,WARNING,NULL,smx_IdleTask,MXP,FFS bad block count changed from 2 to 4, 2 NAND bad blocks, 4 FS bad blocks
+02-22-2014 09:03:02:900,WARNING,NULL,SFS Task,MXP,FFS bad block counter (4) does not match NAND bad block counter (2)
+02-22-2014 09:03:18:320,INFORMATION,NULL,Initialization_Task,MXP,Power On Self Test: SFP device is not connected.
+02-22-2014 09:03:18:320,INFORMATION,NULL,Initialization_Task,MXP,Power On Self Test: Success.
+02-22-2014 09:03:02:130,INFORMATION,NULL,SFS Task,ICU,System Start
+02-22-2014 09:03:47:210,ERROR,1038,RemoteSystemStat_task,MXP,System Serial Number Mismatch: ON
+02-22-2014 09:03:02:130,INFORMATION,NULL,SFS Task,ICU,Build 106d (Build:221638)
+02-22-2014 09:03:02:130,INFORMATION,NULL,SFS Task,ICU,Boot Loader Revision 1.0.9.1
+02-22-2014 09:03:15:760,INFORMATION,NULL,Initialization_Task,ICU,Power On Self Test: Success.

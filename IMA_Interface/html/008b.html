@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.or../img/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.or../img/1999/xhtml" xml:lang="en">
+
+<head><title>Sea Tel IMA Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+
+window.onload = function() {
+var url = "008b";
+parent.set("cmi.core.lesson_location", url);	
+}
+$(document).ready(function(){
+		
+
+	
+});
+
+</script>
+
+<STYLE type="text/css" media="all">
+	
+
+
+
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="body">
+	<h1>Interface Configuration</h1>
+
+
+		<p>This section allows you to change anything which is related to the IP network.</p>
+		<p>The MAC Address is the only field that<strong> can not be changed</strong></p>
+		<p>Once the IP address, Subnet, Gatway or DNS has changed and the save button has been pressed, the changed field will become<font color="red"> RED</font>. At this point the settings will not take affect untill a<strong> MXP REBOOT</strong></p>
+
+
+
+
+		<div style="position:relative;border:0px solid;left:40px;top:0px;width:900px;height:300px;margin-bottom:-0px">
+			<table class='tb' cellspacing='0' cellpadding='0'>
+			  <tr><td align='center' colspan='4'><h1>Communication Interfaces</h1></td></tr> 
+			  <tr>
+				 <td>
+					<table cellspacing='0' cellpadding='0'>
+						<tr><td align='left' colspan='2'><strong>Network</strong></td></tr>
+						 <tr>
+						   <td colspan='2' align='right'>MAC Address:&nbsp;</td>
+						   <td align='left'>&nbsp;00:04:A3:D0:9E:17</td>
+						 </tr>
+						<tr>
+						   <td colspan='2' align='right'>IP Address&nbsp;</td>
+						   <td align='left'><input id='ip' name='ip' value='10.1.1.100' size='15' onchange='verifyIpMaskGw(1);'></td>
+						</tr>
+						<tr>
+							<td colspan='2' align='right'>Subnet Mask&nbsp;</td>
+							<td align='left'><input id='netmask' name='netmask' value='255.255.255.0' size='15' onchange='verifyIpMaskGw(2);'></td>
+						</tr>
+						<tr>
+							<td colspan='2' align='right'>Gateway&nbsp;</td>
+							<td align='left'><input id='gateway' name='gateway' value='10.1.1.1' size='15' onchange='verifyIpMaskGw(3);'></td>
+						</tr>
+						<tr>
+							<td colspan='2' align='right'>DNS IP Address&nbsp;</td>
+							<td align='left'><input id='dnsip' name='dnsip' value='10.1.1.205' size='15'>
+						</tr>
+						<tr>
+						  <td colspan='2'>
+
+						  </td>
+						</tr>
+					</table>
+				 </td>
+				 <td>
+					  <table cellspacing='0' cellpadding='0'>	     
+						 <tr><td colspan='4'>&nbsp;</td></tr>
+						 <tr>
+							 <td colspan='2' align='right'>UDP Port</td>
+							 <td align='right'><input type='checkbox' id='udpe' name='udpe' checked></td>
+							 <td align='left'><input id='udpport' name='udpport' value='3000' size='5' maxlength='5'>&nbsp;ROAM</td>
+						</tr>
+						<tr>
+							<td colspan='2' align='right'>Web Port</td>
+							<td align='right'><input type='checkbox' id='httpe' name='httpe' checked></td>
+							<td align='left'><input id='httpport' name='httpport' value='80' size='5' maxlength='5' onchange='showHideMsgIp(3);'></td>
+						 </tr>
+						<tr>
+							<td colspan='2' align='right'>Secure Web Port</td>
+							<td align='right'><input type='checkbox' id='httpse' name='httpse' checked></td>    
+							<td align='left'><input id='httpsport' name='httpsport' value='443' size='5' maxlength='5' onchange='showHideMsgIp(4);'></td>
+						 </tr>
+						<tr>
+						  <td colspan='4'>
+							  <input type='hidden' id='httpportold' name='httpportold' value='80'></td>
+							  <input type='hidden' id='httpsportold' name='httpsportold' value='443'></td>
+						  </td>
+						</tr>
+						<tr><td colspan='4' align='left'>RF Equipment
+
+			</td></tr>
+						<tr>	
+							<td colspan='2' align='right'><a href="#" class="tooltipdd">IP Address
+								<span style="margin-left:-175px;width:400px;">
+								<img class="callout" src="../img/callout_black.gif" />
+								This is the IP address for the BUC on the antenna.<br>To access the BUC the device conected to the MXP must have it's IP address changed so its in the same range as the RF equipment IP address. Once changed and the save button has been pressed the changed field will become<font color="red"> RED</font>. At this point the settings will not take affect untill a<strong> MXP REBOOT</strong>.
+								</span>
+							</td>
+							  <td align='left' colspan='2'>&nbsp;&nbsp;&nbsp;<input id='bucip' name='bucip' value='192.168.0.12' size='15'></td>
+						</tr>		
+				
+					 </table>
+				 </td>
+				 <td colspan='2'>
+					<table cellspacing='0' cellpadding='0'>
+						<tr><td colspan='8'>&nbsp;</td></tr>
+						<tr>
+							 <td colspan='3'>&nbsp;</td>
+							 <td align='left'><a href="#" class="tooltipdd">Port
+								<span style="margin-left:-100px;width:200px;margin-top:120px;">
+								<img class="callout" src="../img/callout_black.gif" />
+								These are the default port numbers. The port numbers are linked to the mode and port 2003 which CLI is a new port, the rest are the same as on the DAC2202 and DAC2302.
+								</span>
+								</a>
+							</td>
+							 <td align='left' width=100px><a href="#" class="tooltipdd">&nbsp;&nbsp;Mode 
+								<span style="margin-left:-97px;width:200px;margin-top:120px;">
+								<img class="callout" src="../img/callout_black.gif" />
+								As default port 2000 and 2001 are Legacy, 2002 is OpenAMIP and the new for the IMA electronics is 2003 which is CLI
+								</span>
+								</a>
+							</td>
+
+							 <td align='right'><a href="#" class="tooltipdd">Secure&nbsp;
+								<span style="margin-left:-184px;width:200px;margin-top:120px;">
+								<img class="callout" src="../img/callout_black.gif" style="left:80%;"/>
+								The padlock icon is used to show if the port is locked<img src="../img/lock.png" style="vertical-align:middle;"/> or unlocked<img src="../img/unlock.png"style="vertical-align:middle;"/>. If the port is locked then the user name and password wil need to be entered to activate the connection.
+								</span>
+								</a>
+							</td>
+							 <td>&nbsp;</td>
+						</tr>
+						<tr> <td>&nbsp;</td>
+							 <td align='right'>TCP 0</td>
+							 <td align='right'><input type='checkbox' id='tcpe0' name='tcpe0' checked></td>
+							 <td align='left'><input id='tcpport0' name='tcpport0' value='2000' size='5' maxlength='5'></td> 
+							 <td align='left'>
+								  <select class="select" id='tcpmode0' name='tcpmode0'>
+									<option value='LEGACY'>Legacy</option>
+									<option value='CLI'>CLI</option>
+									<option value='OPENAMIP'>OpenAMIP</option>
+								  </select>&nbsp;
+								  <input type='hidden' id='tcpmode0Sel' name='tcpmode0Sel' value='LEGACY'>
+							 </td>
+							 <td align='left'><a href='#' onclick='toggleLock(0,true)'><img src='../img/unlock.png' id='tcpsecure0' name='tcpsecure0' border='0' /></a></td>
+							 <td align='left'></td> 
+
+					   </tr>
+					   <tr><td>&nbsp;</td>
+							 <td align='right'>TCP 1</td>
+							 <td align='right'><input type='checkbox' id='tcpe1' name='tcpe1' checked></td>
+							 <td align='left'><input id='tcpport1' name='tcpport1' value='2001' size='5' maxlength='5'></td>
+							 <td align='left'>
+								  <select id='tcpmode1' name='tcpmode1' class="select">
+									<option value='LEGACY'>Legacy</option>
+									<option value='CLI'>CLI</option>
+									<option value='OPENAMIP'>OpenAMIP</option>
+								 </select>&nbsp;
+								 <input type='hidden' id='tcpmode1Sel' name='tcpmode1Sel' value='LEGACY'>
+							 </td>
+						 <td align='left'><a href='#' onclick='toggleLock(1, true)'><img src='../img/unlock.png' id='tcpsecure1' name='tcpsecure1' border='0' /></a></td>
+							 <td align='left'><input type='hidden' id='tcps1' name='tcps1' value='OFF'></td> 
+
+					   </tr>
+					   <tr><td>&nbsp;</td>
+							 <td align='right'>TCP 2</td>
+							 <td align='right'><input type='checkbox' id='tcpe2' name='tcpe2' checked></td> 
+							 <td align='left'><input id='tcpport2' name='tcpport2' value='2002' size='5' maxlength='5'></td>
+							 <td align='left'>
+								  <select id='tcpmode2' name='tcpmode2' class="select">
+									<option value='LEGACY'>Legacy</option>
+									<option value='CLI'>CLI</option>
+									<option value='OPENAMIP'>OpenAMIP</option>
+								   </select>&nbsp;
+								   <input type='hidden' id='tcpmode2Sel' name='tcpmode2Sel' value='OPENAMIP'>
+							 </td>
+							<td align='left'><a href='#' onclick='toggleLock(2,true)'><img src='../img/unlock.png' id='tcpsecure2' name='tcpsecure2' border='0' /></a></td>
+							 <td align='left'><input type='hidden' id='tcps2' name='tcps2' value='OFF'></td> 
+
+					   </tr>
+					   <tr><td>&nbsp;</td>
+							 <td align='right'>TCP 3</td>
+							 <td align='right'><input type='checkbox' id='tcpe3' name='tcpe3' checked></td>
+							 <td align='left'><input id='tcpport3' name='tcpport3' value='2003' size='5'></td>
+							 <td align='left'>
+									<select id='tcpmode3' name='tcpmode3' class="select">
+										<option value='LEGACY'>Legacy</option>
+										<option value='CLI'>CLI</option>
+										<option value='OPENAMIP'>OpenAMIP</option>
+									</select>&nbsp;
+									<input type='hidden' id='tcpmode3Sel' name='tcpmode3Sel' value='CLI'>
+							 </td>
+							 <td align='left'><a href='#' onclick='toggleLock(3,true)'><img src='../img/unlock.png' id='tcpsecure3' name='tcpsecure3' border='0' /></a></td>
+							 <td align='left'><input type='hidden' id='tcps3' name='tcps3' value='ON'></td> 
+					   </tr>
+					   
+					</table>
+				 </td>
+				 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+			  </tr>
+			  
+			  <tr><td colspan='4'>&nbsp;</td></tr>
+			  </table>
+
+
+			<a href="#" class="tooltipdd"style="position:absolute;margin-left:0px;right:750px;top:60px;width:80px;height:100px;">
+				<span style="margin-left:-35px;width:400px;margin-top:110px;">
+					<img class="callout" src="../img/callout_black.gif" style="left:20%;" />
+					These are the IP settings of the MXP.<br> Change these settings to match the network and so remote access is possible. Once changed and the save button has been pressed the changed field will become<font color="red"> RED</font>. At this point the settings will not take affect untill a<strong> MXP REBOOT</strong>.
+				</span>
+			</a>
+
+			<a href="#" class="tooltipdd"style="position:absolute;margin-left:0px;right:310px;top:60px;width:40px;height:100px;">
+				<span style="margin-left:-46px;width:200px;margin-top:126px;">
+						<img class="callout" src="../img/callout_black.gif" />
+					   These tick boxes enable and disable the TCP ports.<br>If they are ticked then the port has been enabled.
+				</span>
+			</a>
+		</div>
+		Please hover over the different names for more info.
+		<div>
+		
+
+	</div>
+	<div id="footer">
+		<div class="footerbutton back"><a href="008a.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="008c.html" class="footerlink";>Next ></a></div>
+	</div> 
+</div> 
+
+</body>
+</html>
+

@@ -1,0 +1,385 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title>Sea Tel IMA Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+window.onload = function() {$('input:radio[name=lockinpol]:nth(0)').prop("checked", true);
+			$('input:radio[name=lockinvolt]:nth(2)').prop("checked", true);
+			$('input:radio[name=lockinpull]:nth(0)').prop("checked", true);
+			$('input:radio[name=blkoutpol]:nth(1)').prop("checked", true);
+			$('input:radio[name=blkoutpull]:nth(1)').prop("checked", true);
+			$('input:radio[name=lockinpol]').attr('disabled', true);
+			$('input:radio[name=blkoutpol]').attr('disabled', true);
+			$('input:radio[name=lockinvolt]').attr('disabled', true);
+			$('input:radio[name=lockinpull]').attr('disabled', true);
+			$('input:radio[name=blkoutpull]').attr('disabled', true);
+			$("<option>Modem RJ45</option>").appendTo($xmodemio);
+			$("<option>Open AMIP</option>").appendTo($xmodemio);
+			$("<option>TS 1</option>").appendTo($xmodemio);
+			$("<option>TS 2</option>").appendTo($xmodemio);
+			$("<option>CLI</option>").appendTo($xmodemio);
+			$("#openamipdiv,#tsdiv").hide();
+	var url = "008d";
+parent.set("cmi.core.lesson_location", url);			
+}
+
+$(document).ready(function(){
+	$xmodemtype = $("select[name='modemtype']");
+	$xmodemio = $("select[name='modemio']");
+	
+	$xmodemtype.click(function() {
+		if ($(this).val() == "Custom") {
+			$("select[name='modemio'] option").remove();
+			$("<option>Modem RJ45</option>").appendTo($xmodemio);
+			$("<option>Open AMIP</option>").appendTo($xmodemio);
+			$("<option>Roam</option>").appendTo($xmodemio);
+			$("<option>TS 1</option>").appendTo($xmodemio);
+			$("<option>TS 2</option>").appendTo($xmodemio);
+			$("<option>CLI</option>").appendTo($xmodemio);
+			$("<option>VACP</option>").appendTo($xmodemio);
+			$('input:radio[name=lockinpol]').attr('disabled', false);
+			$('input:radio[name=blkoutpol]').attr('disabled', false);
+			}
+		else if ($(this).val() == "Idirect") {
+			$("select[name='modemio'] option").remove();
+			$("<option>Modem RJ45</option>").appendTo($xmodemio);
+			$("<option>Open AMIP</option>").appendTo($xmodemio);
+			$("<option>TS 1</option>").appendTo($xmodemio);
+			$("<option>TS 2</option>").appendTo($xmodemio);
+			$("<option>CLI</option>").appendTo($xmodemio);
+			$('input:radio[name=lockinpol]:nth(0)').prop("checked", true);
+			$('input:radio[name=lockinvolt]:nth(2)').prop("checked", true);
+			$('input:radio[name=lockinpull]:nth(0)').prop("checked", true);
+			$('input:radio[name=blkoutpol]:nth(1)').prop("checked", true);
+			$('input:radio[name=blkoutpull]:nth(1)').prop("checked", true);
+			$('input:radio[name=lockinpol]').attr('disabled', true);
+			$('input:radio[name=blkoutpol]').attr('disabled', true);
+			$('input:radio[name=lockinvolt]').attr('disabled', true);
+			$('input:radio[name=lockinpull]').attr('disabled', true);
+			$('input:radio[name=blkoutpull]').attr('disabled', true);}
+		else if ($(this).val() == "Comtech") {
+			$("select[name='modemio'] option").remove();
+			$("<option>Modem RJ45</option>").appendTo($xmodemio);;
+			$("<option>Roam</option>").appendTo($xmodemio);
+			$("<option>TS 1</option>").appendTo($xmodemio);
+			$("<option>TS 2</option>").appendTo($xmodemio);
+			$("<option>CLI</option>").appendTo($xmodemio);
+			$('input:radio[name=lockinpol]:nth(0)').prop("checked", true);
+			$('input:radio[name=lockinvolt]:nth(2)').prop("checked", true);
+			$('input:radio[name=lockinpull]:nth(1)').prop("checked", true);
+			$('input:radio[name=blkoutpol]:nth(0)').prop("checked", true);
+			$('input:radio[name=blkoutpull]:nth(1)').prop("checked", true);
+			$('input:radio[name=lockinpol]').attr('disabled', true);
+			$('input:radio[name=blkoutpol]').attr('disabled', true);
+			$('input:radio[name=lockinvolt]').attr('disabled', true);
+			$('input:radio[name=lockinpull]').attr('disabled', true);
+			$('input:radio[name=blkoutpull]').attr('disabled', true);}
+		else if ($(this).val() == "Gilat") {
+			$("select[name='modemio'] option").remove();
+			$("<option>Modem RJ45</option>").appendTo($xmodemio);
+			$("<option>TS 1</option>").appendTo($xmodemio);
+			$("<option>TS 2</option>").appendTo($xmodemio);
+			$("<option>CLI</option>").appendTo($xmodemio);
+			$("<option>VACP</option>").appendTo($xmodemio);
+			$('input:radio[name=lockinpol]:nth(0)').prop("checked", true);
+			$('input:radio[name=lockinvolt]:nth(2)').prop("checked", true);
+			$('input:radio[name=lockinpull]:nth(0)').prop("checked", true);
+			$('input:radio[name=blkoutpol]:nth(0)').prop("checked", true);
+			$('input:radio[name=blkoutpull]:nth(0)').prop("checked", true);
+			$('input:radio[name=lockinpol]').attr('disabled', true);
+			$('input:radio[name=blkoutpol]').attr('disabled', true);
+			$('input:radio[name=lockinvolt]').attr('disabled', true);
+			$('input:radio[name=lockinpull]').attr('disabled', true);
+			$('input:radio[name=blkoutpull]').attr('disabled', true);}
+		else if ($(this).val() == "Hughes") {
+			$("select[name='modemio'] option").remove();
+			$("<option>Modem RJ45</option>").appendTo($xmodemio);
+			$("<option>TS 1</option>").appendTo($xmodemio);
+			$("<option>TS 2</option>").appendTo($xmodemio);
+			$("<option>CLI</option>").appendTo($xmodemio);
+			$("<option>VACP</option>").appendTo($xmodemio);
+			$('input:radio[name=lockinpol]:nth(1)').prop("checked", true);
+			$('input:radio[name=lockinvolt]:nth(2)').prop("checked", true);
+			$('input:radio[name=lockinpull]:nth(0)').prop("checked", true);
+			$('input:radio[name=blkoutpol]:nth(1)').prop("checked", true);
+			$('input:radio[name=blkoutpull]:nth(1)').prop("checked", true);
+			$('input:radio[name=lockinpol]').attr('disabled', true);
+			$('input:radio[name=blkoutpol]').attr('disabled', true);
+			$('input:radio[name=lockinvolt]').attr('disabled', true);
+			$('input:radio[name=lockinpull]').attr('disabled', true);
+			$('input:radio[name=blkoutpull]').attr('disabled', true);}
+		else if ($(this).val() == "STM") {
+			$("select[name='modemio'] option").remove();
+			$("<option>Modem RJ45</option>").appendTo($xmodemio);
+			$("<option>TS 1</option>").appendTo($xmodemio);
+			$("<option>TS 2</option>").appendTo($xmodemio);
+			$("<option>CLI</option>").appendTo($xmodemio);
+			$("<option>VACP</option>").appendTo($xmodemio);
+			$('input:radio[name=lockinpol]:nth(0)').prop("checked", true);
+			$('input:radio[name=lockinvolt]:nth(0)').prop("checked", true);
+			$('input:radio[name=lockinpull]:nth(0)').prop("checked", true);
+			$('input:radio[name=blkoutpol]:nth(0)').prop("checked", true);
+			$('input:radio[name=blkoutpull]:nth(0)').prop("checked", true);
+			$('input:radio[name=lockinpol]').attr('disabled', true);
+			$('input:radio[name=blkoutpol]').attr('disabled', true);
+			$('input:radio[name=lockinvolt]').attr('disabled', true);
+			$('input:radio[name=lockinpull]').attr('disabled', true);
+			$('input:radio[name=blkoutpull]').attr('disabled', true);}
+		else if ($(this).val() == "Viasat") {
+			$("select[name='modemio'] option").remove();
+			$("<option>Modem RJ45</option>").appendTo($xmodemio);
+			$("<option>TS 1</option>").appendTo($xmodemio);
+			$("<option>TS 2</option>").appendTo($xmodemio);
+			$("<option>CLI</option>").appendTo($xmodemio);
+			$("<option>VACP</option>").appendTo($xmodemio);
+			$('input:radio[name=lockinpol]:nth(0)').prop("checked", true);
+			$('input:radio[name=lockinvolt]:nth(2)').prop("checked", true);
+			$('input:radio[name=lockinpull]:nth(0)').prop("checked", true);
+			$('input:radio[name=blkoutpol]:nth(0)').prop("checked", true);
+			$('input:radio[name=blkoutpull]:nth(0)').prop("checked", true);
+			$('input:radio[name=lockinpol]').attr('disabled', true);
+			$('input:radio[name=blkoutpol]').attr('disabled', true);
+			$('input:radio[name=lockinvolt]').attr('disabled', true);
+			$('input:radio[name=lockinpull]').attr('disabled', true);
+			$('input:radio[name=blkoutpull]').attr('disabled', true);}
+	
+	});
+	$xmodemio.click(function() {
+		if ($(this).val() == "Modem RJ45" && $($xmodemtype).val() == "Custom") {
+			$('input:radio[name=lockinvolt]').attr('disabled', true);
+			$('input:radio[name=lockinpull]').attr('disabled', true);
+			$('input:radio[name=blkoutpull]').attr('disabled', true);
+			$('input:radio[name=lockinpol]').attr('disabled', false);
+			$('input:radio[name=blkoutpol]').attr('disabled', false);}
+		else if ($(this).val() == "TS 1"&& $($xmodemtype).val() == "Custom" ||$(this).val() =="TS 2"&& $($xmodemtype).val() == "Custom") {
+			$('input:radio[name=lockinvolt]').attr('disabled', false);
+			$('input:radio[name=lockinpull]').attr('disabled', false);
+			$('input:radio[name=blkoutpull]').attr('disabled', false);
+			$('input:radio[name=lockinpol]').attr('disabled', false);
+			$('input:radio[name=blkoutpol]').attr('disabled', false);
+			}
+		else {
+			$('input:radio[name=lockinpol]').attr('disabled', true);
+			$('input:radio[name=blkoutpol]').attr('disabled', true);
+			$('input:radio[name=lockinvolt]').attr('disabled', true);
+			$('input:radio[name=lockinpull]').attr('disabled', true);
+			$('input:radio[name=blkoutpull]').attr('disabled', true);}
+	});
+	$xmodemio.click(function() {		
+		if ($(this).val() == "Modem RJ45"){
+			$("#rj45div").show();
+			$("#openamipdiv").hide();
+			$("#tsdiv").hide();}
+		else if ($(this).val() == "Open AMIP" || $(this).val() == "Roam"){
+			 $("#openamipdiv").show();
+			$("#rj45div").hide();
+			$("#tsdiv").hide();}
+		else if ($(this).val() == "TS 1" || $(this).val() == "TS 2"){
+			$("#tsdiv").show();
+			$("#rj45div").hide();
+			$("#openamipdiv").hide();}
+		else {$("#rj45div").hide();
+			$("#openamipdiv").hide();
+			$("#tsdiv").hide();}
+	});
+	
+	
+		
+	
+
+});
+
+
+
+</script>
+<STYLE type="text/css" media="all">
+	
+
+select{	font-size:14px;
+	padding:0px;
+}
+
+.callout {z-index:10;
+	position:absolute;
+	border:0;
+	top:-14px;
+	left:50%;
+	margin-left:-15px}/*margin-left is for due to the gif being 30px wide*/
+
+.callout-left {transform:rotate(-90deg);
+	z-index:10;
+	position:absolute;
+	border:0;
+	left:-22px;
+	top:50%;
+	margin-top:-15px; /*margin-left is for due to the gif being 30px wide*/
+	}    
+/*CSS3 extras*/
+a.tooltip span, a.tooltipdd span
+{
+    border-radius:2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+        
+    -moz-box-shadow: 0px 0px 8px 4px #666;
+    -webkit-box-shadow: 0px 0px 8px 4px #666;
+    box-shadow: 0px 0px 8px 4px #666;
+
+    opacity: 0.8;
+
+}
+.cropmxp{
+    width: 1000px;
+    height: 120px;
+    overflow: hidden;
+background-position: center center;
+
+}
+
+.cropmxp img {
+    width: 1000px;
+    
+   margin: -0px 0 -0 -0px;
+}
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="body">
+		<h1>Interface Configuration</h1>
+		<div style="float:left;width:900px;">
+		<strong>Modem Lock</strong>
+
+		<p>This section allows you to set up the MXP to interface with the installed Vsat modem. On the old systems, this was setup by the DAC system type (System type 2,16 and 128).</p>
+		<p>The common Vsat modems are easily setup by selecting the installed modem from the modem type list, followed by how the modem is connected to the MXP via the Modem I/O list.</p>
+		<p>The modem I/O list will change depending on which modem type has been selected. 
+		<ul><li>When Modem RJ45 is selected, the Voltage and 12V pull up's will be <b>DISABLED</b>.</li>
+			<li>The Voltage is used to adjust the lock sensing voltage for the Lock input signal.</li> 
+			<li>If pull up voltages are needed, then TS1 or TS2 should be used and connections should be via J12.</li>
+			<li>If the modem is using openAMIP make sure this is set to openAMIP otherwise the MXP will not use the openAMIP commands.</li>
+		</ul>
+		<p>OpenAMIP and ROAM is via the ethernet connection, even CLI control can be done this way.</p> 
+		<p>The Reflector is not selectable via this menu, this is changed via the Position Antenna page.
+		<ul><li>If this is a singal band system (C or Ku only) then only Primary will be used and Secondary will not be accessable.</li>
+			<li>If this is a 9711IMA system with C and Ku band, both Primary and Secondary will need to be configured for the modem/s which are connected.</li>
+			<li>When using inconjuction with a SeaTel arbitrator make sure the <strong>Block ouput</strong> is always set to <strong>Polarity High</strong>.</li>
+		</ul>
+
+
+		</div>
+		<div style="position:absolute;right:0;top:60px;"> 
+		<table><tr>
+			<td colspan='2'><table cellspacing='0' cellpadding='0' border=0>
+				<tr>
+					<td colspan='5' align='left'><span id='subtitlelg'>Modem Lock Mute</span></td>
+				</tr>
+				<tr>
+					<td colspan='1' align='right'>Reflector</td>
+					<td align='left' colspan='4'>&nbsp;
+					<input type='radio' name='selant' value='PRIMARY_REFLECTOR' checked onClick='loadReflParams(1);'>Primary&nbsp;
+					<input type='radio' name='selant' value='SECONDARY_REFLECTOR' onClick='loadReflParams(2);'>Secondary
+					</td>
+				</tr>
+				<tr>
+					<td colspan='1' align='right'>Modem Type</td>
+					<td align='left' colspan='4'>&nbsp;
+						<select id='modemtype' name='modemtype' onchange='showModemIo(1);'>
+					<option id='IDIRECT' selected>Idirect</option>
+					<option id='COMTECH'>Comtech</option>
+					<option id='GILAT'>Gilat</option>
+					<option id='HUGHES'>Hughes</option>
+					<option id='STM'>STM</option>	
+					<option id='VIASAT'>Viasat</option>	
+					<option id='CUSTOM'>Custom</option>									</select></td>
+				</tr>  
+			
+				<tr>
+					<td colspan='1' align='right'>Modem I/O&nbsp;&nbsp;</td>
+			   
+					<td align='left' colspan='4'>&nbsp;   
+			
+			
+				<select id='xmodemio' name='modemio' onchange='showModemIo(1);'>
+					
+				</select>   
+			
+			
+				</td>
+				</tr>
+				  
+				<tr>		    		
+					<td align='right'>&nbsp;</td>
+					<td align='right'>Lock</td>
+					<td align='left'><input type='radio' id='xmodemlock' name='xmodemlock' value='OFF' checked>Off</td>
+					<td align='left'>&nbsp;<input type='radio' id='xmodemlockon' name='xmodemlock' value='ON'>On</td>	
+					<td align='left'>&nbsp;</td>
+				</tr>
+				<tr>
+					<td align='left'><span class='subtitleRt'>Lock input&nbsp;</span></td>					
+					<td align='right'>Polarity</td>
+					<td align='left'><input type='radio' id='lockinpol' name='lockinpol' value='LOW_LOCK'>Low</td>
+					<td align='left'>&nbsp;<input type='radio' id='lockinpolhi' name='lockinpol' value='HI_LOCK'>Hi</td>
+					<td align='left'>&nbsp;</td>		
+				</tr> 
+				<tr>
+					<td align='right'>&nbsp;</td>
+					<td align='right'>Voltage</td>
+					<td align='left'><input type='radio' id='lockinvolt' name='lockinvolt' value='3V'>3</td>
+					<td align='left'>&nbsp;<input type='radio' id='lockinvolt5' name='lockinvolt' value='5V'>5</td>
+					<td align='left'><input type='radio' id='lockinvolt12' name='lockinvolt' value='12V'>12</td>
+				</tr> 	
+				<tr>
+					<td align='right'>&nbsp;</td>
+					<td align='right'>12V pull up</td>
+					<td align='left'><input type='radio' id='lockinpull' name='lockinpull' value='OFF'>Off</td>
+					<td align='left'>&nbsp;<input type='radio' id='lockinpullon' name='lockinpull' value='ON'>On</td>
+					<td align='left'>&nbsp;</td>
+				</tr>   
+				<tr>
+					<td align='left'><span class='subtitleRt'>Block output&nbsp;</span></td>	
+					<td align='right'>Polarity</td>
+					<td align='left'><input type='radio' id='blkoutpol' name='blkoutpol' value='LOW_BLOCK'>Low</td>
+					<td align='left'>&nbsp;<input type='radio' id='blkoutpolhi' name='blkoutpol' value='HI_BLOCK'>Hi</td>
+					<td align='left'>&nbsp;</td>
+				
+				</tr>
+				<tr>
+					<td align='right'>&nbsp;</td>
+					<td align='right'>12V pull up</td>
+					<td align='left'><input type='radio' id='blkoutpull' name='blkoutpull' value='OFF'>Off</td>
+					<td align='left'>&nbsp;<input type='radio' id='blkoutpullon' name='blkoutpull' value='ON'>On</td>
+					<td align='left'>&nbsp;</td>
+
+				</tr>
+			</table>
+			</td>
+			</tr>
+			</table>
+			</div>
+
+
+
+		<div class="cropmxp" style="position:relative;top:80px;left:100px;">
+			<img src="../img/mxprear.png" alt="..." />
+		<div style="position:relative;border:0px solid;border-style:dashed;border-radius:10px;right:0px;top:-100px;width:1000px;height:100px;">
+			<div id="rj45div" style="position:absolute;border:4px solid red;border-radius:10px;left:596px;top:10px;width:40px;height:60px;"></div>
+			<div id="openamipdiv" style="position:absolute;border:4px solid orange;border-radius:10px;left:255px;top:10px;width:86px;height:60px;"></div>
+			<div id="tsdiv" style="position:absolute;border:4px solid yellow;border-radius:10px;left:760px;top:50px;width:150px;height:20px;"></div>
+		</div>
+
+	</div>
+	</div>
+	<div id="footer">
+		<div class="footerbutton back"><a href="008cb.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="008e.html" class="footerlink";>Next ></a></div>
+	</div> 
+</div>
+
+</body>
+</html>
+

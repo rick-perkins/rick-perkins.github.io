@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title>Sea Tel IMA Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+
+window.onload = function() {
+var url = "020a";
+parent.set("cmi.core.lesson_location", url);	
+parent.complete();
+}
+$(document).ready(function(){
+		
+
+	
+});
+
+</script>
+<STYLE type="text/css" media="all">
+
+
+#A ul {
+   	float:left
+   	width:100%;
+   	padding:0;
+   	margin:0;
+   	list-style-type:none;
+}
+   
+#A li {
+	display: inline; 
+       line-width: 105px;
+	line-height: 25px;
+}
+#A li a {
+    font-family: Tahoma;
+    font-size: 14px;
+    float:center;
+    text-align:center;
+    width:8em;   
+    text-decoration:none;
+    color:white;
+    background-color:#16a6d0;
+    padding:0.2em 0.4em;
+    border-right:1px solid white;
+  }
+
+#A li a:hover {background-color:#CCCCCC;}
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="body">
+	<h1>Help</h1>
+		<div style="float:left;width:400px;">
+
+
+			<div id=c>The user can toggle between the help and FAQ menu.<br>
+			At the bottom of the help menu, the user can find the tech contact details if they have been entered in on the technical contact page under the Admin tab.</div>
+
+			</div>
+			<div id="A" style="position:absolute;right:0;top:0px;height:200px;width:800px;"> 
+			<table class='tb' cellspacing='0' cellpadding='0' style="width:700px;">
+				<tr><td style="width:700px;"><ul>
+			<li><a id='link1' href='Help.html' TARGET='adminspace'>&nbsp;&nbsp;Help&nbsp;&nbsp;</a></li>
+			<li><a id='link2' href='Faq.html' TARGET='adminspace'>&nbsp;&nbsp;FAQ&nbsp;&nbsp;</a></li>
+			</ul>
+			<table> 
+				   <tr>
+					  <td align='left' colspan='8'> 
+						  <IFRAME 
+							  SRC='Help.html'
+							  ID='adminspace'
+							  NAME='adminspace'
+							  WIDTH=700 HEIGHT=500
+							  FRAMEBORDER=0
+							  MARGINWIDTH=1
+							  MARGINHEIGHT=1
+							  SCROLLING=yes
+							  allowtransparency=true
+						   >
+						   </IFRAME>   
+					 </td>
+				  </tr> 
+			</table>
+			</td></tr></table>
+			</div>
+	</div>
+	<div id="footer">
+		<div class="footerbutton back"><a href="020.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a onclick="parent.end(); return false;" href="#" class="footerlink";>Completed</a></div>
+	</div>
+</div>
+</body>
+</html>
+
+
+

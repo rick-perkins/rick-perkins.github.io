@@ -1,0 +1,59 @@
+<html>
+<title>Four Quadrant Test</title>
+
+<head>
+
+
+</head>
+<body class='bodyfont'; onLoad='disableOpsBtn();'>
+<form name='quadrantform'>
+<p>
+<h1 align='center'><font size='5' face='Tahoma'>Four Quadrant Test</font></h1>
+<input type='radio' id='testmode' name='testmode' value='MANUAL' checked onClick='toggleMode();'><font size="3" face="Tahoma">Manual</font>&nbsp;<input type='radio' id='testmode' name='testmode' value='AUTO' disabled onClick='toggleMode();'> <font size="3" face="Tahoma">Auto</font>
+<div id="selmode" name='seltmode'>
+<table class='tb' width='100%' align='center'>
+   <tr>
+        <td>
+            <table cellspacing='0' cellpadding='0'>
+                <tr><td><input type='hidden' id='tracking' name='tracking' value='ON'></td>
+				   <td align='left'><script type='text/javascript'>var trackingStatus=document.getElementById('tracking').value;if (trackingStatus != null && trackingStatus=='OFF'){ document.writeln("<button type='button' id='offbtn' name='offbtn' class='btnmd0' disabled>Track Off</button>");}else{document.writeln("<button type='button' id='offbtn' name='offbtn' class='btnmd0' onClick='goSubmit(1);'>Track Off</button>");}</script></td>
+			    </tr>
+             </table>
+         </td>
+         <td>
+        	 <table cellspacing='0' cellpadding='0'>
+  		         <tr>	
+                    <td align='center'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>  
+                	<td align='center' valign='center'><button type='button' id='leftbtn' name='leftbtn' class='btnsqr' onClick='goSubmit(3);' onmousedown='handleMouseDown(3);'  onmouseup='handleMouseUp();' OnKeyPress='handleKeyPress(event,3);'><img src='../img/arrow_left.png' id='arrow3' name='arrow3' border='0' title='AZ Counter Clockwise 0.3 deg'></button></td>
+                    <td align='center' valign='center'><button type='button' id='rightbtn' name='rightbtn' class='btnsqr' onClick='goSubmit(2);' onmousedown='handleMouseDown(2);'  onmouseup='handleMouseUp();' OnKeyPress='handleKeyPress(event,2);'><img src='../img/arrow_right.png' id='arrow2' name='arrow2' border='0' title='AZ Clockwise 0.3 deg'></button></td>
+					<td align='center' valign='center'><button type='button' id='upbtn' name='upbtn' class='btnsqr' onClick='goSubmit(4);' onmousedown='handleMouseDown(4);'  onmouseup='handleMouseUp();' OnKeyPress='handleKeyPress(event,4);'><img src='../img/arrow_up.png' id='arrow4' name='arrow4' border='0' title='EL Up 0.3 deg'></button></td>
+					<td align='center' valign='center'><button type='button' id='dnbtn' name='dnbtn' class='btnsqr' onClick='goSubmit(5);' onmousedown='handleMouseDown(5);'  onmouseup='handleMouseUp();' OnKeyPress='handleKeyPress(event,5);'><img src='../img/arrow_dn.png' id='arrow5' name='arrow5' border='0' title='EL Down 0.3 deg'></button></td>
+                 </tr>
+        	 </table>	
+        </td>
+        <td>
+            <table cellspacing='0' cellpadding='0'>
+               <tr> <td>&nbsp;</td><td align='left'><button type='button' id='onbtn' name='onbtn' class='btnmd0' onClick='goSubmit(6);'>Track On</button></td><td>&nbsp;</td></tr>
+            </table>
+        </td>
+   </tr>	
+</table>
+</div>	
+<hr class='grnhr'>
+<table width='100%'>
+       <tr>
+          <td align='left' colspan='6'> <font face="arial">
+              This test allows the user to check the tracking performance by moving the antenna slightly off satellite and then allowing tracking to peak the antenna back on satellite. This test is affected by Dishscan and motor gains.<br>
+<ul><li>Turn tracking off.</li>
+	<li>Drive the antenna in one direction only so the AGC drops by 100 counts.</li>
+	<li>Turn tracking back on and the antenna should peak back up on satellite with in 30 seconds.</li>
+<li>Repeat the test so EL and AZ has been tested in a up and down direction.</li></ul>  
+         </font></td>
+      </tr> 
+</table>
+
+
+</form>
+</body>
+
+</html>

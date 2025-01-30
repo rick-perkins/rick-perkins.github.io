@@ -1,0 +1,371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title>Sea Tel IMA Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+
+window.onload = function() {$("#config, #reboot, #ssl, #syslock, #techcontact, #password,#status,#done,#rebootbtn,#oldpw,#inistatus,#inidone").hide();
+var url = "019a";
+parent.set("cmi.core.lesson_location", url);	
+}
+$(document).ready(function(){
+	$passwd = $("select[name='userid']");
+	
+	$passwd.click(function() {
+		if ($(this).val() == "Dealer") {
+			$("#oldpw").show();}
+		else {$("#oldpw").hide();}
+	});
+  	$("#link1").click(function(){
+	$('[id="config"]').show();$("#fware, #reboot, #ssl, #syslock, #techcontact, #password").hide();
+	});
+	$("#link2").click(function(){
+	$('[id="fware"]').show();$("#config, #reboot, #ssl, #syslock, #techcontact, #password").hide();
+	});
+	$("#link3").click(function(){
+	$('[id="reboot"]').show();$("#config, #fware, #ssl, #syslock, #techcontact, #password").hide();
+	});
+	$("#link4").click(function(){
+	$('[id="ssl"]').show();$("#config, #fware, #reboot, #syslock, #techcontact, #password").hide();
+	});
+	$("#link5").click(function(){
+	$('[id="syslock"]').show();$("#config, #fware, #reboot, #ssl, #techcontact, #password").hide();
+	});
+	$("#link6").click(function(){
+	$('[id="techcontact"]').show();$("#config, #fware,#reboot, #ssl, #syslock, #password").hide();
+	});
+	$("#link7").click(function(){
+	$('[id="password"]').show();$("#config, #fware,#reboot, #ssl, #syslock, #techcontact").hide();
+	});
+	$('[id="uploadbtn"]').click(function(){
+	$("#status").show(001).delay(4000).hide(001);
+	$("#done").delay(5010).show(001).delay(5000).hide(001);
+	$("#rebootbtn").delay(10010).show(001);
+	});
+	$('[id="iniuploadbtn"]').click(function(){
+	$("#inistatus").show(001).delay(4000).hide(001);
+	$("#inidone").delay(5010).show(001)
+	});
+	
+		
+
+});
+
+
+
+
+</script>
+<STYLE type="text/css" media="all">
+
+
+#A ul {
+   	float:left
+   	width:100%;
+   	padding:0;
+   	margin:0;
+   	list-style-type:none;
+}
+   
+#A li {
+	display: inline; 
+       line-width: 105px;
+	line-height: 25px;
+}
+#A li a {
+    font-family: Tahoma;
+    font-size: 14px;
+    float:center;
+    text-align:center;
+    width:8em;   
+    text-decoration:none;
+    color:white;
+    background-color:#16a6d0;
+    padding:0.2em 0.4em;
+    border-right:1px solid white;
+	cursor: pointer;
+  }
+
+#A li a:hover {background-color:#CCCCCC;}
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="body">
+	<h1>Admin</h1>
+		<div style="float:left;width:400px;">
+		
+
+			<div id=config>This page is where you can download the full configuration of the system.
+				<br>Click on the download button for the config INI file.</div>
+
+			<div id="fware">This page is where the user can upload the software.<br>
+			<ol><li>Select the .enc file by using the browse button.</li>
+				<li>Click on the upload button.</li>
+				<li>Progress information will appear and when the software is loaded the reboot system button will appear.</li>
+				<li>Click on it and the system will reboot and use the software.</li>
+			</ol>
+			Please give it a try.</div>
+
+			<div id="reboot">This button will allow the user to reboot the full system, once the system has rebooted the user will need to log back into the MXP.</div>
+
+			<div id="ssl">This where the user can upload the SSL Certificate.<br>When installed it activates the padlock and the https protocol (over port 443) and allows secure connections from a web server to a browser.</div>
+
+			<div id="syslock">This is where you can lock down the system by using a unique code.<br>
+			More information will be comming soon on this function.</div>
+
+			<div id="techcontact">Enter in your companies details that way the vessel or visiting technicain has the installers or airtime providers details<br>None of the fields can be left blank and if incorrect information has been entered then a pop up window will apear.</div>
+
+			<div id="password">This is where the passwords can be changed.<br>
+			<ul><li>The dealer can change all the passwords but to change the dealer password the old one needs to be entered.</li>
+				<li>The SysAdmin can only change thier own password and the Users</li>
+				<li>The User can only change thier own password.</li>
+			</ul>
+			If the Dealer password is unknown then Cobham Satcom support will need to be contact for a temporary password, for this to be generated support will need the MAC address.
+			<br>The MAC address can be viewed by logging in to port 2003.
+			<p>It is recommended by Cobham Satcom that the passwords should always be changed from the default ones when the system is commissioned.</p>
+
+			</div>
+		</div>
+		<div id="A" style="position:absolute;right:0;top:0px;height:200px;width:800px;"> 
+		<table class='tb' cellspacing='0' cellpadding='0' style="width:700px;">
+			<tr><td style="width:700px;"><ul>
+			<li><a id='link1' >&nbsp;&nbsp;&nbsp;&nbsp;Config&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+			<li><a id='link2' >&nbsp;&nbsp;Firmware&nbsp;&nbsp;</a></li>
+			<li><a id='link3' >&nbsp;&nbsp;&nbsp;Reboot&nbsp;&nbsp;&nbsp;</a></li>
+			<li><a id='link4' >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SSL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+			<li><a id='link5' >System Lock</a></li>
+			<li><a id='link6' >Tech Contact</a></li>
+			<li><a id='link7' >&nbsp;&nbsp;Password&nbsp;&nbsp;</a></li>
+			</ul></td></tr>
+		</table>
+
+		<table>
+		<tr><td width=640px>
+
+		<div id="fware">
+			<table class='tb' style="width:700px;">
+				<tr><td colspan='4'>&nbsp;</td></tr>
+				<tr><td align='center' colspan='4'><h1>Firmware Upgrade</h1></td></tr>
+				<tr><td align='left' colspan='4'><h3>Download Firmware</h3></td></tr>
+				<tr><td align='left'><button type='button' class='btnsm' id='checkswbtn' name='checkswbtn' onClick='checkDnSw(0);'>Check</button>&nbsp;Check the latest upgrade</td></tr> 
+			</table>
+			
+			<hr class='grnhr'>
+			<table class='tb'>
+				<tr><td align='left' colspan='4'><strong>Upload Firmware</strong></td></tr>
+				<tr><td colspan='4'><span style='font-family: Tahoma; color: red'>Uploading firmware will change the INI parameters of this antenna. To revert back to this antenna configuration, DOWNLOAD and <br>SAVE the current INI file.</span><a href="../Documents/Parameters.ini" download><button type='button' class='btnmd0' id='dnbtn' name='dnbtn' onClick='downloadCfg();'>Download</button></a></td></tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr><td align='right'>File to upload </td>
+					<td><INPUT TYPE='file' id='uploadfile' name='uploadfile'></td>
+					<td colspan='1' align='left'>&nbsp;<input type='submit' id='uploadbtn' name='uploadbtn' value='Upload' /></td>
+				</tr>
+			</table>
+
+			<div id='status'><hr class='grnhr'><h3>Firmware is uploading.........It may take a few minutes, please wait</h3></div>
+			<div id="done"><hr class='grnhr'><h3>Upload done Verifing.........Please wait<h3></div>
+
+			<div id='rebootbtn'>
+			<table class='tb'><tr><td align='left'><button type='button' class='btnlg' onClick='startReboot();'>Reboot System</button></td></tr></table>
+			</div>       
+		</div>  
+
+
+		<div id=config>
+		<table class='tb'width=640px >
+		  <tr><td colspan='4'>&nbsp;</td></tr>
+		  <tr><td align='center' colspan='4'><h1>Maintain Configuration Files</h1></td></tr>
+		  <tr><td align='left' colspan='4'><h3>Download INI file</h3></td></tr>
+		  <tr>
+			<td align='left' colspan='2'><a href="../Documents/Parameters.ini" download><button type='button' class='btnmd0' id='dnbtn' name='dnbtn' >Download</button></a></td>
+			<td align='left' colspan='2'>&nbsp;</td>
+		  </tr>
+		</table>  
+		<div id='swUpgradeLst' name='swUpgradeLst'></div>
+		<p>
+		<hr class='grnhr'>
+		<table class='tb'>
+		  <tr><td align='left' colspan='4'><h3>Upload INI file</h3></td></tr>
+		  <tr><td align='right'>File to upload&nbsp;</td>
+			  <td><INPUT TYPE='file' id='uploadfile' NAME='uploadfile'></td>
+			  <td align='left'><input type='submit' id='iniuploadbtn' name='uploadbtn' value='Upload' /></td>
+				  
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		  </tr>
+		  <tr><td>&nbsp;</td></tr>
+		</table>
+		<div id='inistatus'><hr class='grnhr'><h3>INI File is uploading.........It may take a few minutes, please wait</h3></div>
+			<div id="inidone"><hr class='grnhr'><h3>INI file upload complete.
+		You must reboot for all changes to take effect.<h3></div>	
+		</div>
+
+
+		<div id=reboot>
+		<table class='tb' width=640px>
+
+		  <tr><td colspan='4'>&nbsp;</td></tr>
+		  <tr><td align='center' colspan='4'><h1>Reboot</h1></td></tr>
+		  <tr><td align='left'><button type='button' class='btn' onClick='rebootAll();'>Reboot All</button>&nbsp;Click to reboot both MXP and ICU</td></tr> 
+		  <tr><td colspan='4'>&nbsp;</td></tr>
+		  
+		</table>
+		</div>
+
+
+		<div id=ssl>
+		<table class='tb'>
+		  <tr><td colspan='4'>&nbsp;</td></tr>
+		  <tr><td align='center' colspan='4'><h1>SSL Certificate</h1></td></tr>
+		  <tr><td align='left' colspan='4'><h3>Download</h3></td></tr>
+		  <tr><td colspan='4'><a HREF='temp/ca_seatel_cert.der' class='link'>Default CA Certificate</a> (Right click the link, and click "Save Target As..." and name the file with suffix .der</td></tr>
+		  <tr><td colspan='4'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once downloaded, import this certificate to your browser)</td></tr>
+		</table>
+		<p>
+		<hr class='grnhr'>
+		<p>
+		<table class='tb'>
+		  <tr><td align='left' colspan='4'><h3>Upload</h3></td></tr>
+		  <tr><td align='right'>File to upload: </td>
+			  <td><INPUT TYPE='file' id='uploadfile' NAME='uploadfile'></td>
+			  <td align='left'><input type='submit' id='uploadbtn' name='uploadbtn' value='Upload' /></td>
+			  <td><input type="hidden" id='filetype' name='filetype' value='cert' /></td>
+			  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		  </tr>
+		  <tr><td>&nbsp;</td></tr>
+		</table>
+		<div id='status'></div>
+		<div id='uploaddone'></div>
+		<div id='rebootbtn'>
+		<table class='tb'>
+			<tr><td align='left'><button type='button' class='btnlg' onClick='startReboot();'>Reboot System</button></td></tr>
+		</table>
+		</div>
+		</div>
+
+		<div id=syslock>
+		<table width=100% class='tb'>
+			<tr><td colspan='11'>&nbsp;</td></tr>
+			<tr><td align='center' colspan='11'><h1>System Lock</h1></td></tr>
+			<tr>
+			  <td align='left'>Current status:&nbsp;</td>
+			  <td align='left'><div id='curstatus' class='curstatus'>Disabled</div></td>
+			  <td><input type='hidden' id='syslockSel' name='syslockSel' value='OFF'></td> 
+			  
+		   </tr>  
+		   <tr><td colspan='11'>&nbsp;</td></tr> 
+		</table>
+		<hr class='grnhr'>
+		<table class='tb'>
+			<table>
+				 <tr>
+					<td colspan='3'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td>
+					<td align='right'><button type='button' id='lockbtn' name='lockbtn' class='btnmd' onClick='handleSubmit(1);'>Lock</button></td>
+					<td align='right'><button type='button' id='unlockbtn' name='unlockbtn' class='btnmd' onClick='handleSubmit(0);'>Unlock</button></td>
+					<td align='right'><button type='button' id='disablebtn' name='disablebtn' class='btnmd' onClick='handleSubmit(2);'>Disable</button></td>
+				 </tr>
+			</table>
+		</div>
+
+		<div id=techcontact>
+		<table class='tb'>
+		  <tr><td colspan='2'>&nbsp;</td></tr>
+		  <tr><td align='center' colspan='2'><h1>Tech Contact Information</h1></td></tr>
+		  <tr><td colspan='2'>&nbsp;</td></tr>
+		  <tr>
+			 <td align='right'>Company Name&nbsp;</td> 
+			 <td align='left'><input id='company' name='company' value='' size='40' maxlength='50'></td>
+		  </tr>
+		  <tr>
+			 <td align='right'>Address&nbsp;</td> 
+			 <td align='left'><input id='address' name='address' value='' size='40' maxlength='50'></td>
+		  </tr>
+		  <tr>
+			 <td align='right'>City&nbsp;</td> 
+			 <td align='left'><input id='city' name='city' value='' size='20' maxlength='20'></td>
+		  </tr>
+		  <tr>
+			 <td align='right'>State/Province&nbsp;</td> 
+			 <td align='left'><input id='state' name='state' value='' size='20' maxlength='20'></td>
+		  </tr>
+		  <tr>
+			  <td align='right'>Zip Code&nbsp;</td> 
+			  <td align='left'><input id='zipcode' name='zipcode' value='' size='10' maxlength='10'></td>
+		  </tr>
+		  <tr>
+			  <td align='right'>Country&nbsp;</td> 
+			  <td align='left'><input id='country' name='country' value='' size='25' maxlength='30'></td>
+		  </tr>
+		  <tr>
+			 <td align='right'>Email Address&nbsp;</td> 
+			 <td align='left'><input id='emailaddr' name='emailaddr' value='' size='40' maxlength='50'></td>
+		  </tr> 
+		  <tr>
+			 <td align='right'>Phone Number&nbsp;</td> 
+			 <td align='left'><input id='phonenum' name='phonenum' value='' size='25' maxlength='30'></td>
+		  </tr> 
+		  
+		</table>
+		</div>
+
+
+		<div id=password>
+		<table align='center'>
+		  <tr><td colspan='7'>&nbsp;</td></tr>
+		  <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+			  <td align='center'><h1>Change User's Password</h1></td></tr>
+		  <tr><td colspan='7'>&nbsp;</td></tr>
+		</table> 
+		<div id="chgpwd">
+		<table align='center'>  
+			<tr><td align='right'>User Id </td>      
+			<td align='left'>         
+				<select class=select id='userid' name='userid' onchange='showOldPwd();'>	           
+				<option id='Dealer' selected>Dealer</option>  		    
+				<option id='SysAdmin'>SysAdmin</option> 		    
+				<option id='User'>User</option></select>&nbsp;</td></tr>
+		  
+			
+			<tr><td align='right'colspan=2><div id="oldpw"><table><tr><td align='right'>Old Password </td>
+			<td align='left'>
+			<input type='password'id='oldpwd' name='oldpwd' value='' size='15' maxlength='25'>
+			</td></tr></table></div></td><td>&nbsp;</td></tr>
+		 
+			<tr><td align='right'>New Password </td>
+			<td align='left'><input type='password' id='newpwd' name='newpwd' value='' size='15' maxlength='25'></td>
+			<tr> 
+			<tr><td align='right'>Confirm Your Password </td>
+			<td align='left'><input type='password' id='cnfpwd' name='cnfpwd' value='' size='15' maxlength='25'></td>
+			<tr>  
+		</table>
+		</div>
+		<table align='center'>
+		  <tr><td>&nbsp;</td></tr>
+		  <tr>
+			 <td>&nbsp;</td>
+			 <td>&nbsp;</td>
+			 <td colspan='2' align='center'><button type='button' class='btnsm' onClick='if(validParams()){savePwd();}'>Save</button></td>
+		  </tr>
+		</table>
+		<div>
+
+		</td></tr></table>
+		</td>
+		</table> 
+		</div>
+	</div>
+	<div id="footer">
+		<div class="footerbutton back"><a href="019.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="020.html" class="footerlink";>Next ></a></div>
+	</div>
+</div>
+</body>
+</html>
+
+
+

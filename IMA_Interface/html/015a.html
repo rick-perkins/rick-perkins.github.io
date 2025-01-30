@@ -1,0 +1,355 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.or../img/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.or../img/1999/xhtml" xml:lang="en">
+
+<head><title>Sea Tel IMA Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+
+window.onload = function() {
+var url = "015a";
+parent.set("cmi.core.lesson_location", url);
+}
+$(document).ready(function(){
+			
+
+	
+});
+
+</script>
+<STYLE type="text/css" media="all">
+	
+
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="body">
+	<h1>Posistion Antenna</h1>
+		<div style="float:left;width:400px;">
+			<p>This page is where you can manually change settings and move the system to find the satellite.<br>
+			As soon as a setting has been changed, it will have an instant affect.</p>
+			<p>Please hover over the different names for more info.</p>
+		</div>
+		<div style="position:absolute;right:0;top:0px;height:200px;width:800px;"> 
+
+			<table class='tb' cellspacing='0' cellpadding='0'>
+			  
+			  <tr><td align='middle' valign='bottom' colspan="1"><Strong>Posistion Antenna </strong></td></tr>
+				
+			  <tr> 
+				<td colspan=1>
+				   <table>
+					<tr>
+						<td >
+
+							<table cellspacing='0' cellpadding='0' border=0>
+							   <tr><td align='left' colspan='2'><strong>Satellite</strong></td></tr>
+							   <tr>	    
+									<td align='right' colspan='1'>Longitude&nbsp;</td>
+									<td align='left' colspan='1'><input id='satlongt' name='satlongt' value='11.0' size='5' maxlength='5' onchange='submitCfgParam(33);' OnKeyPress='return cfgParamEnterKey(33, event);'>
+									   <select class="select" id='satsphere' name='satsphere' onChange='submitCfgParam(34);size='5';>
+											<option value='E'>E</option>
+											<option value='W'>W</option>
+									   </select> 
+								</td>                                                             
+									   <input type='hidden' id='satsphereSel' name='satsphereSel' value='W'>
+									   <input type='hidden' id='recvtype' name='recvtype' value='SCPC'>
+									   <input type='hidden' id='satname' name='satname' value='[ENTER DESCRIPTION]'>
+									   <input type='hidden' id='numRefl' name='numRefl' value='1'>	
+								   </td>
+								</tr>
+								<tr>   
+									<td align='right'>Frequency&nbsp;</td>
+									<td align='left'><input id='freq' name='freq' value='1718.000' size='10' maxlength='10' onchange='submitCfgParam(35);' OnKeyPress='return cfgParamEnterKey(35, event);'>&nbsp;MHz</td>
+								</tr>
+								<tr>
+								   <td align='right'>Skew&nbsp;</td>
+								   <td align='left'><input id='skew' name='skew' value='0.0' size='5' maxlength='5' onchange='submitCfgParam(36);' OnKeyPress='return cfgParamEnterKey(36, event);'>&nbsp;deg</td>
+								</tr>
+								<tr>
+									<td align='right'colspan='1'>Search Pattern&nbsp;</td>
+									<td align='left'colspan='1'>
+										<select id='spattern'class="select" name='spattern' onChange='submitCfgParam(37);'>
+								<option value='SELECT'>Select...</option>
+											<option value='INCLINED'>Inclined</option>
+											<option value='SKY_SEARCH'>Sky Search</option>
+											<option value='SPIRAL' selected>Spiral</option>
+										</select>&nbsp;
+									</td>
+								 </tr>
+							</table>
+						</td> 
+						<td>
+							<table cellspacing='0' cellpadding='0'>
+							   <tr><td align='left' colspan='2'>&nbsp;</td></tr>
+							   <tr><td align='left' colspan='2'>&nbsp;</td></tr>
+							   <tr>
+									<td align='right'>Tx Polarity&nbsp;</td>
+									<td align='left'>
+										<select id='txpol' name='txpol' class="select"onChange='submitCfgParam(38);'>
+											<option value='SELECT'>Select...</option>
+											<option value='H' selected>HORZ</option>
+											<option value='V'>VERT</option>
+											<option value='L'>LHCP</option>
+											<option value='R'>RHCP</option>
+										</select>&nbsp;
+										<input type='hidden' id='txpolSel' name='txpolSel' value='V'>
+									</td>
+								 </tr>
+								 <tr>			
+									<td align='right'>Band&nbsp;</td>
+									<td align='left'><select class="select"name="Band" style="width:120px;">
+				<option value="1 (Lo:10.000 GHz)">1 (Lo:10.000 GHz)</option>
+				<option value="2 (Lo:10.750 GHz)">2 (Lo:10.750 GHz)</option>
+				<option value="3 (Lo:11.300 GHz)">3 (Lo:11.300 GHz)</option>
+				<option value="4 (Lo:9.750 GHz)">4 (Lo:9.750 GHz)</option>
+			 </select>&nbsp
+									</td>					
+								</tr>
+								<tr>
+									<td align='right'>Reflector&nbsp;</td>
+									<td colspan=1 align='left'><input type='radio' id='selant' name='selant' value='PRIMARY_REFLECTOR' checked> Primary &nbsp; <input type='radio' id='selant' name='selant' value='SECONDARY_REFLECTOR' onClick='submitCfgParam(40);'>Secondary</td>
+									<input type='hidden' id='selantClk' name='selantClk' value='PRIMARY_REFLECTOR'>
+								</tr>
+								<tr>
+								  <td align='right'>Rx&nbsp;</td>
+								  <td colspan=1 align='left'><input type='radio' id='lnb' name='lnb' value='XPOL' checked> XPol &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type='radio' id='lnb' name='lnb' value='COPOL' onClick='submitCfgParam(41);'>CoPol</td>
+								  <input type='hidden' id='lnbClk' name='lnbClk' value='XPOL'>
+								</tr>
+							</table>
+						</td> 
+						<td>
+							 <table cellspacing='0' cellpadding='0'>
+								 <tr><td colspan='2'>&nbsp;</td></tr>
+								 <tr><td align='right' colspan=1 class='subtitle'>Threshold:</td>
+									 <td align='right' colspan=1>&nbsp;</td>
+								 </tr>
+								 <tr>
+									<td align='right'>Auto mode&nbsp;</td>
+									<td colspan=1 align='left'><input type='radio' id='thrsmode' name='thrsmode' value='ON' checked> On &nbsp; <input type='radio' id='thrsmode' name='thrsmode' value='OFF' onClick='submitCfgParam(30);'>Off</td>
+									<input type='hidden' id='thrsmodeClk' name='thrsmodeClk' value='ON'>
+								 </tr>
+								 <tr>   
+									<td align='right'>Auto offset&nbsp;</td>
+									<td align='left'><input id='thrsoffset' name='thrsoffset' value='50' size='4' maxlength='4' onchange='submitCfgParam(31);' OnKeyPress='return cfgParamEnterKey(31, event);'></td>
+								 </tr>
+								 <tr>    
+									<td align='right'>Threshold&nbsp;</td>
+									<td align='left'><input id='thrsvalue' name='thrsvalue' value='1499' size='4' maxlength='4' onchange='submitCfgParam(32);' OnKeyPress='return cfgParamEnterKey(32, event);'></td>
+								</tr> 
+							 </table>
+						</td>
+					 </tr>	 
+					 </table>
+				 </td>
+				 </tr> 
+				 
+				</table>
+				
+				<br>
+				<hr class='grnhr'></hr>
+				
+			  <table class='tb'>
+				<tr>
+					<td align='left' colspan='2'><strong>Advanced Operations</strong>
+					<td align='right' valign='top' colspan='2' class='subtitle'>&nbsp;&nbsp;&nbsp;Antenna Name:&nbsp;[ENTER DESCRIPTION]
+						 <input type='hidden' id='antname' name='antname' value='[ENTER DESCRIPTION]'>
+						 &nbsp;&nbsp;&nbsp;Model:&nbsp;4012-91
+						<input type='hidden' id='antmodel' name='antmodel' value='4012-91'>  
+					</td>
+				</tr>  
+				<tr>
+				  <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>  
+				  <td>
+					 <table cellspacing='0' cellpadding='0'>
+					   <tr>
+						 <td colspan='2' align='center' class='subtitle'>Parameters:
+			</td>
+					   </tr>
+					   <tr> 	
+							<td align='center'>&nbsp;&nbsp;&nbsp;&nbsp;</td>  
+							<td colspan='2' align='left' valign='center'>
+							<a href="" class="tooltipdd"><button type='button' class='btnsqr' ><img src='../img/arrow_left.png' id='arrow3' name='arrow3' border='0' title='AZ Counter Clockwise 0.3 deg'></button>
+									<button type='button' class='btnsqr'><img src='../img/arrow_right.png' id='arrow2' name='arrow2' border='0' title='AZ Clockwise 0.3 deg'></button>
+							<button type='button' class='btnsqr'><img src='../img/arrow_up.png' id='arrow4' name='arrow4' border='0' title='EL Up 0.3 deg'></button>
+							<button type='button' class='btnsqr' ><img src='../img/arrow_dn.png' id='arrow5' name='arrow5' border='0' title='EL Down 0.3 deg'></button>
+			<span style="margin-left:-380px;width:600px;margin-top:50px;">
+					<img class="callout" src="../img/callout_black.gif" style="left:50%;" />
+			These buttons work in the same way as the arrow buttons on the DAC. Each click will move the antenna 0.3 degs.
+				</span>
+			</a></td>
+					   </tr>
+					   <tr>
+
+						 <td><input type='hidden' id='oldaz' name='oldaz' value='0.0'></td>
+						 <td align='right'>AZ Target&nbsp;</td>
+						 <td align='left'><input id='az' name='az' value='0.0' size='4' onchange='submitOps(11);' OnKeyPress='return posParamEnterKey(11, event);'>&nbsp;deg</td>
+					  </tr>
+					  <tr>	
+						 <td><input type='hidden' id='oldel' name='oldel' value='0.0'></td>
+						 <td align='right'>EL Target&nbsp;</td>
+						 <td align='left'><input id='el' name='el' value='0.0' size='4' onchange='submitOps(12);' OnKeyPress='return posParamEnterKey(12, event);'>&nbsp;deg</td> 
+					  </tr>
+					  <tr>  
+						 <td><input type='hidden' id='oldcl' name='oldcl' value='0.0'></td>
+						 <td align='right'>CL Target&nbsp;</td>
+						 <td align='left'><input id='cl' name='cl' value='0.0' size='4' onchange='submitOps(13);' OnKeyPress='return posParamEnterKey(13, event);'>&nbsp;deg</td>
+					  </tr>
+					  <tr><td colspan='3'>&nbsp;</td></tr>
+
+				   </table>  
+				 </td>
+				 <td>
+				   <table>
+					  <tr><td>&nbsp;</td></tr>
+					  <tr><td>&nbsp;</td><td colspan='1' align='center'>Polang Target:</td><td>0</td></tr>
+					  <tr> 
+						 <td><input type='hidden' id='poldriveClk' name='poldriveClk' value='AUTO'></td>
+						 <td align='right'>Drive:&nbsp;</td><td align='left'>AUTO</td>    
+					  </tr>
+					  <tr>
+						 <td><input type='hidden' id='oldlpolang' name='oldlpolang' value='7.7'></td>
+						 <td align='right'>Linear&nbsp;</td>
+						 <td align='left'><input id='lpolang' name='lpolang' value='7.7' size='4' onchange='submitOps(14);' OnKeyPress='return posParamEnterKey(14, event);'>&nbsp;deg</td>
+						
+					  </tr>
+					  <tr>
+						 <td><input type='hidden' id='oldcpolang' name='oldcpolang' value='0.0'></td>
+						 <td align='right'>Circular&nbsp;</td>
+						 <td align='left'><input id='cpolang' name='cpolang' value='0.0' size='4' onchange='submitOps(15);' OnKeyPress='return posParamEnterKey(15, event);'>&nbsp;deg</td>
+					  </tr>
+				   </table>
+				 </td>
+				 <td>
+					<table cellspacing='0' cellpadding='0'>
+					   <tr><td align='left' colspan='1' class='subtitle'>Operations:</td><td colspan='2'>&nbsp;</td></tr>
+					   <tr>
+						 <td>&nbsp;</td>
+						 <td><a href="" class="tooltipdd"><button type='button' id='onbtn' name='onbtn' class='btnmd1'>Auto Trim </button>&nbsp;&nbsp;
+			<span style="margin-left:-300px;width:400px;margin-top:20px;">
+					<img class="callout" src="../img/callout_black.gif" style="left:80%;" />
+			Auto trim peforms the same function with the same rules as the auto trim button on the Reflector page under configuration.
+				</span>
+			</a>
+					   </tr>
+					   <tr>
+						 <td>&nbsp;</td>
+						 <td><a href="" class="tooltipdd"><button type='button' id='onbtn' name='onbtn' class='btnmd1' onClick='submitOps(29);'>Retarget</button>&nbsp;&nbsp;
+			<span style="margin-left:-300px;width:400px;margin-top:20px;">
+					<img class="callout" src="../img/callout_black.gif" style="left:80%;" />
+			Use Retarget to retarget the last entered satellite instead of re-entering the satellite longitude.
+				</span>
+			</a>
+					   </tr>
+					   <tr><td align='right'>Search&nbsp;</td>
+							<td align='left'><a href="" class="tooltipdd">
+							   <button type='button' id='searching' name='searching' class='btnsm0' onClick='submitOps(21);'>Start</button>&nbsp;&nbsp;
+							   <button type='button' id='searching' name='searching' class='btnsm0' onClick='submitOps(22);'>Stop</button>
+			<span style="margin-left:-400px;width:400px;margin-top:40px;">
+					<img class="callout" src="../img/callout_black.gif" style="left:80%;" />
+			This will stop a search once it has started or start a search if needed.
+				</span>
+			</a>
+							</td>
+							<td>&nbsp;</td>
+					   </tr>
+					   <tr>
+							<td align='right'>Track&nbsp;</td>
+							<td align='left'><a href="" class="tooltipdd">
+								<button type='button' id='tracking' name='tracking' class='btnsm0' onClick='submitOps(25);'>On</button>&nbsp;&nbsp;
+								<button type='button' id='tracking' name='tracking' class='btnsm0' onClick='submitOps(26);'>Off</button>
+			<span style="margin-left:-400px;width:400px;margin-top:40px;">
+					<img class="callout" src="../img/callout_black.gif" style="left:80%;" />
+			This will turn tracking on or off and also stop a search once it has started when this function is turned off. Tracking should be off when the user is manualy trying to find a satellite.
+				</span>
+			</a>
+							</td>
+							<td>&nbsp;</td>
+					   </tr>
+					   <tr> 
+						 <td align='right'>Tx Mute&nbsp;</td>
+						 <td align='left'><a href="" class="tooltipdd">
+								<button type='button' id='txmute' name='txmute' class='btnsm0' onClick='submitOps(23);'>On</button>&nbsp;&nbsp;
+								<button type='button' id='txmute' name='txmute' class='btnsm0' onClick='submitOps(24);'>Off</button>	 <span style="margin-left:-400px;width:400px;margin-top:40px;">
+					<img class="callout" src="../img/callout_black.gif" style="left:80%;" />
+			This will turn on the TX mute funtion which will mute the Vsat modem.
+				</span>
+			</a>
+						 </td>  
+						 <td>&nbsp;</td>  
+					  </tr>
+					</table>
+				</td>
+			</tr>
+			</table>
+
+			<table>
+			<tr><td align='left' colspan='2'><button type='button' id='savebtn' name='savebtn' class='btnsm' onClick='if(validParams() && validPosAntParams()){saveData(1);}'>Save</button></td>
+			</tr></table>
+			
+			<div style="position:relative;border:0px dashed;right:0px;top:-430px;width:700px;height:1px;margin-bottom:-300px;">
+			<a href="" class="tooltipdd"style="position:absolute;margin-left:0px;right:540px;top:110px;width:100px;height:80px;"> 
+			<span style="margin-left:-80px;width:600px;margin-top:90px;">
+					<img class="callout" src="../img/callout_black.gif" style="left:20%;" />These settings have the same functions as the settings on Satellite page under Configuration.
+			Longitude is the satellite GEO location in East or West.
+			<br>
+			Frequency is the tracking frequency in MHz.<br>
+			Skew is if the targeted/ tracking satellite has a known skew value.<br>
+			Search pattern is for the targeted/ tracking satellite.
+				<ul style="text-align:left;"><li>Inclined is for a satellite in an inclined orbit</li>
+				<li>Sky search is for no gyro mode</li>
+				<li>Sprial is for normal operation</li>
+				</ul>
+				</span>
+			</a>
+
+			<a href="" class="tooltipdd"style="position:absolute;margin-left:0px;right:330px;top:110px;width:60px;height:80px;"> 
+			<span style="margin-left:-220px;width:600px;margin-top:90px;">
+					<img class="callout" src="../img/callout_black.gif" style="left:40%;" />
+			These settings have the same functions as the settings on Satellite page under Configuration.<br>
+			TX Polarity changes the transmite polarity<br>
+			Band changes the RF range of the LNB<br>
+			Reflector is used for the Dual Band systems<br>
+			RX switches between Co and X pol LNB's.
+				</span>
+			</a>
+
+			<a href="" class="tooltipdd"style="position:absolute;margin-left:0px;right:70px;top:110px;width:60px;height:80px;"> 
+			<span style="margin-left:-460px;width:600px;margin-top:90px;">
+					<img class="callout" src="../img/callout_black.gif" style="left:80%;" />
+			The Threshold works in the same way it did for the DAC's.<br>
+			Auto mode allows the user to turn on or off this function.<br>
+			Auto offset is calculated in the same way as before, typicly this value will be 1/3 of differance between on and off satellite.<br>
+			Threshold is calucalted everytime the satellite is targeted unless this functoin is turned off.<br>
+			When the Calculate button is pressed on the reflector page the antenna will retarget and calculate the offset and threshold value automaticaly.
+				</span>
+			</a>
+			<a href="" class="tooltipdd"style="position:absolute;margin-left:0px;right:500px;top:310px;width:60px;height:80px;"> 
+			<span style="margin-left:-140px;width:400px;margin-top:80px;">
+					<img class="callout" src="../img/callout_black.gif" style="left:50%;" />
+			These inputs allow the user to move the antenna by the number entered for each axis.
+				</span>
+			</a>
+			<a href="" class="tooltipdd"style="position:absolute;margin-left:0px;right:300px;top:310px;width:60px;height:80px;"> 
+			<span style="margin-left:-160px;width:500px;margin-top:85px;">
+					<img class="callout" src="../img/callout_black.gif" style="left:50%;" />
+			Polang Target will be either a positive or negative value and we use 90 instead of 120 or 130 on the legacy systems.<br>
+			Drive will change to Manual if the setting has been changed to manual on the Reflector page under configuration.<br>
+			Linear and Circular will dispaly the pol angle, when in manual mode these will not be greyd out and to drive the pol all the user needs to do is enter in the pol angle required.
+				</span>
+			</a></div>
+			</div>
+	</div>
+	<div id="footer">
+		<div class="footerbutton back"><a href="015.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="016.html" class="footerlink";>Next ></a></div>
+	</div>
+</div>
+</body>
+</html>
+
+
+

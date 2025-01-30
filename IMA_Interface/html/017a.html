@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title>Sea Tel IMA Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+
+window.onload = function() {$("#activelog,#activelogtxt").hide();$("#submitprog,#start").delay(5000).hide( 001 );$("#activelog,#activelogtxt").delay(5001).show( 001 );
+var url = "017a";
+parent.set("cmi.core.lesson_location", url);
+}
+$(document).ready(function(){
+  
+			
+
+});
+
+</script>
+<STYLE type="text/css" media="all">
+
+
+
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="body">
+		<h1>Activity</h1>
+		<div style="float:left;width:400px;">
+			<div id="start">
+			<p>This page is where you can view the day's activity log.<br>When the page is opened it will take a few seconds to load.</p></div>
+			<div id="activelogtxt">Once loaded, you will be able to see any settings which has been changed and by which login.<br>
+			Also any errors which may be active or have been active can be viewed.<br>
+			By using the filter you can remove unnecessary information you may not wish to view (Diabaled on simulator)or the user can download the log file by right clicking on the floppy disc icon.</div>
+		</div>
+		<div style="position:absolute;right:0;top:0px;height:200px;width:800px;"> 
+
+
+			<table width=100%class='tb' cellspacing='0' cellpadding='0'>
+			<tr><td align='center' colspan='15'><font size="6"><strong>View Activity Log</strong></font></td></tr>
+			<tr>
+			<td align='center' colspan='3'><h3>Date Range</h3></td>
+			<td colspan='5'>&nbsp;</td>
+			<td align='left' colspan='1'><h3>Filter</h3></td>
+			<td colspan='7'>&nbsp;</td>
+			</tr>
+			<tr>
+			   <td align='left'><input type='radio' id='dateRange' name='dateRange' value='0' checked onClick='getSelChgDate();'>Today</td>
+			   <td align='left'><input type='radio' id='dateRange' name='dateRange' value='7' onClick='getSelChgDate();'>Up to last 7 days</td>
+			   <td colspan=''>&nbsp;&nbsp;</td>
+			   <td colspan=''>&nbsp;&nbsp;</td>
+			   <td colspan=''>&nbsp;&nbsp;</td>
+			   <td colspan=''>&nbsp;&nbsp;</td>
+			   <td align='left'><input type='radio' id='infoType' name='infoType' value='All' checked onClick='viewlog();'>All</td>
+			   <td align='left' class='err'><input type='radio' id='infoType' name='infoType' value='Error' onClick='viewlog();'>Error</td>
+			   <td align='left' class='warn'><input type='radio' id='infoType' name='infoType' value='Warning' onClick='viewlog();'>Warning</td>
+			   <td align='left' class='info'><input type='radio' id='infoType' name='infoType' value='Information' onClick='viewlog();'>Info</td>
+			   <td align='left'><input type='radio' id='infoType' name='infoType' value='Test' onClick='viewlog();'>Test</td>
+			   <td colspan=''>&nbsp;&nbsp;</td> 
+			   <td colspan=''>&nbsp;&nbsp;</td>
+			   <td colspan=''>&nbsp;&nbsp;</td>
+			  </tr>
+			<tr><td colspan='15'>&nbsp;</td></tr>
+			</table>
+			<hr class='grnhr'>
+			<table class='tb'><tr><td>
+				<table id="activelog">
+				   <tr>
+					  <td align='left' colspan='8'> 
+						  <IFRAME 
+							  SRC='log.html'
+					  ID='viewspace'
+							  NAME='viewspace'
+							  WIDTH=700 HEIGHT=340
+							  FRAMEBORDER=0  
+							  MARGINWIDTH=1
+							  MARGINHEIGHT=1
+							  SCROLLING=no
+							  allowtransparency=true
+						   >
+						   </IFRAME>   
+					 </td>
+				  </tr> 
+			</table>
+
+					<table id="submitprog">
+						<tr><tb>&nbsp;</tb></tr>   
+					<tr><td><h2 align='center'>Retrieving log data.........Please wait</h2></td></tr>
+					<tr><td align='center'><div style="position:center center;width:250px; background-color:#E0F8F7;">
+						<table width='250px'>
+					<tr><td>&nbsp;</td></tr>
+						<tr><td align='center'><img id='inprogress_img' src='../img/progress.gif'>&nbsp;</td></tr>
+					<tr><td>&nbsp;</td></tr></div>
+					</table>
+					</table>
+			</td></td> 
+			</table> 
+		</div>
+	</div>
+	<div id="footer">
+		<div class="footerbutton back"><a href="017.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="018.html" class="footerlink";>Next ></a></div>
+	</div>
+</div>
+</body>
+</html>
+
+
+

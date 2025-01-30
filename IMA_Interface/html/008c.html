@@ -1,0 +1,460 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.or../img/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.or../img/1999/xhtml" xml:lang="en">
+
+<head><title>Sea Tel IMA Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+window.onload = function() {$("#int").hide();$("#gpsid").hide();
+var url = "008c";
+parent.set("cmi.core.lesson_location", url);
+}
+
+$(document).ready(function(){
+	$("#gyro").change(function(){
+		if ($(this).val() == "1:1 Synchro") {$("#hdgid").hide();$("#gyroport").hide();$("#int").hide();}
+		else if ($(this).val() == "NMEA") {$("#hdgid").show();$("#gyroport").show();$("#int").hide();}
+		else {$("#int").show();$("#gyroport").hide();$("#hdgid").hide();}
+		
+	;});
+  	
+	$("#gpsport").change(function(){
+		if ($(this).val() == "Internal"){$("#gpsid").hide();}
+		else {$("#gpsid").show();}
+		;});
+
+			
+
+});
+
+</script>
+<STYLE type="text/css" media="all">
+
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="body">
+		<h1>Interface Configuration</h1>
+		
+		<p>This section allows you to change anything which is related to the serial ports.<br>These ports are a mixture of 9 way D types, RJ45 sockets and screw terminals.</p>
+		<p>Compared to the DAC's, there is more control and a larger selection of baud rates.</p>
+
+
+		
+
+		
+		<div style="position:relative;border:0px solid;left:40px;top:0px;width:800px;height:300px;">
+		<table class='tb' cellspacing='0' cellpadding='0' border=0 >
+			  <tr><td colspan='4'>&nbsp;</td></tr>
+		  
+		  <tr>
+			 <td style="height:200px">
+			<table cellspacing='0' cellpadding='0' border=0 >
+					<tr><td align='left' colspan='3'>Serial Port</td></tr>
+					<tr>
+						 <td align='right'>RF M&C&nbsp;</td>
+						 <td align='left'style="width:100px;">
+							  <select class="select"id='rfmc' name='rfmc'>
+								<option value='4800'>4800</option>
+								<option value='9600'selected="selected">9600</option>
+								<option value='19200'>19200</option>
+								<option value='38400'>38400</option>
+								<option value='57600'>57600</option>
+								<option value='115200'>115200</option>
+							</select>&nbsp;bps
+							
+						 </td>  
+					 </tr>	
+					 <tr> 
+						 <td align='right'>Passthrough&nbsp;</td>
+						 <td>
+							  <select class="select">
+								<option value='4800'>4800</option>
+								<option value='9600'selected="selected">9600</option>
+								<option value='19200'>19200</option>
+								<option value='38400'>38400</option>
+								<option value='57600'>57600</option>
+								<option value='115200'>115200</option>
+							</select>&nbsp;bps
+							<input type='hidden' id='passthrSel' name='passthrSel' value='9600'>
+						 </td>  
+					 </tr>	
+					 <tr><td align='left'><span class='subtitleRt'>MXP</span></td></tr>
+					 <tr> 	 
+						 <td align='right'>Aux 232&nbsp;</td>
+						 <td align='left'>
+							  <select class="select"id='portc' name='aux232'>
+								<option value='4800'>4800</option>
+								<option value='9600'selected="selected">9600</option>
+								<option value='19200'>19200</option>
+								<option value='38400'>38400</option>
+								<option value='57600'>57600</option>
+								<option value='115200'>115200</option>
+							</select>&nbsp;bps
+							<input type='hidden' id='aux232Sel' name='aux232Sel' value='9600'>
+						 </td>  
+					 </tr>
+					 <tr> 	 
+						 <td align='right'>&nbsp;&nbsp;&nbsp;Console&nbsp;</td>
+						 <td align='left'>
+							 <select class="select"id='mxpconsole' name='mxpconsole'>
+								<option value='4800'>4800</option>
+								<option value='9600'>9600</option>
+								<option value='19200'>19200</option>
+								<option value='38400'>38400</option>
+								<option value='57600'>57600</option>
+								<option value='115200'selected="selected">115200</option>
+							</select>&nbsp;bps
+							<input type='hidden' id='mxpconsoleSel' name='mxpconsoleSel' value='115200'>
+						 </td>  
+					 </tr>	
+					 <tr> 	 
+						 <td align='right'>&nbsp;&nbsp;&nbsp;NMEA 0183&nbsp;</td>
+						 <td align='left'>
+							  <select class="select"id='nmea' name='nmea'>
+								<option value='4800'>4800</option>
+								<option value='9600'selected="selected">9600</option>
+								<option value='19200'>19200</option>
+								<option value='38400'>38400</option>
+								<option value='57600'>57600</option>
+								<option value='115200'>115200</option>
+							</select>&nbsp;bps
+							<input type='hidden' id='nmeaSel' name='nmeaSel' value='4800'>
+						 </td>  
+					</tr>	
+					 <tr> 	 
+						 <td align='right'>&nbsp;&nbsp;&nbsp;OBM/Modem&nbsp;</td>
+						 <td align='left'>
+							  <select class="select"id='obm' name='obm'>
+								<option value='4800'>4800</option>
+								<option value='9600'>9600</option>
+								<option value='19200'>19200</option>
+								<option value='38400'>38400</option>
+								<option value='57600'>57600</option>
+								<option value='115200'>115200</option>
+							</select>&nbsp;bps
+							<input type='hidden' id='obmSel' name='obmSel' value='4800'>
+						 </td>  
+					 </tr>
+					 <tr><td align='left'><span class='subtitleRt'>ICU</span></td></tr>	
+					 <tr> 	 
+						 <td align='right'>Console&nbsp;</td>
+						 <td align='left'>
+							 <select class="select"id='icuconsole' name='icuconsole'>
+								<option value='4800'>4800</option>
+								<option value='9600'>9600</option>
+								<option value='19200'>19200</option>
+								<option value='38400'>38400</option>
+								<option value='57600'>57600</option>
+								<option value='115200'selected="selected">115200</option>
+							</select>&nbsp;bps
+							<input type='hidden' id='icuconsoleSel' name='icuconsoleSel' value='115200'>
+						 </td>  
+					 </tr>
+					 <tr><td align='left' colspan='3'>&nbsp;</td></tr> 
+				</table>
+			 </td>
+			 <td colspan='1'>
+				<table align='left' cellspacing='0' cellpadding='0' border=0>
+					  <tr><td align='left' colspan='3'><span id='subtitlelg'>NMEA 0183 Output</span></td></tr>
+					  <tr>
+						 <td align='left' colspan='1'>&nbsp;&nbsp;</td>
+						  <td align='right'>Message&nbsp;</td> 
+						  <td align='left'>&nbsp;Interval</td>
+					  </tr>
+					<tr>	   
+						 <td align='left'> &nbsp;</td>
+						 <td align='left'> &nbsp;1 &nbsp;
+							<select class="select"id='msg1' name='msg1'>
+								<option value=''>Select...</option>
+								<option value='OFF'>OFF</option>
+								<option value='GGA'>GGA</option>
+								<option value='GLL'selected="selected">GLL</option>
+								<option value='HDD'>HDD</option>
+								<option value='HDG'>HDG</option>
+								<option value='HDM'>HDM</option>
+								<option value='HDT'>HDT</option>
+								<option value='RMC'>RMC</option>
+								<option value='VTG'>VTG</option>
+							</select>
+							<input type='hidden' id='msg1Sel' name='msg1Sel' value='GLL'>
+						 </td>  
+						 <td align='left'>&nbsp;<input id='interval1' name='interval1' value='5' size='2' maxlength='2'>&nbsp;sec</td>    
+					</tr>
+					<tr>	 
+						 <td align='left'> &nbsp;</td>
+						 <td align='left'>&nbsp;2 &nbsp;
+							<select class="select"id='msg2' name='msg2'>
+								<option value=''>Select...</option>
+								<option value='OFF'>OFF</option>
+								<option value='GGA'selected="selected">GGA</option>
+								<option value='GLL'>GLL</option>
+								<option value='HDD'>HDD</option>
+								<option value='HDG'>HDG</option>
+								<option value='HDM'>HDM</option>
+								<option value='HDT'>HDT</option>
+								<option value='RMC'>RMC</option>
+								<option value='VTG'>VTG</option>
+							</select>
+							<input type='hidden' id='msg2Sel' name='msg2Sel' value='GGA'>
+						 </td> 
+						 <td align='left'>&nbsp;<input id='interval2' name='interval2' value='5' size='2' maxlength='2'>&nbsp;sec</td>            
+					  </tr>	  
+					  <tr>
+						 <td align='left'>&nbsp;</td>
+						 <td align='left'>&nbsp;3 &nbsp;
+							<select class="select"id='msg3' name='msg3'>
+								<option value=''>Select...</option>
+								<option value='OFF'>OFF</option>
+								<option value='GGA'>GGA</option>
+								<option value='GLL'>GLL</option>
+								<option value='HDD'>HDD</option>
+								<option value='HDG'>HDG</option>
+								<option value='HDM'>HDM</option>
+								<option value='HDT'>HDT</option>
+								<option value='RMC'>RMC</option>
+								<option value='VTG'>VTG</option>
+							</select>
+							<input type='hidden' id='msg3Sel' name='msg3Sel' value='OFF'>
+						 </td>   
+						 <td align='left'>&nbsp;<input id='interval3' name='interval3' value='1' size='2' maxlength='2'>&nbsp;sec</td>   
+						
+					</tr>
+					<tr>			
+						 <td align='left'> &nbsp;</td>  
+						 <td align='left'>&nbsp;4 &nbsp;
+							<select class="select"id='msg4' name='msg4'>
+								<option value=''>Select...</option>
+								<option value='OFF'>OFF</option>
+								<option value='GGA'>GGA</option>
+								<option value='GLL'>GLL</option>
+								<option value='HDD'>HDD</option>
+								<option value='HDG'>HDG</option>
+								<option value='HDM'>HDM</option>
+								<option value='HDT'>HDT</option>
+								<option value='RMC'>RMC</option>
+								<option value='VTG'>VTG</option>
+							</select>
+							<input type='hidden' id='msg4Sel' name='msg4Sel' value='OFF'>
+						 </td>
+						 <td align='left'>&nbsp;<input id='interval4' name='interval4' value='1' size='2' maxlength='2'>&nbsp;sec</td>  
+					  
+					</tr>		  
+				   <tr><td align='left' colspan='3'>&nbsp;</td></tr>   
+				   <tr><td align='left' colspan='3'><span id='subtitlelg'>USB Port</span></td></tr>
+				   <tr> 
+					   <td colspan='1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>    
+					   <td align='left' colspan='2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mode&nbsp;
+						  <select class="select"id='usbmode' name='usbmode'>
+							<option value='LEGACY'>Legacy</option>
+							<option value='CLI'selected="selected">CLI</option>
+						  </select>
+						  <input type='hidden' id='usbmodeSel' name='usbmodeSel' value='CLI'>
+					   </td>		   
+					</tr>
+					<tr><td align='left' colspan='3'>&nbsp;</td></tr> 
+				</table>
+			 </td>
+			 
+		 <td colspan='2'>
+				
+			  </td>
+			  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>  
+		  </tr>
+		   
+		  <tr>
+			<td>
+				<table cellspacing='0' cellpadding='0' border=0>
+					<tr><td align='left' colspan='3'><span id='subtitlelg'>Console</span></td></tr>
+					<tr>
+						<td colspan='1'>&nbsp;&nbsp;&nbsp;</td>    
+						<td align='right' colspan='1'>Flow Control (RTS/CTS)</td>   
+						<td align='left' colspan='1'><input type='checkbox' id='flowctl' name='flowctl' value='OFF'></td>
+					</tr>
+					<tr>
+					   <td colspan='1'>&nbsp;&nbsp;&nbsp;</td>    
+						<td align='left' colspan='2'>Mode&nbsp;
+						  <select class="select" id='consolemode' name='consolemode'>
+							<option value='LEGACY'>Legacy</option>
+							<option value='CLI'selected="selected">CLI</option>
+						  </select>
+						  <input type='hidden' id='consolemodeSel' name='consolemodeSel' value='CLI'>
+					  </td>
+				   </tr>
+				</table>
+			 </td>
+		  
+			 <td>
+				<table cellspacing='0' cellpadding='0' border=0>
+				   <tr><td align='left' colspan='3'><span id='subtitlelg'>Gyro</span></td></tr>
+				   <tr>
+					  <td colspan='1'>&nbsp;&nbsp;&nbsp;</td> 
+					  <td align='right'>Type&nbsp;</td>   
+					  <td align='left'>
+						<select class="select" id="gyro" name='gyro' style="width:130px;">
+							<option id='360to1'>360:1 Synchro</option>
+							<option id='90to1'>90:1 Synchro</option>
+							<option id='36to1'>36:1 Synchro</option>
+							<option id="1to1">1:1 Synchro</option>
+							<option id='SBS'>Step by Step</option>
+							<option id='FIXED'>Fixed</option>
+							<option id="NMEA"selected="selected">NMEA</option>
+							<option id='NOGYRO'>No gyro</option>
+						</select>
+					</td>
+
+				  </tr>
+				  <tr><td align='right' colspan='3' height="50px">
+					<select class="select" id='hdgid' name='hdgid'style="width:60px;">  	 
+						<option value='HDD'>HDD</option>	  	 
+						<option value='HDG'>HDG</option>  	 
+						<option value='HDM'selected="selected">HDM</option> 	 
+						<option value='HDT'>HDT</option>   
+					</select>
+					<br>
+					<select class="select" id='gyroport' name='gyroport'style="width:110px;">
+						<option value='AUX232'>Aux 232</option>
+						<option value='CONSOLE'>Console</option>
+						<option value='NMEA_0183'selected="selected">NMEA_0183</option>    
+					</select>
+					<div id="int" ><font face=arial size=2>
+					Inital <input "type="text" name="name" size="5"/> degs
+					</div>
+					</td></tr> 
+				  </table>	  
+			 </td>
+			
+			 <td>
+				<table cellspacing='0' cellpadding='0' border=0>
+				   <tr><td align='left' colspan='3'><span id='subtitlelg'>GPS</span></td></tr>
+				   <tr>
+					   <td colspan='1'>&nbsp;&nbsp;&nbsp;</td>    
+					   <td align='right' colspan='1'>Port</td>   
+					   <td align='left' colspan='1'>&nbsp;
+						  <select class="select" id='gpsport' name='gps'style="width:110px;right:124px;top:338px;margin-top:0px">
+							<option id='NMEA_0183'>NMEA_0183</option>
+							<option id='Internal'selected="selected">Internal</option>
+							<option id='Console'>Console</option>		
+							<option id='AUX232'>Aux 232</option>
+							<option id='AUTO'>AUTO</option>    
+						</select>
+						<div id="gpsid" align='right'><font face=arial size=2>ID
+							<select class="select" id='gpsidd' name='gps'style="width:60px;">
+								<option id='GGA'>GGA</option>
+								<option id='GLL'>GLL</option>
+								<option id='RMC'selected="selected">RMC</option>		    
+							</select>
+						</div>
+					  </td>
+				   </tr>
+				   <tr><td align='left' colspan='3'><div id='gpsidiv' name='gpsidiv'></div></td></tr> 
+				</table>
+			 </td>
+			 
+			 <td>
+				<table align='left' cellspacing='0' cellpadding='0' border=0>
+				  <tr><td align='left' colspan='2'><span id='subtitlelg'>Ship Position</span></td></tr>     
+				  <tr>
+					 <td align='right'>Lat&nbsp;</td>
+					 <td align='left'><INPUT id='shplat' NAME='shplat' value='50.944698 N' size='11' maxlength='13'></td>
+				  </tr>
+				  <tr>
+					 <td align='right'>Lon&nbsp;</td>
+					 <td align='left'><INPUT id='shplongt' NAME='shplongt' value='1.370753 W' size='11' maxlength='13'></td>
+				  </tr>
+				 </table>
+			  </td>
+			  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+		  </tr>	
+		</table>	    
+			
+
+
+		<a href="#" name="serial" class="tooltipdd"style="position:absolute;margin-left:0px;right:610px;top:38px;width:140px;height:40px;"> 
+		<span style="margin-left:-35px;width:400px;margin-top:50px;">
+				<img class="callout" src="../img/callout_black.gif" style="left:20%;" />
+				These ports are used for serial comunication to devices on the antenna, typicaly these would be BUC's. When the baud rate is change it will be change at the MXP and ICU. Click here for the image.
+			</span>
+		</a>
+
+		<a href="#" name="mxp" class="tooltipdd"style="position:absolute;margin-left:0px;right:610px;top:90px;width:140px;height:76px;"> 
+		<span style="margin-left:200px;width:400px;margin-top:-80px;">
+				<img class="callout-left" src="../img/callout_black.gif" />
+			<div style="position:absolute;border:5px solid red;border-style:dashed;border-radius:10px;right:415px;top:220px;width:190px;height:60px;"></div>
+			These are located on the rear of the MXP.        
+			<ul style="text-align:left;"><li>Aux 232</li>
+			<li>Console is the new M&C from the DAC's, the protcal is selected under Console which has been highlighted in red.</li>
+			<li>NMEA is for heading input using NMEA0183 standard</li>
+			<li>OBM/Modem is used for Modem and Out of Band Managment in the same way as it was on the terminal mounting strip</li></ul>
+			</span>
+		</a>
+
+
+		<a href="#" name="icu" class="tooltipdd"style="position:absolute;margin-left:0px;right:610px;top:180px;width:140px;height:30px;"> 
+		<span style="margin-left:200px;width:400px;margin-top:-40px;">
+				<img class="callout-left" src="../img/callout_black.gif" />
+			<div style="position:absolute;border:5px solid red;border-style:dashed;border-radius:10px;right:415px;top:90px;width:190px;height:60px;"></div>
+			This port is located on the ICU.<br>Console is the new M&C from the DAC's, the protcal is selected under Console which has been highlighted in red.<br> Click here for the image.
+			</span>
+		</a>
+
+		<a href="#" name="console" class="tooltipdd"style="position:absolute;margin-left:0px;right:650px;top:250px;width:90px;height:48px;">
+		<span style="margin-left:10px;width:300px;margin-top:56px;">
+			<img class="callout" src="../img/callout_black.gif" style="left:20%;" />
+				<div style="position:absolute;border:5px solid red;border-style:dashed;border-radius:10px;right:120px;top:-200px;width:200px;height:20px;"></div>
+		<div style="position:absolute;border:5px solid red;border-style:dashed;border-radius:10px;right:120px;top:-120px;width:200px;height:20px;"></div>
+			This is where the Console protacol is changed, if CLI is selected then only CLI commands can be used on the Console ports.</span>
+		</a>
+
+
+		<a href="#" name="nmea-ouput" class="tooltipdd"style="position:absolute;margin-left:-0px;right:430px;top:50px;width:80px;height:100px;">
+		<span style="margin-left:-170px;width:400px;margin-top:110px;">
+				<img class="callout" src="../img/callout_black.gif" style="left:50%;" />
+				These drop down lists allows the option to output different types of NMEA sentances. GPS are a must becuse they are needed by the Vsat modem.<br>If any of the others are seleceted then that Nmea sentance must be coming in to the MXP before it can be retansmitted out, the GPS comes from the internal GPS fitted to the antenna.<br>The seconds let you select how oftern the sentence is to be transmitted.
+			</span>
+		</a>
+
+		<a href="#" name="usb" class="tooltipdd"style="position:absolute;margin-left:0px;right:410px;top:180px;width:80px;height:25px;">
+
+		<span style="margin-left:-70px;width:200px;margin-top:35px;">
+			<img class="callout" src="../img/callout_black.gif" style="left:50%;" />
+				
+			This is where the USB protacol is changed, if CLI is selected then only CLI commands can be used on the mini USB port.</span>
+		</a>
+
+		<a href="#" name="gyro" class="tooltipdd"style="position:absolute;margin-left:0px;right:410px;top:240px;width:80px;height:50px;">
+		<span style="margin-left:-200px;width:500px;margin-top:70px;">
+			<img class="callout" src="../img/callout_black.gif" style="left:50%;" />
+			Select to the correct gyro type for the gryo which is connected to the MXP.<br>1:1 and NMEA are the only ones you do not need to enter a start heading.<br>NMEA you will need to select what type of NMEA string is being used from the dropdown list and which port is being used. </span>
+		</a>
+
+
+		<a href="#" name="gps" class="tooltipdd"style="position:absolute;margin-left:0px;right:240px;top:250px;width:80px;height:40px;">
+		<span style="margin-left:-130px;width:300px;margin-top:50px;">
+			<img class="callout" src="../img/callout_black.gif" style="left:50%;" />
+			Default is internal, the system will use the GPS on the antenna.<br>If you wish to use an external GPS then select which port the GPS is connected to and the GPS string being used.<br>Auto will automaticly select which has GPS on it.</span>
+		</a>
+
+		<a href="#" name="ship_pos" class="tooltipdd"style="position:absolute;margin-left:0px;right:100px;top:250px;width:80px;height:40px;">
+		<span style="margin-left:-60px;width:200px;margin-top:50px;">
+			<img class="callout" src="../img/callout_black.gif" style="left:50%;" />
+			This is where you can enter or change the GPS to see if it's updating.</span>
+		</a>
+		</div>
+	</div>
+		Please hover over the different names for more info and change the settings via the dropdown lists.
+		<div>
+	</div>
+	<div id="footer">
+		<div class="footerbutton back"><a href="008b.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="008ca.html" class="footerlink";>Next ></a></div>
+	</div> 
+</div>
+
+</body>
+</html>
+

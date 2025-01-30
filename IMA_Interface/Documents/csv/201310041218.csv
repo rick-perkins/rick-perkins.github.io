@@ -1,0 +1,6 @@
+10-04-2013 11:18:32:100,INFORMATION,NULL,SFS Task,MXP,System Start
+10-04-2013 11:18:32:100,INFORMATION,NULL,SFS Task,MXP,Build 1.02m
+10-04-2013 11:18:32:100,INFORMATION,NULL,SFS Task,MXP,Boot Loader Revision 1.0.9.1
+10-04-2013 11:18:46:840,INFORMATION,NULL,Initialization_Task,MXP,Power On Self Test: SFP device is not connected.
+10-04-2013 11:18:46:840,INFORMATION,NULL,Initialization_Task,MXP,Power On Self Test: Success.
+10-04-2013 11:20:48:400,WARNING,1015,Initialization_Task,MXP,MXP-ICU Link Error: ON

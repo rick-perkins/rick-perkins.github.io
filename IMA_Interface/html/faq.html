@@ -1,0 +1,573 @@
+<HTML>
+
+
+
+<head>
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+window.onload = function() {$('[id="ans"]').hide();
+}
+$(document).ready(function(){
+	
+	$('[id="toggleDiv"]').click(function(){
+	    $(this).next().toggle();
+	});
+  });
+</script>
+<STYLE type="text/css" media="all">
+.linkblacklarge {
+    color: #000000;
+    font-family: Tahoma;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+}
+</style>
+</head>
+<body class='bodyfont'>
+<div class='scrollp'>
+<h1>FAQ</h1>
+<br>
+<a href='#' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow0' name='tabarrow0' border='0' /></a>	
+<a href="#" id="toggleDiv" class='linkblacklarge'>1. What is Modem Status?</a>
+<div id='ans' name='ans'><p>
+   Modem Rx Status represents an identification that indicates if the antenna is on the
+desired satellite. If Modem Rx Status is in LOCKED, it indicates that antenna is in good position to receive signal from the satellite.   
+</div>
+
+<br>
+<a href='#' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow1' name='tabarrow1' border='0' /></a>	
+<a href="#" id="toggleDiv" class='linkblacklarge'>2. What is System Status?</a>
+<div id='ans' name='ans'><p>
+  There are two groups of system status:<p>
+  a. Operation status. The operation statuses include disconnected, initializing, targeting, searching, tracking (precedence in this order).
+     The One which is ON shows up. If none of them is ON, Tracking off shows up.<p>
+  b. State status. The state statuses include in blockage zone, approach blockage zone, stability limit, slow scan and Tx mute (precedence in this order).
+     The One which is ON shows up. If none of them is ON, normal shows up.   
+</div>
+
+<br>
+<a href='#' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow2' name='tabarrow2' border='0' /></a>	
+<a href="#" id="toggleDiv" class='linkblacklarge'>3. What does the Signal Bar mean?</a>
+<div id='ans' name='ans'><p>
+  Signal Bar represents visually relative signal strength (AGC). The more green bars, the stronger the signal strength. One brown bar that represents threshold will show up all the time.<p> 
+  If AGC is 300 counts less than threshold, all bars are in gray.<p>
+  If signal strength is below the threshold, red bars show up. Red bars indicate the AGC levels. <p>
+  If signal strength (AGC) is greater than threshold, green bars appear.  If AGC is 300 counts greater than threshold, all bars are in green.<p>
+  AGC values are displayed in upper_left corner of the signal bar.
+</div>
+
+
+<br>
+<a href='#' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow3' name='tabarrow3' border='0' /></a>	
+<a href="#" id="toggleDiv" class='linkblacklarge'>4. What does the arrow in heading graph mean?</a>
+<div id='ans' name='ans'><p>
+  In the heading graph, the solid and ship-like arrow points to ship heading while the needle points to the direction of the antenna's azimuth.<br> 
+  The needle changes its color from white to red when the antenna is roughly parallel to ship heading direction.
+  <p>
+  Satellite logitude (Sat Long), Azimuth, Elevation, Heading, Relative and Polang (Lpolang and Cpolang) on the right of heading graph are live data and are updated periodically.<p>
+</div>
+
+<br>
+<a href='#' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow4' name='tabarrow4' border='0' /></a>	
+<a href="#" id="toggleDiv" class='linkblacklarge'>5. What is Error Status?</a>
+<div id='ans' name='ans'><p>
+   Error Status reports if any errors occur.  If no error, Error Status is NONE. If any errors are detected, Error Status will report the error.
+</div>
+
+
+
+<br>
+<a href='#' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow5' name='tabarrow5' border='0' /></a>	
+<a href="#" id="toggleDiv" class='linkblacklarge'>6. What is Threshold?</a>
+<div id='ans' name='ans'><p>
+Threshold is the point that must be exceeded by AGC. Peak AGC indicates that antenna is in good postion to get a strong signal from a satellite. <p> 
+Threshold is one of following two values: when auto threshold mode is ON, it is auto-calculated threshold; when auto threshold mode is OFF, it is the value that users type in the threshold text field on the Position Antenna page;
+ 
+</div>
+
+
+<br>
+<a href='#' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow6' name='tabarrow6' border='0' /></a>	
+<a href="#" id="toggleDiv" class='linkblacklarge'>7. What is Tx Mute?</a>
+<div id='ans' name='ans'><p>
+Tx Mute is a kind of "Switch" which controls transmit output of the Satellite Modem.<br>
+When Tx Mute is ON, satellite modem disables/mutes TX output signal.
+When Tx Mute is OFF, satellite modem enables/unmutes TX output signal.
+</div>
+
+
+<br>
+<a href='#' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow7' name='tabarrow7' border='0' /></a>	
+<a href="#" id="toggleDiv" class='linkblacklarge'>8. Can I access web by either http or https?</a>
+<div id='ans' name='ans'><p>
+  Both http and https are suppoted. You can access the Web by either http or https. 
+</div>
+
+
+<br>
+<a href='#' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow8' name='tabarrow8' border='0' /></a>	
+<a href="#" id="toggleDiv" class='linkblacklarge'>9. What need to be done for https access?</a>
+<div id='ans' name='ans'><p>
+	To make https accessbile,  SSL certificate and pubkic key have to be installed properly and your browser have to be 
+	SSL enabled.<p>
+	
+	A set of default self-signed certificate and pubkic key is provided. If you plan to use the default certificate, 
+	following FAQ 11 and 12 below to get the Default CA certificate imported to your browser. 
+</div>
+
+
+<br>
+<a href='#' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow9' name='tabarrow9' border='0' /></a>	
+<a href="#" id="toggleDiv" class='linkblacklarge'>10. How to enable SSL 3.0?</a>
+<div id='ans' name='ans'><p>
+1. Internet Explorer <P>
+<ul>
+<li> go to Advanced settings by clicking Tools -> Internet Options -> Advanced
+<li> scroll down to the bottom and locate the security section
+<li> check Use SSL 3.0 and uncheck Use TLS 1.2
+<li> click Apply button
+</ul>
+
+2. Firefox<P>
+<ul>
+<li> go to Advanced settings by clicking Tools -> Options -> Advanced
+<li> click tab of Encryption
+<li> check Use SSL 3.0 and uncheck Use TLS 1.1 (or Use TLS 1.2 if applicable)
+<li> click OK button
+</ul>
+
+3. Chrome <P>
+<ul>
+<li> go to Under the Hood by clicking Tools (image in upper_right corner) -> Options -> Under the Hood
+<li> locate HTTPS/SSL section
+<li> check Use SSL 3.0 and and uncheck Use TLS 1.2 if applicable
+</ul>
+	
+</div>
+	 
+
+
+<br>
+<a href='#' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow10' name='tabarrow10' border='0' /></a>	
+<a href="#" id="toggleDiv" class='linkblacklarge'>11. Does the web server come with a default SSL certificate?</a>
+<div id='ans' name='ans'><p>
+
+Yes, the webserver comes with a self-signed SSL certificate. That means you can access the web pages via HTTPS
+right way.
+
+To use the defaut certififcate, you are required to 
+<ul>
+<li>use the default IP 10.1.1.100 or 192.168.1.2 for GX60;
+<li>download the Default CA Certificate by following steps below:
+  <br>(1) Log into the web via http.
+  <br>(2) Click Admin on left side menu, then SSL tab. 
+  <br>(3) On download section, right click the link of Default CA Certificate, and click "Save Target As..." and name the file with suffix .der
+<li>import this certificate to your browser (see FAQ 12 below).
+  <br> Note: this certificate should be imported to the folder of Trusted Root Certification Authorities in IE and Chrome and to Authorities in Firefox.
+</ul>									 
+	
+</div>
+
+
+<br>
+<a href='#' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow11' name='tabarrow11' border='0' /></a>	
+<a href="#" id="toggleDiv" class='linkblacklarge'>12. How to import SSL certificates into browsers?</a>
+<div id='ans' name='ans'><p>
+
+1. Microsoft Internet Explorer and Google Chrome
+<P>
+Internet Explorer uses a system-wide store for certificates. Import a new certificate into the Trusted Root Certification Authority store with the following procedure:
+
+<ul>
+<li>Select Tools/Internet Options from the menu.
+<li>From the Content tab, choose Certificates.
+<li>Clicking Trusted Root Certification Authorities tab.
+<li>Choose Import… and enter the location of the signed certificate.
+</ul>
+
+2 Mozilla Firefox
+<P>
+Mozilla Firefox does not use a system-wide certificate store like Microsoft Internet Explorer and other applications. Create an exception that allows Mozilla Firefox to use the new certificate.
+Note: The target must be running and functioning properly for this procedure – Mozilla queries the server, acquires the certificate, and installs the exception with the following:
+
+<ul>
+<li>Select Tools/Options from the menu.
+<li>Choose the Advanced panel.
+<li>From the Encryption tab, choose View Certificates.
+<li>From the Servers tab, choose Add Exception…
+<li>In the Location, enter the server address (https://10.1.1.100 for the ssldemo demonstration).
+<li>Choose Get Certificate.
+<li>Choose Confirm Security Selection.
+</ul>
+
+<p>
+For importing the Defalut CA Certificate download from this web:<br>
+
+<ul>
+<li>Select Tools/Options from the menu.
+<li>Choose the Advanced panel.
+<li>From the Encryption tab, choose View Certificates.
+<li>From the Authorities tab, choose Import…
+</ul>
+	
+3. Google Chrome
+<P>
+Google Chrome uses a system-wide store for certificates. Import a new certificate into the Trusted Root Certification Authority store with the following procedure:
+
+<ul>
+<li>Setting from the tool menu.
+<li>Clicking show advanced setting at the buttom.
+<li>Scrolling down to HTTPS/SSL section, and clicking Manage certificates button.
+<li>Clicking Trusted Root Certification Authorities tab.
+<li>Choose Import… and enter the location of the signed certificate.
+</ul>	
+	
+</div>
+
+
+
+<br>
+<a href='#' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow12' name='tabarrow12' border='0' /></a>	
+<a href="#" id="toggleDiv" class='linkblacklarge'>13. How to get signed SSL Certificate?</a>
+<div id='ans' name='ans'><p>
+	
+	There are two ways listed below to get signed SSL Certificates.
+	Just keep in mind that seatel_key.pem and seatel_cert.pem will be the key and certificate file names that allow the certificate to be enabled by the web server.
+	<p>
+	
+	1. Create self_signed SSL Certificates<p>
+	
+	Self_signed SSL Certificates is suited to small, static installations like MXP web. 
+	It is also interesting to know that some people feel that self-signed certificates offer a greater level of trust than those from Certificate Authorities<p>
+	
+	Using the OpenSSL command:<br>
+
+    openssl req -config c:/openssl/bin/openssl.cnf -x509 -nodes -days 365 -newkey rsa:512 -keyout seatel
+_key.pem -out seatel_cert.pem
+
+<p>
+Note: 
+     <ul>
+     <li> c:/openssl is the folder where OpenSSL is installed.<br>
+     <li> for the Common Name (eg, YOUR name) []: prompt, use the server IP address or hostname (i.e. 10.1.1.100 or www.server_name.com). 
+	 <li> Certificates loaded to web Server must include an RSA public key
+	 <li> web server support RSA public key with size of 512k or 1024k
+	 <li> web server supports SHA-1
+	 <li> web server does not support client authentication. Instead web server authenticates the server
+	 <li> web server does not support certificate chains; it only responds to client connection requests 
+	 </ul>
+<p>
+
+    2. Create SSL Certificates and have it signed by a trusted certificate authority<p>
+	
+	You can obtain a certificate by sending a certificate request including subject (aka common name) and public key fields 
+	to a trusted certificate authority. The certificate authority signs the request with its own private key 
+	and sends the fully formed certificate back to be installed on your Web server.<p>
+	
+	Below are the steps to generate public keys (seatel.key below):
+    <p>
+	<ul>
+    <li>step#1:<p>
+        openssl req -config c:/openssl/bin/openssl.cnf -new -out seatel.csr -keyout seatel.pem
+        <p>
+        Required params:<br>
+        PEM pass phrase: "none" or "password"<br>
+        Common Name: 10.1.1.100<br>
+
+    <p>
+    <li> step#2:<p>
+         openssl rsa -in seatel.pem -out seatel.key<p>
+
+         Required param:<br>
+         PEM pass phrase: "none" or "password"<br>
+   <ul>
+
+</div>
+	 
+
+
+
+
+
+
+<br>
+<a href='#' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow13' name='tabarrow13' border='0' /></a>	
+<a href="#" id="toggleDiv" class='linkblacklarge'>14. Why do I have trouble loading page when access web via HTTPS?</a>
+<div id='ans' name='ans'><p>
+When you try to access MXP web by https such as https://10.1.1.100/Login.html, and get a problem loading or displaying page, it is likely that
+proper SSL protocol is not enabled. MXP web requires SSL 3.0 be enabled in your browser.<br>
+To enable SSL in your browser, see FAQ #10 above: How to enable SSL 3.0?<p>
+
+You may also check to see if you use certificate chains. This webserver does not support certificate chains, it only responds to client connection requests with a single certificate. 
+
+</div>
+	 
+
+
+<br>
+<a href='#' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow14' name='tabarrow14' border='0' /></a>	
+<a href="#" id="toggleDiv" class='linkblacklarge'>15. How to upload signed certificate to web server?</a>
+<div id='ans' name='ans'><p>
+    There is a tool in MXP Web which allows you to upload both certificate and key to web server.<br>
+	On left-hand side menu, locate Others, click Admin, then click SSL tab to see the SSL certificate uploading page.
+	<p>Make sure that files of key and certificate are in the right names. seatel_key.pem and seatel_cert.pem are the names 
+	 accepted internally by the system for key and certificate, respectively.<br>
+	<p>Therefore, rename your files if neccessary before uploading.
+	<p>
+</div>
+
+
+<br>
+<a href='#' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow15' name='tabarrow15' border='0' /></a>	
+<a href="#" id="toggleDiv" class='linkblacklarge'>16. What to do when I cannot access login page via either HTTP or HTTPS?</a>
+<div id='ans' name='ans'><p>
+If you cannot access the login page after you upload the certificate, and the system rebooted, it is likely that
+the format of the certificate is incorrect. <br>
+
+In this case, the key and certificate you have just uploaded need to be removed. You can telnet to the server,
+then delete both seatel_key.pem and seatel_cert.pem.  Once deletion is complete, reboot the system. Now you should be able to
+access the login page.
+
+</div>
+
+
+<br>
+<a href='#' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow16' name='tabarrow16' border='0' /></a>	
+<a href="#" id="toggleDiv" class='linkblacklarge'>17. Can multiple users login at the same time?</a>
+<div id='ans' name='ans'><p>
+Web is primarily for single users.  For remote debug purposes, Dealer or SysAdmin is allowed to log in while User is using the system.
+However, one of them (User, SysAdmin or Dealer) will log all of them out.
+</div>
+
+<br>
+<a href='#' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow17' name='tabarrow17' border='0' /></a>	
+<a href="#" id="toggleDiv" class='linkblacklarge'>18. How to export a file?</a>
+<div id='ans' name='ans'><p>
+
+To export a file, right click a link from the list of files, and click "Save Target As...", then name the file such as *.csv or *.txt.<p>
+
+The menu item  of "Save Target As..." is for IE.  It is named as "Save Link As" in Firefox and Chrome; in Safari, it is named as "Download Linked File As" <br>
+
+<p>
+Different browers have different ways to handle the downloaded files."Open, Save or cancel" is the IE unique fucntions. In Firefox and Safari, you can right click the file name to open it. 
+In Chrome, the name of the downloaded file shows up in lower_left corner of the browser, click the file name to open it.
+
+
+
+</div>
+
+	
+<br>
+<a href='#' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow18' name='tabarrow18' border='0' /></a>	
+<a href="#" id="toggleDiv" class='linkblacklarge'>19. What is the ICU internal IP?</a>
+<div id='ans' name='ans'><p>
+The ICU internal IP is 10.197.173.223
+</div>
+
+
+
+<br>
+<a href='#' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow19' name='tabarrow19' border='0' /></a>	
+<a href="#" id="toggleDiv" class='linkblacklarge'>20. How to enable scripting in your browser?</a>
+<div id='ans' name='ans'><p>
+
+Internet Explorer
+<p>
+Note: to allow scripting on this Web site only, and to leave scripting disabled in the Internet zone, add this Web site to the Trusted sites zone.
+<br>1.On the Tools menu, click Internet Options, and then click the Security tab. 
+<br>2.Click the Internet zone. 
+<br>3.If you do not have to customize your Internet security settings, click Default Level. Then do step 4 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;If you have to customize your Internet security settings, follow these steps:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;a. Click Custom Level.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;b. In the Security Settings – Internet Zone dialog box, click Enable for Active Scripting in the Scripting section.
+<br>4.Click the Back button to return to the previous page, and then click the Refresh button to run scripts.
+<p>
+Firefox
+<br>1.On the Tools menu, click Options. 
+<br>2.On the Content tab, click to select the Enable JavaScript check box.
+<p>
+</div>
+
+
+
+<br>
+<a href='#' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow20' name='tabarrow20' border='0' /></a>	
+<a href="#" id="toggleDiv" class='linkblacklarge'>21. How do I turn Pop-up Blocker on? </a>
+<div id='ans' name='ans'><p>
+
+Internet Explorer
+<p>
+
+Pop-up Blocker is turned on in Internet Explorer by default. To turn it on if you've already switched it off, follow these steps:
+<br>1.Open Internet Explorer by clicking the Start button , and then clicking Internet Explorer. 
+<br>2.Click the Tools button, and then click Pop-up Blocker.
+<br>3.Do one of the following:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To turn on Pop-up Blocker, click Turn On Pop-up Blocker.
+<p>
+FireFox
+<br>
+<br>1.Click the Tools button, and then option, then click content.
+<br>2.Uncheck block popup window:
+
+</div>
+
+
+<br>
+<a href='javascript:void(0);' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow21' name='tabarrow21' border='0' /></a>	
+<a href="javascript:void(0);" id="toggleDiv" class='linkblacklarge'>22. What are OOST and IST? </a>
+<div id='ans' name='ans'><p>
+OOST is Out of Server Test, and IST is In Service Test.
+</div>
+
+
+
+<br>
+<a href='javascript:void(0);' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow22' name='tabarrow22' border='0' /></a>	
+<a href="javascript:void(0);" id="toggleDiv" class='linkblacklarge'>23. What happened to HyperTerminal?</a>
+<div id='ans' name='ans'><p>
+  
+HyperTerminal is no longer part of Windows. There are several options you can use to replace its functionality. 
+<ul>
+<li>
+If you only need remote shell access, you can use WinRS (Windows Remote Shell), new in Windows Vista. To get help with WinRS, type winrs /? at the command prompt, and then press ENTER.
+<p>
+Telnet is a simple, text-based program that you can use to connect to another computer over the Internet. 
+<p>
+<li>
+If you previously used HyperTerminal to troubleshoot modem problems, use Phone and Modem Options instead:
+<p>
+Open Phone and Modem Options by clicking the Start button , clicking Control Panel, clicking Hardware and Sound, and then clicking Phone and Modem Options. 
+<p>
+Note:
+<br>
+You might need to provide information, such as your country or region and any special phone dialing rules, in the Location Information dialog box before you can access the Phone and Modem Options dialog box.
+<p>
+<li>
+If you previously used HyperTerminal to control serial devices, you can usually find a downloadable version of HyperTerminal on the Internet that is free for personal use.
+</ul>
+</div>
+
+
+<br>
+<a href='javascript:void(0);' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow23' name='tabarrow23' border='0' /></a>	
+<a href="javascript:void(0);" id="toggleDiv" class='linkblacklarge'>24. What are favorite and current satellites ? </a>
+<div id='ans' name='ans'><p>
+A favorite satellite is a sateliite with pre-configuration parameters stored in the database. 
+A current satellite is the one which is active in the system, and its parameters are visible in system status.
+Only one satellite can be active at a time in the system.
+<p>
+To make a favorite satellite be a current one, users have to select the favorite satellite when doing Auto Search.
+
+</div>
+
+
+<br>
+<a href='javascript:void(0);' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow24' name='tabarrow24' border='0' /></a>	
+<a href="javascript:void(0);" id="toggleDiv" class='linkblacklarge'>25. What does communication errors mean ? </a>
+<div id='ans' name='ans'><p>
+When you see the message "Communication errors. Please see activity log for error details" after you hit a SAVE button,
+it is very likely that there are communication errors between MXP and ICU. <p>
+
+Two simple checks up may help fix the issue. First, check if ICU is powered on. 
+Second, check if the cable that link ICU and MXP is loose. If ICU power is on and the cable is in good condition, please consult a Sea Tel authorized technician for help.
+<p>
+
+</div>
+
+
+
+<br>
+<a href='javascript:void(0);' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow25' name='tabarrow25' border='0' /></a>	
+<a href="javascript:void(0);" id="toggleDiv" class='linkblacklarge'>26. Any differences between two system log exports? </a>
+<div id='ans' name='ans'><p>
+There are two ways to export the System log: (a) from Activity->View Activity Log or (b) from Data Export -> System Log.
+<p>
+When exporting the system activity log using View Activity Log, the data records exported are what you see on the screen.  The maximum number 
+of the records shown on screen is limited to 3000, no matter how much data is requested.
+<p>
+When exported from the System Log, there is no maximum limitation for records number to be exported. This is true for both single file exportation
+and exportation from a given time frame.
+
+<p>
+
+</div>
+
+
+<br>
+<a href='javascript:void(0);' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow26' name='tabarrow26' border='0' /></a>	
+<a href="javascript:void(0);" id="toggleDiv" class='linkblacklarge'>27. When Auto Threshold will be calculated? </a>
+<div id='ans' name='ans'><p>
+The auto threshold calculation will be performed under conditions that modem is locked and antenna is on satellite. <br>
+When a antenna is on satellite, AGC is greater than threshold and antenna is on tracking.
+	
+<p>
+
+</div>
+
+
+<br>
+<a href='javascript:void(0);' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow27' name='tabarrow27' border='0' /></a>	
+<a href="javascript:void(0);" id="toggleDiv" class='linkblacklarge'>28. What happened to background color in header? </a>
+<div id='ans' name='ans'><p>
+If the web worked properly before, and you can still perform all jobs now, but you see the background color or images do not show up, or see abnormal strips in signal bar. In this case, it is likely that one or more files, which were downloaded to your computer to support web pages, corrupted. <p>
+
+To clean up the corrupted files in IE, go to Tools, then Internet options, click General tab, click Delete button under Browser history section, check Temporary Internet files, then click Delete button.
+Now, close IE either click X on upper-right corner or click File, click Exit.<p>
+
+Now, launch IE again, once you are logged in, you should see the normal background, images etc.<p>
+
+File corruption on your computer is rare, but it does happen occasionally.<p>
+
+<p>
+
+</div>
+
+
+<br>
+<a href='javascript:void(0);' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow28' name='tabarrow28' border='0' /></a>	
+<a href="javascript:void(0);" id="toggleDiv" class='linkblacklarge'>29. How to uncheck browser's Menu bar? </a>
+<div id='ans' name='ans'><p>
+If your monitor only has maximum vertical solution 768, it is recommended to uncheck Menu and Favorite bars from
+your browser to make maximum working area available.<p> 
+Right click the gray area below URL to uncheck Menu and Favorite bars in your IE browser. 
+Right click the gray area below URL to uncheck Menu bar, Bookmark Toolbar and Tabs on top in Firefox.
+Click the setting dropdown list on upper-right corner, then check hide Menu, Bookmark and Tab bars in Safari.<p> 
+
+Another short cut to make maximum working area is simply hit F11 key. Once finish your task, hit F11 key again to bring your browser to its original status.
+<p>
+
+</div>
+
+
+
+<br>
+<a href='javascript:void(0);' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow29' name='tabarrow29' border='0' /></a>	
+<a href="javascript:void(0);" id="toggleDiv" class='linkblacklarge'>30. Why I can't access Web any more after gateway or subnet mask change? </a>
+<div id='ans' name='ans'><p>
+If you change gateway or subnet mask from the interfaces page when it is applicable and reboot the system, the changes are in effect.
+Therefore, the gateway or subnet mask in your PC settings should change accordingly. Consult with your network administrator if you still have problems.
+	
+<p>
+</div>
+
+
+<br>
+<a href='javascript:void(0);' id="toggleDiv"><img src='../img/cal_forward.gif' id='tabarrow30' name='tabarrow30' border='0' /></a>	
+<a href="javascript:void(0);" id="toggleDiv" class='linkblacklarge'>31. What is Balance Mode? </a>
+<div id='ans' name='ans'><p>
+Balance mode provides user opportunity to verify antenna balance. With Balance mode enabled, motors are disabled and user can move antenna manually. 
+With Balance mode disabled, motors are enabled and antenna restores its last position. 
+
+<p>
+
+</div>
+
+
+
+</div>
+</body>
+</html>
+
+

@@ -1,0 +1,360 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title>Sea Tel IMA Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+
+window.onload = function() {
+var url = "010a";
+parent.set("cmi.core.lesson_location", url);		
+}
+$(document).ready(function(){
+	$("#4012").click(function(){$("#PRIMARY_REFLECTOR").prop("checked",true);$("#SECONDARY_REFLECTOR").prop("checked",false);$("#sensel").val("50");$("#sensaz").val("50");$("#lnblo1").val("10.000");$("#lnblo2").val("10.750");$("#lnblo3").val("11.300");$("#lnblo4").val("9.750");
+		$("#dsaz").val("13");$("#dsel").val("12");$("#dscl").val("22");$("#dsphase").val("45");$("#stepreso").val("0.1");$("#lpoloffset").val("0.0");$("#cpoloffset").val("0.0");$("#cpoloffset").prop("disabled",true);});
+	$("#9711C").click(function(){$("#PRIMARY_REFLECTOR").prop("checked",true);$("#SECONDARY_REFLECTOR").prop("checked",false);$("#sensel").val("75");$("#sensaz").val("75");$("#lnblo1").val("5.150");$("#lnblo2").val("5.150");$("#lnblo3").val("5.150");$("#lnblo4").val("5.150");
+		$("#dsaz").val("20");$("#dsel").val("16");$("#dscl").val("20");$("#dsphase").val("90");$("#stepreso").val("0.05");$("#lpoloffset").val("1194");$("#cpoloffset").val("1391");$("#cpoloffset").prop("disabled",false);});
+	$("#9711ku").click(function(){$("#SECONDARY_REFLECTOR").prop("checked",true);$("#PRIMARY_REFLECTOR").prop("checked",false);$("#sensel").val("50");$("#sensaz").val("50");$("#lnblo1").val("10.000");$("#lnblo2").val("10.750");$("#lnblo3").val("11.300");$("#lnblo4").val("9.750");
+		$("#dsaz").val("16");$("#dsel").val("16");$("#dscl").val("20");$("#dsphase").val("90");$("#stepreso").val("0.05");$("#lpoloffset").val("0.0");$("#cpoloffset").val("0.0");$("#cpoloffset").prop("disabled",true);});
+
+	
+});
+
+</script>
+<STYLE type="text/css" media="all">
+
+
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="body">
+	<h1>System Configuration</h1>
+		<div style="float:left;width:400px;">
+		All the settings on this page are related to the reflector and NOT the pedistal.<br>
+		The Trims are linked to the reflector because you are trimming the pointing angle  of the reflector to the satellite, not the pedistal.</p>
+		<p>The Reflector indicates which refletor is being used. To switch between the refletors use the Position Antenna page.
+			<ul><li>On a dual band system the primary reflector will be C-band and Secondary will be Ku-band.</li>
+				<li>On a single reflector system, the primary is Ku-band</li>
+			</ul>
+		<p>When using the C-band linear/circualr feed the offset vaules are different to when using KU.
+		<br>The C-band will be a 4 digit number which is found on the feed assembly, there is one for circular and one for linear.
+		<br>
+		<p>Please hover over the different names for more info and change the settings.</p>
+		<p><a class="footerlink" id="4012" href="#">Click here to see settings for a 4012</a></p>
+		<p><a class="footerlink" id="9711C" href="#">Click here to see settings for a 9711-88 Primary reflector</a></p>
+		<p><a class="footerlink" id="9711ku" href="#">Click here to see settings for a 9711-88 Secondary reflector</a></p>
+		</div>
+		<div style="position:absolute;;border:0px solid blue;right:0px;top:0px;width:800px;height:300px;">
+		<table class='tb' cellspacing='0' cellpadding='0' style="width:800px;">
+		  
+		<tr><td>&nbsp;</td></tr>
+		  
+		<tr><td align='center' colspan='10'><h1>Reflector Configuration</h1></td></tr> 
+		  
+		<tr><td align='left'>Reflector</td>
+			  
+		<td align='left'><input type='radio' name='selant' id='PRIMARY_REFLECTOR' checked onClick='loadReflParams(1);' disabled>Primary &nbsp; 
+			  <input type='radio' name='selant' id='SECONDARY_REFLECTOR' onClick='loadReflParams(2);' disabled>Secondary</td>
+			  <input type='hidden' id='selantClk' name='selantClk' value='PRIMARY_REFLECTOR'>	
+			  
+		<input type='hidden' id='numRefl' name='numRefl' value='1'>	
+			  
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			  
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			  
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			  
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			  
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			  
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			  
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			  
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		  
+		</tr> 
+		  
+		<tr><td colspan='10'><hr class='grnhr'></td></tr>
+		</table>
+
+
+
+
+		
+					  
+		<table class='tb' cellspacing='0' cellpadding='0' style="width:800px;">
+		  <tr> 
+			 <td>
+				<table cellspacing='0' cellpadding='0'>
+					<tr><td align='left' colspan='2'><a href="#" target="_blank" name="trim" class="tooltipdd"><h3>Trim</h3>
+	<span style="margin-left:-30px;width:400px;margin-top:70px;">
+        <img class="callout" src="../img/callout_black.gif" style="left:20%;" />
+        Trims are calculated in the same way as the DAC. The only differance is you do not need to mutiply by 10 becasue we can use decimal places.<br>
+		CL is greyed out which means its not editable.<br>
+		The EL trim should be within +/- 3 degs, if not then there may be an issue with the ICU.<br>
+		The homeflag setting is linked to the AZ trim, if the AZ trim is greater than 5 degs the system will adjust the home flag setting.</p>
+   </span>
+</a></td></tr>
+
+				   <tr><td align='right'>EL&nbsp;</td>
+					   <td align='left'><input id='trimel' name='trimel' value='0.1' size='6' maxlength='6'>&nbsp;deg&nbsp;</td>
+					</tr>
+					<tr><td align='right'>CL&nbsp;</td>
+						<td align='left'><input id='trimcl' name='trimcl' value='0' disabled size='6' maxlength='6'>&nbsp;deg&nbsp;</td>
+					</tr>
+					<tr><td align='right'>AZ&nbsp;</td>
+						<td align='left'><input id='trimaz' name='trimaz' value='-1.1' size='6' maxlength='6'>&nbsp;deg&nbsp;</td>
+					</tr>
+					<tr><td colspan='2'>&nbsp;</td></tr>
+					<tr>
+					   <td colspan='2'>
+					   <a href="#" name="autotrim" class="tooltipdd"><button type='button' id='onbtn' name='onbtn' class='btnmd0' onClick='autoTrim();'>Auto Trim</button>
+							<span style="margin-left:-100px;width:400px;margin-top:30px;">
+									<img class="callout" src="../img/callout_black.gif" style="left:20%;" />
+									Auto Trim works in the same way as the DAC. 
+							<ul><li>System must be tracking the satellite AGC abpve threshold.</li>
+							<li>If modem lock is enabled then the MXP must be getting modem lock from the Vsat modem.</li>
+							<li>Elevation must not be greater than 75 Degs</li>
+							<li>System NOT setup for Inclined Orbit.</li></ul></p><p>
+							Calculate will automaticly setup the threshold levels which can be viewed on the Position Antenna page, at the same time the system will retarget the satellite, this should be done once the system is trimed on satellite.</p>
+								</span>
+						</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						 <input type='hidden' id='selant' name='selant' value=''>	
+					   </td> 
+				   </tr>
+				</table>
+			 </td>
+			 <td>
+				<table cellspacing='0' cellpadding='0'> 
+					<tr><td align='left' colspan='2'>
+					<a href="#" name="tracksens" class="tooltipdd"><h3>Tracking Sensitivity&nbsp;&nbsp;</h3>
+						<span style="margin-left:-150px;width:400px;margin-top:60px;">
+							<img class="callout" src="../img/callout_black.gif" style="left:50%;" />
+							Tracking Sensitivity is linked to Dishscan and how many decisions per second is made, 50% is equal to one decision per two seconds.<br>
+							Increasing this value will slow the dishscan tracking down.</p>
+						</span>
+					</a></td></tr>
+					<tr><td align='right'>EL&nbsp;</td>
+					   <td align='left'><input id='sensel' name='sensel' value='50' size='3' maxlength='3'>&nbsp%</td>
+					</tr>
+					<tr><td align='right'>AZ&nbsp;</td>
+						<td align='left'><input id='sensaz' name='sensaz' value='50' size='3' maxlength='3'>&nbsp%</td>
+					</tr>
+					<tr><td colspan='2'>&nbsp;</td></tr>
+					<tr><td align='left' colspan='4'>
+						<a href="#" name="dishscan" class="tooltipdd"><h3>DishScan</h3>
+							<span style="margin-left:-150px;width:400px;margin-top:30px;">
+								<img class="callout" src="../img/callout_black.gif" style="left:50%;" />
+							 This is where Dishscan is enabled and disabled.</p>
+							</span>
+						</a></td></tr>
+					<tr><td align='right'>Mode</td>
+						<td align='left'><input type='radio' id='dsmode' name='dsmode' value='ON' checked>On &nbsp; 
+						<input type='radio' id='dsmode' name='dsmode' value='OFF'>Off</td>
+						<td align='left'><input type='hidden' id='dsmodeClk' name='dsmodeClk' value='ON'></td>
+					</tr>
+				</table>
+			 </td>
+			 <td>
+				  <table cellspacing='0' cellpadding='0'>
+					 <tr><td colspan='2'>
+					 <a href="#"  name="search" class="tooltipdd"><h3>Search</h3>
+					<span style="margin-left:-180px;width:400px;margin-top:110px;">
+							<img class="callout" src="../img/callout_black.gif" style="left:60%;" />
+						 <p>This is where Auto Search is enabled and disabled.</p>
+						 <p>Delay is how long the system waits after AGC has dropped below threshold before a auto search is started.
+						 <br> Increment, limit and incline limit used to be in step resolution but are now in degs.</p>
+						</span>
+					</a></td></tr>
+					 <tr>
+						<td align='right' nowrap>Auto Search&nbsp;</td>
+						<td align='left'><input type='radio' id='srchmode' name='srchmode' value='ON' checked>Enable</td>
+					<td align='right' nowrap>&nbsp;</td> 
+						<td align='left'>
+							 <input type='radio' id='srchmode' name='srchmode' value='OFF'>Disable
+							 <input type='hidden' id='srchmodeClk' name='srchmodeClk' value='ON'>
+						</td>
+					</tr>
+					<tr>
+					   <td align='right'>Increment&nbsp;</td>
+					   <td align='left'><input id='srchinc' name='srchinc' value='1.0' size='4' maxlength='4'>&nbsp;deg</td>
+					</tr>
+					<tr>
+					  <td align='right'>Limit&nbsp;</td>
+					   <td align='left'><input id='srchlimit' name='srchlimit' value='6.0' size='4' maxlength='4'>&nbsp;deg</td>
+					</tr>
+				   <tr>
+					   <td align='right'>Delay&nbsp;</td>
+					   <td align='left'><input id='srchdelay' name='srchdelay' value='30' size='4' maxlength='3'>&nbsp;sec</td>
+					</tr>
+					<tr>
+					   <td align='right'>Incline Limit&nbsp;</td>
+					   <td align='left'><input id='srchinclimit' name='srchinclimit' value='16.0' size='4' maxlength='4'>&nbsp;deg</td>
+					</tr>
+				 </table>
+			 </td>
+
+		</tr>
+		</table>
+		<table>
+		  <tr><td colspan='3' nowrap><button type='button' id='thrsbtn' name='thrsbtn' class='btnmd' onClick='autoThrs();'>Calculate</button>&nbsp;<span id='calchelp' name='calchelp' onmouseover='helpOver(this)' onmouseout='helpOut(this)' style='position:relative;'>?</span></td></tr>
+		</table>    
+
+		<div id="inprogress" class="inprogress" style="display:none; position:absolute; left:155px; top:215px; width:250px; background-color:#E0F8F7;">
+			<table width='250px'>
+			  <tr><td>&nbsp;</td></tr>
+			  <tr><td align='center'><img id='inprogress_img' src='image/progress.gif'>&nbsp;</td></tr>
+			  <tr><td align='center'><h3>Calculating.........Please Wait</h3></td></tr>
+			  <tr><td>&nbsp;</td></tr>
+			</table>
+		</div>
+
+		<br>
+		<table class="tb" cellspacing="0" cellpadding="0" style="width:800px;"> 
+  <tbody><tr><td align="left" colspan="3"><h3>Advanced Settings</h3></td></tr>   
+  <tr> 
+	  <td>
+	    <table cellspacing="0" cellpadding="0">
+		    <tbody><tr><td align="left" colspan="2" id="subtitle">
+			<a href="#" name="lnblo" class="tooltipdd">LNB LO
+						<span style="margin-left:-30px;width:400px;margin-top:110px;">
+						<img class="callout" src="../img/callout_black.gif" style="left:20%;" />
+						<p>These should be configured to the same spec as your LNB and is linked to the openAMIP commands.</P>
+						If they are not enabled then openAMIP will not work correctly when changing the tracking settings.
+							</span>
+					</a>			</td><td align="left">Enable</td></tr>
+		    <tr>
+			    <td align="right">Band 1&nbsp;</td>
+	            <td align="left"><input id="lnblo1" name="lnblo1" value="10.000" size="7" maxlength="7">&nbsp;GHz (13V/0KHz)</td>
+			    <td align="left"><input type="checkbox" id="lnblo1e" name="lnblo1e" value="ON" disabled="disabled" checked></td> 
+			 </tr>
+		    <tr>
+			    <td align="right">2&nbsp;</td>
+	            <td align="left"><input id="lnblo2" name="lnblo2" value="10.750" size="7" maxlength="7">&nbsp;GHz (13V/22KHz)</td>
+			    <td align="left"><input type="checkbox" id="lnblo2e" name="lnblo2e" value="ON" disabled="disabled" checked></td>
+			 </tr>
+		    <tr>
+			    <td align="right">3&nbsp;</td>
+	            <td align="left"><input id="lnblo3" name="lnblo3" value="11.300" size="7" maxlength="7">&nbsp;GHz (18V/0KHz)</td>
+			   <td align="left"><input type="checkbox" id="lnblo3e" name="lnblo3e" value="ON" disabled="disabled" checked></td>
+			   </tr>
+	        <tr>
+			    <td align="right">4&nbsp;</td>
+	            <td align="left"><input id="lnblo4" name="lnblo4" value="9.750" size="7" maxlength="7">&nbsp;GHz (18V/22KHz)</td>
+			    <td align="left"><input type="checkbox" id="lnblo4e" name="lnblo4e" value="ON" disabled="disabled" checked></td>
+			</tr>
+	    </tbody></table>
+	 </td>
+	 <td>
+	    <table cellspacing="0" cellpadding="0">
+		    <tbody><tr><td align="left" colspan="4" id="subtitle"><a href="#" name="dishscandl" class="tooltipdd">Dishscan Drive level
+						<span style="margin-left:-250px;width:400px;margin-top:-120px;">
+						<img class="callout-down" src="../img/callout_black.gif" style="left:50%;" />
+							 These settings used to be part of PCU N7 command on the legacy systems.<br>Each axis drive level can be adjusted by increasing or decreasing the % and the result is the same as the legacy systems.
+							</span>
+					</a></td></tr>
+			<tr>
+			   <td align="right">AZ&nbsp;</td>
+	           <td align="left"><input id="dsaz" name="dsaz" value="19" size="3" maxlength="3">&nbsp;%</td>
+	           </tr>
+			<tr>
+			   <td align="right">EL&nbsp;</td>
+	           <td align="left"><input id="dsel" name="dsel" value="19" size="3" maxlength="3">&nbsp;%</td>
+			</tr>
+			<tr><td align="right">CL&nbsp;</td>
+	            <td align="left"><input id="dscl" name="dscl" value="16" size="3" maxlength="3">&nbsp;%</td>
+	           </tr>
+			<tr>
+			    <td align="right">Phase&nbsp;</td>
+	            <td align="left"><input id="dsphase" name="dsphase" value="40.0" size="6" maxlength="7">&nbsp;deg</td>
+			</tr>
+			<tr>
+			    <td align="right" nowrap="">
+			        Step Resolution&nbsp;
+			    </td>
+			    <td align="right">
+			    <!--
+        	      <select id='stepreso' name='stepreso' disabled>
+        			<option value='0.2'>0.2</option>
+        			<option value='0.1'>0.1</option>
+        			<option value='0.05'>0.05</option>
+        		  </select>&nbsp;deg
+        		  <td align='left'>
+		            <input type='hidden' id='stepresoSel' name='stepresoSel' value='<!--TESTECHO FORMAT="%s" VAR="stepreso" -- >' disabled />
+		            </td>
+        		-->
+        		<input id="stepreso" name="stepreso" value="0.1" size="6" maxlength="6" disabled="">&nbsp;deg
+                </td>
+             </tr>
+	    </tbody></table>
+	 </td>
+	 <td>
+	    <table cellspacing="0" cellpadding="0">
+		    <tbody><tr><td align="left" colspan="2" id="subtitle"><a href="#" name="pol" class="tooltipdd">Polarization
+						<span style="margin-left:-480px;width:600px;margin-top:-190px;">
+								<img class="callout-down" src="../img/callout_black.gif" style="left:80%;" />
+							 This is where the polarization is switched between auto and manual drive.
+							 <ul style="text-align:left;">
+								<li>When in auto, the pol will adjust when the GPS posistion changes or a new satellite is targeted.</li>
+								<li>When in manual pol the operator has full control but this could allow bad cross pol isolation to acoure.</li>
+								<li>LHCP direction is used for the C-band linear/circular feed</li>
+								<li>The offset is used to calibrate the polarization when on satellite during the cross pol isolation test.</li>
+								
+						</ul>
+							</span>
+						</a></td></tr>
+			<tr>
+			    <td align="right">Type:&nbsp;</td>
+			    <td align="left">LINEAR</td>
+			</tr>
+		    <tr>
+			    <td align="right">Drive&nbsp;</td>
+         	    <td align="left"><input type="radio" id="poldrive" name="poldrive" value="AUTO" checked>Auto&nbsp;&nbsp;&nbsp;
+				      <input type="radio" id="poldrive" name="poldrive" value="MANUAL">Manual
+				</td>	
+			    <input type="hidden" id="poldriveClk" name="poldriveClk" value="AUTO">
+			</tr>
+		    <tr>
+			    <td align="right">LHCP Direction&nbsp;</td>
+         	    <td align="left"><input type="radio" id="lhcpdirection" name="lhcpdirection" value="FWD" >CW/fwd
+				      <input type="radio" id="lhcpdirection" name="lhcpdirection" value="REV"checked>CCW/rev
+				</td>	
+			    <input type="hidden" id="lhcpdirectionClk" name="lhcpdirectionClk" value="REV">
+			</tr>
+			<tr>
+			    <td align="right">Linear Offset&nbsp;</td>
+			    <td align="left"><input id="lpoloffset" name="lpoloffset" value="0.0" size="5" maxlength="5">&nbsp;deg&nbsp;</td>
+			</tr>
+			<tr>
+			    <td align="right">Circular Offset&nbsp;</td>		
+	            <td align="left"><input id="cpoloffset" name="cpoloffset" value="0.0" size="5" maxlength="5" disabled="">&nbsp;deg&nbsp;</td>
+			</tr>					
+	    </tbody></table>
+	 </td>
+  </tr>
+ </tbody></table>
+ 
+ 
+ 
+ 
+ 
+ 
+		
+</div>
+</div>
+	<div id="footer">
+		<div class="footerbutton back"><a href="010.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="011.html" class="footerlink";>Next ></a></div>
+	</div>  </div>
+
+</body>
+</html>
+
