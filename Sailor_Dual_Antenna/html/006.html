@@ -1,0 +1,233 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title>Sailor Dual Antenna Training</title>
+<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+window.onload = function() {
+$("#dacac,#dacadis,#dacadisg").hide();
+$("#dacbc,#dacbdis,#dacbothdis").hide();
+$("#acuacl").css({"opacity":"0.3"});
+$("#acubcl").css({"opacity":"1.0"});	
+	var url = "005";
+	parent.set("cmi.core.lesson_location", url);
+	parent.complete();
+}
+$(document).ready(function(){
+ var acua = 0;
+ var acub = 2;
+	$("#daca,#dacac").click(function(){
+		
+		if ((acua == 0)&(acub == 2)){
+			acua = 1; $("#daca").hide();$("#dacac").show();$("#dacatxt").text("Muted");$("#dacadis").show();
+			acub = 0;$("#dacbtxt").text("Active");$("#dacbdisg").hide();}
+		else if ((acua == 1)&(acub == 0)){acua = 2;$("#daca").show();$("#dacac").hide();$("#dacatxt").text("Generic");$("#dacadisg").show();$("#dacadis").hide(); }
+		else if ((acua == 1)&(acub == 1)){acua = 0;$("#daca").show();$("#dacac").hide();$("#dacatxt").text("Active");$("#dacadis").hide(); }
+		else{acua = 1;$("#daca").hide();$("#dacac").show();$("#dacatxt").text("Muted");$("#dacadis").show();$("#dacadisg").hide();$("#dacbdisg").hide();}
+		if (acua == 0){$("#acubcl").css({"opacity":"1.0"});}else{$("#acubcl").css({"opacity":"0.3"});}
+		if (acub == 0){$("#acuacl").css({"opacity":"1.0"});}else{$("#acuacl").css({"opacity":"0.3"});}
+	});
+	
+
+	$("#dacb,#dacbc").click(function(){
+		
+		if ((acub == 0)&(acua ==2)){
+			acub = 1; $("#dacb").hide();$("#dacbc").show();$("#dacbtxt").text("Muted");$("#dacbdis").show();
+			acua = 0;$("#dacatxt").text("Active");$("#dacbdisg").hide();}
+		else if ((acub == 1)&(acua == 0)){acub = 2;$("#dacb").show();$("#dacbc").hide();$("#dacbtxt").text("Generic"); $("#dacbdisg").show();$("#dacbdis").hide();}
+		else if ((acub == 1)&(acua == 1)){acub = 0;$("#dacb").show();$("#dacbc").hide();$("#dacbtxt").text("Active"); $("#dacbdis").hide();}
+		else{acub = 1;$("#dacb").hide();$("#dacbc").show();$("#dacbtxt").text("Muted");$("#dacbdis").show();$("#dacbdisg").hide();$("#dacadisg").hide();}
+		if (acub == 0){$("#acuacl").css({"opacity":"1.0"});}else{$("#acuacl").css({"opacity":"0.3"});}
+		if (acua == 0){$("#acubcl").css({"opacity":"1.0"});}else{$("#acubcl").css({"opacity":"0.3"});}
+	});
+	$
+	
+  });
+</script>
+<STYLE type="text/css" media="screen">
+span {font-family:arial;
+	font-size:10pt;}
+#dacatxt, #dacbtxt {color:red;
+			font-size:20px;
+			text-align: center;}
+</style>
+
+</head>
+<body>
+<div id="container">
+	<div id="body"> 
+		<div style="position:absolute;width:100%">
+			<h1>Switching</h1>
+			Using the links below to connect up the dual antenna system.<p>
+			<div class="footerlink">
+				<a href="javascript:void(0);"class="tooltipdd" id="daca" >Click to put the Master ACU into blockage or an error state.</a>
+				<a href="javascript:void(0);"class="tooltipdd" id="dacac" >Click to take the Master ACU out of  blockage or error state.</a><p>
+				<a href="javascript:void(0);"class="tooltipdd" id="dacb" >Click to put the Slave ACU into blockage or an error state.</a>
+				<a href="javascript:void(0);"class="tooltipdd" id="dacbc" >Click to take the Slave ACU out of  blockage or error state.</a><p>
+			
+			</div>
+			<div style="position:relative;width:100%;height:200px;">
+				<div id="dacadis">Master antenna goes into blockage. The VIM will remove the 10hz to the BUC resulting in the BUC being muted and mutes the RX.</div>
+				<div id="dacadisg">Master antenna is out of blockage and the Slave antenna is active. The Master antenna will go in to Generic mode with the BUC and RX muted.</div>
+				<div id="dacbdis">Slave antenna goes into blockage. The VIM will remove the 10hz to the BUC resulting in the BUC being muted and mutes the RX.</div>
+				<div id="dacbdisg">Slave antenna is out of blockage and the Master antenna is active. The Slave antenna will go in to Generic mode with the BUC and RX muted.</div>
+				<div id="dacbothdis">Both antennas are blockage. The VIM will remove the 10hz to the BUC resulting in the BUC being muted and mutes the RX.</div>
+			</div>
+						
+			<div align=left style="position:absolute;padding-top:20px;border:0px solid violet;border-style:dashed;border-radius:10px;left:px;top:120px;width:1200px;height:200px;">
+			
+		
+				<div style="position:absolute;right:100px;top:120px;"><img  style="width:300px;" src="../img/modem.png" usemap=#imap border=0></div>
+
+				<div style="position:absolute;left:670px;top:150px;">
+					<img  style="width:60px;" src="../img/splitter.png" usemap=#imap border=0>
+					<span style="position:absolute;left:22px;top:20px;">RX</span>
+					<img  style="width:60px;" src="../img/splitter.png" usemap=#imap border=0>
+					<span style="position:absolute;left:86px;top:20px;">TX</span>
+				</div>
+				<div style="position:absolute;width:100%;top:300px;height:100px;border:0px solid;">
+					<img style="position:absolute;left:0px;width:600px;" src="../img/acu.png" usemap=#imap/>
+					<span style="position:absolute;left:470px;top:20px;">Slave ACU</span>
+					<div id="dacbtxt" style="position:absolute;left:0px;top:70px;width:600px;">Generic</div>
+					<img style="position:absolute;right:0px;width:600px;" src="../img/acu.png" usemap=#imap/>
+					<span style="position:absolute;right:60px;top:20px;">Master ACU</span>
+					<div id="dacatxt" style="position:absolute;right:0px;top:70px;width:600px;">Active</div>
+				</div>
+					<div id="poweb" style="position:absolute;border:0px solid red;border-radius:10px;left:0px;top:100px;width:100%;height:300px;">
+					<canvas id="modem" width="1100" height="300"></canvas>
+					<script>
+					  var canvas = document.getElementById('modem');
+					  var context = canvas.getContext('2d');
+
+						context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'green';
+						context.moveTo(700, 54);
+						context.lineTo(700, 2);
+					context.lineTo(930, 2);
+					context.lineTo(930, 56);
+					  context.stroke();
+					context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'red';
+						context.moveTo(764, 54);
+						context.lineTo(764, 12);
+					context.lineTo(874, 12);
+					context.lineTo(874, 56);
+					context.stroke();
+
+					</script>
+					</div>
+					<div id="poweb" style="position:absolute;border:0px solid red;border-radius:10px;left:0px;top:100px;width:100%;height:220px;">
+						<canvas align=left id="mdmeth" width="1000" height="240"></canvas>
+					<script>
+					  var canvas = document.getElementById('mdmeth');
+					  var context = canvas.getContext('2d');
+
+						context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'yellow';
+						context.moveTo(984, 50);
+						context.lineTo(984, 150);
+					context.lineTo(938, 150);
+					context.lineTo(938, 224);
+					context.stroke();
+
+					</script></div>
+					<div id="poweb" style="position:absolute;border:0px solid red;border-radius:10px;left:0px;top:100px;width:100%;height:260px;">
+						<canvas align=left id="mdmsrl" width="1000" height="260"></canvas>
+					<script>
+					  var canvas = document.getElementById('mdmsrl');
+					  var context = canvas.getContext('2d');
+
+						context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'orange';
+						context.moveTo(958, 50);
+						context.lineTo(958, 140);
+					context.lineTo(902, 140);
+					context.lineTo(902, 246);
+					context.stroke();
+
+					</script></div>
+					<div id="poweb" style="position:absolute;border:0px solid red;border-radius:10px;left:0px;top:100px;width:100%;height:220px;">
+						<canvas align=left id="eth" width="1000" height="240"></canvas>
+					<script>
+					  var canvas = document.getElementById('eth');
+					  var context = canvas.getContext('2d');
+
+						context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'yellow';
+						context.moveTo(356, 224);
+						context.lineTo(356, 180);
+					context.lineTo(956, 180);
+					context.lineTo(956, 224);
+					  context.stroke();
+
+					</script></div>
+					
+					
+					<div id="poweb" style="position:absolute;border:0px solid green;border-radius:10px;left:0px;top:100px;width:100%;height:300px;">
+						<canvas align=left id="acuacl" width="1000" height="240"></canvas>
+					<script>
+					  var canvas = document.getElementById('acuacl');
+					  var context = canvas.getContext('2d');
+
+						context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'red';
+						context.moveTo(750, 100);
+						context.lineTo(750, 130);
+					context.lineTo(260, 130);
+					context.lineTo(260, 226);
+					  context.stroke();
+					context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'green';
+						context.moveTo(686, 100);
+						context.lineTo(686, 120);
+					context.lineTo(230, 120);
+					context.lineTo(230, 226);
+					  context.stroke();
+					</script></div>
+					<div id="poweb" style="position:absolute;border:0px solid green;border-radius:10px;left:0px;top:100px;width:100%;height:300px;">
+						<canvas align=left id="acubcl" width="1100" height="240"></canvas>
+					<script>
+					  var canvas = document.getElementById('acubcl');
+					  var context = canvas.getContext('2d');
+
+						context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'red';
+						context.moveTo(778, 100);
+						context.lineTo(778, 110);
+					context.lineTo(860, 110);
+					context.lineTo(860, 226);
+					  context.stroke();
+					context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'green';
+						context.moveTo(714, 100);
+						context.lineTo(714, 120);
+					context.lineTo(830, 120);
+					context.lineTo(830, 226);
+					  context.stroke();
+					</script></div>
+					
+			</div>
+			
+		</div>
+	</div>
+	<div id="footer">Switching
+		<div class="footerbutton back"><a href="005.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a onclick="parent.end(); return false;" href="#" class="footerlink";>Completed</a></div>
+	</div>
+</div>
+</body>
+</html>
+ 
+ 
+

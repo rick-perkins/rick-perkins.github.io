@@ -1,0 +1,226 @@
+html,
+Body{
+	font-family:arial;
+	margin:0px 0px;
+	height:100%;
+	font-size:10pt;
+	
+	}
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-top: 0em;
+    margin-bottom: 0.10em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+#container {
+	min-height:100%;
+	min-width:1220px;
+	position:relative;margin:0px 0px;
+	}
+
+
+#body {
+		padding:0px;
+	
+		/* padding all except bottom*/
+		padding-bottom:26px;
+		margin:0px 0px;
+		}
+#heading{color:#00A4F2;
+		font-weight:bold;
+		font-size:24pt}	
+#subheading{color:#8996A0;
+			font-weight:bold;
+			font-size:18pt}
+#direct{	margin:0px;
+		position:relative;
+		background-color:#00A4F2;
+		border:1px solid #00A4F2;
+		border-radius:10px 10px 0px 10px;
+		left:0px;
+		top:0px;
+		width:138px;
+		height:638px;
+		}
+#menu{		margin:0px;
+		position:absolute;
+		background-color:#9FE4FF;
+		border:1px solid #9FE4FF;
+		border-radius:5px 5px 5px 5px;
+		left:5px;
+		top:30px;
+		width:126px;}
+/* footer start*/
+#footer {position:absolute;		
+		bottom:0px;
+		width:100%;		
+		height:28px;			/* Height of the footer */
+		padding:0px;		
+		background-color:#00A4F2;
+		border:1px solid #00A4F2;
+		border-radius:0px 0px 10px 0px;
+		margin: 0px -4px;
+		font-size:16px;
+		text-align:center;
+	line-height: 28px;
+}
+a.textlink:hover {color:#16a6d0;}
+.footerlink { 	
+   	color:#000000;	
+  	font-size:16px;
+   	text-decoration: none;
+
+}
+
+.footerbutton{
+		position:absolute;
+		background-color:#9FE4FF;
+		border:1px solid #9FE4FF;
+		border-radius:5px;
+		width:80px;
+		height:22px;
+		text-align:center;
+		line-height: 22px;
+		right:4px;
+		top:2px;
+		}
+.back{right:90px;}
+
+a.footerlink:hover{color:#16a6d0;}
+/* footer finish*/
+.blk
+{ 	
+   	color:#000000;	
+  	font-size:16px;
+   	text-decoration: none;
+}
+.grn
+{ 	
+   	color:#00DD21;	
+  	font-size:16px;
+   	text-decoration: none;
+}
+.gry
+{ 	
+   	color:#A0A0A0;	
+  	font-size:16px;
+   	text-decoration: none;
+}
+.blu
+{ 	
+   	color:#0026FF;	
+  	font-size:16px;
+   	text-decoration: none;
+}
+ 
+ a.blk:hover, .grn:hover,.blu:hover,.gry:hover{color:#16a6d0;}
+
+.linkblue
+{
+   color:#16a6d0;	
+   font-size:16px;
+   text-decoration: none;
+}
+#imarev{color:black;}
+select{	font-size:11px;
+	position:absolute;
+	padding:0px;
+}
+select.select{	font-size:14px;
+	position:absolute;
+	padding:0px;
+}
+.tooltipdd, .toolhover{
+background-color:rgba(255,000,000,0.0)
+}
+a.toolhover:hover span{
+    	display:inline; 
+	position:absolute;  
+	repeat-x 0 0;
+}
+a.tooltipdd {outline:none;text-decoration: none;color:black;}
+a.tooltipdd strong {line-height:30px;}
+a.tooltipdd:hover {text-decoration:none;color:#16a6d0;} 
+
+a.tooltipdd span,a.toolhover span {
+    	z-index:10;
+	display:none; 
+	padding:14px 5px;
+    	margin-top:30px; 
+	line-height:16px;
+	text-align:center;
+}
+a.tooltipdd:hover span{
+    	display:inline; 
+	position:absolute;
+    	border:2px solid #FFF;
+	color:#EEE;
+    	background:#000  
+	repeat-x 0 0;
+}
+.callout {z-index:10;
+	position:absolute;
+	border:0;
+	top:-14px;
+	left:50%;
+	margin-left:-15px}/*margin-left is for due to the gif being 30px wide*/
+
+.callout-left {transform:rotate(-90deg);
+	-webkit-transform:rotate(-90deg);
+	z-index:10;
+	position:absolute;
+	border:0;
+	left:-22px;
+	top:50%;
+	margin-top:-15px; /*margin-left is for due to the gif being 30px wide*/
+	}    
+/*CSS3 extras*/
+a.tooltip span, a.tooltipdd span
+{
+    border-radius:2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+        
+    -moz-box-shadow: 0px 0px 8px 4px #666;
+    -webkit-box-shadow: 0px 0px 8px 4px #666;
+    box-shadow: 0px 0px 8px 4px #666;
+
+    opacity: 0.8;
+
+}
+.link
+{
+   color:#8A084B;	
+   font-size:12px;
+   text-decoration: none;
+}
+.btnsqr
+{
+  height: 34px; 
+  width: 35px;
+  padding: 0;
+  border: 0;
+  background-color: #FFFFFF; 
+}
+.btnmd1
+{
+  height: 25px; 
+  width: 105px;
+}
+.btnsm0
+{
+  height: 25px; 
+  width: 45px;
+}
+.grnhr
+{
+  width:700px;
+  background-color: #99CCFF ;  
+  color: #FFFFFF;
+  height: 1px; 
+  [5]margin: 5px auto;[/5];
+  border:none;
+}

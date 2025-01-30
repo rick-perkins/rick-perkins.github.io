@@ -1,0 +1,115 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title>Sailor Dual Antenna Training</title>
+<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+window.onload = function() {
+	
+	
+	var url = "004";
+	parent.set("cmi.core.lesson_location", url);
+}
+$(document).ready(function(){
+
+	
+	
+  });
+</script>
+<STYLE type="text/css" media="screen">
+span {font-family:arial;
+	font-size:10pt;}
+.h1, .h {
+    font-size: 11px;
+    font-weight: bold;
+	font-family: Verdana;
+	text-decoration: none;
+	color:#000000;	
+}	
+
+.h1 {
+
+    text-transform: uppercase;
+
+}
+#modem_edit td{width:300px;}
+#zones td {padding-left:15px;}
+input{text-align:right;}
+</style>
+
+</head>
+<body>
+<div id="container">
+	<div id="body"> 
+		<div style="position:absolute;width:100%">
+			<h1>Blockage Zones</h1>
+			The blockage zones are recommened to be defined in 3 ways.
+			<ul>
+				<li style="line-height:22px;background-color:#FEB9B9;width:300px;">Actual blocking zones on the vessel (No TX)</li>
+				<li style="line-height:22px;background-color:#AFFCFF;width:300px;">Switching blocking zones (TX Allowed)</li>
+				<li style="line-height:22px;background-color:#D0FDD6;width:300px;">Personal saftey zones (No TX)</li>
+			</ul>
+			The blockage zones will need to be set for both the Master and Slave ACU's.</br>
+			Programmed blockage will switch the antennas within milliseconds</br>
+			Unexpected blockage uses a 2 minutie timer before the antenna will switch to the other antenna.
+			<img style="position:absolute;right:0px;top:0px;width:500px;" src="../img/el_block.png" />
+			<img style="position:absolute;right:0px;top:300px;width:500px;" src="../img/az_block.png" />
+			<div id="content" class="Modem profiles" style="position:absolute;top:190px;left:0px;width:720px;background-color:#F2F5F7;">
+					<h1 class="h1">blockage zones</h1>
+					<p></p>
+					
+						<table id="modem_edit">
+						<tbody><tr> </tr>
+						<tr>
+							<td>Current azimuth</td>
+							<td>171.0&#176;</td>
+						</tr>
+						<tr>
+							<td>Current elevation</td>
+							<td>27.2&#176;</td>
+						</tr>
+
+						</table>
+						<table id="zones">
+						<tr  class="h">
+							<td >Activate</td><td>Azimuth</td><td>Elevation</td><td>No TX</td>
+						</tr>
+						<tr><td><input type="checkbox" size="3" checked><td><input type="text" maxlength="5" size="3" value="200">&#176;-<input type="text" maxlength="5" size="3"value="45">&#176;</td><td><input type="text" maxlength="5" size="3"value="-10">&#176;-<input type="text" maxlength="5" size="3"value="-40">&#176;</td><td><input type="checkbox" size="3" checked><td><span style="line-height:22px;background-color:#D0FDD6;width:300px;">Personal saftey zones (No TX)</span></tr>
+						<tr><td><input type="checkbox" size="3" checked><td><input type="text" maxlength="5" size="3">&#176;-<input type="text" maxlength="5" size="3">&#176;</td><td><input type="text" maxlength="5" size="3">&#176;-<input type="text" maxlength="5" size="3">&#176;</td><td><input type="checkbox" size="3"><td><span style="line-height:22px;background-color:#AFFCFF;width:300px;">Switching blocking zones (TX Allowed)</span></tr>
+						<tr><td><input type="checkbox" size="3" checked><td><input type="text" maxlength="5" size="3">&#176;-<input type="text" maxlength="5" size="3">&#176;</td><td><input type="text" maxlength="5" size="3">&#176;-<input type="text" maxlength="5" size="3">&#176;</td><td><input type="checkbox" size="3" checked><td><span style="line-height:22px;background-color:#FEB9B9;width:300px;">Actual blocking zones on the vessel (No TX)</span></tr>
+						<tr><td><input type="checkbox" size="3"><td><input type="text" maxlength="5" size="3">&#176;-<input type="text" maxlength="5" size="3">&#176;</td><td><input type="text" maxlength="5" size="3">&#176;-<input type="text" maxlength="5" size="3">&#176;</td><td><input type="checkbox" size="3"><td></tr>
+						<tr><td><input type="checkbox" size="3"><td><input type="text" maxlength="5" size="3">&#176;-<input type="text" maxlength="5" size="3">&#176;</td><td><input type="text" maxlength="5" size="3">&#176;-<input type="text" maxlength="5" size="3">&#176;</td><td><input type="checkbox" size="3"><td></tr>
+						<tr><td><input type="checkbox" size="3"><td><input type="text" maxlength="5" size="3">&#176;-<input type="text" maxlength="5" size="3">&#176;</td><td><input type="text" maxlength="5" size="3">&#176;-<input type="text" maxlength="5" size="3">&#176;</td><td><input type="checkbox" size="3"><td></tr>
+						<tr><td><input type="checkbox" size="3"><td><input type="text" maxlength="5" size="3">&#176;-<input type="text" maxlength="5" size="3">&#176;</td><td><input type="text" maxlength="5" size="3">&#176;-<input type="text" maxlength="5" size="3">&#176;</td><td><input type="checkbox" size="3"><td></tr>
+						<tr><td><input type="checkbox" size="3"><td><input type="text" maxlength="5" size="3">&#176;-<input type="text" maxlength="5" size="3">&#176;</td><td><input type="text" maxlength="5" size="3">&#176;-<input type="text" maxlength="5" size="3">&#176;</td><td><input type="checkbox" size="3"><td></tr>
+
+						</tbody></table>
+
+						<div style="height:30px;">
+							<input type="submit" value="Apply">
+							<input type="reset" value="Cancel">
+						</div>
+						<ol>
+							<li>In the ACU go to Settings > Blockage zones.</li>
+							<li>Enter in the AZ and EL start and finish values.</li>
+							<li>Tick the No TX field to mute the TX.
+							<li>Tick the Activte field to enable the blockage zone.</li>
+							<li>Once finished click on Apply.</li>
+						</ol>
+				</div>		
+			
+			
+		</div>
+	</div>
+	<div id="footer">Blockage Zones
+		<div class="footerbutton back"><a href="003b.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="005.html" class="footerlink";>Next ></a></div>
+	</div>
+</div>
+</body>
+</html>
+ 
+ 
+

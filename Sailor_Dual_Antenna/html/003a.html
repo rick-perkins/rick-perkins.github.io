@@ -1,0 +1,160 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title>Sailor Dual Antenna Training</title>
+<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+window.onload = function() {
+	$(".ipaddress").hide();
+	
+	var url = "003a";
+	parent.set("cmi.core.lesson_location", url);
+
+}
+$(document).ready(function(){
+	
+	$("#modem").click(function(){
+		var value = $('#modem :selected').text();
+		if (value == "Dual Antenna Master") {
+			
+			$("#prof_name").val("Dual Antenna Master");
+			$(".ipaddress").show();
+			}
+		});
+
+	
+  });
+</script>
+<STYLE type="text/css" media="screen">
+
+#dual_antenna1{position:absolute; 
+	left:0px;
+    right:30px; 
+	width:1013px;}
+.h1, .h {
+    font-size: 11px;
+    font-weight: bold;
+	font-family: Verdana;
+	text-decoration: none;
+	color:#000000;	
+}	
+.h1 {
+
+    text-transform: uppercase;
+
+}
+td{width:300px;}	
+#side_menu p.menu 	{line-height:26px;
+background-color:#E5ECEF;}
+	
+</style>
+	
+
+	
+</head>
+<body>
+
+<div id="container">
+	<div id="body">
+		<div style="position:absolute;width:100%;">
+		<h1>Slave ACU setup</h1>
+			 
+			 
+		
+			<div align=left style="position:relative;border:0px solid;border-style:dashed;border-radius:10px;left:0px;top:0px;width:1100px;height:500px;">
+				
+				<img id="dual_antenna1" src="../img/dual_antenna1.png">
+				<div id="side_menu" class="Modem profiles" style="position:absolute;z-index:1;top:184px;left:32px;width:178px;">
+				<p class="menu"><span class="h">&nbsp;</span><a style="position:absolute;left:32px;"href="003b.html" class="h";>Satellite profiles</a></p>
+				<p class="menu"><span class="h">&#8226;</span><a style="position:absolute;left:32px;"href="003a.html" class="h";>Modem profiles</a></p>
+				<p class="menu"><span class="h">&nbsp;</span><a style="position:absolute;left:32px;"href="#" class="h";>Blocking zones</a></p>
+				<p class="menu"><span class="h">&nbsp;</span><a style="position:absolute;left:32px;"href="#" class="h";>Network</a></p>
+				<p class="menu"><span class="h">&nbsp;</span><a style="position:absolute;left:32px;"href="#" class="h";>Navigation</a></p>
+				<p class="menu"><span class="h">&nbsp;</span><a style="position:absolute;left:32px;"href="#" class="h";>E-mail setup</a></p>
+				<p class="menu"><span class="h">&nbsp;</span><a style="position:absolute;left:32px;"href="#" class="h";>Reporting</a></p>
+				<p class="menu"><span class="h">&nbsp;</span><a style="position:absolute;left:32px;"href="#" class="h";>Dual antenna</a></p>
+				</div>
+				<div id="content" class="Modem profiles" style="position:absolute;z-index:1;top:120px;left:230px;width:760px;background-color:#F2F5F7;">
+					<h1 class="h1">Modem profiles</h1>
+					<p></p>
+					<h1 class="h1">Add modem profile</h1>
+					<p></p>
+						<table id="modem_edit">
+						<tbody><tr> </tr>
+						<tr>
+							<td>
+								Profile name
+								<input type="hidden" name="save_idx" value="-1">
+							</td>
+							<td>
+								<input type="text" id="prof_name" name="prof_name" size="50" maxlength="50">
+							</td>
+						</tr>
+						<tr>
+							<td>Modem</td>
+							<td>
+								<select id="modem" name="modem">
+									<option value="0">&lt;select modem&gt;</option>
+									<option value="1">iDirect iNFINITI (Serial)</option>
+									<option value="2">Generic OpenAMIP</option>
+									<option value="2">iDirect iNFINITI (OpenAMIP)</option>
+									<option value="3">iDirect Evolution (Serial)</option>
+									<option value="4">iDirect Evolution (OpenAMIP)</option>
+									<option value="5">COMTECH CDM 570L</option>
+									<option value="7">COMTECH CDM 625L</option>
+									<option value="8">COMTECH 570L and ROSS</option>
+									<option value="9">STM SatLink 2900</option>
+									<option value="10">Generic modem</option>
+									<option value="11">Service modem</option>
+									<option value="12">Dual Antenna Master</option>
+									<option value="13">Gilat SkyEdge II</option>
+									<option value="14">Inmarsat G5</option>
+									<option value="21">Linkway</option>
+								</select>
+							</td>
+						</tr>
+
+						<tr></tr>
+						<tr></tr>
+						<tr></tr>
+						<tr></tr><tr></tr>
+						<tr  class="ipaddress">
+							<td >IP address</td>
+							<td >
+								<input type="text" maxlength="3" id="ip_addr1" name="ip_addr1" size="3">.
+								<input type="text" maxlength="3" id="ip_addr2" name="ip_addr2" size="3">.
+								<input type="text" maxlength="3" id="ip_addr3" name="ip_addr3" size="3">.
+								<input type="text" maxlength="3" id="ip_addr4" name="ip_addr4" size="3">
+							</td>
+						</tr>
+						
+						</tbody></table>
+
+						<div style="height:60px;">
+							<input type="submit" value="Apply">
+							<input type="reset" value="Cancel">
+						</div>
+						<ol>
+							<li>Log in to the slave ACU and go to Settings > VSAT modem profile > New entry.</br>(With older software it will be Settings > Satellite Profiles > VSAT modem profile > New entry.)</li>
+							<li>From the drop down list please select Dual Antenna Master.</li>
+							<li>The profile name will update and can be changed if needed, for this training will will leave as Dual Antenna Master.</li>
+							<li>Enter in the IP address of the master acu.</li>
+							<li>Click Apply.
+							<li>Please click on Satellite profiles for the next step.</li>
+						</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">Slave ACU
+		<div class="footerbutton back"><a href="003.html" class="footerlink";>< Back</a></div>
+		<!--<div class="footerbutton"><a href="004.html" class="footerlink";>Next ></a></div>!-->
+	</div>
+</div>
+</body>
+</html>
+ 
+ 
+

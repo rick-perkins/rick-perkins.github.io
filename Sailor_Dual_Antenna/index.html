@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title>Sailor Dual Antenna Training</title>
+
+
+<script src="js/SCORM_API_wrapper.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+var scorm = pipwerks.SCORM;
+//creating shortcut for less verbose code
+var bookmark, initialized, status;
+var url = "000";
+var start = 0;
+
+function init(){
+	//Specify SCORM 1.2:
+	scorm.version = "1.2";
+	show("Initializing course.");
+	var callSucceeded = scorm.init();
+	//alert("Call succeeded? " +callSucceeded);
+	
+
+    //Get the lesson status from the LMS
+    status = scorm.get("cmi.core.lesson_status");
+	//alert("scorm status"+status);
+    if(status === "completed"){
+	//alert("completed");
+		url = "000";
+		start = 1;
+		
+    } else if (status === "null"){
+		//alert("no scorm");
+		url = "000";
+		start = 1;
+		}
+	
+	else if(status === "ab-initio"){
+		//alert("not completed");
+		url = "000";
+		start = 0;
+		
+    } else {
+		
+        //Check for a bookmark
+        bookmark = scorm.get("cmi.core.lesson_location");
+		//alert("scorm bookmark "+bookmark);
+        //If a bookmark is found, use its value as the target URL
+        if(bookmark){ 
+            url = bookmark;
+			
+			//alert("bookmark "+url);
+        }
+
+    }        
+    loadPage();
+
+}
+function loadPage(){
+	//alert("loading page "+url+".html")
+	if (url === "000"){document.getElementById("start").src = ("default/"+url+".html");}
+	else {document.getElementById("start").src = ("html/"+url+".html");}
+
+}
+
+
+function send(){
+	var field = document.getElementById("userText"),
+		value = "Placeholder text";
+	if(field.value !== null && field.value !== ""){
+		value = field.value;
+	}
+	set('cmi.suspend_data', value);
+}
+
+function set(param, value){
+	
+	show("Sending: '" +value +"'");
+	var callSucceeded = scorm.set(param, value);
+	//alert("set"+callSucceeded)
+	show("Call succeeded? " +callSucceeded);
+}
+function get(param){
+	var value = scorm.get(param);
+	show("Received: '" +value +"'");
+}
+function complete(){
+	//alert("I am completed");
+	show("Setting course status to 'completed'.");
+	var callSucceeded = scorm.set("cmi.core.lesson_status", "completed");
+	show("Call succeeded? " +callSucceeded);
+}
+function end(){
+	//alert("I am ending");
+	show("Terminating connection.");
+	var callSucceeded = scorm.quit();
+	show("Call succeeded? " +callSucceeded);
+}
+function show(msg){
+	var debugText = document.getElementById("debugText");
+	if(debugText){
+		debugText.innerHTML += msg +"<br/>";
+	}
+	//Can also show data using pipwerks.UTILS.trace
+	pipwerks.UTILS.trace(msg);
+}
+
+window.onload = function (){
+	init();
+	
+}
+// to set the data
+
+function next(){
+	
+	var bookmark = scorm.get("cmi.core.lesson_location");
+	//alert("book mark is "+ bookmark);
+}
+// to retrieve it later …
+window.onunload = function(){
+	end();
+}
+
+</script>
+<STYLE type="text/css" media="screen">
+
+</style>
+</head>
+
+
+
+
+<frameset rows="*,640px,*" framespacing="0px" frameborder="0">
+	<frame frameborder="0">	
+<frameset cols="*,1366px,*" framespacing="0px" frameborder="0">
+	<frame frameborder="0">	
+
+	<frame id="start" name="start" src="" scrolling="auto" frameborder="0" >
+
+	<frame frameborder="0">	
+</frameset>
+	<frame frameborder="0">
+</frameset>	
+
+
+ 
+<noframes>
+<body bgcolor=dadad2>
+
+<p>This page uses frames, but your browser doesn't support them.</p>
+</body>
+</noframes>
+
+</frameset>
+
+</html>
+
+
