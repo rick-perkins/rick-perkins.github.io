@@ -184,7 +184,7 @@ function info_text(){
 									'<li>Antenna: This is to view or change the GPS, Heading, Trims settings or to manually control the antenna.</li>'+
 									'<li>Panel Settings: This to change the Lockout time, screen brigtness etc.</li>'+
 									'<li>System Information: This is to view the system information and software.</li></ul>'
-								+'The Home button <img src="img/Home.png" >will take you back to this screen.<br>The forward <img src="img/fwd.png" >and back <img src="img/back.png" >arrows allow you to navigate though the different screens.<br>The padlock <img src="img/Unlock.png" >allows you to lock the screen.<br>When the buttons are greyed out they are inactive.');}
+								+'The Home button <img src="img/Home.png" >will take you back to this screen.<br>The forward <img src="img/Fwd.png" >and back <img src="img/Fwd.png" >arrows allow you to navigate though the different screens.<br>The padlock <img src="img/Unlock.png" >allows you to lock the screen.<br>When the buttons are greyed out they are inactive.');}
 	else if ($("#scn_lock").is(':visible')){$(".OM").css('color','black');$("#screen-info-text").html('This is the lock screen.<br><br>'+
 								'This screen will appear after the Lock time out has been reached. To unlock the screen just click on the locked padlock icon, then slide the slider all the way to the right, this will take the user back to the home screen' );}
 	else if ($("#scn_satellite").is(':visible')){$("#OM1").css('color','white');fl_ch = '.OPsat';$("#screen-info-text").html('From this page you can select Target, Edit or View for one of the 1 to 8 saved satellites.'
