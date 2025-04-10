@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title> Sea Tel VSAT Arbitrator Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="print.css" media="print"/>
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="../js/print.js"></script>
+<script>
+window.onload = function() {
+
+	$('[id="coaxl"],[id="modeml"],[id="ethl"]').hide();
+	var url = "004";
+	parent.set("cmi.core.lesson_location", url);
+}
+$(document).ready(function(){
+	
+	$('[id="coax"]').click(function(){$('[id="coaxl"]').toggle();});
+	$('[id="modem"]').click(function(){$('[id="modeml"]').toggle();});
+	$('[id="eth"]').click(function(){$('[id="ethl"]').toggle();});
+	
+  });
+</script>
+<STYLE type="text/css" media="all">
+.crop {
+    width: 1100px;
+    height:150px;
+    overflow: hidden;
+background-position: center center;
+
+}
+
+.crop img {
+    width: 100%;
+   
+   margin: -0px 0 -0 -0px;
+}
+.crop1 {
+    width: 300px;
+    
+    overflow: hidden;
+background-position: center center;
+
+}
+
+.crop1 img {
+    width: 100%;
+   
+   margin: -0px 0 -0 -0px;
+}
+
+</style>
+
+</head>
+<body>
+<div id="container">
+	<div id="body">
+		<div style="position:absolute;width:100%;">
+			<h1>Connections to the DAC's</h1>
+			<div >
+			RX is from the DAC output on the tuner card and TX goes directly to the MUX panel to terminate with the ships cable.</br>
+			<a href="javascript:void(0);"class="textlink" id="coax" >Click here to add the coax cables. </a>
+			<p>
+			Next is to connect up the serial connection. </br>This is for arbitrator switching, RX lock and GPS. This goes to the TMS.</br>
+			(Note: The TX mute is not done by the DAC it's controlled by the arbitrator only)</br>
+			<a href="javascript:void(0);"class="textlink" id="modem" >Click here to add the serial modem cable</a><p>
+			Next is to connect the Ethernet cables.This is for the web interface, ROAM or openAMIP if used.
+			</br><a href="javascript:void(0);"class="textlink" id="eth" >Click here to add the Ethernet cables</a><p>
+			For DAC B, connect in the same way but use the B ports instead on the arbitrator. <p>
+			<span class="importent-notes">16 MUST be added to both DAC system types and having JP4 installed on the TMS may stop the RX lock from working when not using openAMIP.</span>
+			<br><br><br>
+			</div>
+			
+			
+			<div align=left style="position:relative;border:0px solid;border-style:dashed;border-radius:10px;left:px;top:0px;width:1100px;height:100px;">
+			<div class="crop"><img src="../img/rear.png" usemap=#imap border=0></div>
+			<div id="poweb" style="position:absolute;border:0px solid red;border-radius:10px;left:0px;top:0px;width:100%;height:200px;">
+			<canvas id="coaxl" width="500" height="240"></canvas>
+			<script>
+			  var canvas = document.getElementById('coaxl');
+			  var context = canvas.getContext('2d');
+
+				context.beginPath();
+			context.lineWidth = 5;
+			context.strokeStyle = 'green';
+				context.moveTo(262, 50);
+				context.lineTo(262, 110);
+			context.lineTo(102, 110);
+			context.lineTo(102, 240);
+			  context.stroke();
+			context.beginPath();
+			context.lineWidth = 5;
+			context.strokeStyle = 'red';
+				context.moveTo(392, 50);
+				context.lineTo(392, 80);
+			context.lineTo(416, 80);
+			context.lineTo(416, 220);
+			
+			  context.stroke();
+			</script></div><div id="poweb" style="position:absolute;border:0px solid red;border-radius:10px;left:0px;top:0px;width:100%;height:200px;">
+				<canvas align=left id="ethl" width="1000" height="240"></canvas>
+			<script>
+			  var canvas = document.getElementById('ethl');
+			  var context = canvas.getContext('2d');
+
+				context.beginPath();
+			context.lineWidth = 5;
+			context.strokeStyle = 'yellow';
+				context.moveTo(834, 50);
+				context.lineTo(834, 110);
+			context.lineTo(770, 110);
+			context.lineTo(770, 180);
+			  context.stroke();
+			context.beginPath();
+			context.lineWidth = 5;
+			context.strokeStyle = 'yellow';
+				context.moveTo(732, 180);
+				context.lineTo(732, 140);
+			context.lineTo(137, 140);
+			context.lineTo(137, 230);
+			  context.stroke();
+			</script></div>
+			<div id="poweb" style="position:absolute;border:0px solid red;border-radius:10px;left:0px;top:0px;width:100%;height:200px;">
+				<canvas align=left id="modeml" width="1000" height="220"></canvas>
+			<script>
+			  var canvas = document.getElementById('modeml');
+			  var context = canvas.getContext('2d');
+
+				context.beginPath();
+			context.lineWidth = 5;
+			context.strokeStyle = 'orange';
+				context.moveTo(634, 55);
+				context.lineTo(634, 120);
+			context.lineTo(150, 120);
+			context.lineTo(150, 158);
+			  context.stroke();
+			</script></div>
+		<div><img src="../img/dac.png" usemap=#imap border=0><img  align=right src="../img/switch.png" usemap=#imap border=0></div></div>
+	
+		</div>
+	</div>
+	<div id="footer">Connections to the DAC's
+		<div class="footerbutton back"><a href="003b.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="005.html" class="footerlink";>Next ></a></div>
+	</div>
+
+</div>
+</body>
+</html>
+ 
+
+
+ 
+ 
+ 
+ 
+

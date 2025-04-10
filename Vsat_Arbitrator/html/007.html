@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title> Sea Tel VSAT Arbitrator Product Training</title>
+<meta charset="utf-8">
+
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="../css/loginstyle.css" media="all"/>
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+window.onload = function() {
+
+	$('[id="antenna_a"],[id="auto_mode"]').css({"visibility":"hidden"});
+	var url = "007";
+	parent.set("cmi.core.lesson_location", url);
+}
+$(document).ready(function(){
+	
+	$("#anta").click(function(){$('[id="antenna_a"]').css({"visibility":"visible"});$('[id="antenna_b"]').css({"visibility":"hidden"});});
+	$("#antb").click(function(){$('[id="antenna_b"]').css({"visibility":"visible"});$('[id="antenna_a"]').css({"visibility":"hidden"});});
+	$("#auto").click(function(){$("#anta,#antb").hide();$('[id="auto_mode"]').css({"visibility":"visible"});$('[id="manual_mode"]').css({"visibility":"hidden"});});
+	$("#manual").click(function(){$("#anta,#antb").show();$('[id="auto_mode"]').css({"visibility":"hidden"});$('[id="manual_mode"]').css({"visibility":"visible"});});
+  });
+</script>
+<STYLE type="text/css" media="all">
+a.tooltipdd:hover {text-decoration:none;}	
+.crop {
+    width: 1100px;
+    height:150px;
+    overflow: hidden;
+background-position: center center;
+
+}
+
+.crop img {
+    width: 100%;
+   
+   margin: -0px 0 -0 -0px;
+}
+</style>
+
+</head>
+<body>
+<div id="container">
+	<div id="body"> 
+		<div style="position:absolute;width:100%">
+			<h1>Home Page</h1>
+			This page displays the arbitrator software version, which antenna is active and if the arbitrator is in manual or auto mode.<p>
+			When in auto mode the A and B buttons will not have any affect.</p><p>
+			Press the buttons on the front panel to see the lights working.</p>
+			</br>The setup button will take the user to the setup page. Press Setup to continue.
+			
+
+			<table class="top_table" cellspacing="0">
+			<tbody>
+				<tr class="gen_title_tr">
+				<td></br /></td>
+				<td>System Information</td>
+				</tr>
+				<tr><td class="menu_td">
+						<table class="menu_table" cellspacing="2">
+							<tbody><tr><td></br /></td></tr>
+								<tr><td><a href="007.html" class="menu_content_td">Home</a></td></tr>
+								<tr><td></br /></td></tr>
+								<tr><td><a href="007a.html" class="menu_content_td">Setup</a></td></tr>
+								<tr><td></br /></td></tr>
+							</tbody>
+						</table>
+					</td>
+					<td class="gen_td">
+						<table class="gen_td_table" cellspacing="2">
+							<tbody>
+								<tr><td colspan="4" align="center"><img alt="" src="../img/logo.gif" /></br /></td></tr>
+								<tr><td class="gen_td_25_right_tnr">Arbitrator Model :</td>
+								<td class="gen_td_25_left">
+								<input size="25" readonly="readonly" value="Sea Tel Arbitrator Ver 2.04" name="sArbVer" />						<input id="uiSelectedMode" type="hidden" value="0" />
+								<input id="uiSelectedAnt" type="hidden" value="0" /></td>
+								</tr>
+								<tr><td colspan="4"></br /></td></tr>
+                        					<tr><td colspan="4" align="center">
+                           				<table class="status_table" cellspacing="2">
+							<tbody>
+								<tr><td rowspan="8">
+							<table class="status_sub_table" border="0" cellspacing="2">
+							<tbody>
+                              					<tr><td></br /></td>
+                                 				<td><div id="antenna_a" style="background:#00FF00; width:15px; height:15px; border-radius: 100%;"></div></td>			<td class="white">ANT A</td>
+                                 				<td><div id="manual_mode" style="background:#00FF00; width:15px; height:15px; border-radius: 100%;"></div></td>		<td class="white">Manual</td></tr>
+                            					<tr><td></br /></td>
+                                 				<td><div id="antenna_b" style="background:#00FF00; width:15px; height:15px; border-radius: 100%;"></div></td>			<td class="white">ANT B</td>
+                                 				<td><div id="auto_mode" style="background:#00FF00; width:15px; height:15px; border-radius: 100%;"></div></td>			<td class="white">Auto</td></tr>
+								<tr><td class="white" colspan="5" style="font-size:9px; visibility:hidden" id="lateWarning">Warning: High latency detected, please use /browser refresh to update status.</td></tr>
+							</tbody>
+							</table>
+							</td></tr>
+							</tbody>
+						</table></td>
+                        		</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+			<div align=left style="position:relative;border:0px solid;border-style:dashed;border-radius:10px;left:px;top:0px;width:1100px;height:100px;">
+				<div class="crop"><img src="../img/front.png" usemap=#imap border=0></div>
+				<div id="antenna_a" style="position:absolute;left:575px;top:37px;background:#00FF00; width:6px; height:6px; border-radius: 100%;"></div>
+					
+				<div id="antenna_b" style="position:absolute;left:575px;top:68px;background:#00FF00; width:6px; height:6px; border-radius: 100%;"></div>
+					
+				<div id="manual_mode" style="position:absolute;left:684px;top:37px;background:#00FF00; width:6px; height:6px; border-radius: 100%;"></div>
+					
+				<div id="auto_mode" style="position:absolute;left:684px;top:68px;background:#00FF00; width:6px; height:6px; border-radius: 100%;"></div>
+					
+				<div id="power_on" style="position:absolute;left:788px;top:68px;background:#00FF00; width:6px; height:6px; border-radius: 100%;"></div>
+
+				<div><a href="javascript:void(0);" id="anta" class="toolhover" style="position:absolute;left:590px;top:32px;width:40px;height:20px;"></a></div>
+				<div><a href="javascript:void(0);" id="antb" class="toolhover" style="position:absolute;left:590px;top:63px;width:40px;height:20px;"></a></div>
+				<div><a href="javascript:void(0);" id="manual" class="toolhover" style="position:absolute;left:700px;top:32px;width:40px;height:20px;"></a></div>
+				<div><a href="javascript:void(0);" id="auto" class="toolhover" style="position:absolute;left:700px;top:63px;width:40px;height:20px;"></a></div>
+			</div> 
+		</div>
+	</div>
+	<div id="footer">Main Menu
+		<div class="footerbutton back"><a href="006.html" class="footerlink";>< Back</a></div>
+		<!--<div class="footerbutton"><a href=007a.html class="footerlink";>Next ></a></div>!-->
+	</div> 
+</div>
+
+</body>
+</html>
+

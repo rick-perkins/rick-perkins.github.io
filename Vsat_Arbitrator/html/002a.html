@@ -1,0 +1,114 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title> Sea Tel VSAT Arbitrator Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+window.onload = function() {
+
+	$('[id="coaxl"],[id="modeml"],[id="ethl"]').hide();
+	var url = "002a";
+	parent.set("cmi.core.lesson_location", url);
+}
+$(document).ready(function(){
+
+	$('[id="coax"]').click(function(){$('[id="coaxl"]').toggle();});
+	$('[id="modem"]').click(function(){$('[id="modeml"]').toggle();});
+	$('[id="eth"]').click(function(){$('[id="ethl"]').toggle();});
+var _intervalId;
+    
+    function fadeInLastImg()
+    {$('[id="gx60"],[id="4012"]').toggle();
+        
+    };
+        
+    _intervalId = setInterval( function() {
+        fadeInLastImg();
+    }, 2000 );
+	
+	
+
+
+
+  });
+
+</script>
+<STYLE type="text/css" media="all">
+
+.crop {
+    width: 500px;
+    height:180px;
+    overflow: hidden;
+background-position: center center;
+
+}
+
+.crop img {
+    width: 300%;
+   
+   margin: -0px -0px -0 -700px;
+}
+
+</style>
+</head>
+<body>
+
+<div id="container">
+	<div id="body">
+		<div style="position:absolute;width:100%;">
+			<h1>Pinouts</h1>
+					
+						<table width=100% cellpadding=2 border=0>
+							<tr><td colspan="2">		
+							
+							</td></tr><tr>
+							<td align="center" colspan="2">
+							<div align=left style="position:relative;border:0px solid;border-style:dashed;border-radius:10px;left:px;top:0px;width:500px;height:200px;">
+							<div class="crop"><img src="../img/rear.png" usemap=#imap border=0></div>
+				<div style="position:absolute;left:140px;top:112px;">8</div>
+				<div style="position:absolute;left:180px;top:112px;">1</div>
+							</div></td></tr><table width=100% border="1">
+							<tr><td>&nbsp;<td>DAC A and B</td><td>Modem</td><td>OBM</td></tr>
+							<tr><td>Pin 1<td>Not used
+								<td>Control to OBM device
+								<td>Control from OBM device</td></tr>
+							<tr><td>Pin 2<td>Modem RX Lock from modem to DAC
+								<td>Modem RX Lock (from Modem)
+								<td>Not used</td></tr>
+							<tr><td>Pin 3<td>Not used
+								<td>TX to OBM device
+								<td>TX from modem</td></tr>
+							<tr><td>Pin 4&5<td>Ground
+								<td>Ground
+								<td>Ground</td></tr>
+							<tr><td>Pin 6<td>GPS data from DAC or MXP
+								<td>GPS data (from Arbitrator) / TX from OBM device
+								<td>GPS data (from Arbitrator) / TX from OBM device</td></tr>
+							<tr><td>Pin 7<td>SW2 for Arbitrator switching
+								<td>Mute (to Modem)
+								<td>Mute (to Modem)</td></tr>
+							<tr><td>Pin 8<td>Not used
+								<td>Control from OBM device
+								<td>Control to modem</td></tr>
+							
+							</table>
+							
+
+						</table> 
+		
+			</div></div>
+	</div>
+		<div id="footer">Pinout
+		<div class="footerbutton back"><a href="002.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="003.html" class="footerlink";>Next ></a></div>
+	</div>
+	
+</div>
+</body>
+</html>
+ 
+ 
+

@@ -1,0 +1,170 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<meta name="viewport" content="width=device-width; initial-scale=1.0">
+<head><title> Sea Tel VSAT Arbitrator Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+<script src="../js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="../js/print.js"></script>
+<script>
+window.onload = function() {
+
+	$("#next").hide();
+
+	$("#line1,#line2,#line3,#line4,#line5,#line6,#line7,#line8,#next").hide();
+	$("#powerb,#relayb,#10mhzb,#tmsb,#modemb,#obmb,#ethb,#consoleb").hide();
+	$("#dashtwoi,#dashtwob,#dashthreei").hide();
+	$("#10mhzb,#tmsb,#tmsb,#modemb,#obmb,#ethb,#consoleb").hide();
+
+
+			$("#next").delay(15000).fadeIn(100);			
+			$("#line1,#powerb").delay(1000).fadeIn(1000);
+			$("#line2,#relayb").delay(3000).fadeIn(1000);$("#powerb").delay(2000).hide(001);
+			$("#line3,#10mhzb").delay(5000).fadeIn(1000);$("#relayb").delay(2000).hide(001);
+			$("#line4,#tmsb").delay(7000).fadeIn(1000);$("#10mhzb").delay(2000).hide(001);
+			$("#line5,#modemb").delay(9000).fadeIn(1000);$("#tmsb").delay(2000).hide(001);
+			$("#line6,#obmb").delay(11000).fadeIn(1000);$("#modemb").delay(2000).hide(001);
+			$("#line7,#ethb").delay(13000).fadeIn(1000);$("#obmb").delay(2000).hide(001);
+			$("#line8,#consoleb").delay(15000).fadeIn(1000);$("#ethb").delay(2000).hide(001);
+			$("#consoleb").delay(2000).hide(001);
+			$('[id="next"]').delay(15000).fadeIn(1000);
+
+	var url = "002";
+	parent.set("cmi.core.lesson_location", url);
+}
+$(document).ready(function(){
+	$('[id="power"]').click(function(){$('[id="powerb"]').toggle();});
+	$('[id="relay"]').click(function(){$('[id="relayb"]').toggle();});
+		$('[id="dashone"]').click(function(){$("#dashtwoi,#dashthreei,#dashtwob").hide();});
+		$('[id="dashtwo"]').click(function(){$("#dashtwoi,#dashtwob").show();$('[id="dashthreei"]').hide();});
+		$('[id="dashthree"]').click(function(){$('[id="dashthreei"]').show();$("#dashtwoi,#dashtwob").hide();});
+
+	$('[id="10mhz"]').click(function(){$('[id="10mhzb"]').toggle();});
+	$('[id="tms"]').click(function(){$('[id="tmsb"]').toggle();});
+	$('[id="modem"]').click(function(){$('[id="modemb"]').toggle();});
+	$('[id="obm"]').click(function(){$('[id="obmb"]').toggle();});
+	$('[id="eth"]').click(function(){$('[id="ethb"]').toggle();});
+	$('[id="console"]').click(function(){$('[id="consoleb"]').toggle();});
+	
+  });
+</script>
+<STYLE type="text/css"  media="all">
+	
+.crop {
+    width: 100%;
+	bottom:28px;
+    overflow: hidden;
+position:absolute;
+
+}
+.crop img {
+    width: 1000px;
+   margin: -0px 0 -0 114px;
+}
+.crop1 {
+    width: 240px;
+    
+    overflow: hidden;
+background-position: center center;
+
+}
+
+.crop1 img {
+    width: 100%;
+   
+   margin: -0px 0 -0 -0px;
+}
+#arb{position:absolute;
+	top:4px;
+	bottom:0px;
+	width:1000px;
+	height:100%;
+	overflow:hidden;
+
+
+}
+
+
+</style>
+
+</head>
+<body>
+
+<div id="container">
+	<div id="body">
+		<div style="position:absolute;width:100%;">
+			<h1>Arbitrator rear view</h1>
+			
+			Click on the socket names to highlight the sockets. </br>
+			
+			<div id="line1">	
+				<a href="javascript:void(0);"class="textlink" id="power" ><strong>AC power socket:</strong></a>100 to 240V AC mains supply.</br></div>
+
+			<div id="line2">
+				<a href="javascript:void(0);"class="textlink" id="relay" ><strong>Relay connections:</strong></a> These will change depending on which version has been fitted.
+			<ul><li><a href="javascript:void(0);"class="textlink" id="dashone" >Click here for the -1 version.</a></li>
+			<li><a href="javascript:void(0);"class="textlink" id="dashtwo" >Click here for the -2 version.</a> Able to inject 10MHz reference to the <strong>non</strong> active antenna BUC. A short sma to sma cable must be fitted.</li>
+			<li><a href="javascript:void(0);"class="textlink" id="dashthree" >Click here for the -3 version</a>. For systems where the BUC DC power is supplied from the modem. TX uses N type sockets.</li></ul>
+			</div>
+			
+			<div id="line3">
+			<a href="javascript:void(0);"class="textlink" id="10mhz" ><strong>10MHz Out:</strong></a>Used only on the -2 version. There is short link between this port and 10MHz in.</div>
+			<div id="line4">
+				<a href="javascript:void(0);"class="textlink" id="tms" ><strong>DAC A & DAC B TMS:</strong></a>DAC A will connect to DAC (TMS) or MXP A's modem port and DAC B will connect to DAC (TMS) or MXP B's modem port.</div>
+			<div id="line5">
+			<a href="javascript:void(0);"class="textlink" id="modem" ><strong>Modem:</strong></a>This will connect the VSAT modem I.E Via the console port on an Idirect Modem.</div>
+			<div id="line6">
+			<a href="javascript:void(0);"class="textlink" id="obm" ><strong>OBM:</strong></a>Used to connect Out of band management to the modem.</div>
+			<div id="line7">
+			<a href="javascript:void(0);"class="textlink" id="eth" ><strong>Ethernet socket:</strong></a>This would be connected to a switch to allow access to the web interface and OpenAMIP connectivity.</div>
+			<div id="line8">
+			<a href="javascript:void(0);"class="textlink" id="console" ><strong>Console port:</strong></a>Used for serial connection to the arbitrator by the means of CLI commands.</div>
+			</div>
+			
+				
+			
+		
+		<div class="crop"><img src="../img/rear.png" usemap=#imap border=0>
+				<div id="arb">
+
+					<div class="crop1" style="position:absolute;left:320px;top:12px;"><img id="dashtwoi" src="../img/relay-2.png" usemap=#imap border=0><img id="dashthreei" src="../img/relay-3.png" usemap=#imap border=0></div>
+					<div id="dashtwob" style="position:absolute;left:504px;top:54px;width:130px;height:10px;">
+						<canvas id="dashtwoc" width="1100" height="300"></canvas>
+							<script>
+							  var canvas = document.getElementById('dashtwoc');
+							  var context = canvas.getContext('2d');
+								context.beginPath();
+							context.lineWidth = 4;
+							context.strokeStyle = 'green';
+								context.moveTo(12, 4);
+								context.lineTo(12, 30);
+							context.lineTo(136, 30);
+							context.lineTo(136, 0);
+							  context.stroke();
+							
+							</script>
+					</div>
+					<div id="powerb" style="position:absolute;border:4px solid red;border-radius:10px;left:146px;top:14px;width:90px;height:60px;"></div>
+					<div id="relayb" style="position:absolute;border:4px solid orange;border-radius:10px;left:294px;top:8px;width:280px;height:70px;"></div>
+					<div id="10mhzb" style="position:absolute;border:4px solid yellow;border-radius:10px;left:616px;top:8px;width:40px;height:70px;"></div>
+					<div id="tmsb" style="position:absolute;border:4px solid green;border-radius:10px;left:670px;top:8px;width:71px;height:70px;"></div>
+					<div id="modemb" style="position:absolute;border:4px solid blue;border-radius:10px;left:747px;top:8px;width:29px;height:70px;"></div>
+					<div id="obmb" style="position:absolute;border:4px solid purple;border-radius:10px;left:780px;top:8px;width:31px;height:70px;"></div>
+					<div id="ethb" style="position:absolute;border:4px solid violet;border-radius:10px;left:840px;top:0px;width:60px;height:70px;"></div>
+					<div id="consoleb" style="position:absolute;border:4px solid white;border-radius:10px;left:910px;top:20px;width:80px;height:50px;"></div>
+				</div>
+		</div>
+		
+	</div>
+	<div id="footer">Arbitrator rear view
+		<div class="footerbutton back"><a href="001.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="002a.html" class="footerlink";>Next ></a></div>
+	</div>
+	
+</div>
+</body>
+</html>
+ 
+ 
+

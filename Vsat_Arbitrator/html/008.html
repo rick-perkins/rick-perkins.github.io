@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title> Sea Tel VSAT Arbitrator Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="../css/loginstyle.css" media="all"/>
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+window.onload = function() {
+
+	$("#dacac,#dacbc,#dacadis,#dacbdis,#dacbothdis,#dacbothdist").hide();$("#acubcl").css({"opacity":"0.3"});
+	var url = "008";
+	parent.set("cmi.core.lesson_location", url);
+}
+$(document).ready(function(){
+	$("#daca,#dacac").click(function(){
+	$("#dacac,#daca").toggle();
+	if ($("#dacadis").is(':hidden') && $("#dacbdis").is(':visible')) {
+		$("#dacadis").hide();
+		$("#dacbdis").hide();
+		$("#dacbothdis,#dacbothdist").show();}
+	else if ($("#dacadis").is(':hidden') && $("#dacbc").is(':visible')){
+		$("#dacbdis").show();
+		$("#acuacl").css({"opacity":"1.0"});
+		$("#acubcl").css({"opacity":"0.3"});
+		$("#dacbothdis,#dacbothdist").hide();}
+	else if ($("#dacadis").is(':hidden')) {
+   		$("#dacadis").show();
+		$("#acubcl").css({"opacity":"1.0"});
+		$("#acuacl").css({"opacity":"0.3"});
+		$("#dacbothdis,#dacbothdist").hide();}
+	else {$("#dacadis").hide();}
+	});
+	
+
+	$("#dacb,#dacbc").click(function(){
+	$("#dacbc,#dacb").toggle();
+	if ($("#dacbdis").is(':hidden') && $("#dacadis").is(':visible')) {
+		$("#dacadis").hide();
+		$("#dacbdis").hide();
+		$("#dacbothdis,#dacbothdist").show();}
+	else if ($("#dacbdis").is(':hidden') && $("#dacac").is(':visible')){
+		$("#dacadis").show();
+		$("#acubcl").css({"opacity":"1.0"});
+		$("#acuacl").css({"opacity":"0.3"});
+		$("#dacbothdis,#dacbothdist").hide();}
+	else if ($("#dacbdis").is(':hidden')) {
+   		$("#dacbdis").show();
+		$("#acuacl").css({"opacity":"1.0"});
+		$("#acubcl").css({"opacity":"0.3"});
+		$("#dacbothdis,#dacbothdist").hide();}
+	else {$("#dacbdis").hide();}
+	});
+	
+	
+  });
+</script>
+<STYLE type="text/css" media="all">
+.crop {
+    width: 600px;
+    height:100px;
+    overflow: hidden;
+background-position: center center;
+
+}
+
+.crop img {
+    width: 100%;
+   
+   margin: -0px 0 -0 -0px;
+}
+</style>
+
+</head>
+<body>
+<div id="container">
+	<div id="body"> 
+		<div style="position:absolute;width:100%">
+			<h1>Switching using DAC's</h1>
+			Using the links below you are able to put each or both DAC's in to blockage.</br>
+			<div class="footerlink">
+				<a href="javascript:void(0);"class="tooltipdd" id="daca" >Click to put DAC A into blockage or an error state.</a>
+				<a href="javascript:void(0);"class="tooltipdd" id="dacac" >Click to take DAC A out of  blockage or error state.</a><p>
+				<a href="javascript:void(0);"class="tooltipdd" id="dacb" >Click to put DAC B into blockage or an error state.</a>
+				<a href="javascript:void(0);"class="tooltipdd" id="dacbc" >Click to take DAC B out of  blockage or error state.</a><p>
+				<a href="javascript:void(0);"class="tooltipdd" id="rxloxk" ></a>
+			</div><p>
+			<div style="position:relative;width:100%;height:200px;">
+				<div id="dacadis">SW2 on DAC A goes high logic, Arbitrator will switch allowing the RX,TX and GPS to be connected to antenna B</div>
+				<div id="dacbdis">SW2 on DAC B goes high logic, Arbitrator will switch allowing the RX,TX and GPS to be connected to antenna A</div>
+				<div id="dacbothdis">SW2 on DAC A and B have gone high logic.</br> The Arbitrator will not switch, the RX and TX will stay connected to the last antenna because both antenna's have an error or blockage, the modem will be muted by the TX mute pin on the arbitrator modem port changing logic state.</br> This logic default state is changed in the web GUI by the Mute Output Polarity. </div>
+			</div>				
+			<div align=left style="position:relative;padding-top:20px;border:0px solid violet;border-style:dashed;border-radius:10px;left:px;top:0px;width:1100px;height:200px;">
+			
+				<div class="crop"><img src="../img/rear.png" usemap=#imap border=0></div>		
+				<div style="position:absolute;right:0px;top:20px;"><img  src="../img/modem.png" usemap=#imap border=0></div>
+				<div id="dacbothdist" style="position:absolute;right:100px;top:20px;"><font size=8px color=red> TX Muted</font></div>
+			
+					<div id="poweb" style="position:absolute;border:0px solid red;border-radius:10px;left:0px;top:0px;width:100%;height:200px;">
+					<canvas id="modeml" width="1100" height="300"></canvas>
+					<script>
+					  var canvas = document.getElementById('modeml');
+					  var context = canvas.getContext('2d');
+
+						context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'green';
+						context.moveTo(160, 50);
+						context.lineTo(160, 2);
+					context.lineTo(900, 2);
+					context.lineTo(900, 20);
+					  context.stroke();
+					context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'red';
+						context.moveTo(230, 50);
+						context.lineTo(230, 6);
+					context.lineTo(910, 6);
+					context.lineTo(910, 20);
+					context.stroke();
+					context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'orange';
+						context.moveTo(390, 56);
+						context.lineTo(390, 10);
+					context.lineTo(890, 10);
+					context.lineTo(890, 20);
+					  context.stroke();
+					context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'yellow';
+						context.moveTo(586, 136);
+						context.lineTo(586, 14);
+					context.lineTo(880, 14);
+					context.lineTo(880, 20);
+					  context.stroke();
+					context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'yellow';
+						context.moveTo(454, 50);
+						context.lineTo(454, 14);
+					context.lineTo(568, 14);
+					context.lineTo(568, 136);
+					  context.stroke();
+					  
+					</script></div><div id="poweb" style="position:absolute;border:0px solid red;border-radius:10px;left:0px;top:0px;width:100%;height:220px;">
+						<canvas align=left id="ethl" width="1000" height="240"></canvas>
+					<script>
+					  var canvas = document.getElementById('ethl');
+					  var context = canvas.getContext('2d');
+
+						context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'yellow';
+						context.moveTo(788, 200);
+						context.lineTo(788, 170);
+					context.lineTo(550, 170);
+					context.lineTo(550, 136);
+					  context.stroke();
+					context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'yellow';
+						context.moveTo(532, 136);
+						context.lineTo(532, 170);
+					context.lineTo(138, 170);
+					context.lineTo(138, 200);
+					  context.stroke();
+					</script></div>
+					<div id="poweb" style="position:absolute;border:0px solid green;border-radius:10px;left:0px;top:0px;width:100%;height:200px;">
+						<canvas align=left id="acual" width="1000" height="200"></canvas>
+					<script>
+					  var canvas = document.getElementById('acual');
+					  var context = canvas.getContext('2d');
+
+						context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'orange';
+						context.moveTo(348, 56);
+						context.lineTo(348, 74);
+					context.lineTo(150, 74);
+					context.lineTo(150, 136);
+					  context.stroke();
+					</script></div>
+					<div id="poweb" style="position:absolute;border:0px solid green;border-radius:10px;left:0px;top:0px;width:100%;height:200px;">
+						<canvas align=left id="acubl" width="1000" height="200"></canvas>
+					<script>
+					  var canvas = document.getElementById('acubl');
+					  var context = canvas.getContext('2d');
+
+						context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'orange';
+						context.moveTo(369, 56);
+						context.lineTo(369, 74);
+					context.lineTo(800, 74);
+					context.lineTo(800, 136);
+					  context.stroke();
+					</script></div>
+					<div id="poweb" style="position:absolute;border:0px solid green;border-radius:10px;left:0px;top:0px;width:100%;height:200px;">
+						<canvas align=left id="acuacl" width="1000" height="240"></canvas>
+					<script>
+					  var canvas = document.getElementById('acuacl');
+					  var context = canvas.getContext('2d');
+
+						context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'red';
+						context.moveTo(214, 50);
+						context.lineTo(214, 90);
+					context.lineTo(416, 90);
+					context.lineTo(416, 190);
+					  context.stroke();
+					context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'green';
+						context.moveTo(144, 50);
+						context.lineTo(144, 90);
+					context.lineTo(103, 90);
+					context.lineTo(103, 214);
+					  context.stroke();
+					</script></div>
+					<div id="poweb" style="position:absolute;border:0px solid green;border-radius:10px;left:0px;top:0px;width:100%;height:200px;">
+						<canvas align=left id="acubcl" width="1100" height="240"></canvas>
+					<script>
+					  var canvas = document.getElementById('acubcl');
+					  var context = canvas.getContext('2d');
+
+						context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'red';
+						context.moveTo(244, 50);
+						context.lineTo(244, 80);
+					context.lineTo(1066, 80);
+					context.lineTo(1066, 190);
+					  context.stroke();
+					context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'green';
+						context.moveTo(174, 50);
+						context.lineTo(174, 100);
+					context.lineTo(752, 100);
+					context.lineTo(752, 214);
+					  context.stroke();
+					</script></div>
+					<div style="height:100px;border:0px solid;">
+					<img align="right" src="../img/dac.png" usemap=#imap/>
+					<img style="width:200px;" src="../img/switch.png" usemap=#imap border=0>
+					<img  align="left" src="../img/dac.png" usemap=#imap/></div>
+			</div>
+			
+		</div>
+	</div>
+	<div id="footer">Main Menu
+		<div class="footerbutton back"><a href="007a.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="008a.html" class="footerlink";>Next ></a></div>
+	</div> 
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title> Sea Tel VSAT Arbitrator Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="../css/loginstyle.css"  media="all"/>
+
+<script src="..js/jquery-1.10.2.js"></script>
+<script>
+window.onload = function() {
+
+	$('[id="antenna_a"],[id="auto_mode"]').css({"visibility":"hidden"});
+	var url = "007a";
+	parent.set("cmi.core.lesson_location", url);
+}
+
+</script>
+<STYLE type="text/css" media="all">
+a.tooltipdd:hover {text-decoration:none;}	
+.crop {
+    width: 1100px;
+    height:150px;
+    overflow: hidden;
+background-position: center center;
+
+}
+
+.crop img {
+    width: 100%;
+   
+   margin: -0px 0 -0 -0px;
+}
+</style>
+
+</head>
+<body>
+<div id="container">
+	<div id="body"> 
+		<div style="position:absolute;width:100%">
+			<h1>Setup page</h1>
+			The key settings are:<ul><li>IP Address: This is the Arbitrator IP address, when using OpenAMIP the modem needs to send all the commands to this IP address.</li>
+			<li>Antenna A and B IP: These must be the same as the IP address of DAC A and B other wise the OpenAMIP commands will not get passed on to the DAC's.</li>
+			<li>Forward TCP Port: This must be set to the port which has been setup in the DAC's for OpenAMIP commands, default is 2002.</li>
+			<li>Mute output polarity: This must be set correctly depending on the VSAT modem I.E. Idirect will be high voltage mute and Comtech will be Low voltage mute.</il></ul>
+			To save the settings, <strong>Submit</strong> must be pressed before pressing save.</br>
+			<font face=arial size=3>Please hover over the names of the fields for more information.</font>
+			</td><td>
+			<table class="top_table" cellspacing="0">
+			<tbody>
+				<tr class="gen_title_tr"><td></br /></td>
+				<td>Arbitrator Setup</td></tr>
+				<tr><td class="menu_td">
+						<table class="menu_table" cellspacing="2">
+						<tbody>
+						<tr><td></br /></td></tr>
+						<tr><td><a href="007.html" class="menu_content_td">Home</a></td></tr>
+						<tr><td></br /></td></tr>
+						<tr><td><a href="007a.html" class="menu_content_td">Setup</a></td></tr>
+						<tr><td></br /></td></tr></tbody>
+						</table>
+					</td>
+					<td class="gen_td">
+						
+							<table class="gen_td_table" cellspacing="2">
+								<tbody>
+									<tr><td colspan="4"></br /></td></tr>
+									<tr><td class="gen_td_25_right_tnr">IP Address :</td>
+										<td class="gen_td_25_left">
+											<input size="13" value="192.168.30.194" name="sArbIP" /></td>
+										<td class="gen_td_25_right_tnr">
+											Antenna A IP :</td>
+										<td class="gen_td_25_left">
+											<input size="13" value="192.168.30.195" name="sAntAIP" /></td>
+									</tr>
+									<tr>
+										<td class="gen_td_25_right_tnr">
+											Gateway :</td>
+										<td class="gen_td_25_left">
+											<input size="13" value="192.168.30.1" name="sArbGW" /></td>
+										<td class="gen_td_25_right_tnr">
+											Antenna B IP :</td>
+										<td class="gen_td_25_left">
+											<input size="13" value="192.168.30.196" name="sAntBIP" /></td>
+									</tr>
+									<tr>
+										<td class="gen_td_25_right_tnr">
+											Netmask :</td>
+										<td class="gen_td_25_left">
+											<input size="13" value="255.255.255.0" name="sArbNM" /></td>
+										<td class="gen_td_25_right_tnr">
+											Forwarded TCP Port :</td>
+										<td class="gen_td_25_left">
+											<input size="7" value="2002" name="uiTCPPort" /></td>
+									</tr>
+										<td class="gen_td_25_right_tnr">
+											<a href="#" class="tooltipdd">
+<span style="margin-left:-35px;width:400px;margin-top:30px;">
+        <img class="callout" src="../img/callout_black.gif" style="left:20%;" />
+        Change this value if the user needs to change the baud rate of the Console port.</br>Default is 9600.
+    </span><font color="white">
+Serial Baud Rate :</a></td>
+										<td class="gen_td_25_left">
+											<input size="7" value="9600" name="ulArbSerBaud" /></td>
+										<td class="gen_td_25_right_tnr">
+											<a href="#" class="tooltipdd"><span style="margin-left:-85px;width:400px;margin-top:30px;">
+        <img class="callout" src="../img/callout_black.gif" style="left:20%;" />
+        Changing this value will switch between Auto or Manual mode in the  same way as the buttons on the front panel.
+    </span><font color="white">Selected Mode :</a></td>
+										<td class="gen_td_25_left">
+											<input type="hidden" id="uiSelectedMode_sel" value="0" />
+											<select id="uiSelectedMode" name="uiSelectedMode">
+												<option id="uiSelectedMode_0" value="0" />Auto</br />
+												<option id="uiSelectedMode_1" value="1" />Manual</br />
+											</select>
+										</td>
+									<tr>
+										<td class="gen_td_25_right_tnr">
+											<a href="#" class="tooltipdd"><span style="margin-left:-35px;width:400px;margin-top:30px;">
+        <img class="callout" src="../img/callout_black.gif" style="left:20%;" />
+        Change this value if the user needs to telnet to the arbitrator on a different port number.</br>23 is the default value.
+    </span><font color="white">Telnet Port :</a></td>
+										<td class="gen_td_25_left">
+											<input size="7" value="23" name="uiArbTelnet" /></td>
+										<td class="gen_td_25_right_tnr">
+											<a href="#" class="tooltipdd"><span style="margin-left:-85px;width:400px;margin-top:30px;">
+        <img class="callout" src="../img/callout_black.gif" style="left:20%;" />
+        Changing this value will switch between Antenna A or Antenna B in the  same way as the buttons on the front panel.
+    </span><font color="white">Selected Antenna :</a></td>
+										<td class="gen_td_25_left">
+											<input type="hidden" id="uiSelectedAnt_sel" value="0" />
+											<select id="uiSelectedAnt" name="uiSelectedAnt">
+												<option id="uiSelectedAnt_0" value="0" />Antenna A</br />
+												<option id="uiSelectedAnt_1" value="1" />Antenna B</br />
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td class="gen_td_25_right_tnr">
+											<a href="#" class="tooltipdd"><span style="margin-left:-35px;width:400px;margin-top:30px;">
+        <img class="callout" src="../img/callout_black.gif" style="left:20%;" />
+        This port is used for programming the arbitrator.</br>Default is 3000.
+    </span><font color="white">UDP Port :</td>
+										<td class="gen_td_25_left">
+											<input size="7" value="3000" name="uiArbUDP" /></td>
+										<td class="gen_td_25_right_tnr">
+											<a href="#" class="tooltipdd"><span style="margin-left:-85px;width:400px;margin-top:30px;">
+        <img class="callout" src="../img/callout_black.gif" style="left:20%;" />
+        This allow the user to turn the 10MHz referance for the non activte BUC on and off, only need to be on with a -2 version.
+    </span><font color="white">10MHz Reference :</a></td>
+										<td class="gen_td_25_left">
+											<input type="hidden" id="ui10MhzRef_sel" value="0" />
+											<select id="ui10MhzRef" name="ui10MhzRef">
+												<option id="ui10MhzRef_0" value="0" />Off</br />
+												<option id="ui10MhzRef_1" value="1" />On</br />
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td class="gen_td_25_right_tnr">
+											<a href="#" class="tooltipdd"><span style="margin-left:-180px;width:720px;margin-top:30px;">
+        <img class="callout" src="../img/callout_black.gif" style="left:30%;" />
+        The GPS source to the VSAT modem can be chosen by this list.<ul>
+	<li>Active: The GPS source will switch between antenna A and B depending on which antenna is the active one.</li>
+	<li>Antenna A: Antenna A's GPS will always be sent to the VSAT modem.</li>
+	<li>Antenna B: Antenna B's GPS will always be sent to the VSAT modem.</li>
+	<li>OBM : The GPS must be comming in on the OBM port, the antennas GPS's will not be used.</li></ul>
+    </span><font color="white">GPS Source :</a></td>
+										<td class="gen_td_25_left">
+											<input type="hidden" id="uiGPSSource_sel" value="0" />
+											<select id="uiGPSSource" name="uiGPSSource">
+												<option id="uiGPSSource_0" value="0" />Active Antenna</br />
+												<option id="uiGPSSource_1" value="1" />Antenna A</br />
+												<option id="uiGPSSource_2" value="2" />Antenna B</br />
+												<option id="uiGPSSource_3" value="3" />OBM</br />
+											</select>
+										<td class="gen_td_25_right_tnr">
+											<a href="#" class="tooltipdd"><span style="margin-left:-110px;width:400px;margin-top:30px;">
+        <img class="callout" src="../img/callout_black.gif" style="left:30%;" />
+        Changing this value will switch the TX mute pin on the modem port between</br>Low voltage mute and High voltage mute.
+    </span><font color="white">Mute Output Polarity :</a></td>
+										<td class="gen_td_25_left">
+											<input type="hidden" id="uiMutePol_sel" value="1" />
+											<select id="uiMutePol" name="uiMutePol">
+												<option id="uiMutePol_0" value="0" />Low Voltage Mute</br />
+												<option id="uiMutePol_1" value="1" />High Voltage Mute</br />
+											</select>
+										</td>
+									</tr>
+									<tr><td></br /></br /></td></tr>
+									<tr class="gen_tr_b_white">
+										<td colspan="4" class="gen_td_center_tnr">
+											<input value="Submit" type="submit" title="Submit"/>
+										</td>
+										<td>
+											<input title="Save to Flash" value="Save" type="submit" onclick="saveSetup();"/>
+										</td>
+									</tr>
+									<tr><td></br /></br /></td></tr>
+								</tbody>
+							</table>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+			
+</td></tr>
+		</table>  
+		</div>
+	</div>
+	<div id="footer">Setup page
+		<div class="footerbutton back"><a href="006.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="008.html" class="footerlink";>Next ></a></div>
+	</div> 
+</div>
+
+</body>
+</html>
+

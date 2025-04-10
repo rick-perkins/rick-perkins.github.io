@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title> Sea Tel VSAT Arbitrator Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="../css/loginstyle.css"  media="all"/>
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+window.onload = function() {
+	
+	$("#dacb,#dacbc,#dacadis,#dacadisa,#dacbdis,#dacbothdis").hide();
+	$("#dacbdisa").hide();
+	$("#acuacl,#acua1").css({"opacity":"0.2"});
+	$("#acubcl,#acub1").css({"opacity":"0.2"});
+	$("#modem1").css({"opacity":"0.2"});
+	$("#modem2").css({"opacity":"0.2"});
+	var url = "009";
+	parent.set("cmi.core.lesson_location", url);
+	
+}
+$(document).ready(function(){
+	$("#daca,#dacb").click(function(){
+		$("#dacb,#daca").toggle();
+		if ($("#daca").is(':hidden')){
+			$(".modemtxt,.dacatxt, .dacbtxt").text("");
+			$("#dacbdis,#dacbdisa,#dacbothdis").hide();
+			$("#dacadis").show();
+			$("#acua1,#acub1,#modem2").delay(1000).queue(function(){$(this).css({"opacity":"1"});$(this).dequeue();});
+			$(".dacatxt, .dacbtxt").html("Targetting, sending TX Mute");
+			setTimeout(function(){$(".modemtxt").text("TX Mute");},1000);
+			$("#dacadisa").delay(6000).fadeIn(100);
+			setTimeout(function(){$(".dacatxt,.dacbtxt").html("Tracking");$(".modemtxt").text("");},6000);
+			
+			$("#dacbothdis").delay(12000).fadeIn(100);
+			setTimeout(function(){$(".modemtxt").text("RX Lock");$(".dacatxt, .dacbtxt").html("Tracking with RX Lock");},12000);
+			
+			}
+		else if	($("#dacb").is(':hidden')){
+			$(".modemtxt,.dacatxt, .dacbtxt").text("");
+			$("#dacadis,#dacadisa,#dacbothdis").hide();
+			$("#dacbdis").show();
+			$("#acua1,#acub1,#modem2").delay(1000).queue(function(){$(this).css({"opacity":"1"});$(this).dequeue();});
+			$(".dacatxt, .dacbtxt").html("Targetting, sending TX Mute");
+			setTimeout(function(){$(".modemtxt").text("TX Mute");},1000);
+			$("#dacbdisa").delay(6000).fadeIn(100);
+			setTimeout(function(){$(".dacatxt,.dacbtxt").html("Tracking");$(".modemtxt").text("");},6000);
+			
+			$("#dacbothdis").delay(12000).fadeIn(100);
+			setTimeout(function(){$(".modemtxt").text("RX Lock");$(".dacatxt, .dacbtxt").html("Tracking with RX Lock");},12000);
+			
+			}
+	});
+});
+</script>
+<STYLE type="text/css" media="all">
+.modemtxt {color:red;
+			font-size:40px;}
+.dacatxt, .dacbtxt {color:red;
+			font-size:20px;
+			text-align: center;}			
+.crop {
+    width: 600px;
+    height:100px;
+    overflow: hidden;
+background-position: center center;
+
+}
+
+.crop img {
+    width: 100%;
+   
+   margin: -0px 0 -0 -0px;
+}
+</style>
+<script type='text/javascript' src='../scormdriver/auto-scripts/AutoBookmark.js'></script>
+</head>
+<body>
+<div id="container">
+	<div id="body"> 
+		<div style="position:absolute;width:100%">
+			<h1>ABS (Auto beam Switching) & RX Lock</h1>
+			Using the links below you are able to switch between 2 satellites using ABS from the modem.</br><div class="footerlink">
+			<a href="javascript:void(0);"class="tooltipdd" id="daca" >Click to target satellite A.</a>
+			<a href="javascript:void(0);"class="tooltipdd" id="dacb" >Click to target satellite B.</a><p>
+
+			<a href="javascript:void(0);"class="tooltipdd" id="rxloxk" ></a>
+			</div>
+			<div style="position:relative;width:100%;height:236px;">
+				<div id="dacadis">Modem sends satellite A information to the Arbitrator via serial or openAMIP. </br>
+					The satelite information will be passed on to the DAC's or MXP's from the arbitrator. </br>
+					Then both antennas will target satellite A. Because both antennas are Targeting then TX mute to the modem will be active.<p></div>
+				<div id="dacadisa">Both antennas are tracking satellite A. </br>Because one of the antennas will be on satellite then TX mute to the modem will not be active.<p></div>
+				<div id="dacbdis">Modem sends satellite B information to the Arbitrator via serial or openAMIP. </br>
+					The satelite information will be passed on to the DAC's or MXP's from the arbitrator. </br>
+					Then both antennas will target satellite B. Because both antennas are Targeting then TX mute to the modem will be active.<p></div>
+				<div id="dacbdisa">Both antennas are tracking satellite B. </br>Because one of the antennas will be on satellite then TX mute to the modem will not be active.<p></div>
+				<div id="dacbothdis">The modem has RX lock.</br>
+				The RX lock input on the arbitrator modem port has changed state, 
+				this is passed on to the DAC's or MXP's via the RX lock pin on DAC A and DAC B ports to the DAC's or MXP's or via openAMIP.</div>		
+			</div>
+			<div align=left style="position:relative;padding-top:20px;border:0px solid violet;border-style:dashed;border-radius:10px;left:px;top:-0px;width:1100px;height:200px;">
+			
+				<div class="crop"><img src="../img/rear.png" usemap=#imap border=0></div>		
+				<div style="position:absolute;right:0px;top:20px;"><img  src="../img/modem.png" usemap=#imap border=0></div>
+				<div class="modemtxt" style="position:absolute;right:100px;top:20px;"></div>
+			
+			<div id="poweb" style="position:absolute;border:0px solid red;border-radius:10px;left:0px;top:0px;width:100%;height:200px;">
+			<canvas id="modem1" width="1100" height="300"></canvas>
+				<script>
+				  var canvas = document.getElementById('modem1');
+				  var context = canvas.getContext('2d');
+					context.beginPath();
+				context.lineWidth = 4;
+				context.strokeStyle = 'green';
+					context.moveTo(160, 50);
+					context.lineTo(160, 2);
+				context.lineTo(900, 2);
+				context.lineTo(900, 20);
+				  context.stroke();
+				context.beginPath();
+				context.lineWidth = 4;
+				context.strokeStyle = 'red';
+					context.moveTo(230, 50);
+					context.lineTo(230, 6);
+				context.lineTo(910, 6);
+				context.lineTo(910, 20);
+				context.stroke();
+				</script>
+			</div>
+			<div id="poweb1" style="position:absolute;border:0px solid red;border-radius:10px;left:0px;top:0px;width:100%;height:200px;">
+					<canvas id="modem2" width="1100" height="300"></canvas>
+						<script>
+						var canvas = document.getElementById('modem2');
+						  var context = canvas.getContext('2d');
+						context.beginPath();
+						context.lineWidth = 4;
+						context.strokeStyle = 'orange';
+							context.moveTo(390, 56);
+							context.lineTo(390, 10);
+						context.lineTo(890, 10);
+						context.lineTo(890, 20);
+						  context.stroke();
+						
+						</script>
+			</div>
+			<div id="poweb1" style="position:absolute;border:0px solid red;border-radius:10px;left:0px;top:0px;width:100%;height:200px;">
+					<canvas id="modem3" width="1100" height="300"></canvas>
+						<script>
+						var canvas = document.getElementById('modem3');
+						  var context = canvas.getContext('2d');			
+						context.beginPath();
+						context.lineWidth = 4;
+						context.strokeStyle = 'yellow';
+							context.moveTo(586, 136);
+							context.lineTo(586, 14);
+						context.lineTo(880, 14);
+						context.lineTo(880, 20);
+						  context.stroke();
+						context.beginPath();
+						context.lineWidth = 4;
+						context.strokeStyle = 'yellow';
+							context.moveTo(454, 50);
+							context.lineTo(454, 14);
+						context.lineTo(568, 14);
+						context.lineTo(568, 136);
+						  context.stroke();
+						  
+						</script>
+			</div>
+		<div id="poweb" style="position:absolute;border:0px solid red;border-radius:10px;left:0px;top:0px;width:100%;height:220px;">
+		<canvas align=left id="ethl" width="1000" height="240"></canvas>
+    <script>
+      var canvas = document.getElementById('ethl');
+      var context = canvas.getContext('2d');
+
+      	context.beginPath();
+	context.lineWidth = 4;
+	context.strokeStyle = 'yellow';
+      	context.moveTo(766, 196);
+      	context.lineTo(766, 170);
+	context.lineTo(548, 170);
+	context.lineTo(548, 136);
+      context.stroke();
+	context.beginPath();
+	context.lineWidth = 4;
+	context.strokeStyle = 'yellow';
+      	context.moveTo(532, 136);
+      	context.lineTo(532, 170);
+	context.lineTo(138, 170);
+	context.lineTo(138, 200);
+      context.stroke();
+    </script></div>
+	<div id="poweb" style="position:absolute;border:0px solid green;border-radius:10px;left:0px;top:0px;width:100%;height:200px;">
+		<canvas align=left id="acua1" width="1000" height="240"></canvas>
+    <script>
+      var canvas = document.getElementById('acua1');
+      var context = canvas.getContext('2d');
+
+      	context.beginPath();
+	context.lineWidth = 4;
+	context.strokeStyle = 'orange';
+      	context.moveTo(348, 56);
+      	context.lineTo(348, 74);
+	context.lineTo(150, 74);
+	context.lineTo(150, 142);
+      context.stroke();
+    </script></div>
+	<div id="poweb" style="position:absolute;border:0px solid green;border-radius:10px;left:0px;top:0px;width:100%;height:200px;">
+		<canvas align=left id="acub1" width="1000" height="240"></canvas>
+    <script>
+      var canvas = document.getElementById('acub1');
+      var context = canvas.getContext('2d');
+
+      	context.beginPath();
+	context.lineWidth = 4;
+	context.strokeStyle = 'orange';
+      	context.moveTo(369, 56);
+      	context.lineTo(369, 74);
+	context.lineTo(880, 74);
+	context.lineTo(880, 196);
+      context.stroke();
+    </script></div>
+	<div id="poweb" style="position:absolute;border:0px solid green;border-radius:10px;left:0px;top:0px;width:100%;height:200px;">
+		<canvas align=left id="acuacl" width="1000" height="240"></canvas>
+    <script>
+      var canvas = document.getElementById('acuacl');
+      var context = canvas.getContext('2d');
+
+      	context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'red';
+						context.moveTo(214, 50);
+						context.lineTo(214, 90);
+					context.lineTo(416, 90);
+					context.lineTo(416, 190);
+					  context.stroke();
+					context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'green';
+						context.moveTo(144, 50);
+						context.lineTo(144, 90);
+					context.lineTo(103, 90);
+					context.lineTo(103, 214);
+					  context.stroke();
+    </script></div>
+	<div id="poweb" style="position:absolute;border:0px solid green;border-radius:10px;left:0px;top:0px;width:100%;height:200px;">
+		<canvas align=left id="acubcl" width="1100" height="240"></canvas>
+    <script>
+      var canvas = document.getElementById('acubcl');
+      var context = canvas.getContext('2d');
+
+      	context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'red';
+						context.moveTo(244, 50);
+						context.lineTo(244, 80);
+					context.lineTo(1066, 80);
+					context.lineTo(1066, 190);
+					  context.stroke();
+					context.beginPath();
+					context.lineWidth = 4;
+					context.strokeStyle = 'green';
+						context.moveTo(174, 50);
+						context.lineTo(174, 100);
+					context.lineTo(732, 100);
+					context.lineTo(732, 214);
+					  context.stroke();
+    </script></div>
+	<div style="height:100px;border:0px solid;">
+		<div class="dacbtxt" style="position:absolute;right:0px;top:220px;width:450px;"></div>
+		<img align="right" src="../img/mxp.png" usemap=#imap/>
+		<img style="width:200px;" src="../img/switch.png" usemap=#imap border=0>
+		<div class="dacatxt" style="position:absolute;left:0px;top:220px;width:450px;"></div>
+		<img  align="left" src="../img/dac.png" usemap=#imap/></div></div>
+			
+		</div>
+	</div>
+	<div id="footer">ABS (Auto Beam Switching) & RX Lock
+		<div class="footerbutton back"><a href="008a.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="010.html" class="footerlink";>Next ></a></div>
+		
+	</div> 
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,78 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title> Sea Tel VSAT Arbitrator Product Training</title>
+<meta charset="utf-8">
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+window.onload = function() {
+
+
+var url = "010";
+parent.set("cmi.core.lesson_location", url);			
+}
+</script>
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+<STYLE type="text/css" media="all">
+
+
+</style>
+
+</head>
+<body>
+
+<div id="container">
+	<div id="body">
+		<div style="position:absolute;width:90%;">
+			<h1>Resource Reference</h1>
+			Serial connections between the MXP/ DAC’s and arbitrator:
+				<ul><li>These two connections must be used at all times.</li>
+					<li>These are used to switch the arbitrator when the one of the systems in a blockage zone, or in an error state.</li>
+					<li>When the modem is using serial connection (non openAMIP setup) the GPS is sent to the modem via the arbitrator on these cables.</li>
+				</ul>
+			Serial connection to the modem console port (Idirect modem non openAMIP) or to Comtech modem:<br>
+			This cable is used for the following:
+				<ul><li>To send serial GPS to the modem from the active system.</li>	
+					<li>TX mute to the modem from the arbitrator (the arbitrator controls the TX mute).</li>
+					<li>RX lock from the modem to the arbitrator which passes this on to both antennas.</li>
+				</ul>
+			OpenAMIP setup:
+				<ul><li>All the openAMIP commands are sent to the arbitrator , the arbitrator will forward the commands to both systems.</li>
+					<li>OpenAMIP commands from the active system only will be passed to the modem, when the arbitrator switches the commands from the second system will then be passed to the modem.</li>
+				</ul>
+			Arbitrator not switching:
+				<ul><li>Make sure both serial connections are installed between the arbitrator and the MXP/DAC’s.</li>
+					<li>Make sure the serial connections are not reversed I.E. antenna A is connected to Antenna A on the arbitrator.</li>
+					<li>The non-active system is not in a blocked or error state.</li>
+					<li>The MXP/DAC’s are set to blockage high state.</li>
+					<li>DAC must have 16 in the system type no matter what modem is used.</li>
+					<li>MXP must have the Block output set to high no matter what modem is being used.</li>
+				</ul>
+			Antennas keeps retargeting or modem lock not working:
+				<ul><li>Idirect modem when using openAMIP must have TX handshaking enabled.</li> 
+					<li>Comtech modem make sure voltage is added to the RX lock pin if needed.</li>
+					<li>DAC must have 2 added to the system type.</li>
+					<li>MXP must have lock enabled under the modem settings on the interface page.</li>
+					<li>MXP must have the modem I/O set to openAMIP with an openAMIP setup.</li>
+					<li>DAC may need 128 added to the system to reverse the modem input logic when not using openAMIP.</li>
+					<li>MXP may need the Lock input changing or the sense voltage reducing when not using openAMIP.</li>
+				</ul>
+			
+						
+
+		</div>	
+		</div>	
+		
+	</div>
+	<div id="footer">Resource Reference
+		<div class="footerbutton back"><a href="009.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="010a.html" class="footerlink";>Next ></a></div>
+	</div>
+	
+</div>
+</body>
+</html>
+ 
+ 
+

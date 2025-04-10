@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title> Sea Tel VSAT Arbitrator Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="../js/print.js"></script>
+<script>
+window.onload = function() {
+
+	
+	var url = "003a";
+	parent.set("cmi.core.lesson_location", url);
+}
+
+</script>
+
+
+</head>
+<body>
+<div id="container">
+	<div id="body">
+		<div style="position:absolute;width:100%;">
+			<h1>Connections to the modem</h1>
+			<strong>Idirect:</strong></br>
+			The Idirect modem is connected to the arbitrator via a straight though RJ45 cable. Modem on the left and Arbitrator on the right.</br>
+			<table width=100% cellpadding=2 border=1>
+				<tr><td>Pin 1<td>Not used</tr>
+				<tr><td>Pin 2<td>Modem lock, when the modem has RX lock this pin will go from high voltage to low voltage.
+				</br>We call this modem low lock. For this function to work you must have system type 2 added in the DAC system type or low lock in the MXP and RX lock on.
+				</br>The arbitrator does not use this RX lock and passes the voltage state on to the DAC or MXP.
+				</br>I.E. No RX lock = 12Vdc between pin 2 and pin 4.
+				</br>RX lock = 0Vdc between pin2 and pin 4.
+				</tr>
+				<tr><td>Pin 3<td>Not used</tr>
+				<tr><td>Pin 4,5<td> GND</tr>
+				<tr><td>Pin 6<td> GPS to the modem.</tr>
+				<tr><td>Pin 7<td> TX mute, this is controlled by the arbitrator not the DAC or MXP.
+				</br>For this modem, the mute is activated when the voltage is high. In the Arbitrator there is a Mute Output polarity this should be set to high voltage mute.
+				</br>I.E. TX mute active, no TX = 12Vdc between pin 7 and pin 4.
+				</br>TX mute not active, TX allowed = 0Vdc between pin7 and pin 4.</tr>
+				<tr><td>Pin 8<td>Not used</tr>
+			</table> <a href="../img/stright_cable.png" target="_blank"><img src="../img/stright_cable.png" usemap=#imap border=0 height=120px></a>Click image to enlarge.</div>
+	
+		</div>
+	</div>
+	<div id="footer">Connections to the modem
+		<div class="footerbutton back"><a href="003.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="003b.html" class="footerlink";>Next ></a></div>
+	</div>
+
+</div>
+</body>
+</html>
+ 
+
+
+ 
+ 
+ 
+ 
+

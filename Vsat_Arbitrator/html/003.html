@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title> Sea Tel VSAT Arbitrator Product Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="../js/print.js"></script>
+<script>
+
+window.onload = function() {
+	
+	$('[id="coaxl"],[id="modeml"],[id="ethl"]').hide();
+	var url = "003";
+	parent.set("cmi.core.lesson_location", url);
+}
+$(document).ready(function(){
+
+	$('[id="coax"]').click(function(){$('[id="coaxl"]').toggle();});
+	$('[id="modem"]').click(function(){$('[id="modeml"]').toggle();});
+	$('[id="eth"]').click(function(){$('[id="ethl"]').toggle();});
+
+ }); 
+ 
+</script>
+
+<STYLE type="text/css" media="all">
+
+.crop {
+    width: 1100px;
+    height:150px;
+    overflow: hidden;
+background-position: center center;
+
+}
+
+.crop img {
+    width: 100%;
+   
+   margin: -0px 0 -0 -0px;
+}
+.crop1 {
+    width: 300px;
+    
+    overflow: hidden;
+background-position: center center;
+
+}
+
+.crop1 img {
+    width: 100%;
+   
+   margin: -0px 0 -0 -0px;
+}
+
+</style>
+
+</head>
+<body>
+<div id="container">
+	<div id="body">
+		<div style="position:absolute;width:100%;">
+			<h1>Connections to the modem</h1>
+			<div >
+				The RF is switched via relays. The common port is the one that always goes to the VSAT modem.</br>Transmit is labeled as TX and recieve is labeled as RX.</br>
+				<a href="javascript:void(0);"class="textlink" id="coax" >Click here to add the coax cables</a>
+				<p>
+				Next is to connect the serial connection. This is for TX mute, RX lock and GPS. This serial connection is only needed when not using openAMIP or ROAM.</br>
+				(Note: TX mute is not done by the DAC or MXP, it's controlled by the arbitrator only when using the serial connection.)</br>
+				<a href="javascript:void(0);"class="textlink" id="modem" >Click here to add the serial modem cable</a>
+				<p>
+				Next is to connect the Ethernet cables.This is for the web interface, ROAM or openAMIP if used.</br>
+				(Note: TX mute is passed from the active antenna to the modem via the arbitrator.)</br>
+				<a href="javascript:void(0);"class="textlink" id="eth" >Click here to add the Ethernet cables</a>
+				</br></br></br>
+			</div>
+			
+			
+			<div align=left style="position:relative;border:0px solid;border-style:dashed;border-radius:10px;left:px;top:0px;width:1100px;height:100px;">
+			<div class="crop"><img src="../img/rear.png" usemap=#imap border=0></div>
+			<div id="poweb" style="position:absolute;border:0px solid red;border-radius:10px;left:0px;top:0px;width:100%;height:200px;">
+			<canvas id="coaxl" width="500" height="200"></canvas>
+					<script>
+					  var canvas = document.getElementById('coaxl');
+					  var context = canvas.getContext('2d');
+
+						context.beginPath();
+					context.lineWidth = 5;
+					context.strokeStyle = 'green';
+						context.moveTo(290, 50);
+						context.lineTo(290, 80);
+					context.lineTo(180, 80);
+					context.lineTo(180, 150);
+					  context.stroke();
+					context.beginPath();
+					context.lineWidth = 5;
+					context.strokeStyle = 'red';
+						context.moveTo(420, 50);
+						context.lineTo(420, 100);
+					context.lineTo(200, 100);
+					context.lineTo(200, 150);
+					  context.stroke();
+					</script></div><div id="poweb" style="position:absolute;border:0px solid red;border-radius:10px;left:0px;top:0px;width:100%;height:200px;">
+						<canvas align=left id="ethl" width="1000" height="200"></canvas>
+					<script>
+					  var canvas = document.getElementById('ethl');
+					  var context = canvas.getContext('2d');
+
+						context.beginPath();
+					context.lineWidth = 5;
+					context.strokeStyle = 'yellow';
+						context.moveTo(834, 50);
+						context.lineTo(834, 110);
+					context.lineTo(770, 110);
+					context.lineTo(770, 180);
+					  context.stroke();
+					context.beginPath();
+					context.lineWidth = 5;
+					context.strokeStyle = 'yellow';
+						context.moveTo(732, 180);
+						context.lineTo(732, 140);
+					context.lineTo(240, 140);
+					context.lineTo(240, 150);
+					  context.stroke();
+					</script></div>
+					<div id="poweb" style="position:absolute;border:0px solid red;border-radius:10px;left:0px;top:0px;width:100%;height:200px;">
+						<canvas align=left id="modeml" width="1000" height="200"></canvas>
+					<script>
+					  var canvas = document.getElementById('modeml');
+					  var context = canvas.getContext('2d');
+
+						context.beginPath();
+					context.lineWidth = 5;
+					context.strokeStyle = 'orange';
+						context.moveTo(718, 55);
+						context.lineTo(718, 120);
+					context.lineTo(220, 120);
+					context.lineTo(220, 150);
+					  context.stroke();
+					</script></div>
+				<div><img src="../img/modem.png" usemap=#imap border=0><img  align=right src="../img/switch.png" usemap=#imap border=0></div></div>
+			
+			
+			
+
+		
+		</div>
+	</div>
+	<div id="footer">Connections to the modem
+		<div class="footerbutton back"><a href="002a.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a href="003a.html" class="footerlink";>Next ></a></div>
+	</div>
+
+</div>
+</body>
+</html>
+ 
+
+
+ 
+ 
+ 
+ 
+

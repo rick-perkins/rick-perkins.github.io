@@ -1,0 +1,75 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title> Sea Tel VSAT Arbitrator Product Training</title>
+<meta charset="utf-8">
+<script src="../js/jquery-1.10.2.js"></script>
+<script>
+window.onload = function() {
+
+
+var url = "010a";
+parent.set("cmi.core.lesson_location", url);	
+parent.complete();		
+}
+</script>
+<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all"/>
+<STYLE type="text/css" media="all">
+
+
+</style>
+
+</head>
+<body>
+
+<div id="container">
+	<div id="body">
+		<div style="position:absolute;width:90%;">
+			<h1>Resource Reference continued</h1>
+
+			Modem is muted when it has RX lock:
+				<ul><li>With a non openAMIP setup make sure the Mute out polarity is set correctly for the modem being used.</li>
+					<li>Both systems are in a blockage zone or an error state.</li>
+					<li>Serial connections to the arbitrator from the MXP/DAC’s modem port are not installed.</li>
+				</ul>
+			OpenAMIP not working:
+				<ul><li>Modem is set up for openAMIP.
+					<li>Antenna IP address is set to the Arbitrator IP address in the option file.</li>
+					<li>IP addresses are set correctly in the MXP/DAC’s and arbitrator.</li>
+					<li>Port numbers are correctly set in all the units, default openAMIP is port 2002.</li>
+					<li>Ping each device from the modem to make sure a reply is received.</li>
+					<li>Make sure the etherent switch being used is able to pass data on port 2002.</li>
+					<li>Test the openAMIP using a PC:</li>
+					<ul><li>Connect up a PC and assign it the same IP address as the modem.</li>
+						<li>Open progterm or any type of hyper terminal session to the arbitrator IP address on port 2002.</li>
+						<li>Once the port is connected a 5 will be displayed, this is the active antenna sending the keep alive to the modem set to 5 seconds.</li>
+						<li>Type A 5 and then the s command will be displayed for a short period of time,<br> this is the antenna send the antenna status command which is antenna is functional followed by TX allowed for the first 2 numbers after the s.</li>
+						<li>Switch the arbitrator to the second antenna and try the same test again.</li>
+					</ul></li>
+				</ul>
+				<div style="position:absolute;left:100px;width:100px;height:100px;background-color:grey;border: 1px solid black;padding:10px;">
+					a 5<br>
+					A 5<br>
+					s 1 1 0 0<br>
+					s 1 1 0 0<br>
+					s 1 1 0 0<br>
+					s 1 1 0 0
+				</div>
+
+
+		</div>	
+		</div>	
+		
+	</div>
+	<div id="footer">Resource Reference continued
+		<div class="footerbutton back"><a href="010.html" class="footerlink";>< Back</a></div>
+		<div class="footerbutton"><a onclick="parent.end(); return false;" href="#" class="footerlink";>Completed</a></div>
+	</div>
+	
+</div>
+</body>
+</html>
+ 
+ 
+
