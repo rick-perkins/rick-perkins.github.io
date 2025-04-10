@@ -1,151 +1,190 @@
-
 <!DOCTYPE html>
 
+<head><title>Sea Tel VSAT Dual Antenna Arbitrator Training</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0;">
 
-<head>
-<title>RickPerkinsBloke</title>
-<link rel="apple-touch-icon" sizes="57x57" href="fav/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="fav/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="fav/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="fav/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="fav/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="fav/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="fav/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="fav/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="fav/apple-icon-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192"  href="fav/android-icon-192x192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="fav/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="fav/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="fav/favicon-16x16.png">
-<link rel="manifest" href="fav/manifest.json">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="fav/ms-icon-144x144.png">
-<meta name="theme-color" content="#ffffff">
-<link rel="stylesheet" href="css/rickperkinsbloke.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<STYLE type="text/css" media="screen">
-</style>
+<link rel="stylesheet" type="text/css" href="css/styles.css" />
 
-</head>
-<body >
-	<div id="header" style="position:relative;">
-		<img id="logo" style="margin-right:-23px;" src="img/RickPerkinsBloke108.png" ><span style="position: relative;z-index:-1;">RickPerkinsBloke.com</span>
-	</div>
-	<div id="welcome" style="position:relative;">
-		Hello and welcome, this is just a place I use for testing projects I'm working on.<br>
-		01010010 01101001 01100011 01101011 01010000 01100101 01110010 01101011 01101001 01101110 01110011 01000010 01101100 01101111 01101011 01100101 00101110 01100011 01101111 01101101
-	</div>
-
-
-	<div id="main" style="position:relative;height:100%">
-		<div id="menu" style="float:left;">
-			<p style="color:#00FF00;font-weight: bold;">Personal related projects</p>
-			<div style="margin-left:30px;">
-				<a href="wedding/index.html" target="_blank">Wedding</a><br>
-				<a href="ecostar">Ecostar Webpage</a><br>
-				<a href="Super_Computer.html" target="main">Super Computer</a><br>
-				<a href="Super_Square.html" target="main">Super Square</a><br>
-				<a href="Ricktrix.html" target="main">Ricktrix</a><br>
-			</div>
-			<p style="color:#00A4F2;font-weight: bold;">Sea Tel Tools:</p>
-			<div style="margin-left:30px;">
-				<a href="KML_Creater" target="_blank">IMA Data log to KML for Goole Earth</a><br>
-				<a href="V3_Datalog/index_revB11_7.html?v=1" target="_blank">IMA V3 Data Log to Graphs</a><br>
-				<a href="Blockage_converter/index.html" target="_blank">IMA V3 Blockage Map Converter</a><br>
-				<a href="Satellite_Calculator/index.html" target="_blank">Satellite Calculator</a><br>
-			</div>
-			<a href="index1.html" target="_blank">Through the looking glass....</a>
-			
-		</div>
-		<div style="float:left;"><iframe id="main" name="main" src="" style="width:1300px;height:900px;border:0px;"></iframe></div>
-	</div>
-
-
-<div id="footer"><a href="mailto:rickperkinsbloke@gmail.com">Email: rickperkinsbloke@gmail.com</a></div>	
-</body>
+<script src="js/jquery-1.10.2.js"></script>
 <script>
-	var x = document.getElementById("bike-sounds");
-	var xa = document.getElementById("sounds");
-	var user;
-
-
-function button_click(){
-	//x.play();
-    $("#saw-bike").animate({
-      left: '70%',
-	  top:'200px',
-      height: '50px',width:'30px',
-    },10000,close);
-	user = $('#input_text').val();
-	console.log(user);
-	setCookie("username",user,1);
+window.onload = function() {$("#left,#main").hide();
 	
+	init();
+	
+
 }
-function close(){
-	x.pause()
-	$("#open-page").hide();
-	$("#header").html("Hello "+user+" and welcome. Lets play a game....");
-	$("#main").show();
-	xa.play();
+
+</script>
+<script src="js/SCORM_API_wrapper.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+var scorm = pipwerks.SCORM;
+//creating shortcut for less verbose code
+var bookmark, initialized, status;
+var url = "000";
+var start = 0;
+
+function init(){
+	//Specify SCORM 1.2:
+	scorm.version = "1.2";
+	show("Initializing course.");
+	var callSucceeded = scorm.init();
+	//alert("Call succeeded? " +callSucceeded);
+	
+
+    //Get the lesson status from the LMS
+    status = scorm.get("cmi.core.lesson_status");
+	//alert("scorm status"+status);
+    if(status === "completed"){
+	//alert("completed");
+		url = "000";
+		start = 1;
+    } else if (status === "null"){
+		//alert("no scorm");
+		url = "000";
+		start = 1;
+		}
+	else if(status === "ab-initio"){
+		//alert("not completed");
+		url = "000";
+		start = 0;
+    } 
+	else {
+		
+        //Check for a bookmark
+        bookmark = scorm.get("cmi.core.lesson_location");
+		//alert("scorm bookmark "+bookmark);
+        //If a bookmark is found, use its value as the target URL
+        if(bookmark){ 
+            url = bookmark;
+			
+			//alert("bookmark "+url);
+        }
+
+    }        
+    loadPage();
+
+}
+function loadPage(){
+	//alert("loading page "+url+".html")
+	if (url === "000"){$("#left,#main").hide();}	//displays start screen...
+	else {$("#a").hide();$("#main").attr("src","html/"+url+".html");$("#main").show();$("#left").hide();$("#main_window").css("width","1220px");}// if there is a book mark then open to that page if not completed...
+
+}
+
+
+function send(){
+	var field = document.getElementById("userText"),
+		value = "Placeholder text";
+	if(field.value !== null && field.value !== ""){
+		value = field.value;
 	}
-function show_text(){
-	$("#text").show();x.pause();x.currentTime = 0
-
+	set('cmi.suspend_data', value);
 }
 
-function setCookie(cname,cvalue,exdays) {
-  var d = new Date();
-  d.setTime(d.getTime() + (exdays*24*60*60*1000));
-  var expires = "expires=" + d.toGMTString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/;HttpOnly;Secure;SameSite=None";
-  alert(cname+" "+cvalue+" "+document.cookie);
-}
-
-function getCookie(cname) {
-  var name = cname + "=";
-  var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(';');
-  for(var i = 0; i < ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
-
-function checkCookie() {
-  user=getCookie("username");
-  if (user != "") {$('#button').hide();
-    close();
-  } else {$('#button').show();
-    // user = prompt("Please enter your name:","");
-     //if (user != "" && user != null) {
-     //  setCookie("username", user, 30);
-     }
-  }
-$(document).ready(function(){
-  
- 
-}); 
-
- $('#button').click(function(){
-
-		//x.play();
-		$("#saw-bike").animate({
-		  left: '50%',
-		  height: '400px',width:'240px',
-		},10000,show_text)
+function set(param, value){
 	
-//}
-});
-//checkCookie();
-//x.onload = function() {console.log("loaded");}
-</script> 
-</html>
- 
- 
+	show("Sending: '" +value +"'");
+	var callSucceeded = scorm.set(param, value);
+	//alert("set"+callSucceeded)
+	show("Call succeeded? " +callSucceeded);
+}
+function get(param){
+	var value = scorm.get(param);
+	show("Received: '" +value +"'");
+}
+function complete(){
+	//alert("I am completed");
+	show("Setting course status to 'completed'.");
+	var callSucceeded = scorm.set("cmi.core.lesson_status", "completed");
+	show("Call succeeded? " +callSucceeded);
+}
+function end(){
+	//alert("I am ending");
+	show("Terminating connection.");
+	var callSucceeded = scorm.quit();
+	show("Call succeeded? " +callSucceeded);
+}
+function show(msg){
+	var debugText = document.getElementById("debugText");
+	if(debugText){
+		debugText.innerHTML += msg +"<br/>";
+	}
+	//Can also show data using pipwerks.UTILS.trace
+	pipwerks.UTILS.trace(msg);
+}
 
+
+// to set the data
+
+function next(){
+	
+	var bookmark = scorm.get("cmi.core.lesson_location");
+	//alert("book mark is "+ bookmark);
+}
+// to retrieve it later …
+window.onunload = function(){
+	end();
+}
+$(document).ready(function(){
+
+	$("#starta").click(function(){
+		if (start == 1){$("#a").hide();$("#main").attr("src","html/001.html");$("#left").attr("src","default/direct.html");$("#left,#main").show();}
+		else {$("#a").hide();$("#main_window").css("width","1220px");$("#main").attr("src","html/001.html");$("#main").show();}
+		})
+
+;})
+</script>
+<STYLE type="text/css" media="all">
+	.header {background-color:#8996A0;
+			color:#FFFFFF;
+			width:24.7%;
+			height:30px;
+			text-align:center;
+			line-height: 30px;
+			display:inline-block;
+			text-decoration: none;
+			font-size:10pt;}
+
+
+</style>
+</head>
+
+<body >
+	<div id="main_window"style="position:absolute;margin:0 auto;left:0px;right:0;width:1360px;height:640px;">
+		<div id="a">
+			 <div id="body">
+				<div id="logo" style="padding-top:8px;">
+					<div style="background-color:#00A4F2;height:120px;">
+						<img style="position:absolute;height:20px;right:0px;padding:20px;"src="default/img/cobham.png" >
+						<div style="position:absolute;height:20px;top:80px;left:0px;padding-left:20px;color:white;">The most important thing we build is trust</div>
+					</div>
+					<img style="padding-left:50%;margin-left:-480px;"src="default/img/header.png" >
+					<div style="width:100%;">
+						<div class="header">ADVANCED ELECTRONIC SOLUTIONS</div>
+						<div class="header">AVIATION SERVICES</div>
+						<div class="header">COMMUNICATIONS AND CONNECTIVITY</div>
+						<div class="header">MISSION SYSTEMS</div>
+					</div>
+				</div>
+				<div style="padding-left:20px;">
+					<div id="heading"><p>Sea Tel VSAT Dual Antenna Arbitrator Training</div>
+					<div id="subheading"><p>Rev C3</div>
+					<div id="subheading"><p></div>
+				</div>
+			</div>
+			<div id="footer">Sea Tel VSAT Dual Antenna Arbitrator Training
+				<!--<div ><a href=000.htm class="footerlink";></a></div>!-->
+				<!--<div class="footerbutton back"><a href="#" class="footerlink";>next</a></div> !-->
+				<div class="footerbutton"><a id="starta" href="#" class="footerlink">Start</a></div>
+			</div>
+		</div>
+		<iframe id="left"src="" style="float:left;width:140px;height:640px;border:0px;display:hide;"></iframe>
+		
+		
+		<iframe id="main" name="main" src="" style="float:left;width:1220px;height:640px;border:0px;display:hide;"></iframe>
+	</div>
+</body>
+</html>
