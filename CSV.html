@@ -40,7 +40,7 @@
   </body>
   
   <div id="TitleLine"></div>
-  <div id="TitleLines"></div>
+  <div id="TitleLines" style"font-family:Arial;"></div>
  
   <script>
     var Title = [];
@@ -90,7 +90,7 @@
         console.log(data);
         //$('#TitleLine').text(JSON.stringify(data));
         let oldtext = JSON.stringify(data);
-        let newtext = oldtext.replace(/,/g ,',<br>').replace(/\[/g , '[<br>').replace(/\]/g , '<br>]').replace(/\{/g , '{<br>').replace(/\}/g , '<br>}').replace(/\\\\/g , '\');
+        let newtext = oldtext.replace(/,/g ,',<br>').replace(/\[/g , '[<br>').replace(/\]/g , '<br>]').replace(/\{/g , '{<br>');
         $('#TitleLines').html(newtext);
 		/*for (i = 0; i < (output.length-1); i++) {
 			for (ii = 0; ii < output[i].length; ii++) {
