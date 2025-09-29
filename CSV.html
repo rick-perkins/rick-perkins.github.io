@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<head> </head>
+<!_created by Rick Perkins, rickperkinsbloke.com__>
+<!_JSON_creator__>
+<head><title>Create JSON File</title>
+<link rel="apple-touch-icon" sizes="57x57" href="../fav/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../fav/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../fav/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../fav/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../fav/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../fav/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="../fav/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../fav/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../fav/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="../fav/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../fav/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="../fav/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../fav/favicon-16x16.png">
+<link rel="manifest" href="fav/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="../fav/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<meta charset="utf-8">
+<link rel="stylesheet" href="../css/rickperkinsbloke.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<body>
+  <div id="header">
+		<img id="logo" src="../img/RickPerkinsBloke108.png" ><span>ickPerkinsBloke.com </span>
+	</div>
+	<div id="welcome">
+		Create JSON File...
+	</div>
+  <div><p><a id="home" href="../index.html">Home</a></p></div>
+  <form id="myForm">
+    <input type="file" id="csvFile" accept=".csv" />
+    <br />
+    <input type="submit" value="Submit" />
+    
+  </form> 
+  </body>
+  
+  <div id="TitleLine"></div>
+  <div id="TitleLines" style"font-family:Arial;"></div>
+ 
+  <script>
+    var Title = [];
+    var TitleRows = [];
+    const myForm = document.getElementById("myForm");
+    const csvFile = document.getElementById("csvFile");
+	  var output;
+    function csvToArray(str, delimiter = ",") {
+      // slice from start of text to the first \n index
+      // use split to create an array from string by delimiter
+      const headers = str.slice(0, str.indexOf("\r\n")).split(delimiter);
+      Title = headers;
+
+      // slice from \n index + 1 to the end of the text
+      // use split to create an array of each csv value row
+      const rows = str.slice(str.indexOf("\n") +1).split("\r\n");
+		  console.log("step 2****"+headers);
+      // Map the rows
+      // split values from each row into an array
+      // use headers.reduce to create an object
+      // object properties derived from headers:values
+      // the object passed as an element of the array
+      const arr = rows.map(function (row) {
+        const values = row.split(delimiter);
+		  console.log("Values Rows step 3***"+values);
+        const el = headers.reduce(function (object,header, index) {
+          object[header] = values[index];
+          return object;
+        }, {});
+        return el;
+      });
+
+      // return the array
+      return arr;
+    }
+   
+	//var i,ii;
+    myForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const input = csvFile.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        const text = e.target.result;
+        const data = csvToArray(text);
+		    output = csvToArray(text);
+        console.log(data);
+        //$('#TitleLine').text(JSON.stringify(data));
+        let oldtext = JSON.stringify(data);
+        let newtext = oldtext.replace(/,/g ,',<br>').replace(/\[/g , '[<br>').replace(/\]/g , '<br>]').replace(/\{/g , '{<br>');
+        $('#TitleLines').html(newtext);
+		/*for (i = 0; i < (output.length-1); i++) {
+			for (ii = 0; ii < output[i].length; ii++) {
+			}
+        console.log(output);
+        console.log(input);}*/
+      
+		
+      };
+      reader.readAsText(input);
+
+      console.log("reader done, step 1****");
+      
+      getlines();
+    }); 
+    function getlines(){
+    for(i=0;i<Title.Length;i++)
+      {console.log(Title[i]+" "+TitleRows[i])};}
+	/*
+	const myForm = document.getElementById("myForm");
+    const csvFile = document.getElementById("csvFile");
+
+    myForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const input = csvFile.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        const text = e.target.result;
+        document.write(text);
+      };
+
+      reader.readAsText(input);
+    });*/
+  </script>
