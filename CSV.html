@@ -45,6 +45,7 @@
   <script>
     var Title = [];
     var TitleRows = [];
+    var NoRows = 0;
     const myForm = document.getElementById("myForm");
     const csvFile = document.getElementById("csvFile");
 	  var output;
@@ -56,7 +57,10 @@
 
       // slice from \n index + 1 to the end of the text
       // use split to create an array of each csv value row
-      const rows = str.slice(str.indexOf("\n") +1).split("\r\n");
+      // count number of new lines, then remove the last one 
+      NoRows = str.split("\n").length;
+      const rows = str.slice(str.indexOf("\n") +1).split("\r\n", (NoRows-2));
+      console .log("Number of rows" +NoRows);
 		  console.log("step 2****"+headers);
       // Map the rows
       // split values from each row into an array
@@ -90,7 +94,7 @@
         console.log(data);
         //$('#TitleLine').text(JSON.stringify(data));
         let oldtext = JSON.stringify(data);
-        let newtext = oldtext.replace(/,/g ,',<br>').replace(/\[/g , '[<br>').replace(/\]/g , '<br>]').replace(/\{/g , '{<br>');
+        let newtext = oldtext.replace(/,/g ,',<br>').replace(/\[/g , '[<br>').replace(/\]/g , '<br>]').replace(/\{/g , '{<br>').replace(/\}/g , '<br>}').replace(/\\\\\\n/g, '\\n');
         $('#TitleLines').html(newtext);
 		/*for (i = 0; i < (output.length-1); i++) {
 			for (ii = 0; ii < output[i].length; ii++) {
