@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+<head><title>Sailor Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+<script src="../js/jquery-3.3.1.js"></script>
+<script>
+window.onload = function() {
+	$("#modem,#mdmeth,#mdmsrl,#eth,#acuacl,#acubcl").hide();
+	var url = "002";
+	parent.set("cmi.core.lesson_location", url);
+
+}
+$(document).ready(function(){
+
+  });
+</script>
+<STYLE type="text/css" media="screen">
+iframe {
+    zoom: 1;
+    -moz-transform:scale(0.70);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(0.70);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(0.70);
+    -webkit-transform-origin: 0 0;
+}
+ol{position:absolute;
+	z-index:1;
+	background-color: rgba(255,255,255,0.8);
+	width: 294px;
+	top:300px;
+    padding-inline-start: 20px;}
+
+</style>
+	
+
+	
+</head>
+<body>
+
+<div id="container">
+	<h1>Configuration<img src="../default/img/Cobham Logo Grey Cropped.png"></h1>
+	<div id="body">
+		<div style="position:absolute;width:100%;">
+		<ol><li>Log in to the ACU.</li>
+			<li>Go to settings.</li>
+			<li>Click on blocking zones.</li>
+			<li>Enter the correct azimuth and elevation angles.</li>
+			<li>Tick No TX if the blocking zone is to mute the TX.</li>
+			<li>Tick active to make the blocking zone active.</li>
+			<li>Click apply to save the information.</li>
+		</ol>
+		<div style="position:absolute;right:40px;top:80px;z-index:1;">
+		<ul><li>The blocking zones will be displayed on the interactive illustration.</li>
+			<li>Blocking zones are displayed as a grey colour.</li>
+			<li>No TX zones are shown as a <span style="color:red;">red colour</span>.</li>
+			<li>The antenna illustration shows the pointing direction for the antenna.</li>
+		</ul>
+
+		</div>
+		<div style="overflow:hidden;position:relative;width:1190px;height:525px;top:5px">
+			<iframe id="main" name="main" src="00a.html" style="position: absolute;top: -47px;left:160px;width: 1462px;height: 1000px;border:0px;overflow:hidden;" scrolling="no"></iframe>
+		</div>
+		
+		</div>
+		
+	</div>
+	<div id="footer">
+		<a href="001.html" class="back" >&lt; Back</a>
+		<a href="002a.html" >Next &gt;</a>
+	</div>
+</div>
+</body>
+</html>
+ 
+ 
+

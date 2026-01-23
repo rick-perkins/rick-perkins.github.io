@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head><title>Sailor Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+<script src="../js/jquery-3.3.1.js"></script>
+<script>
+window.onload = function() {
+	
+	var url = "completed_page";
+	parent.set("cmi.core.lesson_location", url);
+parent.complete();	
+}
+
+</script>
+<STYLE type="text/css" media="screen">
+iframe {
+    zoom: 1;
+    -moz-transform:scale(0.70);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(0.70);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(0.70);
+    -webkit-transform-origin: 0 0;
+}
+iframe html{overflow:hidden;overflow-y: auto;}
+</style>
+	
+
+	
+</head>
+<body>
+
+<div id="container">
+<h1 >Simulator<img src="../default/img/Cobham Logo Grey Cropped.png"></h1>
+	<div id="body" style="">
+	
+		<div style="position:absolute;width:100%;">
+		<div style="position: relative;width: 100%;text-align: center;">Please enter the correct blocking zones to match the vessel and the blocking map</div>
+		
+		<iframe id="main" name="main" src="00a.html" style="width:1948px;height: 770px;border:0px;position: absolute;top:20px;left:-167px;" ></iframe>
+		
+		
+	</div>
+	</div>
+	<div id="footer">
+		<a href="002a.html" class="back-complete">&lt; Back</a>
+		<a onclick="parent.end(); return false;" class="complete" href="#">Completed</a>
+		<!--<a href="../quiz/index.html">Next &gt;</a>-->
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+});
+
+
+</script>
+</html>
+ 
+ 
+

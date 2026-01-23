@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+<head><title>contents</title>
+<meta charset="utf-8">
+<script src="../js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../js/doc-name.js"></script>
+<script>
+window.onload = function() {
+	var url = "contents1";
+	parent.set("cmi.core.lesson_location", url);
+}
+</script>
+
+<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+<STYLE type="text/css" media="screen">
+
+</style>
+</head>
+<body>
+
+<div id="container">
+	<div id="logo" style="position:absolute;z-index:4;">
+		<img style="position:absolute;right:0px;height:22px;padding:10px 20px;" src="../default/img/Cobham.png">
+		<div style="position:absolute;right:0px;width:230px;top:46px;color:#FFF;font-size:15px;">WHEN CONNECTION MATTERS</div>
+	</div>
+	<div id="contents"> 
+
+	</div>
+	<div id="contents-text" style="display:none;">
+		<div style="position:absolute;top:60px;left:30px;width:230px;">
+			<div  class="title contents" style="color:#FFF;"></div>
+			<div  class="contents" style="color:#FFF;"><p></p></div>
+						
+		</div>
+		<div style="position:absolute;right:4px;top:0px;width:912px;height:612px;border-radius:0 10px 0 0;z-index:3;">
+			<div class="contents" style="position:absolute;top:60px;left:56px;width:800px;color:#FFF;">
+			This training will cover the following:
+			<ul><li>Overview</li>
+			<li>Configuration</li>
+			<li>Simulator</li>
+			</ul>
+			</div>
+		</div>
+	</div>
+	<div id="divider-text" style="display:none;">
+		<div style="position:absolute;top:160px;left:56px;">
+			<div class="contents" style="text-align:right;">
+		
+			
+			</div>
+		
+		</div>
+	</div>
+	<div id="coffee-div" style="display:none;">
+		<div id="coffee" ></div>
+	</div>
+	<div id="footer">
+		<!--<a href="001b.html" class="back">&lt; Back</a>-->
+		<a href="001.html">Next &gt;</a>
+	</div>
+</div>
+</body>
+<script>
+
+$(document).ready(function(){
+doc_name();
+content_page("contents");
+
+/*Layout contents = blue with dark blue area
+Layout blue = blue back ground
+layout light blue = blue background
+Layout red = red background
+Layout brown = brown back ground
+Layout complete = end slide
+*/
+});
+
+</script>
+</html>
+ 
+ 
+

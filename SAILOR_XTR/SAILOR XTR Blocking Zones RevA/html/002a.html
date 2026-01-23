@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+<head><title>Sailor Training</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+<script src="../js/jquery-3.3.1.js"></script>
+<script>
+window.onload = function() {
+	
+	var url = "002a";
+	parent.set("cmi.core.lesson_location", url);
+
+}
+$(document).ready(function(){
+	
+  });
+</script>
+<STYLE type="text/css" media="screen">
+li li span{color:#8996A0;}	
+iframe {
+    zoom: 1;
+    -moz-transform:scale(0.70);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(0.70);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(0.70);
+    -webkit-transform-origin: 0 0;
+}
+
+</style>
+	
+
+	
+</head>
+<body>
+
+<div id="container">
+	<h1>Configuration<img src="../default/img/Cobham Logo Grey Cropped.png"></h1>
+	<div id="body">
+		<div style="position:absolute;width:100%;">
+		<ul><li>The blocking map is built up over time and displays when there <span style="color:#099fdf;">is signal</span> and when the <span style="color:red;">signal has been lost</span>. </li>
+				<li>When the blocking zone has been activated the area will be displayed on the map. (<span style="color:red;">Note:</span> Colour areas are for training only, these are grey lines in the system).
+					<ul><li><span>Dashed line is a blocking zone TX allowed.</span></li>
+						<li><span>Solid line is a blocking zone No TX.</span></li>
+					</ul>
+				</li>
+				</ul>
+		<div id="window" style="overflow:hidden;position:relative;width:1190px;height: 500px;;top:-10px;overflow-y: auto;">
+			<iframe id="main" name="main" src="00a.html" style="width: 1462px;height: 1500px;border:0px;overflow:hidden;position: absolute;top: -50px;" scrolling="no"></iframe>
+		</div>
+		
+		</div>
+		
+	</div>
+	<div id="footer">
+		<a href="002.html" class="back" >&lt; Back</a>
+		<a href="complete-page.html" >Next &gt;</a>
+	</div>
+</div>
+</body>
+<script>
+$('#window').scrollTop(500);
+</script>
+</html>
+ 
+ 
+

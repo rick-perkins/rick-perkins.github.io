@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+<head><title>Sailor Training</title>
+<meta charset="utf-8">
+<script src="../js/jquery-3.3.1.js"></script>
+<script src="../js/blockage_zones.js"></script>
+<script>
+window.onload = function() {
+	var url = "001";
+	parent.set("cmi.core.lesson_location", url);
+}
+</script>
+
+<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+<STYLE type="text/css" media="screen">
+li li span{color:#8996A0;}	
+</style>
+
+
+	
+</head>
+<body>
+
+
+
+
+<div id="container">
+<h1>Overview<img src="../default/img/Cobham Logo Grey Cropped.png"></h1>
+	<div id="body" style="">
+		<div style="position:absolute;width:100%;">
+			<ul><li><span>Blocking zones are used to allow the antenna to know if the satellite is lost due to a known issue I.E blockage rather then an issue with the antenna or satellite.</span></li>
+			<li><span>The blockage has to be a fixed structure to the vessel that will not move.</span>
+				<ul><li><span>Funnel</span></li>
+				<li><span>Other antennas</span></li>
+				<li><span>Masts</span></li>
+				<li><span>Cranes</span></li>
+				<li><span>Areas that the system is not allowed to transmit though.</span></li>
+				</ul>
+			</li>
+			<li><span>The system can be configured for up to 8 blocking areas.</span></li>
+			<li><span>Each area will have a start and stop azimuth range and elevation angle.</span></li>
+			<li><span>When the antenna is in this programed area the system can mute the modem if the zone is set for No TX.</span></li>
+			<li><span>Typically the blocking zone will be set for No TX (transmitting though blockage can cause transmission issues and reflections). </span></li>
+			<li><span>Switch to the second system if it’s a dual system.</span></li>
+			<li>The azimuth is calculated from 0° to 360° from the bow in a clockwise &#8635; direction.</li>
+			<li>The elevation range is -30&#176; to 90&#176;.</li>
+			<li>Blocking zones can over lap each other from the largest to the smallest.</li>
+			</ul>
+			<div>
+				<table class="bz_table" style="display:none;"><!--not to be displayed on this page, reference only-->
+							<tbody>
+								<tr><th>Active</th><th>Azimuth</th><th>Elevation</th><th align="center">No TX</th></tr>
+								<tr><td><input type="checkbox" id="active0" checked></td><td><input type="text" size="5" id="az_start0" value="335">° - <input type="text" size="5" id="az_end0" value="25">°</td><td><input type="text" size="5" id="el_start0" value="-30">&#176; - <input type="text" size="5" id="el_end0" value="0">&#176;</td><td><input type="checkbox" class="notx_opt" id="notx0"></td></tr>
+								<tr><td><input type="checkbox" id="active1" checked></td><td><input type="text" size="5" id="az_start1" value="350">&#176; - <input type="text" size="5" id="az_end1" value="10">&#176;</td><td><input type="text" size="5" id="el_start1" value="0">&#176; - <input type="text" size="5" id="el_end1" value="20">&#176;</td><td><input type="checkbox" class="notx_opt" id="notx1"></td></tr>
+								<tr><td><input type="checkbox" id="active2" checked></td><td><input type="text" size="5" id="az_start2" value="155">&#176; - <input type="text" size="5" id="az_end2" value="205">&#176;</td><td><input type="text" size="5" id="el_start2" value="-30">&#176; - <input type="text" size="5" id="el_end2" value="-10">&#176;</td><td><input type="checkbox" class="notx_opt" id="notx2"></td></tr>
+								<tr><td><input type="checkbox" id="active3" checked></td><td><input type="text" size="5" id="az_start3" value="172">&#176; - <input type="text" size="5" id="az_end3" value="188">&#176;</td><td><input type="text" size="5" id="el_start3" value="-10">&#176; - <input type="text" size="5" id="el_end3" value="30">&#176;</td><td><input type="checkbox" class="notx_opt" id="notx3"></td></tr>
+								<tr><td><input type="checkbox" id="active4"></td><td><input type="text" size="5" id="az_start4" value="0">&#176; - <input type="text" size="5" id="az_end4" value="0">&#176;</td><td><input type="text" size="5" id="el_start4" value="0">&#176; - <input type="text" size="5" id="el_end4" value="0">&#176;</td><td><input type="checkbox" class="notx_opt" id="notx4"></td></tr>
+								<tr><td><input type="checkbox" id="active5"></td><td><input type="text" size="5" id="az_start5" value="0">&#176; - <input type="text" size="5" id="az_end5" value="0">&#176;</td><td><input type="text" size="5" id="el_start5" value="0">&#176; - <input type="text" size="5" id="el_end5" value="0">&#176;</td><td><input type="checkbox" class="notx_opt" id="notx5"></td></tr>
+								<tr><td><input type="checkbox" id="active6"></td><td><input type="text" size="5" id="az_start6" value="0">&#176; - <input type="text" size="5" id="az_end6" value="0">&#176;</td><td><input type="text" size="5" id="el_start6" value="0">&#176; - <input type="text" size="5" id="el_end6" value="0">&#176;</td><td><input type="checkbox" class="notx_opt" id="notx6"></td></tr>
+								<tr><td><input type="checkbox" id="active7"></td><td><input type="text" size="5" id="az_start7" value="0">&#176; - <input type="text" size="5" id="az_end7" value="0">&#176;</td><td><input type="text" size="5" id="el_start7" value="0">&#176; - <input type="text" size="5" id="el_end7" value="0">&#176;</td><td><input type="checkbox" class="notx_opt" id="notx7"></td></tr>
+							</tbody>
+						</table>
+				<canvas id="cir" width="300" height="300" style="display: inline-block;">Your browser does not support the HTML5 canvas tag.</canvas>
+				<canvas id="cir_offset" width="300" height="300" style="display: inline-block;">Your browser does not support the HTML5 canvas tag.</canvas>
+				<canvas id="cir1" width="300" height="250" style="display: inline-block;">Your browser does not support the HTML5 canvas tag.</canvas>
+			</div>
+		</div>
+		
+	</div>
+	<div id="footer">
+		<a href="contents.html" class="back">&lt; Back</a>
+		<a href="002.html">Next &gt;</a>
+	</div>
+</div>
+</body>
+<script>
+$(document).ready(function(){
+
+compass('cir');compass1();
+compass('cir_offset');
+overview_page(0,'cir');
+overview_page(1,'cir_offset');
+});                                                      
+</script>
+</html>
+ 
+ 
+

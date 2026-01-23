@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head><title>Directory</title>
+<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+</head>
+<body> 
+
+<div id="direct">
+<canvas  id="canvas_background" style="border-radius:10px 0px 0px 0px;" width="140" height="612" >Your browser does not support the HTML5 canvas tag.</canvas>
+				<script>
+				var canvas = document.getElementById('canvas_background')
+				var ctx = canvas.getContext('2d');
+				var w = canvas.width,
+				h = canvas.height;
+				ctx.fillStyle = "rgba(35,97,146,1)";
+				ctx.strokeStyle = "rgba(39,106,161,1)";
+				ctx.beginPath();
+				ctx.fillRect(0,0,w,h);
+				ctx.fill();
+				ctx.beginPath();
+				ctx.lineWidth = 18;
+				ctx.arc(w+10, h-148, 120, 0, 2 * Math.PI);
+				ctx.stroke();
+				</script>
+
+<div id="menu" style="width:50px;height:30px;font-size:16px;" align="center">
+Menu</div>
+<div id="menu" style="top:26px;height:590px;">
+
+
+<a  href="../html/001.html" target="main" class="menulink">Over view</a><br>
+<a  href="../html/002.html" target="main" class="menulink">Configuration</a><br>
+<a  href="../html/complete-page.html" target="main" class="menulink">Simulator</a><br>
+
+
+
+<p>
+<a  href="rev.html" target="main" class="menulink" style="position:absolute;bottom:46px;">Revision List</a>
+<a  href="mailto:satcom.academy@cobham.com" target="" class="menulink" style="position:absolute;bottom:10px;">Email Cobham Satcom training department</a><br>
+
+ 
+	</div></div>
+	<div id="menufooter"></div>
+
+</html>
+
+ 
+
