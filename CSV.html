@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <head> </head>
 <!_created by Rick Perkins, rickperkinsbloke.com__>
-<!_JSON_creator__>
-<head><title>Create JSON File March</title>
+<!_JSON_creator, updated 24 Mar 26 ro remove ;__>
+
+<head><title>Create JSON File</title>
 <link rel="apple-touch-icon" sizes="57x57" href="../fav/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="../fav/apple-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="../fav/apple-icon-72x72.png">
@@ -94,8 +95,7 @@
         console.log(data);
         //$('#TitleLine').text(JSON.stringify(data));
         let oldtext = JSON.stringify(data);
-        let newtext = oldtext.replace(/,/g ,',<br>').replace(/\[/g , '[<br>').replace(/\]/g , '<br>]').replace(/\{/g , '{<br>').replace(/\}/g , '<br>}').replace(/\\\\\\n/g, '\\n');
-		let newtext = newtext.replace(/;/g,',');
+        let newtext = oldtext.replace(/,/g ,',<br>').replace(/\[/g , '[<br>').replace(/\]/g , '<br>]').replace(/\{/g , '{<br>').replace(/\}/g , '<br>}').replace(/\\\\\\n/g, '\\n').replace(/;/g,',');;
         $('#TitleLines').html(newtext);
 		/*for (i = 0; i < (output.length-1); i++) {
 			for (ii = 0; ii < output[i].length; ii++) {
