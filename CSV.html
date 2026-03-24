@@ -95,6 +95,7 @@
         //$('#TitleLine').text(JSON.stringify(data));
         let oldtext = JSON.stringify(data);
         let newtext = oldtext.replace(/,/g ,',<br>').replace(/\[/g , '[<br>').replace(/\]/g , '<br>]').replace(/\{/g , '{<br>').replace(/\}/g , '<br>}').replace(/\\\\\\n/g, '\\n');
+		let newtext = newtext.replace(/;/g,',');
         $('#TitleLines').html(newtext);
 		/*for (i = 0; i < (output.length-1); i++) {
 			for (ii = 0; ii < output[i].length; ii++) {
