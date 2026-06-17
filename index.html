@@ -58,13 +58,23 @@
 				<a href="Satellite_Calculator/index.html" target="_blank">Satellite Calculator</a><br>
 			</div>
 			<a href="index1.html" target="_blank">though the looking glass.....</a><br>
-			<script>
-var norad_n2yo = '25544';
-var size_n2yo = 'small';
-var allpasses_n2yo = '1';
-var map_n2yo = '2';
+<script>
+    const baseURL = 'https://api.n2yo.com/rest/v1/satellite';
+    const api_key = '6LKTTW-ZB5VXL-N7MWDC-5RRI';
+
+    async function getTLE(noradID) {
+        try {
+            const res = await fetch(`${baseURL}/tle/${noradID}?apiKey=${api_key}`);
+            const data = await res.json();
+
+            console.log(data);
+        } catch(e) {
+            console.error(e);
+        }
+    }
+
+    getTLE('25544');
 </script>
-			<script type="text/javascript" src="https://www.n2yo.com/js/widget-tracker.js"></script>
 		</div>
 		<div style="float:left;"><iframe id="main" name="main" src="" style="width:1300px;height:900px;border:0px;"></iframe></div>
 	</div>
